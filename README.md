@@ -19,9 +19,10 @@ pip install -r requirements.txt
 </pre>
 * Setup the database
 <pre>
-python manage.py syncdb --all
+python manage.py syncdb --all  --noinput 
 python manage.py migrate --fake
-manage setup.py runserver
+python manage.py loaddata pari/fixtures/initial_content.json 
+python manage.py runserver
 </pre>
 
 <b>Note:</b> Add these to your .bash_profile if you are getting "unknown locale: UTF-8" error
