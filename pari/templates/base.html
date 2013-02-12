@@ -16,6 +16,7 @@
        {% render_block "css" %}
   </head>
   <body>
+    <div id="holder">
   	  <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
@@ -31,11 +32,12 @@
           {% placeholder base_content %}
           {% block base_content%}{% endblock %}
       </div>
+    </div>
       <footer class="footer">
           <div class="container">
             <p><a href="#">About Us</a></p>
           </div>
       </footer>
-      {% render_block "js" %}
+    {% render_block "js" %}
   </body>
 </html>
