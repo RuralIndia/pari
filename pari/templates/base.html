@@ -1,11 +1,41 @@
 {% load cms_tags sekizai_tags %}
+<!DOCTYPE html>
 <html>
   <head>
-      {% render_block "css" %}
+  	   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       {% addtoblock "css" %}
+            <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
+            <link href="{{ STATIC_URL }}css/pari.css" rel="stylesheet" media="screen">
+       {% endaddtoblock %}
+       {% addtoblock "css" %}
+            <script src="http://code.jquery.com/jquery.js"></script>
+            <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+       {% endaddtoblock %}
+  	   <title>PARI</title>
+       {% render_block "css" %}
   </head>
   <body>
-      {% placeholder base_content %}
-      {% block base_content%}{% endblock %}
+  	  <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav">
+              <li class="active"><a href="#">Categories</a></li>
+              <li><a href="#">Map</a></li>
+              <li><a href="#">Contribute</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+          {% placeholder base_content %}
+          {% block base_content%}{% endblock %}
+      </div>
+      <footer class="footer">
+          <div class="container">
+            <p><a href="#">About Us</a></p>
+          </div>
+      </footer>
       {% render_block "js" %}
   </body>
 </html>

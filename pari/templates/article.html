@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block base_content %}
+<div class="row-fluid">
+  <div class="span8">
+  	{% placeholder article_content %}
+  </div>
+  <div class="span4">
+  	Sidebar!!
+  </div>
+</div>
+{% endblock %}
