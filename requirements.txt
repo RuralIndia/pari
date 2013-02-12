@@ -1,4 +1,5 @@
 Django==1.4.3
+PIL==1.1.7
 South==0.7.6
 distribute==0.6.34
 django-classy-tags==0.4
