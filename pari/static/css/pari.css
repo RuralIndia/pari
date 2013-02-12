@@ -19,3 +19,7 @@ footer {
 .footer-links li:first-child {
   padding-left: 0;
 }
+
+#main_content {
+  margin-top: 80px;
+}
