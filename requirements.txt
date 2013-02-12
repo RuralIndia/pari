@@ -1,0 +1,14 @@
+Django==1.4.3
+South==0.7.6
+distribute==0.6.34
+django-classy-tags==0.4
+django-cms==2.3.5
+django-mptt==0.5.2
+django-sekizai==0.7
+html5lib==0.95
+stevedore==0.8
+virtualenv==1.8.4
+virtualenv-clone==0.2.4
+virtualenvwrapper==3.6
+wsgiref==0.1.2
+yolk==0.4.3
