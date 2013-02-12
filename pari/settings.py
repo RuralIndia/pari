@@ -187,6 +187,7 @@ LOGGING = {
         },
     }
 }
-
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+#Heroku Postgres setup
+if os.getcwd() == "/app":
+    import dj_database_url
+    DATABASES['default'] =  dj_database_url.config()
