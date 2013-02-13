@@ -4,11 +4,12 @@
   <head>
        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
        <meta name="description" content="P.Sainath's People's Archive Of Rural India">
+       <meta name="author" content="P.Sainath">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        {% addtoblock "css" %}
             <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
-            <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
             <link href="{{ STATIC_URL }}css/pari.css" rel="stylesheet" media="screen">
+            <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
        {% endaddtoblock %}
        {% addtoblock "css" %}
             <script src="http://code.jquery.com/jquery.js"></script>
@@ -38,12 +39,19 @@
           {% placeholder base_content %}
           {% block base_content%}{% endblock %}
       </div>
+      <div id="push"></div>
     </div>
-    <footer class="footer">
-        <div class="container">
-          <p><a href="#">About Us</a></p>
+    <div id="footer">
+        <div class="container-fluid">
+          <ul class="footer-links">
+            <li><a href="#">About</a></li>
+            <li class="muted">·</li>
+            <li><a href="#">Code</a></li>
+            <li class="muted">·</li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
         </div>
-    </footer>
+    </div>
     {% render_block "js" %}
   </body>
 </html>
