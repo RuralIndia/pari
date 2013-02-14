@@ -1,4 +1,4 @@
-{% load cms_tags sekizai_tags %}
+{% load cms_tags sekizai_tags menu_tags %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,9 +25,7 @@
           <div class="container-fluid">
             <a class="brand" href="#">Pari</a>
             <ul class="nav">
-              <li class="active"><a href="#">Categories</a></li>
-              <li><a href="#">Map</a></li>
-              <li><a href="#">Contribute</a></li>
+              {% show_menu %}
             </ul>
             <form class="navbar-search pull-right">
                 <input type="text" class="search-query" placeholder="Search">
@@ -35,6 +33,7 @@
           </div>
         </div>
       </div>
+      
       <div id='main_content' class="container-fluid">
           {% placeholder base_content %}
           {% block base_content%}{% endblock %}
