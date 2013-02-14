@@ -139,8 +139,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+
     'cms',
     'mptt',
     'menus',
@@ -190,6 +189,16 @@ LOGGING = {
         },
     }
 }
+
+CMS_URL_OVERWRITE = True
+CMS_MENU_TITLE_OVERWRITE = True
+CMS_REDIRECTS = True
+CMS_SOFTROOT = True
+CMS_PERMISSION = True
+CMS_SHOW_START_DATE = True
+CMS_SHOW_END_DATE = True
+CMS_SEO_FIELDS = True
+
 #Heroku Postgres setup
 if os.getcwd() == "/app":
     import dj_database_url
