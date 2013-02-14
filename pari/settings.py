@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
+
 gettext = lambda s: s
+env = lambda e, d: os.environ[e] if os.environ.has_key(e) else d
+
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 STATIC_ROOT = os.path.join(PROJECT_PATH, "static")
@@ -79,7 +82,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '*f@s82t!8=qp&amp;2r-!xj(sroz&amp;6^07r%hfy*&amp;3ec)#su=jfed+a'
+SECRET_KEY = env('SECRET_KEY', '')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
