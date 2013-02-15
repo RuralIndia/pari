@@ -1,6 +1,7 @@
 Django==1.4.3
 Mezzanine==1.3.0
 Pillow==1.7.8
+South==0.7.6
 bleach==1.2
 dj-database-url==0.2.1
 filebrowser-safe==0.2.14
