@@ -220,6 +220,12 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 
 BLOG_SLUG = "article"
 
+DASHBOARD_TAGS = (
+        ("mezzanine_tags.app_list",),
+        ("comment_tags.recent_comments",),
+        ("mezzanine_tags.recent_actions",),
+    )
+
 
 ################
 # APPLICATIONS #
