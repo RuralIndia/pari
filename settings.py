@@ -226,6 +226,15 @@ DASHBOARD_TAGS = (
         ("mezzanine_tags.recent_actions",),
     )
 
+from django.utils.translation import ugettext_lazy as _
+
+ADMIN_MENU_ORDER = (
+        (_("Content"), ("pages.Page", "article.Article",
+           "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
+        (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
+        (_("Users"), ("auth.User", "auth.Group",)),
+    )
+
 
 ################
 # APPLICATIONS #
