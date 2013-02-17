@@ -1,4 +1,5 @@
 Django==1.4.3
+Fabric==1.5.3
 Mezzanine==1.3.0
 Pillow==1.7.8
 South==0.7.6
@@ -8,8 +9,10 @@ django-geoposition==0.1.4
 filebrowser-safe==0.2.14
 grappelli-safe==0.2.11
 html5lib==0.95
+paramiko==1.9.0
 pep8==1.4.2
 psycopg2==2.4.6
+pycrypto==2.6
 pyflakes==0.6.1
 pytz==2012j
 wsgiref==0.1.2
