@@ -145,6 +145,7 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+WSGI_APPLICATION = "wsgi.application"
 
 #############
 # DATABASES #
