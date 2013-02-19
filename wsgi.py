@@ -1,4 +1,8 @@
-import os
+import os, sys
+
+from settings import PROJECT_ROOT, PROJECT_DIRNAME
+os.chdir(PROJECT_ROOT)
+sys.path.insert(0, os.path.abspath(os.path.join(PROJECT_ROOT, "..")))
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pari.settings")
 
