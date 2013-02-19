@@ -145,7 +145,7 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-WSGI_APPLICATION = "wsgi.application"
+WSGI_APPLICATION = "pari.wsgi.application"
 
 #############
 # DATABASES #
@@ -263,7 +263,9 @@ INSTALLED_APPS = (
     #"mezzanine.mobile",
     "south",
     "geoposition",
-    "article",
+
+    #Custom
+    "pari.article",
 )
 
 # List of processors used by RequestContext to populate the context.
