@@ -8,6 +8,7 @@ dj-database-url==0.2.1
 django-geoposition==0.1.4
 filebrowser-safe==0.2.14
 grappelli-safe==0.2.11
+gunicorn==0.17.2
 html5lib==0.95
 paramiko==1.9.0
 pep8==1.4.2
