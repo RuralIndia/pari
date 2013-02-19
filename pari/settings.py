@@ -219,6 +219,8 @@ ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 
+FIXTURE_DIRS = (os.path.join(PROJECT_ROOT, "fixtures"),)
+
 BLOG_SLUG = "article"
 
 DASHBOARD_TAGS = (

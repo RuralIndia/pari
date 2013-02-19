@@ -1,0 +1,227 @@
+[
+  {
+    "pk": 1,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "GOOGLE_ANALYTICS_ID"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "10",
+      "name": "SEARCH_PER_PAGE"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "5",
+      "name": "COMMENTS_NUM_LATEST"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "False",
+      "name": "COMMENTS_ACCOUNT_REQUIRED"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "1",
+      "name": "RICHTEXT_FILTER_LEVEL"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "True",
+      "name": "COMMENTS_UNAPPROVED_VISIBLE"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "People's Archive Of Rural India",
+      "name": "SITE_TAGLINE"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "search",
+      "name": "TWITTER_DEFAULT_QUERY_TYPE"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "True",
+      "name": "COMMENTS_REMOVED_VISIBLE"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "3",
+      "name": "TWITTER_DEFAULT_NUM_TWEETS"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "False",
+      "name": "SSL_ENABLED"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "AKISMET_API_KEY"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "True",
+      "name": "COMMENTS_DEFAULT_APPROVED"
+    }
+  },
+  {
+    "pk": 14,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "BLOG_BITLY_USER"
+    }
+  },
+  {
+    "pk": 15,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "#django",
+      "name": "TWITTER_DEFAULT_QUERY"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "PARI",
+      "name": "SITE_TITLE"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "5",
+      "name": "BLOG_POST_PER_PAGE"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "COMMENTS_NOTIFICATION_EMAILS"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "COMMENTS_DISQUS_API_PUBLIC_KEY"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "COMMENTS_DISQUS_API_SECRET_KEY"
+    }
+  },
+  {
+    "pk": 21,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "BLOG_BITLY_KEY"
+    }
+  },
+  {
+    "pk": 22,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "10",
+      "name": "MAX_PAGING_LINKS"
+    }
+  },
+  {
+    "pk": 23,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "4",
+      "name": "TAG_CLOUD_SIZES"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "COMMENTS_DISQUS_SHORTNAME"
+    }
+  },
+  {
+    "pk": 25,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "SSL_FORCE_HOST"
+    }
+  }
+]
