@@ -6,10 +6,12 @@ South==0.7.6
 bleach==1.2
 dj-database-url==0.2.1
 django-geoposition==0.1.4
+django-nose==1.1
 filebrowser-safe==0.2.14
 grappelli-safe==0.2.11
 gunicorn==0.17.2
 html5lib==0.95
+nose==1.2.1
 paramiko==1.9.0
 pep8==1.4.2
 psycopg2==2.4.6
