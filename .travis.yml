@@ -11,4 +11,4 @@ before_script:
   - "pep8 --exclude=migrations --ignore=E501,E225,E128,E126 ."
   - pyflakes .
 script:
-  - python setup.py test
+  - python manage.py test
