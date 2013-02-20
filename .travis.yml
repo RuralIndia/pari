@@ -3,10 +3,6 @@ python:
   - "2.7"
 env:
   - DJANGO=1.4
-install:
-  - pip install -q Django==$DJANGO --use-mirrors
-  - pip install pep8 --use-mirrors
-  - pip install pyflakes --use-mirrors
 before_script:
   - "pep8 --exclude=migrations --ignore=E501,E225,E128,E126 ."
   - pyflakes .
