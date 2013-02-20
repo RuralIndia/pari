@@ -1,20 +1,32 @@
 # -*- coding: utf-8 -*-
+import datetime
 from south.db import db
 from south.v2 import SchemaMigration
+from django.db import models
 
 
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        # Adding model 'Location'
+        db.create_table('article_location', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('location', self.gf('geoposition.fields.GeopositionField')(max_length=42)),
+        ))
+        db.send_create_signal('article', ['Location'])
+
         # Adding model 'Article'
         db.create_table('article_article', (
             ('blogpost_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['blog.BlogPost'], unique=True, primary_key=True)),
-            ('location', self.gf('geoposition.fields.GeopositionField')(max_length=42)),
+            ('location', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['article.Location'])),
         ))
         db.send_create_signal('article', ['Article'])
 
 
     def backwards(self, orm):
+        # Deleting model 'Location'
+        db.delete_table('article_location')
+
         # Deleting model 'Article'
         db.delete_table('article_article')
 
@@ -23,6 +35,11 @@ class Migration(SchemaMigration):
         'article.article': {
             'Meta': {'ordering': "('-publish_date',)", 'object_name': 'Article', '_ormbases': ['blog.BlogPost']},
             'blogpost_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['blog.BlogPost']", 'unique': 'True', 'primary_key': 'True'}),
+            'location': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['article.Location']"})
+        },
+        'article.location': {
+            'Meta': {'object_name': 'Location'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'location': ('geoposition.fields.GeopositionField', [], {'max_length': '42'})
         },
         'auth.group': {
