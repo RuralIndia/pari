@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+import datetime
 from south.db import db
 from south.v2 import SchemaMigration
+from django.db import models
 
 
 class Migration(SchemaMigration):
@@ -9,6 +11,8 @@ class Migration(SchemaMigration):
         # Adding model 'Location'
         db.create_table('article_location', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('description', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('location', self.gf('geoposition.fields.GeopositionField')(max_length=42)),
         ))
         db.send_create_signal('article', ['Location'])
@@ -37,8 +41,10 @@ class Migration(SchemaMigration):
         },
         'article.location': {
             'Meta': {'object_name': 'Location'},
+            'description': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'location': ('geoposition.fields.GeopositionField', [], {'max_length': '42'})
+            'location': ('geoposition.fields.GeopositionField', [], {'max_length': '42'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         'auth.group': {
             'Meta': {'object_name': 'Group'},

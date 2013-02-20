@@ -6,10 +6,12 @@ from geoposition.fields import GeopositionField
 
 
 class Location(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
     location = GeopositionField("Location")
 
     def __unicode__(self):
-        return u"%s" % self.location
+        return u"%s (%s)" % (self.name, self.location)
 
 
 class Article(BlogPost):
