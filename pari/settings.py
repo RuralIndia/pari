@@ -142,10 +142,12 @@ AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #"django.contrib.staticfiles.finders.DefaultStorageFinder",
 )
 
 WSGI_APPLICATION = "pari.wsgi.application"
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 #############
 # DATABASES #
@@ -227,7 +229,7 @@ DASHBOARD_TAGS = (
         ("mezzanine_tags.app_list",),
         ("comment_tags.recent_comments",),
         ("mezzanine_tags.recent_actions",),
-    )
+)
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -236,7 +238,7 @@ ADMIN_MENU_ORDER = (
            "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
         (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
         (_("Users"), ("auth.User", "auth.Group",)),
-    )
+)
 
 
 ################
@@ -265,6 +267,9 @@ INSTALLED_APPS = (
     #"mezzanine.mobile",
     "south",
     "geoposition",
+
+    #Tests
+    "django_nose",
 
     #Custom
     "pari.article",
@@ -383,4 +388,4 @@ else:
 
 if os.getcwd() == "/app":
     import dj_database_url
-    DATABASES['default'] =  dj_database_url.config()
+    DATABASES['default'] = dj_database_url.config()

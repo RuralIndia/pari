@@ -1,0 +1,14 @@
+language: python
+
+python:
+  - "2.7"
+
+env:
+  - DJANGO=1.4
+
+before_script:
+  - "pep8 --exclude=migrations --ignore=E501,E225 src"
+  - pyflakes -x W src
+
+script:
+  - python manage.py test

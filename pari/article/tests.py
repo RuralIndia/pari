@@ -1,4 +1,4 @@
-from article.admin import ArticleAdmin
+from .admin import ArticleAdmin
 from django.test import TestCase
 
 
