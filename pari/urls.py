@@ -1,9 +1,7 @@
-
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 
 from mezzanine.core.views import direct_to_template
-
 
 admin.autodiscover()
 
@@ -12,6 +10,8 @@ admin.autodiscover()
 # to the project's homepage.
 
 urlpatterns = patterns("",
+
+    url(r'^api/', include('pari.article.urls')),
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
@@ -85,7 +85,6 @@ urlpatterns = patterns("",
     # need to use the ``SITE_PREFIX`` setting as well.
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
-
 )
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
