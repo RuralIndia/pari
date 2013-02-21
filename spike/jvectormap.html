@@ -1,10 +1,10 @@
 <html>
 <head>
   <script src="http://code.jquery.com/jquery.js"></script>
-  <script type='text/javascript' src="static/js/jquery-jvectormap-1.2.2.min.js"></script>
-  <script type='text/javascript' src="static/js/jquery-jvectormap-in-mill-en.js"></script>
-  <link href="static/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" media="screen">
-  <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <script type='text/javascript' src="../pari/static/js/jquery-jvectormap-1.2.2.min.js"></script>
+  <script type='text/javascript' src="../pari/static/js/jquery-jvectormap-in-mill-en.js"></script>
+  <link href="../pari/static/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" media="screen">
+  <link href="../pari/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
     <div class="container-fluid">
@@ -18,9 +18,17 @@
   $('#map').vectorMap(
     {
       map: 'in_mill_en',
+      regionStyle: {
+        initial: {
+          fill: 'grey'
+        }
+
+      },
+      backgroundColor: '#ffffff',
       markers: [ 
       {
-        latLng: ['13.081', '80.27'] //Chennai
+        latLng: ['13.081', '80.27'],
+        name: 'Chennai'
       }
       ],
       onMarkerClick: function(e, index){
