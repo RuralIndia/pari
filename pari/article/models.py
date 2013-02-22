@@ -13,8 +13,15 @@ class Location(models.Model):
     def get_as_latLng(self):
         return unicode(self.location).split(',')
 
+    def get_articles(self):
+        return self.article_set.all()[:5]
+
     def __unicode__(self):
         return u"%s (%s)" % (self.name, self.location)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ("location-detail", (), {"pk": unicode(self.location)})
 
 
 class Article(BlogPost):

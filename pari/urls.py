@@ -12,7 +12,7 @@ admin.autodiscover()
 urlpatterns = patterns("",
 
     url(r'^map/', include('pari.map.urls')),
-    url(r'^api/', include('pari.article.urls')),
+    url(r'^articles/', include('pari.article.urls')),
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.

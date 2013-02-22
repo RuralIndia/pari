@@ -1,5 +1,5 @@
 from .models import Location
-from .serializers import LocationSerializer
+from .serializers import LocationSerializer, LocationArticleSerializer
 
 from rest_framework import generics
 from rest_framework.decorators import api_view
@@ -14,11 +14,16 @@ def api_root(request, format=None):
     })
 
 
-class LocationList(generics.ListCreateAPIView):
+class LocationList(generics.ListAPIView):
     model = Location
     serializer_class = LocationSerializer
 
 
-class LocationDetail(generics.RetrieveUpdateDestroyAPIView):
+class LocationDetail(generics.RetrieveAPIView):
     model = Location
     serializer_class = LocationSerializer
+
+
+class LocationArticle(generics.RetrieveAPIView):
+    model = Location
+    serializer_class = LocationArticleSerializer

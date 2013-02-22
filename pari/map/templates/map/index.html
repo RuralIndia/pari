@@ -25,14 +25,13 @@
     </div>
 
     <script type='text/javascript'>
-        $.get('/api/locations?format=json', function(data) {
+        $.get('/articles/api/locations?format=json', function(data) {
             $('#map').vectorMap({
               map: 'in_mill_en',
               regionStyle: {
                 initial: {
                   fill: 'grey'
                 }
-
               },
               backgroundColor: '#ffffff',
               markers: data,
@@ -43,11 +42,10 @@
                 }
               },
               onMarkerClick: function(e, index){
-                console.log(e, index);
+                var latLng = data[index].latLng.join();
               }
             });
         });
-      
     </script>
 {% endblocktrans %}
 {% endblock %}
