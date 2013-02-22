@@ -8,10 +8,9 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'Location'
         db.create_table('article_location', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('description', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('location', self.gf('geoposition.fields.GeopositionField')(max_length=42)),
+            ('location', self.gf('geoposition.fields.GeopositionField')(max_length=42, primary_key=True)),
         ))
         db.send_create_signal('article', ['Location'])
 
@@ -40,8 +39,7 @@ class Migration(SchemaMigration):
         'article.location': {
             'Meta': {'object_name': 'Location'},
             'description': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'location': ('geoposition.fields.GeopositionField', [], {'max_length': '42'}),
+            'location': ('geoposition.fields.GeopositionField', [], {'max_length': '42', 'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         'auth.group': {

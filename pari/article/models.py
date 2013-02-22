@@ -8,7 +8,7 @@ from geoposition.fields import GeopositionField
 class Location(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
-    location = GeopositionField("Location")
+    location = GeopositionField("Location", primary_key=True)
 
     def get_as_latLng(self):
         return unicode(self.location).split(',')
