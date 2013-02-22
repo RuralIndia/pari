@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% trans "Map" %}{% endblock %}
+{% block title %}{% trans "Map" %}{% endblock %}
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/jquery-jvectormap-in-mill-en.js"></script>
+{% endblock %}
+{% block extra_css %}
+    <link href="{{ STATIC_URL }}css/jquery-jvectormap-1.2.2.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Map" %}</li>
+{% endblock %}
+
+{% block main %}
+{% blocktrans %}
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div id='map' class="span9" style="width: 800px; height: 720px"></div>
+        <div id='side' class="span3"></div>
+      </div>
+    </div>
+
+    <script type='text/javascript'>
+        $.get('/api/locations?format=json', function(data) {
+            $('#map').vectorMap({
+              map: 'in_mill_en',
+              regionStyle: {
+                initial: {
+                  fill: 'grey'
+                }
+
+              },
+              backgroundColor: '#ffffff',
+              markers: data,
+              markerStyle: {
+                initial: {
+                    fill: '#F8E23B',
+                    stroke: '#383f47'
+                }
+              },
+              onMarkerClick: function(e, index){
+                console.log(e, index);
+              }
+            });
+        });
+      
+    </script>
+{% endblocktrans %}
+{% endblock %}

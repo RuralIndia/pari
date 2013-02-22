@@ -8,10 +8,13 @@ from geoposition.fields import GeopositionField
 class Location(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
-    latLng = GeopositionField("Location")
+    location = GeopositionField("Location")
+
+    def get_as_latLng(self):
+        return unicode(self.location).split(',')
 
     def __unicode__(self):
-        return u"%s (%s)" % (self.name, self.latLng)
+        return u"%s (%s)" % (self.name, self.location)
 
 
 class Article(BlogPost):
