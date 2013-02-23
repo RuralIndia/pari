@@ -50,7 +50,7 @@
     <script type='text/javascript'>
         var source = $("#article-template").html();
         var template = Handlebars.compile(source);
-        $.get('/articles/api/locations?format=json', function(data) {
+        $.get('/articles/api/locations/?format=json', function(data) {
             $('#map').vectorMap({
               map: 'in_mill_en',
               regionStyle: {
