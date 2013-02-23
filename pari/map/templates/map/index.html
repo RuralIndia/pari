@@ -15,13 +15,21 @@
 {% block extra_head %}
     {% verbatim %}
       <script id="article-template" type="text/x-handlebars-template">
-          <p>{{name}}</p>
-          <div class="articles">
-            {{#each articles}}
-              <a href="{{link}}">{{title}}</a>
-            {{/each}}
+        <div class="well well-large">
+          <div class="page-header">
+            <h1>{{name}} <small>{{description}}</small></h1>
           </div>
-          <a href="{{link}}">View more</a>
+          <ul class="nav nav-list">
+            {{#if articles}}
+              <li class="nav-header">Articles</li>
+              {{#each articles}}
+                <li><a href="{{link}}">{{title}}</a></li>
+              {{/each}}
+            {{/if}}
+            <li class="divider"></li>
+            <li><a href="{{link}}">View more content for {{name}}</a></li>
+          </ul>
+        </div>
       </script>
     {% endverbatim %}
 {% endblock %}
@@ -34,12 +42,10 @@
 {% blocktrans %}
     <div class="container-fluid">
       <div class="row-fluid">
-        <div id='map' class="span9" style="width: 800px; height: 720px"></div>
-        <div id='side' class="span3"></div>
+        <div id="map" class="span7" style="width: 800px; height: 720px"></div>
+        <div id="side" class="span5"></div>
       </div>
     </div>
-
-    
 
     <script type='text/javascript'>
         var source = $("#article-template").html();
