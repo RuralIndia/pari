@@ -5,8 +5,10 @@ Pillow==1.7.8
 South==0.7.6
 bleach==1.2
 dj-database-url==0.2.1
+django-filter==0.5.4
 django-geoposition==0.1.4
 django-nose==1.1
+djangorestframework==2.2.0
 filebrowser-safe==0.2.14
 grappelli-safe==0.2.11
 gunicorn==0.17.2
