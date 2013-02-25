@@ -21,9 +21,9 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
 
 class LocationArticleSerializer(serializers.HyperlinkedModelSerializer):
     articles = ArticleSerializer(source='get_articles')
-    # topics = Field(source='get_topics')
+    topics = ArticleSerializer(source='get_topics')
     link = Field(source='get_absolute_url')
 
     class Meta:
         model = Location
-        fields = ('articles', 'name', 'description', 'link',)
+        fields = ('articles', 'topics', 'name', 'description', 'link',)
