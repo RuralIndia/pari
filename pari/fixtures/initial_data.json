@@ -223,7 +223,7 @@
       "value": "",
       "name": "SSL_FORCE_HOST"
     }
-  }
+  },
   {
     "pk": 1,
     "model": "pages.page",
