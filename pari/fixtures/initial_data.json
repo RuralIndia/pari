@@ -224,4 +224,33 @@
       "name": "SSL_FORCE_HOST"
     }
   }
+  {
+    "pk": 1,
+    "model": "pages.page",
+    "fields": {
+      "status": 2,
+      "_order": 0,
+      "titles": "Map",
+      "description": "Map",
+      "parent": null,
+      "title": "Map",
+      "short_url": null,
+      "login_required": false,
+      "site": 1,
+      "in_sitemap": false,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-02-25T04:44:26.786Z",
+      "content_model": "link",
+      "in_menus": "1,2,3",
+      "slug": "map",
+      "gen_description": true
+    }
+  },
+  {
+    "pk": 1,
+    "model": "pages.link",
+    "fields": {}
+  }
 ]
