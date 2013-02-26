@@ -14,7 +14,7 @@ from rest_framework.response import Response
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
-        'locations': reverse('location-list', request=request),
+        'locations': reverse('api-location-list', request=request),
     })
 
 
@@ -31,6 +31,13 @@ class LocationDetail(generics.RetrieveAPIView):
 class LocationArticle(generics.RetrieveAPIView):
     model = Location
     serializer_class = LocationArticleSerializer
+
+
+def location_detail(request, pk):
+    location = get_object_or_404(Location, pk=pk)
+    templates = [u"article/location_detail.html"]
+    c = {"location": location}
+    return render(request, templates, c)
 
 
 def topic_detail(request, slug):
