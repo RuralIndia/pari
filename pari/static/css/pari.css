@@ -59,3 +59,14 @@ body {
 .footer-links li:first-child {
   padding-left: 0;
 }
+
+.hero-unit.home-page {
+  text-align: center;
+  background-color: #fff;
+  padding: 0;
+}
+
+.hero-unit.home-page p{
+  color: #999;
+  font-size: 24.5px;
+}
