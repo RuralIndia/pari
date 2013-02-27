@@ -225,6 +225,8 @@ FIXTURE_DIRS = (os.path.join(PROJECT_ROOT, "fixtures"),)
 
 BLOG_SLUG = "article"
 
+BLOG_USE_FEATURED_IMAGE = True
+
 DASHBOARD_TAGS = (
         ("mezzanine_tags.app_list",),
         ("comment_tags.recent_comments",),
