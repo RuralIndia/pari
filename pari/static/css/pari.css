@@ -51,8 +51,8 @@ body {
   top: 79%;
   left: 50%;
   margin-left: -10px;
-
   }
+
   li.dropdown.active a:before,
   .brand.active:before {
   content: '';
@@ -66,6 +66,24 @@ body {
   top: 68%;
   left: 50%;
   margin-left: -12px;
+  }
+
+  .carousel-caption {
+    background-color: rgba(255, 255, 255, 0.74902);
+    bottom: 5%;
+    left: 60%;
+    right: 10%;
+    min-height: 25%;
+    max-height: 25%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .navbar-search .search-query {
+  position: relative;
+  top: 26px;
+  width: 289px;
   }
 }
 
@@ -81,20 +99,6 @@ body {
 
 .carousel-caption {
   background-color: rgba(255, 255, 255, 0.74902);
-}
-
-@media (min-width: 979px) {
-  .carousel-caption {
-    background-color: rgba(255, 255, 255, 0.74902);
-    bottom: 5%;
-    left: 60%;
-    right: 10%;
-    min-height: 25%;
-    max-height: 25%;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-  }
 }
 
 .carousel-caption h4 {
