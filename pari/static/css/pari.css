@@ -10,7 +10,7 @@ body {
   margin: 0 auto -60px;*/
 }
 
-.navbar-inner {
+.navbar-fixed-top .navbar-inner {
   min-height: 60px;
   padding-right: 20px;
   padding-left: 20px;
@@ -21,25 +21,94 @@ body {
   background-image: -o-linear-gradient(top, #ffffff, #ffffff);
   background-image: linear-gradient(to bottom, #ffffff, #ffffff);
   background-repeat: repeat-x;
-  border: 1px solid #e0e0e0;
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent transparent #808080 transparent;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffffffff', GradientType=0);
   *zoom: 1;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  box-shadow: none;
 }
 
-.navbar .navbar-inner .container-fluid {
+.navbar .navbar-inner .container {
     margin-top: 10px;
-    margin-bottom: 10px;
+}
+
+.brand {
+  position: relative;
+}
+
+@media (min-width: 979px) {
+  li.dropdown.active a:after,
+  .brand.active:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent #fff transparent;
+  border-style: solid;
+  border-width: 10px;
+  top: 79%;
+  left: 50%;
+  margin-left: -10px;
+
+  }
+  li.dropdown.active a:before,
+  .brand.active:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent #808080 transparent;
+  border-style: solid;
+  border-width: 12px;
+  top: 68%;
+  left: 50%;
+  margin-left: -12px;
+  }
+}
+
+.dropdown.active a{
+  background-color: #fff !important;
+  -webkit-box-shadow: 0 0 0 #fff !important;
+  box-shadow: 0 0 0 #fff !important;
 }
 
 #main_content {
   padding-top: 80px;
 }
+
+.carousel-caption {
+  background-color: rgba(255, 255, 255, 0.74902);
+}
+
+@media (min-width: 979px) {
+  .carousel-caption {
+    background-color: rgba(255, 255, 255, 0.74902);
+    bottom: 5%;
+    left: 60%;
+    right: 10%;
+    min-height: 25%;
+    max-height: 25%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+}
+
+.carousel-caption h4 {
+  color: #ee4303;
+}
+
+.carousel-caption h4 small {
+  color: #333;
+}
+
+.carousel-caption p {
+  color: #333;
+}
+
 #push,
 #footer {
   height: 60px;
