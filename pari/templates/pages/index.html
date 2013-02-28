@@ -14,28 +14,30 @@
     <p>An archive and living journal of oral and visual history of Rural India</p>
   </div>
 
-  <div id="homeCarousel" class="carousel slide">
-    <ol class="carousel-indicators">
-      {% for count in article_list|length|get_range %}
-        <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0}}" class="{% if forloop.first %}active{% endif %}"></li>
-      {% endfor %}
-    </ol>
+  {% if article_list %}
+    <div id="homeCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        {% for count in article_list|length|get_range %}
+          <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0}}" class="{% if forloop.first %}active{% endif %}"></li>
+        {% endfor %}
+      </ol>
 
-    <div class="carousel-inner">
-      {% for article in article_list %}
-        <div class="{% if forloop.first %}active{% endif %} item">
-          <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1170 400 %}" alt="">
-          <div class="carousel-caption">
-            <h4>{{ article.title}} <small>{{ article.location.name }}</small></h4>
-            <p>{{ article.description }}</p>
+      <div class="carousel-inner">
+        {% for article in article_list %}
+          <div class="{% if forloop.first %}active{% endif %} item">
+            <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1170 400 %}" alt="">
+            <div class="carousel-caption">
+              <h4>{{ article.title}} <small>{{ article.location.name }}</small></h4>
+              <p>{{ article.description }}</p>
+            </div>
           </div>
-        </div>
-      {% endfor%}
+        {% endfor%}
 
+      </div>
+
+      <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
     </div>
-
-    <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
-  </div>
+  {% endif %}
   
 {% endblock %}
