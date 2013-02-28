@@ -7,7 +7,7 @@ body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -60px;*/
+  margin: 0 auto -60px;
 }
 
 .navbar-fixed-top .navbar-inner {
@@ -38,6 +38,7 @@ body {
 }
 
 @media (min-width: 979px) {
+
   li.dropdown.active a:after,
   .brand.active:after {
   content: '';
@@ -101,6 +102,9 @@ body {
   background-color: rgba(255, 255, 255, 0.74902);
 }
 
+.navbar-inner .brand,
+.navbar-inner li.dropdown a,
+.navbar-inner li.dropdown.active a,
 .carousel-caption h4 {
   color: #ee4303;
 }
