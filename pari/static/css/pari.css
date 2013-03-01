@@ -133,7 +133,8 @@ body {
 .navbar-inner li.dropdown a,
 .navbar-inner li.dropdown.active a,
 .carousel-control,
-.carousel-caption h4 {
+.carousel-caption h4,
+.carousel-caption p a {
   color: #ee4303;
 }
 

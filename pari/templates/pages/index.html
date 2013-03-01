@@ -31,7 +31,7 @@
             <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1170 400 %}" alt="">
             <div class="carousel-caption">
               <h4>{{ article.title}} <small>{{ article.location.name }}</small></h4>
-              <p>{{ article.description }}</p>
+              <p class="lead">{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
             </div>
           </div>
         {% endfor%}
@@ -44,9 +44,11 @@
     <div class="recent-articles">
       <div class="container">
         <h4><i class="icon-time"></i> Recent articles</h4>
-        {% for article in recent_articles %}
-          {{ article.title }}
-        {% endfor %}
+        <div class="row-fluid">
+          {% for article in recent_articles %}
+            {{ article.title }}
+          {% endfor %}
+        </div>
       </div>
     </div>
   {% endif %}
