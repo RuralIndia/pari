@@ -40,14 +40,23 @@
       <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
     </div>
   {% endif %}
+
   {% if recent_articles %}
     <div class="recent-articles">
       <div class="container">
         <h4><i class="icon-time"></i> Recent articles</h4>
         <div class="row-fluid">
-          {% for article in recent_articles %}
-            {{ article.title }}
-          {% endfor %}
+          <ul class="thumbnails">
+            {% for article in recent_articles %}
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 300 200 %}" alt="">
+                  <h3>{{ article.title }}</h3>
+                  <p>{{ article.description }}</p>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
       </div>
     </div>
