@@ -8,12 +8,15 @@
 <li class="active">{% trans "Home" %}</li>
 {% endblock %}
 
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
+{% endblock %}
+
 {% block main %}
   <div class="hero-unit home-page">
     <h1>People's Archive Of Rural India </h1>
     <p>An archive and living journal of oral and visual history of Rural India</p>
   </div>
-
   {% if article_list %}
     <div id="homeCarousel" class="carousel slide">
       <ol class="carousel-indicators">
@@ -32,9 +35,7 @@
             </div>
           </div>
         {% endfor%}
-
       </div>
-
       <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
       <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
     </div>
