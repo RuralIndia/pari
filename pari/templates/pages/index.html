@@ -40,5 +40,15 @@
       <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
     </div>
   {% endif %}
+  {% if recent_articles %}
+    <div class="recent-articles">
+      <div class="container">
+        <h4><i class="icon-time"></i> Recent articles</h4>
+        {% for article in recent_articles %}
+          {{ article.title }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
   
 {% endblock %}
