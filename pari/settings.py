@@ -236,7 +236,7 @@ DASHBOARD_TAGS = (
 from django.utils.translation import ugettext_lazy as _
 
 ADMIN_MENU_ORDER = (
-        (_("Content"), ("pages.Page", "article.Article", "article.Location",
+        (_("Content"), ("pages.Page", "article.Article", "article.Location", "article.Category",
            "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
         (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
         (_("Users"), ("auth.User", "auth.Group",)),

@@ -39,6 +39,9 @@ def location_detail(request, pk):
     c = {"location": location}
     return render(request, templates, c)
 
+def category_detail(request, slug):
+    return none
+
 
 def topic_detail(request, slug):
     blog_posts = Article.topics.published(for_user=request.user).select_related()

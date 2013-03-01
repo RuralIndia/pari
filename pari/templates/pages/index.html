@@ -31,7 +31,7 @@
             <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1170 400 %}" alt="">
             <div class="carousel-caption">
               <h4>{{ article.title}} <small>{{ article.location.name }}</small></h4>
-              <p class="lead">{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
+              <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
             </div>
           </div>
         {% endfor%}
@@ -55,11 +55,60 @@
                   <p>{{ article.description }}</p>
                 </div>
               </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 300 200 %}" alt="">
+                  <h3>{{ article.title }}</h3>
+                  <p>{{ article.description }}</p>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 300 200 %}" alt="">
+                  <h3>{{ article.title }}</h3>
+                  <p>{{ article.description }}</p>
+                </div>
+              </li>
             {% endfor %}
           </ul>
         </div>
       </div>
     </div>
+  {% endif %}
+
+  {% if categories %}
+  <div class="categories">
+    <div class="container">
+      <h4><i class="icon-reorder"></i> Categories</h4>
+      <div class="row-fluid">
+        <ul class="thumbnails">
+          {% for category in categories %}
+            <li class="span4">
+              <div class="thumbnail">
+                <img src="{{ MEDIA_URL }}{% thumbnail category.image 300 240 %}" alt="">
+                <h3>{{ category.title }}</h3>
+                <p>{{ article.description }}</p>
+              </div>
+            </li>
+            <li class="span4">
+              <div class="thumbnail">
+                <img src="{{ MEDIA_URL }}{% thumbnail category.image 300 240 %}" alt="">
+                <h3>{{ category.title }}</h3>
+                <p>{{ article.description }}</p>
+              </div>
+            </li>
+            <li class="span4">
+              <div class="thumbnail">
+                <img src="{{ MEDIA_URL }}{% thumbnail category.image 320 240 %}" alt="">
+                <h3>{{ category.title }}</h3>
+                <p>{{ article.description }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
   {% endif %}
   
 {% endblock %}
