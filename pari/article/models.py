@@ -12,12 +12,10 @@ from mezzanine.blog.models import BlogPost, BlogCategory
 from geoposition.fields import GeopositionField
 
 
-class Location(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
-    location = GeopositionField("Location", primary_key=True)
+class Location(Displayable):
+    location = GeopositionField("Location")
 
-    objects = SearchableManager()
+    objects = DisplayableManager()
     search_fields = { "name": 5, "description": 1}
 
     def get_as_latLng(self):
@@ -30,11 +28,11 @@ class Location(models.Model):
         return self.article_set.filter(is_topic=True)[:5]
 
     def __unicode__(self):
-        return u"%s (%s)" % (self.name, self.location)
+        return u"%s (%s)" % (self.title, self.location)
 
     @models.permalink
     def get_absolute_url(self):
-        return ("location-detail", (), {"pk": unicode(self.location)})
+        return ("location-detail", (), {"slug": unicode(self.slug)})
 
 
 class Category(Displayable, AdminThumbMixin):

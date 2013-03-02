@@ -1,11 +1,11 @@
 {% extends "sidebar_base.html" %}
 {% load i18n verbatim_tag mezzanine_tags %}
 
-{% block meta_title %}{% trans location.name %}{% endblock %}
-{% block title %}{% trans location.name %}{% endblock %}
+{% block meta_title %}{% trans location.title %}{% endblock %}
+{% block title %}{% trans location.title %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
-    {{ location.name }}
+    {{ location.title }}
 {% endmetablock %}{% endblock %}
 
 {% block meta_description %}
@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block maincontent %}
-    <p>{{ location.name }}</p>
+    <p>{{ location.title }}</p>
 {% endblock %}
 
 {% block sidebar %}

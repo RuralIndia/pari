@@ -21,6 +21,15 @@ class ArticleAdmin(BlogPostAdmin):
     filter_horizontal = ("category_list", "related_posts",)
 
 
+class LocationAdmin(DisplayableAdmin):
+    fieldsets = (None, {
+            "fields": ["title", "description", "location"],
+        }),
+    list_display = ("title", "description", "location")
+    list_editable = ()
+    list_filter = ()
+
+
 class CategoryAdmin(DisplayableAdmin):
     fieldsets = (None, {
             "fields": ["title", "description", "image"],
@@ -31,6 +40,6 @@ class CategoryAdmin(DisplayableAdmin):
 
 
 admin.site.unregister(BlogPost)
-admin.site.register(Location)
+admin.site.register(Location, LocationAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Article, ArticleAdmin)

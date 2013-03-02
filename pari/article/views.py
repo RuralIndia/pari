@@ -33,8 +33,8 @@ class LocationArticle(generics.RetrieveAPIView):
     serializer_class = LocationArticleSerializer
 
 
-def location_detail(request, pk):
-    location = get_object_or_404(Location, pk=pk)
+def location_detail(request, slug):
+    location = get_object_or_404(Location, slug=slug)
     templates = [u"article/location_detail.html"]
     c = {"location": location}
     return render(request, templates, c)

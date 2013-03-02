@@ -13,10 +13,11 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
 class LocationSerializer(serializers.HyperlinkedModelSerializer):
     latLng = Field(source='get_as_latLng')
+    id = serializers.Field()
 
     class Meta:
         model = Location
-        fields = ('name', 'latLng',)
+        fields = ('id', 'title', 'latLng',)
 
 
 class LocationArticleSerializer(serializers.HyperlinkedModelSerializer):
@@ -26,4 +27,4 @@ class LocationArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Location
-        fields = ('articles', 'topics', 'name', 'description', 'link',)
+        fields = ('articles', 'topics', 'title', 'description', 'link',)

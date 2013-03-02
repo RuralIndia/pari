@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+import datetime
 from south.db import db
 from south.v2 import SchemaMigration
+from django.db import models
 
 
 class Migration(SchemaMigration):
@@ -8,39 +10,118 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'Location'
         db.create_table('article_location', (
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('description', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('location', self.gf('geoposition.fields.GeopositionField')(max_length=42, primary_key=True)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('keywords_string', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
+            ('site', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sites.Site'])),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=500)),
+            ('slug', self.gf('django.db.models.fields.CharField')(max_length=2000, null=True, blank=True)),
+            ('_meta_title', self.gf('django.db.models.fields.CharField')(max_length=500, null=True, blank=True)),
+            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('gen_description', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('status', self.gf('django.db.models.fields.IntegerField')(default=2)),
+            ('publish_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('expiry_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('short_url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
+            ('in_sitemap', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('location', self.gf('geoposition.fields.GeopositionField')(max_length=42)),
+            ('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
         ))
         db.send_create_signal('article', ['Location'])
+
+        # Adding model 'Category'
+        db.create_table('article_category', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('keywords_string', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
+            ('site', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sites.Site'])),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=500)),
+            ('slug', self.gf('django.db.models.fields.CharField')(max_length=2000, null=True, blank=True)),
+            ('_meta_title', self.gf('django.db.models.fields.CharField')(max_length=500, null=True, blank=True)),
+            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('gen_description', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('status', self.gf('django.db.models.fields.IntegerField')(default=2)),
+            ('publish_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('expiry_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('short_url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
+            ('in_sitemap', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('image', self.gf('mezzanine.core.fields.FileField')(max_length=255)),
+            ('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
+        ))
+        db.send_create_signal('article', ['Category'])
 
         # Adding model 'Article'
         db.create_table('article_article', (
             ('blogpost_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['blog.BlogPost'], unique=True, primary_key=True)),
             ('location', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['article.Location'])),
+            ('is_topic', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
         db.send_create_signal('article', ['Article'])
+
+        # Adding M2M table for field category_list on 'Article'
+        db.create_table('article_article_category_list', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('article', models.ForeignKey(orm['article.article'], null=False)),
+            ('category', models.ForeignKey(orm['article.category'], null=False))
+        ))
+        db.create_unique('article_article_category_list', ['article_id', 'category_id'])
 
 
     def backwards(self, orm):
         # Deleting model 'Location'
         db.delete_table('article_location')
 
+        # Deleting model 'Category'
+        db.delete_table('article_category')
+
         # Deleting model 'Article'
         db.delete_table('article_article')
+
+        # Removing M2M table for field category_list on 'Article'
+        db.delete_table('article_article_category_list')
 
 
     models = {
         'article.article': {
             'Meta': {'ordering': "('-publish_date',)", 'object_name': 'Article', '_ormbases': ['blog.BlogPost']},
             'blogpost_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['blog.BlogPost']", 'unique': 'True', 'primary_key': 'True'}),
+            'category_list': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'articles'", 'symmetrical': 'False', 'to': "orm['article.Category']"}),
+            'is_topic': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'location': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['article.Location']"})
+        },
+        'article.category': {
+            'Meta': {'ordering': "('title',)", 'object_name': 'Category'},
+            '_meta_title': ('django.db.models.fields.CharField', [], {'max_length': '500', 'null': 'True', 'blank': 'True'}),
+            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'expiry_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'gen_description': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('mezzanine.core.fields.FileField', [], {'max_length': '255'}),
+            'in_sitemap': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'keywords': ('mezzanine.generic.fields.KeywordsField', [], {'object_id_field': "'object_pk'", 'to': "orm['generic.AssignedKeyword']", 'frozen_by_south': 'True'}),
+            'keywords_string': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
+            'publish_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'short_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
+            'site': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['sites.Site']"}),
+            'slug': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'null': 'True', 'blank': 'True'}),
+            'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'})
         },
         'article.location': {
             'Meta': {'object_name': 'Location'},
-            'description': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'location': ('geoposition.fields.GeopositionField', [], {'max_length': '42', 'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
+            '_meta_title': ('django.db.models.fields.CharField', [], {'max_length': '500', 'null': 'True', 'blank': 'True'}),
+            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'expiry_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'gen_description': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'in_sitemap': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'keywords': ('mezzanine.generic.fields.KeywordsField', [], {'object_id_field': "'object_pk'", 'to': "orm['generic.AssignedKeyword']", 'frozen_by_south': 'True'}),
+            'keywords_string': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
+            'location': ('geoposition.fields.GeopositionField', [], {'max_length': '42'}),
+            'publish_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'short_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
+            'site': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['sites.Site']"}),
+            'slug': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'null': 'True', 'blank': 'True'}),
+            'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'})
         },
         'auth.group': {
             'Meta': {'object_name': 'Group'},

@@ -17,7 +17,7 @@
       <script id="article-template" type="text/x-handlebars-template">
         <div class="well well-large">
           <div class="page-header">
-            <h1>{{name}} <small>{{description}}</small></h1>
+            <h1>{{title}}</h1>
           </div>
           <ul class="nav nav-list">
             {{#if articles}}
@@ -33,7 +33,7 @@
               {{/each}}
             {{/if}}
             <li class="divider"></li>
-            <li><a href="{{link}}">View more content for {{name}}</a></li>
+            <li><a href="{{link}}">View more content for {{title}}</a></li>
           </ul>
         </div>
       </script>
@@ -73,8 +73,8 @@
                 }
               },
               onMarkerClick: function(e, index){
-                var latLng = data[index].latLng.join();
-                $.get('/articles/api/locations/' + latLng + '/article/?format=json', function(locationData) {
+                var id = data[index].id;
+                $.get('/articles/api/locations/' + id + '/article/?format=json', function(locationData) {
                   var templateHtml= template(locationData);
                   $("#side").html(templateHtml);
                 });
