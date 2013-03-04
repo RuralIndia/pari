@@ -125,13 +125,14 @@ body {
   max-height: 12%;
 }
 
-.thumbnail-caption h4 {
+.thumbnail-caption h4,
+.thumbnail h3 {
   font-weight: 200;
 }
 
 .thumbnail-caption:hover {
   min-height: 20%;
-  max-height: 100%;
+  max-height: 50%;
   height: auto;
   overflow: scroll;
 }
@@ -179,7 +180,9 @@ body {
 .carousel-control,
 .carousel-caption h4,
 .carousel-caption p a,
-.thumbnail-caption h4 {
+.thumbnail p a,
+.thumbnail-caption h4,
+.thumbnail h3 {
   color: #ee4303;
 }
 

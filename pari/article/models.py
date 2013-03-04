@@ -16,7 +16,7 @@ class Location(Displayable):
     location = GeopositionField("Location")
 
     objects = DisplayableManager()
-    search_fields = { "name": 5, "description": 1}
+    search_fields = { "title": 10, "description": 5}
 
     def get_as_latLng(self):
         return unicode(self.location).split(',')
