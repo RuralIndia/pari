@@ -97,6 +97,12 @@ body {
   position: relative;
 }
 
+.thumbnails .span4:nth-child(3n+1),
+.thumbnails .span4:first-child + li + li + li,
+.thumbnails .span4:first-child + li + li + li + li + li + li {
+    margin-left: 0;
+}
+
 .thumbnail {
   position: relative;
   border: none;
@@ -134,7 +140,6 @@ body {
   min-height: 20%;
   max-height: 50%;
   height: auto;
-  overflow: scroll;
 }
 
 @media (min-width: 768px) {
