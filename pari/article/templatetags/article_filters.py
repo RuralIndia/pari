@@ -5,8 +5,9 @@ register = Library()
 
 
 @register.filter
-def get_range( value ):
-  return range( value )
+def get_range(value):
+    return range(value)
+
 
 @register.filter
 def get_absolute_url(obj):

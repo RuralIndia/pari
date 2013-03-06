@@ -4,11 +4,11 @@ from django.db import models
 
 from .managers import ArticleManager, TopicManager
 
-from mezzanine.core.managers import DisplayableManager, SearchableManager
+from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable
 from mezzanine.utils.models import AdminThumbMixin, upload_to
-from mezzanine.blog.models import BlogPost, BlogCategory
+from mezzanine.blog.models import BlogPost
 from geoposition.fields import GeopositionField
 
 
@@ -16,7 +16,7 @@ class Location(Displayable):
     location = GeopositionField("Location")
 
     objects = DisplayableManager()
-    search_fields = { "title": 10, "description": 5}
+    search_fields = {"title": 10, "description": 5}
 
     def get_as_latLng(self):
         return unicode(self.location).split(',')
@@ -59,7 +59,7 @@ class Article(BlogPost):
     location = models.ForeignKey(Location)
     is_topic = models.BooleanField(verbose_name=_("Is a topic?"), default=False)
     category_list = models.ManyToManyField(Category, verbose_name=_("Categories"),
-                    blank=False, null = False, related_name="articles")
+                    blank=False, null=False, related_name="articles")
 
     objects = DisplayableManager()
     articles = ArticleManager()

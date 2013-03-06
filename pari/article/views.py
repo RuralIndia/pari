@@ -39,6 +39,7 @@ def location_detail(request, slug):
     c = {"location": location}
     return render(request, templates, c)
 
+
 def category_detail(request, slug):
     return none
 
