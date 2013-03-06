@@ -41,7 +41,7 @@ def location_detail(request, slug):
 
 
 def category_detail(request, slug):
-    return none
+    pass
 
 
 def topic_detail(request, slug):
