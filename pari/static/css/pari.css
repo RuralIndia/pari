@@ -262,6 +262,8 @@ body {
 
 .hero-unit h1 {
   font-weight: 200;
+  font-family: arial, sans-serif;
+  letter-spacing: 0px;
 }
 
 .hero-unit.home-page p,
