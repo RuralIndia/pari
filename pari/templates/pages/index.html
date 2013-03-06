@@ -55,20 +55,6 @@
                   <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
                 </div>
               </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 370 300 %}" alt="">
-                  <h3>{{ article.title }} <small>{{article.location.title}}</small></h3>
-                  <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 370 300 %}" alt="">
-                  <h3>{{ article.title }} <small>{{article.location.title}}</small></h3>
-                  <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
-                </div>
-              </li>
             {% endfor %}
           </ul>
         </div>
