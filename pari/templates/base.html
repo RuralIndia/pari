@@ -49,7 +49,7 @@ $(function() {
 </head>
 <body id="{% block body_id %}body{% endblock %}">
   <div id="holder">
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-static-top">
       <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -64,7 +64,6 @@ $(function() {
             </div>
         </div>
       </div>
-      <div id="push-nav"></div>
     </div>
     <div id="main_content" class="container">
         {% block main %}{% endblock %}
