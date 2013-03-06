@@ -36,7 +36,7 @@ body {
 
 .navbar .brand {
   position: relative;
-  font-size: 36px;
+  font-size: 31px;
 }
 
 @media (min-width: 979px) {
@@ -227,6 +227,11 @@ body {
   -moz-border-radius-bottomleft: 8px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
+}
+
+#push-nav {
+  height: 10px;
+  background-color: #fff;
 }
 
 #push,
