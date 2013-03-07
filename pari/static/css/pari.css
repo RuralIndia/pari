@@ -1,22 +1,14 @@
-html,
-body {
-  height: 100%;
+#holder {
   overflow-x: hidden;
 }
 
-#holder {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -60px;
-}
-
-.navbar {
+#mainnav {
   right: 0;
   left: 0;
 }
 
-.navbar .navbar-inner {
+#mainnav .navbar-inner,
+#subnav .navbar-inner {
   min-height: 60px;
   padding-right: 20px;
   padding-left: 20px;
@@ -35,13 +27,29 @@ body {
   box-shadow: none;
 }
 
-.navbar .navbar-inner .container {
+#mainnav .navbar-inner .container {
   margin-top: 10px;
 }
 
-.navbar .brand {
+#mainnav .brand {
   position: relative;
   font-size: 31px;
+}
+
+#subnav ul {
+  
+}
+
+#subnav.affix {
+    top: 0;
+    width: 100%;
+    right: 0;
+    left: 0;
+}
+
+#subnav .nav>.active>a {
+  background-color: #fff;
+  box-shadow: none;
 }
 
 @media (min-width: 979px) {
@@ -192,7 +200,8 @@ body {
 .carousel-caption p a,
 .thumbnail p a,
 .thumbnail-caption h4,
-.thumbnail h3 {
+.thumbnail h3,
+#subnav .nav>.active>a {
   color: #ee4303;
 }
 

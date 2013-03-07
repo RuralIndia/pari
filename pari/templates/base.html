@@ -29,27 +29,12 @@
 {% block extra_css %}{% endblock %}
 {% endcompress %}
 
-{% compress js %}
-<script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}"></script>
-<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-<script>
-$(function() {
-    $('.middleinput:text, textarea').addClass('xlarge');
-    $('.control-group label').addClass('control-label');
-});
-</script>
-{% block extra_js %}{% endblock %}
-{% endcompress %}
-<!--[if lt IE 9]>
-<script src="{{ STATIC_URL }}js/html5shiv.js"></script>
-<![endif]-->
-
 {% block extra_head %}{% endblock %}
 
 </head>
-<body id="{% block body_id %}body{% endblock %}">
+<body id="{% block body_id %}body{% endblock %}" data-spy="scroll" data-target="#subnav">
   <div id="holder">
-    <div class="navbar navbar-static-top">
+    <div id="mainnav" class="navbar navbar-static-top">
       <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -87,6 +72,22 @@ $(function() {
       {% endifinstalled %}
     </div>
   </div>
+
+  {% compress js %}
+    <script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script>
+    $(function() {
+        $('.middleinput:text, textarea').addClass('xlarge');
+        $('.control-group label').addClass('control-label');
+    });
+    </script>
+    {% block extra_js %}{% endblock %}
+    <!--[if lt IE 9]>
+    <script src="{{ STATIC_URL }}js/html5shiv.js"></script>
+    <![endif]-->
+  {% endcompress %}
+    
 
   {% include "includes/footer_scripts.html" %}
 

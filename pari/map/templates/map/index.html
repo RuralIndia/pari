@@ -7,6 +7,7 @@
     <script type='text/javascript' src="{{ STATIC_URL }}map/js/jquery-jvectormap-1.2.2.min.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}map/js/jquery-jvectormap-in-mill-en.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}js/handlebars.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}map/js/map.js"></script>
 {% endblock %}
 {% block extra_css %}
     <link href="{{ STATIC_URL }}map/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" media="screen">
@@ -52,36 +53,5 @@
         <div id="side" class="span3"></div>
       </div>
     </div>
-
-    <script type='text/javascript'>
-        var source = $("#article-template").html();
-        var template = Handlebars.compile(source);
-        $.get('/articles/api/locations/?format=json', function(data) {
-            $('#map').vectorMap({
-              map: 'in_mill_en',
-              regionStyle: {
-                initial: {
-                  fill: 'grey'
-                }
-              },
-              backgroundColor: '#ffffff',
-              markers: data,
-              markerStyle: {
-                initial: {
-                    fill: '#F8E23B',
-                    stroke: '#383f47'
-                }
-              },
-              onMarkerClick: function(e, index){
-                var id = data[index].id;
-                $.get('/articles/api/locations/' + id + '/article/?format=json', function(locationData) {
-                  var templateHtml= template(locationData);
-                  $("#side").html(templateHtml);
-                });
-
-              }
-            });
-        });
-    </script>
 {% endblocktrans %}
 {% endblock %}

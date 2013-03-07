@@ -12,7 +12,12 @@
   <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
 {% endblock %}
 
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}js/home.js"></script>
+{% endblock %}
+
 {% block main %}
+<div id="homepage">
   <div class="hero-unit home-page">
     <h1>People&#8217;s Archive of Rural India </h1>
     <p>An archive and living journal of oral and visual history of Rural India</p>
@@ -41,7 +46,22 @@
     </div>
   {% endif %}
 
+  <div id="subnav-wrapper">
+    <div id ="subnav" class="navbar visible-tablet visible-desktop">
+      <div class="navbar-inner">
+        <div class ="container">
+          <ul class="nav">
+            <li class="active"><a href="#recentarticles">Recent article</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#stats">Stats</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
   {% if recent_articles %}
+  <section id="recentarticles">
     <div class="recent-articles">
       <div class="container">
         <h4><i class="icon-time"></i> Recent articles</h4>
@@ -60,9 +80,11 @@
         </div>
       </div>
     </div>
+  </section>
   {% endif %}
 
   {% if categories %}
+  <section id="categories">
     <div class="categories">
       <div class="container">
         <h4><i class="icon-reorder"></i> Categories</h4>
@@ -83,6 +105,7 @@
         </div>
       </div>
     </div>
+  </section>
   {% endif %}
-  
+</div>
 {% endblock %}
