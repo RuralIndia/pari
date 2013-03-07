@@ -149,6 +149,8 @@ COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
 )
 
+COMPRESS_ENABLED = False
+
 WSGI_APPLICATION = "pari.wsgi.application"
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

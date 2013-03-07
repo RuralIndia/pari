@@ -1,5 +1,7 @@
 DEBUG = True
 
+COMPRESS_ENABLED = False
+
 DATABASES = {
     "default": {
         # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
