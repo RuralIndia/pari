@@ -145,6 +145,10 @@ STATICFILES_FINDERS = (
     #"django.contrib.staticfiles.finders.DefaultStorageFinder",
 )
 
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc {infile} {outfile}'),
+)
+
 WSGI_APPLICATION = "pari.wsgi.application"
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
