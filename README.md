@@ -9,11 +9,15 @@ Dev Setup
 ==========
 
 * clone the repo.
-* if you are using virtualenvwrapper, create a virtual env.
+* Use [pythonbrew](https://github.com/utahta/pythonbrew) for python runtime and packages management
+
 <pre>
-mkvirtualenv pari
-workon pari
+pythonbrew install 2.7.3
+ptyhonbrew use 2.7.3
+pythonbrew venv create pari
+pythonbrew venv use pari
 </pre>
+
 * Install the dependencies
 <pre>
 pip install -r requirements.txt
