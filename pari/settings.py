@@ -149,7 +149,7 @@ COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
 )
 
-COMPRESS_ENABLED = False
+COMPRESS_ENABLED = True
 
 WSGI_APPLICATION = "pari.wsgi.application"
 
@@ -380,6 +380,7 @@ try:
     import local_settings as ls
     DEBUG = ls.DEBUG
     DATABASES = ls.DATABASES
+    COMPRESS_ENABLED = ls.COMPRESS_ENABLED
 except ImportError:
     pass
 
