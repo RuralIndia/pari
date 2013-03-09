@@ -8,6 +8,7 @@ bleach==1.2
 dj-database-url==0.2.1
 django-appconf==0.6
 django-compressor==1.2
+django-debug-toolbar==0.9.4
 django-filter==0.5.4
 django-geoposition==0.1.4
 django-nose==1.1
