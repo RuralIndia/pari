@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext_lazy as _
+from unipath import Path
 
 ######################
 # MEZZANINE SETTINGS #
@@ -11,22 +13,22 @@
 # http://mezzanine.jupo.org/docs/configuration.html#default-settings
 
 # Controls the ordering and grouping of the admin menu.
-#
-# ADMIN_MENU_ORDER = (
-#     ("Content", ("pages.Page", "blog.BlogPost",
-#        "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
-#     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
-#     ("Users", ("auth.User", "auth.Group",)),
-# )
+
+ADMIN_MENU_ORDER = (
+    (_("Content"), ("pages.Page", "article.Article", "article.Location", "article.Category",
+       "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
+    (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
+    (_("Users"), ("auth.User", "auth.Group",)),
+)
 
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
-#
-# DASHBOARD_TAGS = (
-#     ("blog_tags.quick_blog", "mezzanine_tags.app_list"),
-#     ("comment_tags.recent_comments",),
-#     ("mezzanine_tags.recent_actions",),
-# )
+
+DASHBOARD_TAGS = (
+    ("mezzanine_tags.app_list",),
+    ("comment_tags.recent_comments",),
+    ("mezzanine_tags.recent_actions",),
+)
 
 # A sequence of templates used by the ``page_menu`` template tag. Each
 # item in the sequence is a three item sequence, containing a unique ID
@@ -72,11 +74,13 @@
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
-# BLOG_USE_FEATURED_IMAGE = True
+BLOG_USE_FEATURED_IMAGE = True
 
 # If True, the south application will be automatically added to the
 # INSTALLED_APPS setting.
 USE_SOUTH = True
+
+BLOG_SLUG = "article"
 
 
 ########################
@@ -183,13 +187,11 @@ DATABASES = {
 # PATHS #
 #########
 
-import os
-
 # Full filesystem path to the project.
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = Path(__file__).ancestor(2)
 
 # Name of the directory for the project.
-PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
+PROJECT_DIRNAME = PROJECT_ROOT.name
 
 # Every cache key will get prefixed with this value - here we set it to
 # the name of the directory the project is in to try and use something
@@ -204,7 +206,7 @@ STATIC_URL = "/static/"
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
+STATIC_ROOT = PROJECT_ROOT.child('static')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -213,7 +215,7 @@ MEDIA_URL = STATIC_URL + "media/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
+MEDIA_ROOT = STATIC_ROOT.child('media')
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -227,28 +229,9 @@ ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
 # or "C:/www/django/templates".
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
-TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
+TEMPLATE_DIRS = PROJECT_ROOT.child("templates")
 
-FIXTURE_DIRS = (os.path.join(PROJECT_ROOT, "fixtures"),)
-
-BLOG_SLUG = "article"
-
-BLOG_USE_FEATURED_IMAGE = True
-
-DASHBOARD_TAGS = (
-        ("mezzanine_tags.app_list",),
-        ("comment_tags.recent_comments",),
-        ("mezzanine_tags.recent_actions",),
-)
-
-from django.utils.translation import ugettext_lazy as _
-
-ADMIN_MENU_ORDER = (
-        (_("Content"), ("pages.Page", "article.Article", "article.Location", "article.Category",
-           "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
-        (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
-        (_("Users"), ("auth.User", "auth.Group",)),
-)
+FIXTURE_DIRS = PROJECT_ROOT.child("fixtures")
 
 
 ################
@@ -281,9 +264,7 @@ INSTALLED_APPS = (
     "south",
     "geoposition",
     "rest_framework",
-
-    #Tests
-    "django_nose",
+    "compressor",
 
     #Custom
     "pari.article",
@@ -310,16 +291,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # response phase the middleware will be applied in reverse order.
 MIDDLEWARE_CLASSES = (
     "django.middleware.gzip.GZipMiddleware",
-
     "mezzanine.core.middleware.UpdateCacheMiddleware",
-    
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    
     "mezzanine.core.request.CurrentRequestMiddleware",
     "mezzanine.core.middleware.TemplateForDeviceMiddleware",
     "mezzanine.core.middleware.TemplateForHostMiddleware",
@@ -340,16 +318,10 @@ PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 # OPTIONAL APPLICATIONS #
 #########################
 
-# These will be added to ``INSTALLED_APPS``, only if available.
 OPTIONAL_APPS = (
-    "debug_toolbar",
-    "django_extensions",
-    "compressor",
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
-
-DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
 ###################
 # DEPLOY SETTINGS #
@@ -374,24 +346,6 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 #     "ADMIN_PASS": "", # Live admin user password
 # }
 
-
-##################
-# LOCAL SETTINGS #
-##################
-
-# Allow any settings to be defined in local_settings.py which should be
-# ignored in your version control system allowing for settings to be
-# defined per machine.
-try:
-    import local_settings as ls
-    DEBUG = ls.DEBUG
-    DATABASES = ls.DATABASES
-    COMPRESS_ENABLED = ls.COMPRESS_ENABLED
-    MIDDLEWARE_CLASSES += ls.MIDDLEWARE_CLASSES
-except ImportError:
-    pass
-
-
 ####################
 # DYNAMIC SETTINGS #
 ####################
@@ -408,7 +362,3 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
-
-if os.getcwd() == "/app":
-    import dj_database_url
-    DATABASES['default'] = dj_database_url.config()

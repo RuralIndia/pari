@@ -4,6 +4,7 @@ Mezzanine==1.4.3
 PIL==1.1.7
 Pillow==1.7.8
 South==0.7.6
+Unipath==0.2.1
 bleach==1.2
 dj-database-url==0.2.1
 django-appconf==0.6
