@@ -12,7 +12,7 @@ django-compressor==1.2
 django-debug-toolbar==0.9.4
 django-extensions==1.1.1
 django-filter==0.5.4
-django-geoposition==0.1.4
+-e git://github.com/manojlds/django-geoposition.git@298cd7cdf4b7bcf071385984a053e2105e805067#egg=django_geoposition-dev
 django-nose==1.1
 djangorestframework==2.2.0
 filebrowser-safe==0.2.19

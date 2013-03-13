@@ -82,6 +82,10 @@ USE_SOUTH = True
 
 BLOG_SLUG = "article"
 
+GEOPOSITION_DEFAULT_ZOOM = 5
+
+GEOPOSITION_DEFAULT_CENTRE = (21.77, 78.87,)
+
 
 ########################
 # MAIN DJANGO SETTINGS #
