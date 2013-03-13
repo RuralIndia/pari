@@ -23,7 +23,7 @@ pythonbrew venv use pari
 ### Install the dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements/dev.txt
 ```
 **Note:**Use [autoenv](https://github.com/kennethreitz/autoenv) to simplify the above process. Just install `pythonbrew` and `cd` into the project to get started. The checked-in `.env` file will install python-2.7.3 and install dependencies in virtual environment `pari`. It also sets the `DJANGO_SETTINGS_MODULE` environment variable to `pari.settings.dev` for local development.
 
