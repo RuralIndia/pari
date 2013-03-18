@@ -1,6 +1,7 @@
 *.py[cod]
 media/
 .idea/
+.vagrant
 
 # C extensions
 *.so
