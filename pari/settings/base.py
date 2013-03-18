@@ -163,8 +163,6 @@ COMPRESS_ENABLED = True
 
 WSGI_APPLICATION = "pari.wsgi.application"
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
 #############
 # DATABASES #
 #############
