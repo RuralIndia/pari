@@ -37,8 +37,8 @@ class Location(Displayable):
 
 class Category(Displayable, AdminThumbMixin):
     image = FileField(verbose_name=_("Image"),
-                upload_to=upload_to("article.Category.image", "category"),
-                format="Image", max_length=255, null=False, blank=False)
+                      upload_to=upload_to("article.Category.image", "category"),
+                      format="Image", max_length=255, null=False, blank=False)
 
     admin_thumb_field = "image"
 
@@ -59,7 +59,7 @@ class Article(BlogPost):
     location = models.ForeignKey(Location)
     is_topic = models.BooleanField(verbose_name=_("Is a topic?"), default=False)
     category_list = models.ManyToManyField(Category, verbose_name=_("Categories"),
-                    blank=False, null=False, related_name="articles")
+                                           blank=False, null=False, related_name="articles")
 
     objects = DisplayableManager()
     articles = ArticleManager()

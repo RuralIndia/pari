@@ -27,7 +27,7 @@ class ArticleAdmin(BlogPostAdmin):
 class LocationAdmin(DisplayableAdmin):
     form = LocationForm
     fieldsets = (None, {
-            "fields": ["title", "description", "gen_description", "location"],
+        "fields": ["title", "description", "gen_description", "location"],
     }),
     list_display = ("title", "description", "location")
     list_editable = ()
@@ -37,7 +37,7 @@ class LocationAdmin(DisplayableAdmin):
 class CategoryAdmin(DisplayableAdmin):
     form = CategoryForm
     fieldsets = (None, {
-            "fields": ["title", "description", "gen_description", "image"],
+        "fields": ["title", "description", "gen_description", "image"],
     }),
     list_display = ("admin_thumb", "title", "description")
     list_editable = ()
