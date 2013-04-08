@@ -32,22 +32,6 @@
   font-size: 31px;
 }
 
-#subnav ul {
-  
-}
-
-#subnav.affix {
-    top: 0;
-    width: 100%;
-    right: 0;
-    left: 0;
-}
-
-#subnav .nav>.active>a {
-  background-color: #fff;
-  box-shadow: none;
-}
-
 @media (min-width: 979px) {
   li.dropdown.active a:after,
   .brand.active:after {
