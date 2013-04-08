@@ -1,4 +1,4 @@
-Django==1.5
+Django==1.5.1
 Fabric==1.5.3
 Mezzanine==1.4.3
 PIL==1.1.7
