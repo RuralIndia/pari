@@ -1,0 +1,16 @@
+.full-size-background (@bg: #E8E8E8) {
+    &:before, &:after{
+        content: "";
+        position: absolute;
+        background: @bg;
+        top: 0;
+        bottom: 0;
+        width: 9999px;
+    }
+    &:before {
+        right: 100%
+    }
+    &:after {
+        left: 100%;
+    }
+}

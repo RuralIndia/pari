@@ -283,26 +283,6 @@
   margin-top: 10px;
 }
 
-.recent-articles {
-  position: relative;
-  background-color: #E8E8E8;
-}
-.recent-articles:before, .recent-articles:after {
-  content: "";
-  position: absolute;
-  background: #E8E8E8;
-  top: 0;
-  bottom: 0;
-  width: 9999px;
-}
-
-.recent-articles:before {
-  right: 100%; 
-}
-.recent-articles:after {
-  left: 100%;
-}
-
 [data-icon]:before {
   font-family: FontAwesome;
   content: attr(data-icon);

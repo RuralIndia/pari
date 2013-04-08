@@ -10,6 +10,7 @@
 
 {% block extra_css %}
   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.less" charset="utf-8">
+  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/homepage.less" charset="utf-8">
 {% endblock %}
 
 {% block extra_js %}
@@ -64,52 +65,34 @@
   <section id="recentarticles">
     <div class="recent-articles">
       <div class="container">
-        <h4><i class="icon-time"></i> Recent articles</h4>
+        <div class="row">
+          <div class="span8">
+            <h4><i class="icon-time"></i> Recent articles</h4>
 
-        {% for article_chunk in recent_articles|group_by:2 %}
-          <div class="row-fluid">
-            <ul class="thumbnails">
-              {% for article in article_chunk %}
-                <li class="span4">
-                  <div class="thumbnail">
-                    <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 370 300 %}" alt="">
-                    <h3>{{ article.title }} <small>{{article.location.title}}</small></h3>
-                    <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
-                  </div>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endfor %}
-
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
-  {% if categories %}
-  <section id="categories">
-    <div class="categories">
-      <div class="container">
-        <h4><i class="icon-reorder"></i> Categories</h4>
-        <div class="row-fluid">
-          <ul class="thumbnails">
-            {% for category in categories %}
-              <li class="span4">
-                <div class="thumbnail">
-                    <img src="{{ MEDIA_URL }}{% thumbnail category.image 370 300 %}" alt="">
-                    <div class="thumbnail-caption">
-                      <h4>{{ category.title }}</h4>
-                      <p>{{ category.description }}</p>
-                    </div>
-                </div>
-              </li>
+            {% for article_chunk in recent_articles|group_by:2 %}
+              <div class="row-fluid">
+                <ul class="thumbnails">
+                  {% for article in article_chunk %}
+                    <li class="span3">
+                      <div class="thumbnail">
+                        <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 370 300 %}" alt="">
+                        <h3>{{ article.title }} <small>{{article.location.title}}</small></h3>
+                        <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
+                      </div>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
             {% endfor %}
-          </ul>
+          </div>
+          <div class="span4">
+            <h4><i class="icon-reorder"></i> Categories</h4>
+          </div>
         </div>
       </div>
     </div>
   </section>
   {% endif %}
+
 </div>
 {% endblock %}
