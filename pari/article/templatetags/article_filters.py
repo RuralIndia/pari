@@ -12,3 +12,7 @@ def get_range(value):
 @register.filter
 def get_absolute_url(obj):
     return obj.get_absolute_url()
+
+@register.filter
+def group_by(l, n):
+    return [l[i:i+n] for i in range(0, len(l), n)]

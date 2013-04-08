@@ -26,7 +26,7 @@
     <div id="homeCarousel" class="carousel slide">
       <ol class="carousel-indicators">
         {% for count in article_list|length|get_range %}
-          <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0}}" class="{% if forloop.first %}active{% endif %}"></li>
+          <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
         {% endfor %}
       </ol>
 
@@ -65,19 +65,23 @@
     <div class="recent-articles">
       <div class="container">
         <h4><i class="icon-time"></i> Recent articles</h4>
-        <div class="row-fluid">
-          <ul class="thumbnails">
-            {% for article in recent_articles %}
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 370 300 %}" alt="">
-                  <h3>{{ article.title }} <small>{{article.location.title}}</small></h3>
-                  <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
-                </div>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+
+        {% for article_chunk in recent_articles|group_by:2 %}
+          <div class="row-fluid">
+            <ul class="thumbnails">
+              {% for article in article_chunk %}
+                <li class="span4">
+                  <div class="thumbnail">
+                    <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 370 300 %}" alt="">
+                    <h3>{{ article.title }} <small>{{article.location.title}}</small></h3>
+                    <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+
       </div>
     </div>
   </section>
