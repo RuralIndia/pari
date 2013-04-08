@@ -47,33 +47,19 @@
     </div>
   {% endif %}
 
-  <div id="subnav-wrapper">
-    <div id ="subnav" class="navbar visible-tablet visible-desktop">
-      <div class="navbar-inner">
-        <div class ="container">
-          <ul class="nav">
-            <li class="active"><a href="#recentarticles">Recent article</a></li>
-            <li><a href="#categories">Categories</a></li>
-            <li><a href="#stats">Stats</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
   {% if recent_articles %}
-  <section id="recentarticles">
-    <div class="recent-articles">
+  <section id="mainsection">
+    <div class="main-section">
       <div class="container">
         <div class="row">
-          <div class="span8">
+          <div class="recent-articles span8">
             <h4><i class="icon-time"></i> Recent articles</h4>
 
             {% for article_chunk in recent_articles|group_by:2 %}
               <div class="row-fluid">
                 <ul class="thumbnails">
                   {% for article in article_chunk %}
-                    <li class="span3">
+                    <li class="span6">
                       <div class="thumbnail">
                         <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 370 300 %}" alt="">
                         <h3>{{ article.title }} <small>{{article.location.title}}</small></h3>
@@ -85,8 +71,9 @@
               </div>
             {% endfor %}
           </div>
-          <div class="span4">
+          <div class="categories span4">
             <h4><i class="icon-reorder"></i> Categories</h4>
+
           </div>
         </div>
       </div>
