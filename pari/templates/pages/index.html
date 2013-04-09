@@ -73,6 +73,15 @@
           </div>
           <div class="categories span4">
             <h4><i class="icon-reorder"></i> Categories</h4>
+            <div class="list">
+              {% for category in categories %}
+                <div class="item">
+                  <h4>{{ category.title }}</h4>
+                  <p>{{ category.description }}</p>
+                  <i class="icon-angle-right"></i>
+                </div>
+              {% endfor %}
+            </div>
 
           </div>
         </div>

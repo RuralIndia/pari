@@ -14,8 +14,7 @@
   min-height: 60px;
 }
 
-#mainnav .navbar-inner,
-#subnav .navbar-inner {
+#mainnav .navbar-inner {
   border:0px;
   background: #fff;
   box-shadow: none;
