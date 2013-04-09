@@ -19,31 +19,85 @@
     }
 }
 
+.menu-arrow-after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent transparent #fff transparent;
+    border-style: solid;
+    border-width: 10px;
+    top: 80%;
+    left: 50%;
+    margin-left: -10px;
+}
+
+.menu-arrow-before(@border) {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent transparent @border transparent;
+    border-style: solid;
+    border-width: 12px;
+    top: 68%;
+    left: 50%;
+    margin-left: -12px;
+}
+
 #holder {
     .navbar{
-
-        background: #333;
+        @navColor: #333;
+        @navBottomBorder: #808080;
+        background: @navColor;
         border:0px;
-        border-bottom: 2px solid #808080;
+        border-bottom: 2px solid @navBottomBorder;
         min-height: 60px;
         
         .brand {
             text-shadow: none;
+            @media (min-width: 979px) {
+                &.active {
+                    &:after {
+                        .menu-arrow-after;
+                    }
+                    &:before {
+                        .menu-arrow-before (@navBottomBorder);
+                    }
+                }
+            }
         }
 
         .nav {
             li {
-                a{
+                a {
                     text-shadow: none;
                     &:hover {
                         color: #fff;
+                    }
+                }
+                &.dropdown.active {
+                    a {
+                        @media (min-width: 979px) {
+                            background-color: @navColor !important;
+                            -webkit-box-shadow: 0 0 0 @navColor !important;
+                            box-shadow: 0 0 0 @navColor !important;
+                            &:after {
+                                .menu-arrow-after;
+                            }
+                            &:before {
+                                .menu-arrow-before (@navBottomBorder);
+                            }
+                        }
                     }
                 }
             }
         }
 
         .navbar-inner {
-            background: #333;
+            background: @navColor;
             border:0px;
             box-shadow: none;
             width:1170px;
