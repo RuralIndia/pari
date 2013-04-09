@@ -7,21 +7,6 @@
   left: 0;
 }
 
-.navbar{
-  background:#fff;
-  border:0px;
-  border-bottom: 2px solid #808080;
-  min-height: 60px;
-}
-
-#mainnav .navbar-inner {
-  border:0px;
-  background: #fff;
-  box-shadow: none;
-  width:1170px;
-  margin:0px auto;
-}
-
 #mainnav .navbar-inner .container {
   margin-top: 10px;
 }
