@@ -19,6 +19,17 @@
     }
 }
 
+
+.menu-arrow (@border) {
+    &:after {
+        .menu-arrow-after;
+    }
+
+    &:before{
+        .menu-arrow-before (@border);
+    };
+}
+
 .menu-arrow-after {
     content: '';
     display: block;

@@ -1,6 +1,9 @@
 @import "common.less";
 
 #holder {
+
+    overflow-x: hidden;
+
     .navbar {
         @navColor: #333;
         @navBottomBorder: #808080;
@@ -13,12 +16,7 @@
             text-shadow: none;
             @media (min-width: 979px) {
                 &.active {
-                    &:after {
-                        .menu-arrow-after;
-                    }
-                    &:before {
-                        .menu-arrow-before (@navBottomBorder);
-                    }
+                    .menu-arrow (@navBottomBorder);
                 }
             }
         }
@@ -37,12 +35,7 @@
                             background-color: @navColor !important;
                             -webkit-box-shadow: 0 0 0 @navColor !important;
                             box-shadow: 0 0 0 @navColor !important;
-                            &:after {
-                                .menu-arrow-after;
-                            }
-                            &:before {
-                                .menu-arrow-before (@navBottomBorder);
-                            }
+                            .menu-arrow (@navBottomBorder);
                         }
                     }
                 }
