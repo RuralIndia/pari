@@ -46,3 +46,14 @@
     left: 50%;
     margin-left: -12px;
 }
+
+.vertical-separator (@height, @color1, @color2, @color3) {
+    border : 0;
+    height : @height;
+    width : 1px;
+    background-image: -webkit-linear-gradient(top, @color1, @color2, @color3);
+    background-image: -moz-linear-gradient(to bottom, @color1, @color2, @color3);
+    background-image: -ms-linear-gradient(to bottom, @color1, @color2, @color3);
+    background-image: -o-linear-gradient(to bottom, @color1, @color2, @color3);
+    background-image: linear-gradient(to bottom, @color1, @color2, @color3);
+}
