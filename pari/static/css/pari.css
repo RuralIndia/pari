@@ -1,21 +1,3 @@
-#holder {
-  overflow-x: hidden;
-}
-
-#mainnav {
-  right: 0;
-  left: 0;
-}
-
-#mainnav .navbar-inner .container {
-  margin-top: 10px;
-}
-
-#mainnav .brand {
-  position: relative;
-  font-size: 31px;
-}
-
 @media (min-width: 979px) {
   .carousel-caption {
     background-color: rgba(255, 255, 255, 0.74902);
@@ -33,16 +15,6 @@
     top: 50%;
   }
 
-}
-
-.thumbnails {
-  position: relative;
-}
-
-.thumbnails .span4:nth-child(3n+1),
-.thumbnails .span4:first-child + li + li + li,
-.thumbnails .span4:first-child + li + li + li + li + li + li {
-    margin-left: 0;
 }
 
 .thumbnail {
