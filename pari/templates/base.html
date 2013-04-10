@@ -60,14 +60,9 @@
 
   <div id="footer">
     <div class="container">
-      <br style="clear:both">
-      <ul class="footer-links">
-        
-      </ul>
-      {% ifinstalled mezzanine.mobile %}
-        <span class="separator">|</span>
-        <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
-      {% endifinstalled %}
+      <div class="row">
+          {% page_menu "pages/menus/footer.html" %}
+      </div>
     </div>
   </div>
 
