@@ -15,6 +15,25 @@
         .full-size-background (@bg);
     }
 
+    .carousel-control {
+        border-radius: 0;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.74902);
+        opacity: 0.9;
+        &:hover{
+            color: #333;
+        }
+        &.right {
+            right: 0;
+            .border-radius(0, 0, 8px, 8px);
+
+        }
+        &.left {
+            left: 0;
+            .border-radius(8px, 8px, 0, 0);
+        }
+    }
+
     .recent-articles{
         @media (min-width: 979px) {
             position: relative;

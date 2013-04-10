@@ -100,44 +100,6 @@
   color: #ee4303;
 }
 
-.carousel-control {
-  border-radius: 0;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.74902);
-  opacity: 0.9;
-
-}
-
-.carousel-control:hover {
-  color: #333;
-}
-
-.carousel-control.right:hover {
-  color: #333;
-}
-
-.carousel-control.left {
-  left: 0;
-
-  -webkit-border-top-right-radius: 8px;
-  -webkit-border-bottom-right-radius: 8px;
-  -moz-border-radius-topright: 8px;
-  -moz-border-radius-bottomright: 8px;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-.carousel-control.right {
-  right: 0;
-
-  -webkit-border-top-left-radius: 8px;
-  -webkit-border-bottom-left-radius: 8px;
-  -moz-border-radius-topleft: 8px;
-  -moz-border-radius-bottomleft: 8px;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-}
-
 #push,
 #footer {
   height: 60px;
