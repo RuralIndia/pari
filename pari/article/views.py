@@ -1,14 +1,15 @@
-from .models import Location, Article
-from .serializers import LocationSerializer, LocationArticleSerializer
-
 from django.shortcuts import get_object_or_404
-
-from mezzanine.utils.views import render
+from django.views.generic.list import ListView
 
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
 from rest_framework.response import Response
+
+from mezzanine.utils.views import render
+
+from .models import Location, Article, Category
+from .serializers import LocationSerializer, LocationArticleSerializer
 
 
 @api_view(['GET'])
@@ -38,6 +39,11 @@ def location_detail(request, slug):
     templates = [u"article/location_detail.html"]
     c = {"location": location}
     return render(request, templates, c)
+
+
+class CategoriesList(ListView):
+
+    model = Category
 
 
 def category_detail(request, slug):
