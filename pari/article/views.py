@@ -42,7 +42,7 @@ def location_detail(request, slug):
 
 
 class CategoriesList(ListView):
-
+    context_object_name = "categories"
     model = Category
 
 

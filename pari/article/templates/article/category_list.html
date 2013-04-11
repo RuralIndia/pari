@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n verbatim_tag %}
+{% load i18n verbatim_tag article_filters mezzanine_tags %}
 
 {% block meta_title %}{% trans "Categories" %}{% endblock %}
 {% block title %}{% trans "Categories" %}{% endblock %}
@@ -18,7 +18,17 @@
 {% endblock %}
 
 {% block main %}
-{% blocktrans %}
-    Test
-{% endblocktrans %}
+    {% for category_group in categories|group_by:3 %}
+        <div class="categories row">
+            {% for category in category_group %}
+                <div class="category span4">
+                    <img src="{{ MEDIA_URL }}{% thumbnail category.image 370 300 %}" alt="">
+                    <div class="caption">
+                        <h4>{{ category.title }}</h4>
+                        <p>{{ category.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
 {% endblock %}
