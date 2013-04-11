@@ -2,6 +2,8 @@ from django.conf.urls.defaults import patterns, include, url
 from django.conf import settings
 from django.contrib import admin
 
+from pari.article.urls import root_patterns as articles_root_patterns
+
 admin.autodiscover()
 
 # Add the urlpatterns for any custom Django applications here.
@@ -11,6 +13,8 @@ admin.autodiscover()
 urlpatterns = patterns("",
 
     url(r'^map/', include('pari.map.urls')),
+
+    url(r'^', include(articles_root_patterns)),
     url(r'^articles/', include('pari.article.urls')),
 
     # Change the admin prefix here to use an alternate URL for the
