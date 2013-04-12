@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 from rest_framework import generics
 from rest_framework.decorators import api_view
@@ -46,8 +47,9 @@ class CategoriesList(ListView):
     model = Category
 
 
-def category_detail(request, slug):
-    pass
+class CategoryDetail(DetailView):
+    context_object_name = "category"
+    model = Category
 
 
 def topic_detail(request, slug):

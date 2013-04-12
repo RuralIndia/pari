@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, url
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import LocationList, LocationDetail, LocationArticle, CategoriesList
+from .views import LocationList, LocationDetail, LocationArticle, CategoriesList, CategoryDetail
 
 root_patterns = patterns('pari.article.views',
+    url(r'^categories/(?P<slug>.+)/$', CategoryDetail.as_view(), name='category-detail'),
     url(r'^categories/$', CategoriesList.as_view(), name='category-list'),
-    url(r'^categories/(?P<slug>.+)/$', 'category_detail', name='category-detail'),
 )
 
 
