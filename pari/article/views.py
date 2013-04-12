@@ -51,6 +51,11 @@ class CategoryDetail(DetailView):
     context_object_name = "category"
     model = Category
 
+    def get_context_data(self, **kwargs):
+        context = super(CategoryDetail, self).get_context_data(**kwargs)
+        context['articles'] = Article.objects.all()
+        return context
+
 
 def topic_detail(request, slug):
     blog_posts = Article.topics.published(for_user=request.user).select_related()

@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block extra_css %}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less" charset="utf-8">
 {% endblock %}
 
 
@@ -18,5 +18,20 @@
 {% endblock %}
 
 {% block main %}
-    {{ category.title }}
+    <h3>Articles for "{{ category.title }}"</h3>
+    <div class="articles">
+        {% for article in articles %}
+            <div class="article">
+                <div class="article-image">
+                    <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 278 225 %}" alt="">
+                </div>
+                <div class="caption">
+                    <h4>{{ article.title }}</h4>
+                    <p>{{ article.location.title }}</p>
+                    <p>by {{ article.user.username }}</p>
+                    <p>{{ article.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

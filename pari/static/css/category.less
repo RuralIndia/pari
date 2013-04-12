@@ -1,0 +1,33 @@
+@import "common.less";
+
+h3 {
+    .section-header;
+}
+
+.articles {
+    .article {
+        // position: relative;
+        .box-sizing(border-box);
+        padding: 10px;
+        overflow: auto;
+
+        &:nth-child(odd){
+            background: #E8E8E8;
+        }
+
+        .article-image {
+            float: left;
+        }
+
+        .caption {
+            margin-left: 298px;
+            .box-sizing(border-box);
+
+            h4 {
+                color: @headingsColor;
+            }
+
+        }
+
+    }
+}
