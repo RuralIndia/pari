@@ -36,7 +36,8 @@
         <div class="pagination">
           <ul>
             {% if articles.has_previous %}
-                <li><a href="?page={{ articles.previous_page_number }}">Prev</a></li>
+                <li><a href="?page=1"><i class="icon-double-angle-left"></i></a></li>
+                <li><a href="?page={{ articles.previous_page_number }}"><i class="icon-angle-left"></i></a></li>
             {% endif %}
 
             {% for page in articles.paginator.page_range %}
@@ -44,7 +45,8 @@
             {% endfor %}
 
             {% if articles.has_next %}
-                <li><a href="?page={{ articles.next_page_number }}">Next</a></li>
+                <li><a href="?page={{ articles.next_page_number }}"><i class="icon-angle-right"></i></a></li>
+                <li><a href="?page={{ articles.paginator.num_pages }}"><i class="icon-double-angle-right"></i></a></li>
             {% endif %}
           </ul>
         </div>
