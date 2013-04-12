@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from rest_framework import generics
 from rest_framework.decorators import api_view
@@ -52,8 +53,20 @@ class CategoryDetail(DetailView):
     model = Category
 
     def get_context_data(self, **kwargs):
+        all_articles = Article.objects.all()
+        
+        paginator = Paginator(all_articles, 1)
+        page = self.request.GET.get('page')
+
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
+
         context = super(CategoryDetail, self).get_context_data(**kwargs)
-        context['articles'] = Article.objects.all()
+        context['articles'] = articles
         return context
 
 

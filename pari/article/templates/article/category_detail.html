@@ -33,5 +33,20 @@
                 </div>
             </div>
         {% endfor %}
+        <div class="pagination">
+          <ul>
+            {% if articles.has_previous %}
+                <li><a href="?page={{ articles.previous_page_number }}">Prev</a></li>
+            {% endif %}
+
+            {% for page in articles.paginator.page_range %}
+                <li class="{% if page == articles.number %}active{% endif %}"><a href="?page={{ page }}">{{ page }}</a></li>
+            {% endfor %}
+
+            {% if articles.has_next %}
+                <li><a href="?page={{ articles.next_page_number }}">Next</a></li>
+            {% endif %}
+          </ul>
+        </div>
     </div>
 {% endblock %}
