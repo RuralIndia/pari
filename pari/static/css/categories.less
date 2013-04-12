@@ -1,22 +1,66 @@
 @import "common.less";
 
+.dark-caption () {
+    background-color: rgba(0, 0, 0, 0.74902);
+
+    p {
+        color: #fff;
+    }
+}
+
 .categories {
 
     .category {
         position: relative;
         margin-bottom: 32px;
 
+        &:hover {
+            .caption {
+                .dark-caption;
+            }
+        }
 
         .caption {
             position: absolute;
             background-color: rgba(255, 255, 255, 0.74902);
             bottom: 0;
             width: 100%;
+            max-width: 100%;
+            .box-sizing(border-box);
             padding: 10px;
+            word-wrap: break-word;
 
             h4 {
                 color: @headingsColor;
             }
         }
+
+        @media (min-width: 481px) and (max-width: 979px) {
+            float: none;
+            width: 100%;
+
+            img {
+                max-width: none;
+                width: 50%;
+            }
+
+            .caption {
+                padding: 32px;
+                top:0;
+                left: 50%;
+                width: 50%;
+                max-width: 50%;
+                height: 100%;
+                .dark-caption;
+
+            }
+        }
+
+        @media (max-width: 480px) {
+            img {
+                width: 100%;
+            }
+        }
+
     }
 }
