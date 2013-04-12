@@ -74,11 +74,13 @@
             <h4><i class="icon-reorder"></i> Categories</h4>
             <div class="list">
               {% for category in categories %}
-                <div class="item">
-                  <h4>{{ category.title }}</h4>
-                  <p>{{ category.description }}</p>
-                  <i class="icon-angle-right"></i>
-                </div>
+                <a href="{{category|get_absolute_url}}">
+                  <div class="category">
+                    <h4>{{ category.title }}</h4>
+                    <p>{{ category.description }}</p>
+                    <i class="icon-angle-right"></i>
+                  </div>
+                </a>
               {% endfor %}
             </div>
 

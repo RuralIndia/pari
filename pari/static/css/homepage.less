@@ -57,25 +57,34 @@
         }
 
         .list {
-            .item {
-                .box-sizing(border-box);
-                background-color: #fff;
-                min-height: 100px;
-                padding: 6px;
-                margin-bottom: 2px;
-                position: relative;
+            a {
+                text-decoration: none;
+                color: black;
 
-                h4 {
-                    color: @headingsColor;
-                }
+                .category {
+                    .box-sizing(border-box);
+                    background-color: #fff;
+                    min-height: 100px;
+                    padding: 6px;
+                    margin-bottom: 2px;
+                    position: relative;
 
-                i {
-                    color: @headingsColor;
-                    position: absolute;
-                    right: 1%;
-                    top: 50%;
-                    margin-top: -20px;
-                    font-size: 40px;
+                    h4 {
+                        color: @headingsColor;
+                    }
+
+                    i {
+                        color: @headingsColor;
+                        position: absolute;
+                        right: 1%;
+                        top: 50%;
+                        margin-top: -20px;
+                        font-size: 40px;
+                    }
+
+                    &:hover {
+                        .dark-caption;
+                    }
                 }
             }
         }
