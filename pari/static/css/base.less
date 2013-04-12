@@ -72,6 +72,50 @@
     }
 }
 
+.paginator {
+
+    text-align: center;
+    
+    ul {
+
+        display: inline-block;
+
+        li {
+            display: inline;
+
+            a {
+                float: left;
+                color: @headingsColor;
+                font-size: 17.5px;
+                padding: 11px 19px;
+                border: 1px solid #dddddd;
+                margin: 4px;
+                text-decoration: none;
+
+            }
+
+            &.active {
+                a {
+                    color: black;
+                    border: none;
+                    cursor: default;
+                }
+            }
+
+            &.page-nav {
+                a {
+                    border: none;
+                    font-size: 24px;
+                    padding: 11px 0 11px 0;
+                    margin: 0 12px 0 12px;
+
+                }
+            }
+
+        }
+    }
+}
+
 #footer {
     height: 60px;
     background-color: @navColor;

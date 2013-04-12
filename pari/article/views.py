@@ -55,7 +55,7 @@ class CategoryDetail(DetailView):
     def get_context_data(self, **kwargs):
         all_articles = Article.objects.all()
         
-        paginator = Paginator(all_articles, 1)
+        paginator = Paginator(all_articles, 10)
         page = self.request.GET.get('page')
 
         try:
