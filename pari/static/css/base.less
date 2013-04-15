@@ -26,8 +26,10 @@
             li {
                 a {
                     text-shadow: none;
-                    &:hover {
-                        color: #fff;
+                    @media (min-width: 979px) {
+                        &:hover {
+                            color: #fff;
+                        }
                     }
                 }
                 &.dropdown.active {
@@ -47,7 +49,6 @@
             background: @navColor;
             border:0px;
             box-shadow: none;
-            width:1170px;
             margin:0px auto;
 
             .container {
@@ -55,18 +56,21 @@
             }
         }
 
-        .navbar-search {
-            position: relative;
-            top: 27px;
-            .search-query {
-                width: 289px;
-                padding-right: 29px !important;
-            }
-            .icon-search {
-                position: absolute;
-                top: 7px;
-                right: 10px;
-                color: @headingsColor;
+        @media (min-width: 979px) {
+
+            .navbar-search {
+                position: relative;
+                top: 27px;
+                .search-query {
+                    width: 289px;
+                    padding-right: 29px !important;
+                }
+                .icon-search {
+                    position: absolute;
+                    top: 7px;
+                    right: 10px;
+                    color: @headingsColor;
+                }
             }
         }
     }
