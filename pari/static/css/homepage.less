@@ -46,8 +46,43 @@
             .section-header;
         }
 
-        .thumbnails {
-            margin-top: 0;
+        .article {
+            margin-bottom: 12px;
+            a {
+                text-decoration: none;
+                .caption {
+                    h4 {
+                        color: @headingsColor;
+                        margin: 8px 0 0 0;
+                    }
+
+                    p {
+                        color: black;
+                    }
+                }
+            }
+
+            @media (max-width: 768px) {
+                .box-sizing(border-box);
+                margin-bottom: 24px;
+
+                a {
+                    img {
+                        max-width: 100%;
+                        display: block;
+                        margin: 0 auto;
+                    }
+
+                    text-align: center;
+                }
+
+                &:not(.last):after {
+                    content: '';
+                    display: block;
+                    .horizontal-separator (100%, transparent, #ccc 50%, transparent);
+                }
+            }
+
         }
     }
 

@@ -56,17 +56,18 @@
 
             {% for article_chunk in recent_articles|group_by:2 %}
               <div class="row-fluid">
-                <ul class="thumbnails">
-                  {% for article in article_chunk %}
-                    <li class="span6">
-                      <div class="thumbnail">
-                        <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 370 300 %}" alt="">
-                        <h3>{{ article.title }} <small>{{article.location.title}}</small></h3>
-                        <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
+                {% for article in article_chunk %}
+                  <div class="article span6{% if forloop.parentloop.last and forloop.last %} last{% endif %}">
+                    <a href="{{ article|get_absolute_url}}">
+                      <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 320 320 %}" alt="">
+                      <div class="caption">
+                          <h4>{{ article.title }}</h4>
+                          <p>{{ article.location.title }}</p>
+                          <p>{{ article.description }}</p>
                       </div>
-                    </li>
-                  {% endfor %}
-                </ul>
+                    </a>
+                  </div>
+                {% endfor %}
               </div>
             {% endfor %}
           </div>

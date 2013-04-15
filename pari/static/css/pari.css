@@ -17,41 +17,6 @@
 
 }
 
-.thumbnail {
-  position: relative;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: hidden;
-  padding: 0;
-}
-
-.thumbnail-caption {
-  position:absolute;
-  left:0;
-  right:0;
-  bottom: 0;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.74902);
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-  min-height: 12%;
-  max-height: 12%;
-}
-
-.thumbnail-caption h4,
-.thumbnail h3 {
-  font-weight: 200;
-}
-
-.thumbnail-caption:hover {
-  min-height: 20%;
-  max-height: 50%;
-  height: auto;
-}
-
 @media (min-width: 768px) {
   .carousel-control{
     height: 70px;

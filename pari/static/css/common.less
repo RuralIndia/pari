@@ -84,3 +84,15 @@
     background-image: -o-linear-gradient(to bottom, @color1, @color2, @color3);
     background-image: linear-gradient(to bottom, @color1, @color2, @color3);
 }
+
+.horizontal-separator (@width, @color1, @color2, @color3) {
+    border : 0;
+    width : @width;
+    height : 1px;
+    background-image: -webkit-linear-gradient(left, @color1, @color2, @color3);
+    background-image: -moz-linear-gradient(to right, @color1, @color2, @color3);
+    background-image: -ms-linear-gradient(to right, @color1, @color2, @color3);
+    background-image: -o-linear-gradient(to right, @color1, @color2, @color3);
+    background-image: linear-gradient(to right, @color1, @color2, @color3);
+}
+
