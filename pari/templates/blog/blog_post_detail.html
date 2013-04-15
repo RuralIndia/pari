@@ -12,16 +12,16 @@
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
 
-{% block title %}
-{% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
-{% endblock %}
-
 {% block breadcrumb_menu %}
 {{ block.super }}
 <li class="active">{{ blog_post.title }}</li>
 {% endblock %}
 
-{% block main %}
+{% block maincontent %}
+
+{% block title %}
+{% editable blog_post.title %}<h3>{{ blog_post.title }}</h3>{% endeditable %}
+{% endblock %}
 
 {% block blog_post_detail_postedby %}
 {% editable blog_post.publish_date %}
@@ -34,7 +34,6 @@
 </h6>
 {% endeditable %}
 {% endblock %}
-
 {% block blog_post_detail_commentlink %}
 <p>
     {% if blog_post.allow_comments %}
@@ -52,7 +51,7 @@
 {% endblock %}
 
 {% block blog_post_detail_featured_image %}
-{% if BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+{% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 <p><img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p>
 {% endif %}
 {% endblock %}
