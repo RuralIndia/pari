@@ -26,10 +26,6 @@
   padding: 0;
 }
 
-.thumbnail img {
-  box-shadow: none;
-}
-
 .thumbnail-caption {
   position:absolute;
   left:0;
@@ -98,14 +94,4 @@
 .thumbnail h3,
 #subnav .nav>.active>a {
   color: #ee4303;
-}
-
-#push {
-  height: 60px;
-}
-
-[data-icon]:before {
-  font-family: FontAwesome;
-  content: attr(data-icon);
-  speak: none;
 }
