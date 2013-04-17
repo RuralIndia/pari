@@ -211,7 +211,7 @@
     "model": "conf.setting",
     "fields": {
       "site": 1,
-      "value": "",
+      "value": "twpari",
       "name": "COMMENTS_DISQUS_SHORTNAME"
     }
   },
