@@ -4,6 +4,7 @@ python:
 install: "pip install -r requirements/dev.txt --use-mirrors"
 env:
   - DJANGO=1.5
+  - DJANGO_SETTINGS_MODULE=pari.settings.dev
 before_script:
   - "flake8 --exclude=migrations --ignore=E501,E225,E128,E126 ."
 script:
