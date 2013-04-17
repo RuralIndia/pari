@@ -12,9 +12,9 @@ django-filter==0.5.4
 -e git://github.com/manojlds/django-geoposition.git@298cd7cdf4b7bcf071385984a053e2105e805067#egg=django_geoposition-dev
 djangorestframework==2.2.0
 -e git://github.com/manojlds/fabtools.git@28cb375d93f035e5118008f20e8c6cefe60a0e49#egg=fabtools-dev
-filebrowser-safe==0.2.19
+filebrowser-safe==0.2.25
 futures==2.1.3
-grappelli-safe==0.2.13
+grappelli-safe==0.2.20
 gunicorn==0.17.2
 html5lib==0.95
 paramiko==1.9.0
