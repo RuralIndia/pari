@@ -1,0 +1,5 @@
+-r base.txt
+
+flake8==2.0
+django-nose==1.1
+nose==1.2.1
