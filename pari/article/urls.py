@@ -8,7 +8,6 @@ root_patterns = patterns('pari.article.views',
     url(r'^articles/(?P<slug>.+)/$', ArticleDetail.as_view(), name='article-detail'),
     url(r'^topics/(?P<slug>.+)/$', 'topic_detail', name='topic-detail'),
     url(r'^locations/(?P<slug>.+)/$', 'location_detail', name='location-detail'),
-    
 )
 
 

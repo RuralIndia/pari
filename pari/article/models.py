@@ -5,10 +5,8 @@ from django.db import models
 from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.fields import FileField
 from mezzanine.utils.models import AdminThumbMixin, upload_to
-from mezzanine.blog.models import BlogPost
-from mezzanine.conf import settings
-from mezzanine.core.models import Displayable, Ownable, RichText, Slugged
-from mezzanine.generic.fields import CommentsField, RatingField
+from mezzanine.core.models import Displayable, Ownable, RichText
+from mezzanine.generic.fields import CommentsField
 
 from geoposition.fields import GeopositionField
 
@@ -89,4 +87,3 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
         if self.is_topic:
             name = "topic-detail"
         return (name, (), {"slug": self.slug})
-   
