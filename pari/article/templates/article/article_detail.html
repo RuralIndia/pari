@@ -70,20 +70,6 @@
 {% endeditable %}
 {% endblock %}
 
-{% block blog_post_detail_keywords %}
-{% keywords_for blog_post as tags %}
-{% if tags %}
-{% spaceless %}
-<ul class="unstyled tags">
-    <li>{% trans "Tags" %}:</li>
-    {% for tag in tags %}
-    <li><a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a></li>
-    {% endfor %}
-</ul>
-{% endspaceless %}
-{% endif %}
-{% endblock %}
-
 {% block blog_post_detail_sharebuttons %}
 {% set_short_url_for blog_post %}
 {% endblock %}
@@ -105,19 +91,6 @@
 {% endif %}
 {% endwith %}
 </ul>
-{% endblock %}
-
-{% block blog_post_detail_related_posts %}
-{% if blog_post.related_posts.all %}
-<div id="related-posts">
-<h3>{% trans 'Related posts' %}</h3>
-<ul class="unstyled">
-{% for post in blog_post.related_posts.all %}
-     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
-</div>
-{% endif %}
 {% endblock %}
 
 {% block blog_post_detail_comments %}
@@ -148,9 +121,10 @@
     <div class="keywords">
         <h3><i class="icon-tags"></i>  Keywords</h3>
         <div class="full-horizontal-line"></div>
-        {% for keyword in blog_post.keywords.all %}
+        {% keywords_for blog_post as keywords %}
+        {% for keyword in keywords %}
             <div class="tag">
-                <a href="">{{ keyword }}</a>
+                <a href="{% url "blog_post_list_tag" keyword.slug %}">{{ keyword }}</a>
             </div>
         {% endfor %}
 
