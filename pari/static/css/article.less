@@ -1,7 +1,40 @@
 @import "common.less";
 
 .related-articles {
-    h4 {
-        margin-bottom: 20px;
+    h3 {
+        .section-header
+    }
+
+    .article {
+        position: relative;
+        overflow: auto;
+        min-height: 100px;
+        max-height: 100px;
+        a {
+            text-decoration: none;
+            color: black;
+
+            .article-image {
+                float: left;
+            }
+
+            .caption {
+                position: absolute;
+                margin-left: 110px;
+                .box-sizing(border-box);
+                top: 0;
+
+                p {
+                    margin: 0;
+                }
+
+
+                h4 {
+                    color: @headingsColor;
+                    margin-top: 0;
+                }
+            }
+        }
+
     }
 }

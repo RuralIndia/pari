@@ -146,7 +146,7 @@
         </div>
 
     <div class="related-articles well well-large">
-        <h4><i class="icon-exchange"></i>  Related Articles</h4>
+        <h3><i class="icon-exchange"></i>  Related Articles</h3>
         {% for article in related_articles %}
             <div class="article">
                 <a href="{{ article|get_absolute_url }}">
@@ -154,12 +154,15 @@
                         <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 100 78 %}" alt="">
                     </div>
                     <div class="caption">
-                        <h4>{{ article.title }}</h4>
+                        <h4>{{ article.title|truncatechars:45 }}</h4>
                         <p>{{ article.location.title }}</p>
                         <p>by {{ article.user.username }}</p>
                     </div>
                 </a>
             </div>
+            {% if not forloop.last %}
+                <div class="horizontal-line">
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}
