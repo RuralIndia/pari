@@ -100,14 +100,17 @@
         </div>
 
     <div class="keywords">
-        <h3><i class="icon-tags"></i>  Keywords</h3>
-        <div class="full-horizontal-line"></div>
         {% keywords_for blog_post as keywords %}
-        {% for keyword in keywords %}
-            <div class="tag">
-                <a href="{% url "blog_post_list_tag" keyword.slug %}">{{ keyword }}</a>
-            </div>
-        {% endfor %}
+        {% if keywords %}
+            <h3><i class="icon-tags"></i>  Keywords</h3>
+            <div class="full-horizontal-line"></div>
+
+            {% for keyword in keywords %}
+                <div class="tag">
+                    <a href="{% url "blog_post_list_tag" keyword.slug %}">{{ keyword }}</a>
+                </div>
+            {% endfor %}
+        {% endif %}
 
     </div>
     <div class="related-articles well well-large">
