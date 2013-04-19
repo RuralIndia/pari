@@ -1,15 +1,32 @@
 @import "common.less";
 
+.keywords {
+    padding: 24px;
+    margin-bottom: 12px;
+    h3 {
+        .section-header;
+        margin: 0;
+    }
+
+    .tag {
+        background-color: #f5f5f5;
+        padding: 4px;
+        margin-left: 2px;
+        margin-bottom: 2px;
+        .border-radius(4px, 4px, 4px, 4px);
+        a {
+            color: @headingsColor;
+        }
+    }
+}
+
 .related-articles {
     h3 {
         .section-header
     }
 
     .article {
-        position: relative;
         overflow: auto;
-        min-height: 100px;
-        max-height: 100px;
         a {
             text-decoration: none;
             color: black;
@@ -19,7 +36,6 @@
             }
 
             .caption {
-                position: absolute;
                 margin-left: 110px;
                 .box-sizing(border-box);
                 top: 0;

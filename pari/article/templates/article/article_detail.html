@@ -145,6 +145,16 @@
             </div>
         </div>
 
+    <div class="keywords">
+        <h3><i class="icon-tags"></i>  Keywords</h3>
+        <div class="full-horizontal-line"></div>
+        {% for keyword in blog_post.keywords.all %}
+            <div class="tag">
+                <a href="">{{ keyword }}</a>
+            </div>
+        {% endfor %}
+
+    </div>
     <div class="related-articles well well-large">
         <h3><i class="icon-exchange"></i>  Related Articles</h3>
         {% for article in related_articles %}
@@ -161,7 +171,7 @@
                 </a>
             </div>
             {% if not forloop.last %}
-                <div class="horizontal-line">
+                <div class="horizontal-line"></div>
             {% endif %}
         {% endfor %}
     </div>
