@@ -15,7 +15,7 @@ urlpatterns = patterns("",
     url(r'^map/', include('pari.map.urls')),
 
     url(r'^', include(articles_root_patterns)),
-    url(r'^articles/', include('pari.article.urls')),
+    url(r'^article/', include('pari.article.urls')),
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.

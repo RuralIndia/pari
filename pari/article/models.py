@@ -2,14 +2,17 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
-from .managers import ArticleManager, TopicManager
-
 from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.fields import FileField
-from mezzanine.core.models import Displayable
 from mezzanine.utils.models import AdminThumbMixin, upload_to
 from mezzanine.blog.models import BlogPost
+from mezzanine.conf import settings
+from mezzanine.core.models import Displayable, Ownable, RichText, Slugged
+from mezzanine.generic.fields import CommentsField, RatingField
+
 from geoposition.fields import GeopositionField
+
+from .managers import ArticleManager, TopicManager
 
 
 class Location(Displayable):
@@ -55,11 +58,21 @@ class Category(Displayable, AdminThumbMixin):
         ordering = ("title",)
 
 
-class Article(BlogPost):
+class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     location = models.ForeignKey(Location)
     is_topic = models.BooleanField(verbose_name=_("Is a topic?"), default=False)
     category_list = models.ManyToManyField(Category, verbose_name=_("Categories"),
                                            blank=False, null=False, related_name="articles")
+    allow_comments = models.BooleanField(verbose_name=_("Allow comments"),
+                                         default=True)
+    comments = CommentsField(verbose_name=_("Comments"))
+    featured_image = FileField(verbose_name=_("Featured Image"),
+        upload_to=upload_to("blog.BlogPost.featured_image", "blog"),
+        format="Image", max_length=255, null=True, blank=True)
+    related_posts = models.ManyToManyField("self",
+                                 verbose_name=_("Related Articles"), blank=True)
+
+    admin_thumb_field = "featured_image"
 
     objects = DisplayableManager()
     articles = ArticleManager()
@@ -76,3 +89,4 @@ class Article(BlogPost):
         if self.is_topic:
             name = "topic-detail"
         return (name, (), {"slug": self.slug})
+   

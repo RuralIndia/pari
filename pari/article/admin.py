@@ -21,6 +21,7 @@ blog_list_display.insert(-1, "is_topic")
 class ArticleAdmin(BlogPostAdmin):
     fieldsets = blog_fieldsets
     list_display = blog_list_display
+    list_filter = ()
     filter_horizontal = ("category_list", "related_posts",)
 
 

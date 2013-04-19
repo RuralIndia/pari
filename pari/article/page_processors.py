@@ -3,7 +3,7 @@ from .models import Article, Category
 
 
 @processor_for("/")
-def author_form(request, page):
+def homepage_context(request, page):
     article_list = Article.articles.filter(featured_image__isnull=False)[:5]
     categories = Category.objects.all()
     recent_articles = Article.articles.order_by('-publish_date')[:4]
