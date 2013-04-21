@@ -25,19 +25,21 @@
 
 {% block title %}
 {% editable blog_post.title %}<h3>{{ blog_post.title }}</h3>{% endeditable %}
-{% endblock %}
-
-{% block blog_post_detail_postedby %}
-{% editable blog_post.publish_date %}
-<h6>
-    {% trans "by" %}:
+<p>{{ blog_post.location.title }} | by  
     {% with blog_post.user as author %}
     <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
     {% endwith %}
-    {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-</h6>
-{% endeditable %}
+</p>
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+</div>
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-517435ad3d40b5da"></script>
 {% endblock %}
+
+
 {% block blog_post_detail_commentlink %}
 <p>
     {% if blog_post.allow_comments %}
@@ -81,24 +83,6 @@
 {% endblock %}
 
 {% block sidebar %}
-        <div class="social-share">
-            <div class="facebook">
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-            </div>
-            <div class="twitter">
-            <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-
-            <fb:like send="false" layout="button_count" width="450" show_faces="false"></fb:like>
-            </div>
-        </div>
-
     <div class="keywords">
         {% keywords_for blog_post as keywords %}
         {% if keywords %}
