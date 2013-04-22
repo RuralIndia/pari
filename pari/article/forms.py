@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Location, Category
+from .models import Location, Category, Type
 
 
 class DisplayableForm(forms.ModelForm):
@@ -17,3 +17,7 @@ class LocationForm(DisplayableForm):
 class CategoryForm(DisplayableForm):
     class Meta:
         model = Category
+
+class TypeForm(forms.ModelForm):
+    class Meta:
+        model = Type

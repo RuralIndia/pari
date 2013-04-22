@@ -56,6 +56,13 @@ class Category(Displayable, AdminThumbMixin):
         ordering = ("title",)
 
 
+class Type(models.Model):
+    title = models.CharField(max_length=5)
+    def __str__(self):
+        return "%s" % (self.title)
+    def __unicode__(self):
+        return "%s" % (self.title)
+
 class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     location = models.ForeignKey(Location)
     is_topic = models.BooleanField(verbose_name=_("Is a topic?"), default=False)
@@ -69,6 +76,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
         format="Image", max_length=255, null=True, blank=True)
     related_posts = models.ManyToManyField("self",
                                  verbose_name=_("Related Articles"), blank=True)
+    types = models.ManyToManyField(Type, related_name="articles", verbose_name="Article Type")
 
     admin_thumb_field = "featured_image"
 

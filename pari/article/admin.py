@@ -5,14 +5,15 @@ from mezzanine.blog.models import BlogPost
 from mezzanine.blog.admin import BlogPostAdmin
 from mezzanine.core.admin import DisplayableAdmin
 
-from .models import Article, Location, Category
-from .forms import LocationForm, CategoryForm
+from .models import Article, Location, Category, Type
+from .forms import LocationForm, CategoryForm, TypeForm
 
 blog_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
 blog_fieldsets[0][1]["fields"].insert(1, "category_list")
 blog_fieldsets[0][1]["fields"].remove("categories")
 blog_fieldsets[0][1]["fields"].insert(-1, "location")
 blog_fieldsets[0][1]["fields"].insert(-1, "is_topic")
+blog_fieldsets[0][1]["fields"].insert(-1, "types")
 
 blog_list_display = deepcopy(BlogPostAdmin.list_display)
 blog_list_display.insert(-1, "is_topic")
@@ -25,7 +26,13 @@ class ArticleAdmin(BlogPostAdmin):
     filter_horizontal = ("category_list", "related_posts",)
 
 
-class LocationAdmin(DisplayableAdmin):
+class TypeAdmin(admin.ModelAdmin):
+    form = TypeForm
+    fieldsets = (None, {
+        "fields": ["title"],
+    }),
+
+class LocationAdmin(admin.ModelAdmin):
     form = LocationForm
     fieldsets = (None, {
         "fields": ["title", "description", "gen_description", "location"],
@@ -46,6 +53,7 @@ class CategoryAdmin(DisplayableAdmin):
 
 
 admin.site.unregister(BlogPost)
+admin.site.register(Type, TypeAdmin)
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Article, ArticleAdmin)

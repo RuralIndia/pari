@@ -17,3 +17,6 @@ class ArticleAdminTest(TestCase):
 
     def test_does_not_incluced_categories_from_BlogPost(self):
         self.assertNotIn("categories", ArticleAdmin.fieldsets[0][1]['fields'])
+
+    def test_includes_article_type(self):
+        self.assertIn("types", ArticleAdmin.fieldsets[0][1]['fields'])
