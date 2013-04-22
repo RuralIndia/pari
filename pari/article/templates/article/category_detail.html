@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n verbatim_tag article_filters mezzanine_tags %}
+{% load i18n verbatim_tag article_filters mezzanine_tags keyword_tags %}
 
 {% block meta_title %}{{ category.title }}{% endblock %}
 {% block title %}{{ category.title }}{% endblock %}
@@ -22,17 +22,21 @@
     <div class="articles">
         {% for article in articles %}
             <div class="article">
-                <a href="{{ article|get_absolute_url }}">
-                    <div class="article-image">
-                        <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 278 225 %}" alt="">
-                    </div>
-                    <div class="caption">
-                        <h4>{{ article.title }}</h4>
-                        <p>{{ article.location.title }}</p>
-                        <p>by {{ article.user.username }}</p>
-                        <p>{{ article.description }}</p>
-                    </div>
-                </a>
+                <div class="article-image">
+                    <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 278 225 %}" alt="">
+                </div>
+                <div class="caption">
+                    <h4><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
+                    <p>{{ article.location.title }}</p>
+                    <p>by {{ article.user.username }}</p>
+                    <p>{{ article.description }}</p>
+                    {% keywords_for article as keywords %}
+                    {% for keyword in keywords %}
+                        <span class="tag">
+                            <a href="{% url "blog_post_list_tag" keyword.slug %}">{{ keyword }}</a>
+                        </span>
+                    {% endfor %}
+                </div>
             </div>
         {% endfor %}
         <div class="paginator">

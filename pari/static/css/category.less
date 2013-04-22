@@ -15,31 +15,29 @@ h3 {
             background: #E8E8E8;
         }
 
-        a {
 
-            text-decoration: none;
+        .article-image {
+            float: left;
+        }
 
-            .article-image {
-                float: left;
-            }
+        .caption {
+            margin-left: 298px;
+            .box-sizing(border-box);
 
-            .caption {
-                margin-left: 298px;
-                .box-sizing(border-box);
-
-                h4 {
+            h4 {
+                a {
                     color: @headingsColor;
                 }
             }
+        }
+        
         p {
             color: black;
         }
 
-        }
+        span:first-child {
+            margin: 10px;
 
-        &:hover{
-            .dark-caption;
         }
-
     }
 }

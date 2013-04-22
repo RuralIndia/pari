@@ -53,7 +53,8 @@ class CategoryDetail(DetailView):
     model = Category
 
     def get_context_data(self, **kwargs):
-        all_articles = Article.objects.all()
+        context = super(CategoryDetail, self).get_context_data(**kwargs)
+        all_articles = context['category'].articles.all()
 
         paginator = Paginator(all_articles, 10)
         page = self.request.GET.get('page')
@@ -65,7 +66,6 @@ class CategoryDetail(DetailView):
         except EmptyPage:
             articles = paginator.page(paginator.num_pages)
 
-        context = super(CategoryDetail, self).get_context_data(**kwargs)
         context['articles'] = articles
         return context
 
