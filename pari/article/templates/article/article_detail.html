@@ -72,14 +72,12 @@
 {% endeditable %}
 {% endblock %}
 
-{% block blog_post_detail_sharebuttons %}
-{% set_short_url_for blog_post %}
 {% endblock %}
 
-{% block blog_post_detail_comments %}
-{% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
-{% endblock %}
-
+{% block maincontent_2 %}
+    {% block blog_post_detail_comments %}
+    {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+    {% endblock %}
 {% endblock %}
 
 {% block sidebar %}
@@ -97,7 +95,7 @@
         {% endif %}
 
     </div>
-    <div class="related-articles well well-large">
+    <div class="related-articles well">
         <h3><i class="icon-exchange"></i>  Related Articles</h3>
         {% for article in related_articles %}
             <div class="article">
