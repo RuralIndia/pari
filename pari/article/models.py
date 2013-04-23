@@ -77,7 +77,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     featured_image = FileField(verbose_name=_("Featured Image"),
         upload_to=upload_to("blog.BlogPost.featured_image", "blog"),
         format="Image", max_length=255, null=True, blank=True)
-    
+
     capsule_video = models.CharField(max_length=100, null=True, blank=True)
 
     related_posts = models.ManyToManyField("self",

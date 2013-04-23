@@ -5,12 +5,12 @@ register = template.Library()
 
 @register.inclusion_tag("article/includes/capsule_video.html")
 def capsule_video_for(article, width, height):
-    return { 'article': article,
-             'width': width,
-             'height': height,
-           }
+    return {'article': article,
+            'width': width,
+            'height': height,
+            }
 
 
 @register.inclusion_tag("article/includes/featured_content.html")
 def featured_content_for(article):
-    return { 'article': article }
+    return {'article': article}
