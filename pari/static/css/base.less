@@ -178,6 +178,44 @@ body {
     height: 100%;
 }
 
+.video-thumbnail {
+    position: relative;
+
+    img {
+        opacity: 0.5;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+
+        i {
+            font-size: 48px;
+            position: absolute;
+
+            &:hover {
+                color: @headingsColor;
+            }
+
+            left: 50%;
+            top: 50%;
+            margin-left: -20.5px;
+            margin-top: -24.5px;
+        }
+    }
+}
+
+.video-popup {
+    @media(min-width: 979px){
+        width: 760px;
+        margin-left: -380px;
+    }
+
+    a {
+        color: @headingsColor;
+    }
+}
+
 .tag {
     background-color: #f5f5f5;
     padding: 4px;

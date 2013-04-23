@@ -1,0 +1,26 @@
+{% load static mezzanine_tags %}
+
+{% if article.capsule_video %}
+<div class="video-thumbnail">
+    <img src="{% get_media_prefix %}{% thumbnail article.featured_image width height %}" alt="">
+    <a href="#video_popup_{{ article.slug }}" role="button" data-toggle="modal"><i class="icon-play-circle"></i></a>
+</div>
+<div id="video_popup_{{ article.slug }}" class="modal hide fade video-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3>
+  </div>
+  <div class="modal-body">
+    <div class="video-container">
+        <iframe src="http://www.youtube.com/embed/{{ article.capsule_video }}" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="{{ article.get_absolute_url }}">View full article content</a>
+  </div>
+</div>
+{% else %}
+<div class="image-thumbnail">
+    <img src="{% get_media_prefix %}{% thumbnail article.featured_image width height %}" alt="">
+</div>
+{% endif %}

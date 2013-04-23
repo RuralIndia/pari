@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n verbatim_tag article_filters mezzanine_tags keyword_tags %}
+{% load i18n verbatim_tag article_tags article_filters mezzanine_tags keyword_tags %}
 
 {% block meta_title %}{{ category.title }}{% endblock %}
 {% block title %}{{ category.title }}{% endblock %}
@@ -31,7 +31,7 @@
         {% for article in articles %}
             <div class="article">
                 <div class="article-image">
-                    <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 278 225 %}" alt="">
+                    {% capsule_video_for article 278 225 %}
                 </div>
                 <div class="caption">
                     <h4><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
