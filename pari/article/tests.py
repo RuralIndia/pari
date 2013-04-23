@@ -1,8 +1,9 @@
 from django.test import TestCase
 
-import factory
-
 from mezzanine.accounts.models import User
+
+import factory
+from geoposition import Geoposition
 
 from .admin import ArticleAdmin
 from .models import Article, Location, Type
@@ -12,6 +13,7 @@ class LocationFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Location
 
     title = 'Location 1'
+    location = Geoposition(1.2, 2.1)
 
 
 class UserFactory(factory.DjangoModelFactory):
@@ -61,3 +63,11 @@ class ArticleTest(TestCase):
 
     def test_is_video_article(self):
         self.assertTrue(self.video_article.is_video_article)
+
+
+class LocationTest(TestCase):
+    def setUp(self):
+        self.location = LocationFactory.create()
+
+    def test_get_as_latLng(self):
+        self.assertEqual([u'1.2', u'2.1'], self.location.get_as_latLng())
