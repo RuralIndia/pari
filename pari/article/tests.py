@@ -1,5 +1,37 @@
-from .admin import ArticleAdmin
 from django.test import TestCase
+
+import factory
+
+from mezzanine.accounts.models import User
+
+from .admin import ArticleAdmin
+from .models import Article, Location, Type
+
+
+class LocationFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Location
+
+    title = 'Location 1'
+
+
+class UserFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = User
+
+    username = factory.Sequence(lambda n: 'user %s' % n)
+
+
+class TypeFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Type
+
+    title = 'Video'
+
+
+class ArticleFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Article
+
+    title = 'article 1'
+    location = factory.SubFactory(LocationFactory)
+    user = factory.SubFactory(UserFactory)
 
 
 class ArticleAdminTest(TestCase):
@@ -20,3 +52,12 @@ class ArticleAdminTest(TestCase):
 
     def test_includes_article_type(self):
         self.assertIn("types", ArticleAdmin.fieldsets[0][1]['fields'])
+
+
+class ArticleTest(TestCase):
+    def setUp(self):
+        self.video_article = ArticleFactory.create()
+        self.video_article.types.add(TypeFactory.create())
+
+    def test_is_video_article(self):
+        self.assertTrue(self.video_article.is_video_article)
