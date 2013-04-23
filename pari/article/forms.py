@@ -18,6 +18,7 @@ class CategoryForm(DisplayableForm):
     class Meta:
         model = Category
 
+
 class TypeForm(forms.ModelForm):
     class Meta:
         model = Type

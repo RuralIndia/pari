@@ -32,6 +32,7 @@ class TypeAdmin(admin.ModelAdmin):
         "fields": ["title"],
     }),
 
+
 class LocationAdmin(admin.ModelAdmin):
     form = LocationForm
     fieldsets = (None, {

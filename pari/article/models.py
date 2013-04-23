@@ -58,10 +58,13 @@ class Category(Displayable, AdminThumbMixin):
 
 class Type(models.Model):
     title = models.CharField(max_length=5)
+
     def __str__(self):
         return "%s" % (self.title)
+
     def __unicode__(self):
         return "%s" % (self.title)
+
 
 class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     location = models.ForeignKey(Location)
