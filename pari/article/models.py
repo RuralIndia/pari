@@ -101,3 +101,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
         if self.is_topic:
             name = "topic-detail"
         return (name, (), {"slug": self.slug})
+
+    @property
+    def is_video_article(self):
+        return self.types.filter(title='Video').exists()

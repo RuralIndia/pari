@@ -9,3 +9,8 @@ def capsule_video_for(article, width, height):
              'width': width,
              'height': height,
            }
+
+
+@register.inclusion_tag("article/includes/featured_content.html")
+def featured_content_for(article):
+    return { 'article': article }
