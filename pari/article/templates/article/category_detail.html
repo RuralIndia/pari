@@ -18,51 +18,5 @@
 {% endblock %}
 
 {% block main %}
-    <div class="heading row">
-        <h3 class="span10">Articles for "{{ category.title }}"</h3>
-        <div class="type-filters span2">
-            <div>Filter by article type:</div>
-            <a class="type-filter"><i class="icon-facetime-video"></i></a>
-            <a class="type-filter"><i class="icon-picture"></i></a>
-            <a class="type-filter"><i class="icon-volume-up"></i></a>
-        </div>
-    </div>
-    <div class="articles">
-        {% for article in articles %}
-            <div class="article">
-                <div class="article-image">
-                    {% capsule_video_for article 278 225 %}
-                </div>
-                <div class="caption">
-                    <h4><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
-                    <p>{{ article.location.title }}</p>
-                    <p>by {{ article.user.username }}</p>
-                    <p>{{ article.description }}</p>
-                    {% keywords_for article as keywords %}
-                    {% for keyword in keywords %}
-                        <span class="tag">
-                            <a href="{% url "blog_post_list_tag" keyword.slug %}">{{ keyword }}</a>
-                        </span>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endfor %}
-        <div class="paginator">
-          <ul>
-            {% if articles.has_previous %}
-                <li class="page-nav"><a href="?page=1"><i class="icon-double-angle-left"></i></a></li>
-                <li class="page-nav"><a href="?page={{ articles.previous_page_number }}"><i class="icon-angle-left"></i></a></li>
-            {% endif %}
-
-            {% for page in articles.paginator.page_range %}
-                <li class="{% if page == articles.number %}active{% endif %}"><a href="?page={{ page }}">{{ page }}</a></li>
-            {% endfor %}
-
-            {% if articles.has_next %}
-                <li class="page-nav"><a href="?page={{ articles.next_page_number }}"><i class="icon-angle-right"></i></a></li>
-                <li class="page-nav"><a href="?page={{ articles.paginator.num_pages }}"><i class="icon-double-angle-right"></i></a></li>
-            {% endif %}
-          </ul>
-        </div>
-    </div>
+    {% article_list articles category.title %}
 {% endblock %}
