@@ -1,4 +1,6 @@
 from django.test import TestCase
+from django.test.client import Client
+from django.core.urlresolvers import reverse
 
 from mezzanine.accounts.models import User
 
@@ -45,7 +47,7 @@ class ArticleFactory(factory.DjangoModelFactory):
     user = factory.SubFactory(UserFactory)
 
 
-class ArticleAdminTest(TestCase):
+class ArticleAdminTests(TestCase):
     def test_includes_location_field(self):
         self.assertIn("location", ArticleAdmin.fieldsets[0][1]['fields'])
 
@@ -65,7 +67,7 @@ class ArticleAdminTest(TestCase):
         self.assertIn("types", ArticleAdmin.fieldsets[0][1]['fields'])
 
 
-class ArticleTest(TestCase):
+class ArticleTests(TestCase):
     def setUp(self):
         self.video_article = ArticleFactory.create()
         self.video_article.types.add(TypeFactory.create())
@@ -74,7 +76,7 @@ class ArticleTest(TestCase):
         self.assertTrue(self.video_article.is_video_article)
 
 
-class LocationTest(TestCase):
+class LocationTests(TestCase):
     def setUp(self):
         self.location = LocationFactory.create()
 
@@ -96,3 +98,17 @@ class LocationTest(TestCase):
     def test_get_topics_for_location_with_topic_and_articles(self):
         location = LocationFactory(articles=(ArticleFactory(), ArticleFactory(), ArticleFactory(is_topic=True)))
         self.assertEqual(1, len(location.get_topics()))
+
+
+class ArticleViewsTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.article = ArticleFactory()
+
+    def test_article_detail_view_context(self):
+        response = self.client.get(reverse('article-detail', args=(self.article.slug,)))
+        self.assertEqual(response.context['blog_post'], self.article)
+
+    def test_article_detail_view(self):
+        response = self.client.get(reverse('article-detail', args=(self.article.slug,)))
+        self.assertContains(response, self.article.title, status_code=200)
