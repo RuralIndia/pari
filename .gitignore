@@ -3,6 +3,7 @@ media/
 .idea/
 .vagrant
 *.pid
+CACHE
 
 # C extensions
 *.so
