@@ -8,7 +8,7 @@ import factory
 from geoposition import Geoposition
 
 from .admin import ArticleAdmin
-from .models import Article, Location, Type
+from .models import Article, Location, Type, Category
 
 
 class LocationFactory(factory.DjangoModelFactory):
@@ -30,7 +30,7 @@ class LocationFactory(factory.DjangoModelFactory):
 class UserFactory(factory.DjangoModelFactory):
     FACTORY_FOR = User
 
-    username = factory.Sequence(lambda n: 'user %s' % n)
+    username = factory.Sequence(lambda n: 'User %s' % n)
 
 
 class TypeFactory(factory.DjangoModelFactory):
@@ -39,10 +39,25 @@ class TypeFactory(factory.DjangoModelFactory):
     title = 'Video'
 
 
+class CategoryFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Category
+
+    title = factory.Sequence(lambda n: 'Category %s' % n)
+
+    @factory.post_generation
+    def articles(self, create, extracted, **kwargs):
+        if not create:
+            return
+
+        if extracted:
+            for article in extracted:
+                self.articles.add(article)
+
+
 class ArticleFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Article
 
-    title = factory.Sequence(lambda n: 'article %s' % n)
+    title = factory.Sequence(lambda n: 'Article %s' % n)
     location = factory.SubFactory(LocationFactory)
     user = factory.SubFactory(UserFactory)
 
@@ -103,12 +118,23 @@ class LocationTests(TestCase):
 class ArticleViewsTests(TestCase):
     def setUp(self):
         self.client = Client()
-        self.article = ArticleFactory()
 
     def test_article_detail_view_context(self):
-        response = self.client.get(reverse('article-detail', args=(self.article.slug,)))
-        self.assertEqual(response.context['blog_post'], self.article)
+        article = ArticleFactory()
+        response = self.client.get(reverse('article-detail', args=(article.slug,)))
+        self.assertEqual(response.context['blog_post'], article)
 
     def test_article_detail_view(self):
-        response = self.client.get(reverse('article-detail', args=(self.article.slug,)))
-        self.assertContains(response, self.article.title, status_code=200)
+        article = ArticleFactory()
+        response = self.client.get(reverse('article-detail', args=(article.slug,)))
+        self.assertContains(response, article.title, status_code=200)
+
+    def test_category_detail_context(self):
+        category = CategoryFactory(articles=(ArticleFactory(), ArticleFactory()))
+        response = self.client.get(reverse('category-detail', args=(category.slug,)))
+        self.assertEqual(2, len(response.context['articles']))
+
+    def test_category_detail_context_not_include_topics(self):
+        category = CategoryFactory(articles=(ArticleFactory(), ArticleFactory(is_topic=True)))
+        response = self.client.get(reverse('category-detail', args=(category.slug,)))
+        self.assertEqual(1, len(response.context['articles']))

@@ -54,7 +54,7 @@ class CategoryDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CategoryDetail, self).get_context_data(**kwargs)
-        all_articles = context['category'].articles.all()
+        all_articles = context['category'].articles.filter(is_topic=False)
 
         paginator = Paginator(all_articles, 10)
         page = self.request.GET.get('page')
