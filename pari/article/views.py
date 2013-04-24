@@ -38,8 +38,9 @@ class LocationArticle(generics.RetrieveAPIView):
 
 def location_detail(request, slug):
     location = get_object_or_404(Location, slug=slug)
+    articles = Article.articles.filter(location=location)
     templates = [u"article/location_detail.html"]
-    c = {"location": location}
+    c = {"location": location, "articles_in_location": articles}
     return render(request, templates, c)
 
 

@@ -1,5 +1,5 @@
 {% extends "sidebar_base.html" %}
-{% load i18n verbatim_tag mezzanine_tags %}
+{% load i18n verbatim_tag mezzanine_tags article_tags %}
 
 {% block meta_title %}{% trans location.title %}{% endblock %}
 {% block title %}{% trans location.title %}{% endblock %}
@@ -12,8 +12,15 @@
 {{ location.description }}
 {% endblock %}
 
+{% block extra_css %}
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less" charset="utf-8">
+{% endblock %}
+
 {% block maincontent %}
-    <p>{{ location.title }}</p>
+    <h4>{{ location.title }}</h4>
+    <p>{{ location.description }}</p>
+
+{% article_list articles_in_location location.title %}
 {% endblock %}
 
 {% block sidebar %}

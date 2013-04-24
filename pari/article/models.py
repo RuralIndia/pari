@@ -104,4 +104,4 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
 
     @property
     def is_video_article(self):
-        return self.types.filter(title='Video').exists()
+        return self.types.filter(title__iexact='Video').exists()
