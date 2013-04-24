@@ -15,6 +15,15 @@ class LocationFactory(factory.DjangoModelFactory):
     title = 'Location 1'
     location = Geoposition(1.2, 2.1)
 
+    @factory.post_generation
+    def articles(self, create, extracted, **kwargs):
+        if not create:
+            return
+
+        if extracted:
+            for article in extracted:
+                self.article_set.add(article)
+
 
 class UserFactory(factory.DjangoModelFactory):
     FACTORY_FOR = User
@@ -31,7 +40,7 @@ class TypeFactory(factory.DjangoModelFactory):
 class ArticleFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Article
 
-    title = 'article 1'
+    title = factory.Sequence(lambda n: 'article %s' % n)
     location = factory.SubFactory(LocationFactory)
     user = factory.SubFactory(UserFactory)
 
@@ -71,3 +80,19 @@ class LocationTest(TestCase):
 
     def test_get_as_latLng(self):
         self.assertEqual([u'1.2', u'2.1'], self.location.get_as_latLng())
+
+    def test_get_articles_for_location_with_no_articles(self):
+        location = LocationFactory()
+        self.assertEqual(0, len(location.get_articles()))
+
+    def test_get_articles_for_location_with_only_articles(self):
+        location = LocationFactory(articles=(ArticleFactory(), ArticleFactory(), ArticleFactory()))
+        self.assertEqual(3, len(location.get_articles()))
+
+    def test_get_articles_for_location_with_topic_and_articles(self):
+        location = LocationFactory(articles=(ArticleFactory(), ArticleFactory(), ArticleFactory(is_topic=True)))
+        self.assertEqual(2, len(location.get_articles()))
+
+    def test_get_topics_for_location_with_topic_and_articles(self):
+        location = LocationFactory(articles=(ArticleFactory(), ArticleFactory(), ArticleFactory(is_topic=True)))
+        self.assertEqual(1, len(location.get_topics()))
