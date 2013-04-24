@@ -6,3 +6,4 @@ django-nose==1.1
 django-debug-toolbar==0.9.4
 django-extensions==1.1.1
 nose==1.2.1
+factory_boy==2.0.2
