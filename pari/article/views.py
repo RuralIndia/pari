@@ -39,8 +39,9 @@ class LocationArticle(generics.RetrieveAPIView):
 def location_detail(request, slug):
     location = get_object_or_404(Location, slug=slug)
     articles = Article.articles.filter(location=location)
+    topics = Article.topics.filter(location=location)
     templates = [u"article/location_detail.html"]
-    c = {"location": location, "articles_in_location": articles}
+    c = {"location": location, "articles_in_location": articles, "topics_in_location": topics}
     return render(request, templates, c)
 
 
@@ -59,7 +60,7 @@ class CategoryDetail(DetailView):
         page = self.request.GET.get('page')
         context['articles'] = get_article_list(all_articles, page)
         return context
-        
+
 
 def get_article_list(all_articles, page):
     paginator = Paginator(all_articles, 10)
