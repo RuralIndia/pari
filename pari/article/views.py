@@ -9,6 +9,7 @@ from rest_framework.reverse import reverse
 from rest_framework.response import Response
 
 from mezzanine.utils.views import render
+from mezzanine.generic.models import Keyword
 
 from .models import Location, Article, Category
 from .serializers import LocationSerializer, LocationArticleSerializer
@@ -84,6 +85,19 @@ class ArticleDetail(DetailView):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
         article = context['blog_post']
         context['related_articles'] = article.related_posts.all()[:5]
+        return context
+
+
+class KeywordDetail(DetailView):
+    context_object_name = "keyword"
+    model = Keyword
+
+    def get_context_data(self, **kwargs):
+
+        context = super(KeywordDetail, self).get_context_data(**kwargs)
+        keyword = context['keyword']
+        context['articles_by_keyword'] = Article.articles.filter(keywords__keyword__title__in=[keyword])
+        context['topics_by_keyword'] = Article.topics.filter(keywords__keyword__title__in=[keyword])
         return context
 
 

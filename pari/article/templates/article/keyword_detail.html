@@ -1,0 +1,28 @@
+{% extends "sidebar_base.html" %}
+{% load i18n verbatim_tag mezzanine_tags article_tags %}
+
+{% block meta_title %}{% trans keyword.title %}{% endblock %}
+{% block title %}{% trans keyword.title %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{{ keyword.title }}
+{% endmetablock %}{% endblock %}
+
+{% block extra_css %}
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less" charset="utf-8">
+{% endblock %}
+
+{% block maincontent %}
+<div id="article-list" data-filter-endpoint="category_article_filter" data-filter-category="{{ category.id }}">
+    {% article_list articles_by_keyword keyword.title %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="well">
+    <h4>Topics</h4>
+    {% for topic in topics_by_keyword %}
+    <a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a>
+    {% endfor %}
+</div>
+{% endblock %}

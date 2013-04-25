@@ -3,7 +3,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from .views import LocationList, LocationDetail, LocationArticle, CategoriesList, CategoryDetail, ArticleDetail
+from .views import LocationList, LocationDetail, LocationArticle, CategoriesList, CategoryDetail, ArticleDetail, KeywordDetail
 
 root_patterns = patterns('pari.article.views',
     url(r'^categories/(?P<slug>.+)/$', CategoryDetail.as_view(), name='category-detail'),
@@ -11,6 +11,7 @@ root_patterns = patterns('pari.article.views',
     url(r'^articles/(?P<slug>.+)/$', ArticleDetail.as_view(), name='article-detail'),
     url(r'^topics/(?P<slug>.+)/$', ArticleDetail.as_view(), name='topic-detail'),
     url(r'^locations/(?P<slug>.+)/$', 'location_detail', name='location-detail'),
+    url(r'^keywords/(?P<slug>.+)/$', KeywordDetail.as_view(template_name="article/keyword_detail.html"), name='keyword-detail'),
 )
 
 

@@ -85,7 +85,7 @@
 
             {% for keyword in keywords %}
                 <div class="tag">
-                    <a href="{% url "blog_post_list_tag" keyword.slug %}">{{ keyword }}</a>
+                    <a href="{% url "keyword-detail" keyword.slug %}">{{ keyword }}</a>
                 </div>
             {% endfor %}
         {% endif %}
