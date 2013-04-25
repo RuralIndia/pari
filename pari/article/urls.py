@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 from rest_framework.urlpatterns import format_suffix_patterns
+
 from .views import LocationList, LocationDetail, LocationArticle, CategoriesList, CategoryDetail, ArticleDetail
 
 root_patterns = patterns('pari.article.views',
@@ -19,3 +22,5 @@ urlpatterns = patterns('pari.article.views',
 )
 
 urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'api'])
+
+urlpatterns += staticfiles_urlpatterns()

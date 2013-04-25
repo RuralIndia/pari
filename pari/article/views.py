@@ -56,19 +56,22 @@ class CategoryDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(CategoryDetail, self).get_context_data(**kwargs)
         all_articles = context['category'].articles.filter(is_topic=False)
-
-        paginator = Paginator(all_articles, 10)
         page = self.request.GET.get('page')
-
-        try:
-            articles = paginator.page(page)
-        except PageNotAnInteger:
-            articles = paginator.page(1)
-        except EmptyPage:
-            articles = paginator.page(paginator.num_pages)
-
-        context['articles'] = articles
+        context['articles'] = get_article_list(all_articles, page)
         return context
+        
+
+def get_article_list(all_articles, page):
+    paginator = Paginator(all_articles, 10)
+
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except EmptyPage:
+        articles = paginator.page(paginator.num_pages)
+
+    return articles
 
 
 class ArticleDetail(DetailView):

@@ -8,6 +8,8 @@ Unipath==0.2.1
 bleach==1.2
 django-appconf==0.6
 django-compressor==1.2
+django-dajax==0.9.2
+django-dajaxice==0.5.5
 django-filter==0.5.4
 -e git://github.com/manojlds/django-geoposition.git@298cd7cdf4b7bcf071385984a053e2105e805067#egg=django_geoposition-dev
 djangorestframework==2.2.0

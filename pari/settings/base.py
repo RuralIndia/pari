@@ -143,6 +143,7 @@ ALLOWED_HOSTS = ("localhost",)
 TEMPLATE_LOADERS = (
     "django.template.loaders.filesystem.Loader",
     "django.template.loaders.app_directories.Loader",
+    "django.template.loaders.eggs.Loader",
 )
 
 AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
@@ -152,6 +153,7 @@ AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "dajaxice.finders.DajaxiceFinder",
     #"django.contrib.staticfiles.finders.DefaultStorageFinder",
 )
 
@@ -267,6 +269,8 @@ INSTALLED_APPS = (
     "geoposition",
     "rest_framework",
     "compressor",
+    'dajaxice',
+    'dajax',
 
     #Custom
     "pari.article",

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n future %}
+{% load pages_tags mezzanine_tags i18n future dajaxice_templatetags %}
+{% load static from staticfiles %}
 <head>
 
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -70,6 +71,8 @@
   {% compress js %}
     <script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    {% dajaxice_js_import %}
+    <script src="{{ STATIC_URL }}dajax/jquery.dajax.core.js"></script>
     <script>
     $(function() {
         $('.middleinput:text, textarea').addClass('xlarge');

@@ -6,11 +6,17 @@ from pari.article.urls import root_patterns as articles_root_patterns
 
 admin.autodiscover()
 
+from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+
+dajaxice_autodiscover()
+
 # Add the urlpatterns for any custom Django applications here.
 # You can also change the ``home`` view to add your own functionality
 # to the project's homepage.
 
 urlpatterns = patterns("",
+
+    url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
 
     url(r'^map/', include('pari.map.urls')),
 
