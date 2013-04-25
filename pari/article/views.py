@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from itertools import chain
 
 from rest_framework import generics
 from rest_framework.decorators import api_view
@@ -98,6 +99,8 @@ class KeywordDetail(DetailView):
         keyword = context['keyword']
         context['articles_by_keyword'] = Article.articles.filter(keywords__keyword__title__in=[keyword])
         context['topics_by_keyword'] = Article.topics.filter(keywords__keyword__title__in=[keyword])
+        assigned_keywords = list(chain.from_iterable(article.keywords.all() for article in context["articles_by_keyword"]))
+        context['related_keywords'] = list(set([key.keyword for key in assigned_keywords if key.keyword != keyword][:10]))
         return context
 
 

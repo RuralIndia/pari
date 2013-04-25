@@ -9,7 +9,7 @@
 {% endmetablock %}{% endblock %}
 
 {% block extra_css %}
-<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less" charset="utf-8">
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/keyword_list.less" charset="utf-8">
 {% endblock %}
 
 {% block maincontent %}
@@ -20,9 +20,19 @@
 
 {% block sidebar %}
 <div class="well">
-    <h4>Topics</h4>
+    <h4><i class="icon-edit"></i> Topics</h4>
     {% for topic in topics_by_keyword %}
-    <a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a>
+    <div class="topic">
+        <a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a>
+    </div>
+    {% endfor %}
+</div>
+<div class="well">
+    <h4><i class="icon-tags"></i> Related Keywords</h4>
+    {% for related_keyword in related_keywords %}
+    <span class="tag">
+        <a href="{{ related_keyword.get_absolute_url }}">{{ related_keyword.title }}</a>
+    </span>
     {% endfor %}
 </div>
 {% endblock %}
