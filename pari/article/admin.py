@@ -30,7 +30,7 @@ class ArticleAdmin(BlogPostAdmin):
 class TypeAdmin(admin.ModelAdmin):
     form = TypeForm
     fieldsets = (None, {
-        "fields": ["title"],
+        "fields": ["title", "icon_class"],
     }),
 
 

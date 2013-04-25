@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block main %}
-    <div id="article-list" data-filter-endpoint="category_article_filter" data-filter-category="{{ category.id }}">
-        {% article_list articles category.title %}
+    <div id="article-list" data-filter-endpoint="category_article_filter" data-filter-args-category="{{ category.id }}">
+        {% article_list articles category.title types %}
     </div>
 {% endblock %}

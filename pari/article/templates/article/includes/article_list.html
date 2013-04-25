@@ -4,9 +4,9 @@
     <h3 class="span10">Articles for "{{ title }}"</h3>
     <div class="type-filters span2">
         <div>Filter by article type:</div>
-        <a class="type-filter"><i class="icon-facetime-video"></i></a>
-        <a class="type-filter"><i class="icon-picture"></i></a>
-        <a class="type-filter"><i class="icon-volume-up"></i></a>
+        {% for type in types %}
+            <a class="type-filter{% if type.title == filter %} active{% endif %}" data-filter="{{ type.title }}"><i class="{{ type.icon_class }}"></i></a>
+        {% endfor %}
     </div>
 </div>
 <div class="articles">
