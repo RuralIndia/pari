@@ -16,6 +16,7 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
 {% endifinstalled %}
 
+{% block extra_uncompressed_css %}{% endblock %}
 {% compress css %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
@@ -67,7 +68,8 @@
       </div>
     </div>
   </div>
-
+  
+  {% block extra_uncompressed_js %}{% endblock %}
   {% compress js %}
     <script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>

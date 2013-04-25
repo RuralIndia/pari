@@ -9,36 +9,41 @@
 {% endmetablock %}{% endblock %}
 
 {% block meta_description %}
-{{ location.description }}
+    {{ location.description }}
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+    <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 {% endblock %}
 
 {% block extra_js %}
-<script type='text/javascript' src="{{ STATIC_URL }}article/js/map.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/map.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_css %}
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 {% endblock %}
 
 {% block extra_css %}
-<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/topic.less" charset="utf-8">
 {% endblock %}
 
 {% block maincontent %}
-{% article_list articles_in_location location.title %}
+    {% article_list articles_in_location location.title %}
 {% endblock %}
 
 {% block sidebar %}
-        <div class="well">
-            <h4>{{ location.title }}</h4>
-            <p>{{ location.description }}</p>
-            <div id="map"></div>
-            <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
-            <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
-
-        </div>
-        <div class="well map-view" data-lat="{{ location.location.latitude }}" data-long="{{ location.location.longitude }}">
-            <h4>Topics</h4>
+    <div class="well">
+        <h4><i class="icon-road"></i> {{ location.title }}</h4>
+        <p>{{ location.description }}</p>
+        <div id="map" class="map-view" data-lat="{{ location.location.latitude }}" data-long="{{ location.location.longitude }}"></div>
+    </div>
+    <div class="well" >
+        <h4><i class="icon-edit"></i> Topics</h4>
         {% for topic in topics_in_location %}
-        <div class="topic">
-            <a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a>
-        </div>
+            <div class="topic">
+                <a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a>
+            </div>
         {% endfor %}
-        </div>
+    </div>
 {% endblock %}
