@@ -62,4 +62,5 @@ var ArticleFilter = {
 $(function(){
     ArticleFilter.init();
     ArticleFilter.historyBind();
+    $('.type-filter').tooltip();
 });
