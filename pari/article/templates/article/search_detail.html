@@ -1,0 +1,24 @@
+{% extends "sidebar_base.html" %}
+
+{% load i18n verbatim_tag mezzanine_tags article_tags %}
+
+{% block meta_title %}{% trans query %}{% endblock %}
+{% block title %}{% trans query %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{{ query }}
+{% endmetablock %}{% endblock %}
+
+{% block extra_js %}
+<script type='text/javascript' src="{{ STATIC_URL }}article/js/article_filter.js"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/search_results.less" charset="utf-8">
+{% endblock %}
+
+{% block main %}
+<div id="article-list" data-filter-endpoint="keyword_article_filter" data-filter-args-keyword="{{ keyword.id }}">
+    {% article_list articles query types %}
+</div>
+{% endblock %}

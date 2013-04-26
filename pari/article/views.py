@@ -3,6 +3,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from itertools import chain
+from mezzanine.core.models import Displayable
 
 from rest_framework import generics
 from rest_framework.decorators import api_view
@@ -102,6 +103,14 @@ class KeywordDetail(DetailView):
         assigned_keywords = list(chain.from_iterable(article.keywords.all() for article in context["articles_by_keyword"]))
         context['related_keywords'] = list(set([key.keyword for key in assigned_keywords if key.keyword != keyword][:10]))
         return context
+
+
+def search_detail(request):
+    query = request.GET.get("q", "")
+    articles = Displayable.objects.search(query)
+    templates = [u"article/search_detail.html"]
+    c = {"query": query, "articles": articles}
+    return render(request, templates, c)
 
 
 def topic_detail(request, slug):

@@ -12,6 +12,7 @@ root_patterns = patterns('pari.article.views',
     url(r'^topics/(?P<slug>.+)/$', ArticleDetail.as_view(), name='topic-detail'),
     url(r'^locations/(?P<slug>.+)/$', 'location_detail', name='location-detail'),
     url(r'^keywords/(?P<slug>.+)/$', KeywordDetail.as_view(template_name="article/keyword_detail.html"), name='keyword-detail'),
+    url(r'^search/$', 'search_detail', name='search-detail'),
 )
 
 
