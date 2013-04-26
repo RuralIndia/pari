@@ -8,9 +8,13 @@ from .views import get_article_list
 
 
 @dajaxice_register
-def category_article_filter(request, category, filter, page=1):
+def category_article_filter(request, category, filter=None, page=1):
     category = Category.objects.get(pk=category)
-    articles = get_article_list(category.articles.filter(types__title__iexact=filter), 1)
+    article_queryset = category.articles.all()
+    if(filter is not None):
+        article_queryset = article_queryset.filter(types__title__iexact=filter)
+
+    articles = get_article_list(article_queryset, page)
     render = render_to_string('article/includes/article_list.html', {'articles': articles,
                                                                      'title': category.title,
                                                                      'filter': filter,

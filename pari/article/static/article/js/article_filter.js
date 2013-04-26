@@ -2,7 +2,10 @@ var ArticleFilter = {
     init: function() {
         $('.type-filter').click(function(){
         var filterEndpoint = $('#article-list').data('filter-endpoint');
-        var args = { 'filter': $(this).data('filter')};
+        var args = {};
+        if(!($(this).hasClass('active'))){
+            args['filter'] = $(this).data('filter');
+        }
         var filterArgsPrefix = "filterArgs";
         $.each($('#article-list').data(), function(key,value){
             if(key.substring(0, filterArgsPrefix.length) === filterArgsPrefix){
