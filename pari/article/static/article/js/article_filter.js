@@ -1,7 +1,6 @@
 var ArticleFilter = {
     init: function() {
         $('.type-filter').on('click', $.proxy(function(event){
-            var filterEndpoint = $('#article-list').data('filter-endpoint');
             var filterElement = $(event.target).parent('.type-filter');
             if(filterElement.hasClass('active')){
                 $('#article-list').removeData('filter-args-filter');

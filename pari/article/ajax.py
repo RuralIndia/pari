@@ -15,7 +15,7 @@ def category_article_filter(request, category, filter=None, page=1):
     article_queryset = category.articles.all()
 
     return article_filter(article_queryset, category.title, filter, page)
-    
+
 
 @dajaxice_register
 def location_article_filter(request, location, filter=None, page=1):
@@ -23,6 +23,7 @@ def location_article_filter(request, location, filter=None, page=1):
     article_queryset = location.article_set.all()
 
     return article_filter(article_queryset, location.title, filter, page)
+
 
 @dajaxice_register
 def keyword_article_filter(request, keyword, filter=None, page=1):
@@ -46,5 +47,3 @@ def article_filter(article_queryset, title, filter, page):
     dajax.assign('#article-list', 'innerHTML', render)
     dajax.script('ArticleFilter.init();')
     return dajax.json()
-
-
