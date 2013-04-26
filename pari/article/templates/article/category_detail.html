@@ -5,13 +5,13 @@
 {% block title %}{{ category.title }}{% endblock %}
 
 {% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}js/jquery.history.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}article/js/article_filter.js"></script>
 {% endblock %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less" charset="utf-8">
 {% endblock %}
-
 
 {% block breadcrumb_menu %}
     <li class="active">{% trans "{{ category.title }}" %}</li>

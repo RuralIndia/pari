@@ -7,7 +7,6 @@ var ArticleFilter = {
             } else {
                 $('#article-list').data('filter-args-filter', filterElement.data('filter'));
             }
-
             this.collectArgsAndSumbit();
         }, this));
 
@@ -19,6 +18,11 @@ var ArticleFilter = {
 
             this.collectArgsAndSumbit();
         }, this));
+    },
+
+    updateHistory: function(args){
+        this.historyFlag = false;
+        History.pushState(args, null, "?" + $.param(args));
     },
 
     collectArgsAndSumbit: function(){
@@ -36,11 +40,26 @@ var ArticleFilter = {
         this.submit(filterEndpoint, args);
     },
 
+    historyBind: function(){
+        History.Adapter.bind(window,'statechange',$.proxy(function(){
+            if(this.historyFlag){
+                var State = History.getState();
+                var filterEndpoint = $('#article-list').data('filter-endpoint');
+                this.submit(filterEndpoint, State.data)
+            }
+            this.historyFlag = true;
+        }, this));
+    },
+
     submit: function(filterEndpoint, args){
+        this.updateHistory(args);
         Dajaxice.pari.article[filterEndpoint](Dajax.process, args);
-    }
+    },
+
+    historyFlag: true
 }
 
 $(function(){
     ArticleFilter.init();
+    ArticleFilter.historyBind();
 });
