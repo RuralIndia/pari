@@ -13,9 +13,7 @@
 {% endblock %}
 
 {% block maincontent %}
-<div id="article-list" data-filter-endpoint="category_article_filter" data-filter-category="{{ category.id }}">
-    {% article_list articles_by_keyword keyword.title %}
-</div>
+    {% article_list articles_by_keyword keyword.title types %}
 {% endblock %}
 
 {% block sidebar %}
