@@ -1,9 +1,11 @@
 from django.template.loader import render_to_string
 
+from mezzanine.generic.models import Keyword
+
 from dajaxice.decorators import dajaxice_register
 from dajax.core import Dajax
 
-from .models import Category, Type, Location
+from .models import Article, Category, Type, Location
 from .views import get_article_list
 
 
@@ -21,6 +23,13 @@ def location_article_filter(request, location, filter=None, page=1):
     article_queryset = location.article_set.all()
 
     return article_filter(article_queryset, location.title, filter, page)
+
+@dajaxice_register
+def keyword_article_filter(request, keyword, filter=None, page=1):
+    keyword = Keyword.objects.get(pk=keyword)
+    article_queryset = Article.articles.filter(keywords__keyword__title__iexact=keyword)
+
+    return article_filter(article_queryset, keyword.title, filter, page)
 
 
 def article_filter(article_queryset, title, filter, page):

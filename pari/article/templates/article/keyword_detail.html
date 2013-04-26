@@ -8,12 +8,18 @@
 {{ keyword.title }}
 {% endmetablock %}{% endblock %}
 
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/article_filter.js"></script>
+{% endblock %}
+
 {% block extra_css %}
 <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/keyword_list.less" charset="utf-8">
 {% endblock %}
 
 {% block maincontent %}
-    {% article_list articles_by_keyword keyword.title types %}
+    <div id="article-list" data-filter-endpoint="keyword_article_filter" data-filter-args-keyword="{{ keyword.id }}">
+        {% article_list articles_by_keyword keyword.title types %}
+    </div>
 {% endblock %}
 
 {% block sidebar %}
