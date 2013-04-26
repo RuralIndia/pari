@@ -281,5 +281,29 @@
     "pk": 2,
     "model": "pages.link",
     "fields": {}
+  },
+  {
+    "pk": 1,
+    "model": "article.type",
+    "fields": {
+      "icon_class": "icon-camera",
+      "title": "Photo"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "article.type",
+    "fields": {
+      "icon_class": "icon-facetime-video",
+      "title": "Video"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "article.type",
+    "fields": {
+      "icon_class": "icon-volume-up",
+      "title": "Audio"
+    }
   }
 ]
