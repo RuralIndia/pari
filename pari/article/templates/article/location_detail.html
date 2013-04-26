@@ -17,6 +17,7 @@
 {% endblock %}
 
 {% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/article_filter.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}article/js/map.js"></script>
 {% endblock %}
 
@@ -29,7 +30,9 @@
 {% endblock %}
 
 {% block maincontent %}
-    {% article_list articles_in_location location.title types %}
+    <div id="article-list" data-filter-endpoint="location_article_filter" data-filter-args-location="{{ location.id }}">
+        {% article_list articles_in_location location.title types %}
+    </div>
 {% endblock %}
 
 {% block sidebar %}
