@@ -138,3 +138,14 @@ class ArticleViewsTests(TestCase):
         category = CategoryFactory(articles=(ArticleFactory(), ArticleFactory(is_topic=True)))
         response = self.client.get(reverse('category-detail', args=(category.slug,)))
         self.assertEqual(1, len(response.context['articles']))
+
+    def test_search_results_contain_topics(self):
+        topic = ArticleFactory()
+        topic.is_topic = True
+        response = self.client.get(reverse('search-detail'), {'q': 'article'})
+        self.assertContains(response, topic, status_code=200)
+
+    def test_search_results_should_contain_locations(self):
+        location = LocationFactory()
+        response = self.client.get(reverse('search-detail'), {'q': 'location'})
+        self.assertContains(response, location, status_code=200)
