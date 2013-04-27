@@ -29,7 +29,7 @@ def location_article_filter(request, location, filter=None, page=1):
 @dajaxice_register
 def keyword_article_filter(request, keyword, filter=None, page=1):
     keyword = Keyword.objects.get(pk=keyword)
-    article_queryset = Article.articles.filter(keywords__keyword__title__iexact=keyword)
+    article_queryset = Article.articles.filter(keywords__keyword=keyword)
 
     return article_filter(article_queryset, keyword.title, filter, page)
 

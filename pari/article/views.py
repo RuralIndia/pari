@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from itertools import chain
 from mezzanine.core.models import Displayable
 
@@ -15,7 +14,7 @@ from mezzanine.generic.models import Keyword
 
 from .models import Location, Article, Category
 from .serializers import LocationSerializer, LocationArticleSerializer
-from .ajax import get_article_list
+from .mixins import ArticleListMixin
 
 
 @api_view(['GET'])
@@ -40,17 +39,17 @@ class LocationArticleApi(generics.RetrieveAPIView):
     serializer_class = LocationArticleSerializer
 
 
-class LocationDetail(DetailView):
+class LocationDetail(ArticleListMixin, DetailView):
     context_object_name = "location"
+    article_list_context_name = "articles_in_location"
     model = Location
+
+    def get_article_list_queryset(self):
+        return Article.articles.filter(location=self.object)
 
     def get_context_data(self, **kwargs):
         context = super(LocationDetail, self).get_context_data(**kwargs)
         location = context['location']
-        all_articles = Article.articles.filter(location=location)
-        page = self.request.GET.get('page')
-        filter = self.request.GET.get('filter')
-        context['articles_in_location'] = get_article_list(all_articles, page, filter)
         context['topics_in_location'] = Article.topics.filter(location=location)
         return context
 
@@ -60,17 +59,12 @@ class CategoriesList(ListView):
     model = Category
 
 
-class CategoryDetail(DetailView):
+class CategoryDetail(ArticleListMixin, DetailView):
     context_object_name = "category"
     model = Category
 
-    def get_context_data(self, **kwargs):
-        context = super(CategoryDetail, self).get_context_data(**kwargs)
-        all_articles = context['category'].articles.filter(is_topic=False)
-        page = self.request.GET.get('page')
-        filter = self.request.GET.get('filter')
-        context['articles'] = get_article_list(all_articles, page, filter)
-        return context
+    def get_article_list_queryset(self):
+        return self.object.articles.filter(is_topic=False)
 
 
 class ArticleDetail(DetailView):
@@ -84,15 +78,18 @@ class ArticleDetail(DetailView):
         return context
 
 
-class KeywordDetail(DetailView):
+class KeywordDetail(ArticleListMixin, DetailView):
     context_object_name = "keyword"
+    article_list_context_name = "articles_by_keyword"
     model = Keyword
+
+    def get_article_list_queryset(self):
+        return Article.articles.filter(keywords__keyword=self.object)
 
     def get_context_data(self, **kwargs):
 
         context = super(KeywordDetail, self).get_context_data(**kwargs)
         keyword = context['keyword']
-        context['articles_by_keyword'] = Article.articles.filter(keywords__keyword__title__in=[keyword])
         context['topics_by_keyword'] = Article.topics.filter(keywords__keyword__title__in=[keyword])
         assigned_keywords = list(chain.from_iterable(article.keywords.all() for article in context["articles_by_keyword"]))
         context['related_keywords'] = list(set([key.keyword for key in assigned_keywords if key.keyword != keyword][:10]))
