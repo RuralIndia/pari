@@ -15,6 +15,7 @@ from mezzanine.generic.models import Keyword
 
 from .models import Location, Article, Category
 from .serializers import LocationSerializer, LocationArticleSerializer
+from .ajax import get_article_list
 
 
 @api_view(['GET'])
@@ -24,28 +25,34 @@ def api_root(request, format=None):
     })
 
 
-class LocationList(generics.ListAPIView):
+class LocationListApi(generics.ListAPIView):
     model = Location
     serializer_class = LocationSerializer
 
 
-class LocationDetail(generics.RetrieveAPIView):
+class LocationDetailApi(generics.RetrieveAPIView):
     model = Location
     serializer_class = LocationSerializer
 
 
-class LocationArticle(generics.RetrieveAPIView):
+class LocationArticleApi(generics.RetrieveAPIView):
     model = Location
     serializer_class = LocationArticleSerializer
 
 
-def location_detail(request, slug):
-    location = get_object_or_404(Location, slug=slug)
-    articles = Article.articles.filter(location=location)
-    topics = Article.topics.filter(location=location)
-    templates = [u"article/location_detail.html"]
-    c = {"location": location, "articles_in_location": articles, "topics_in_location": topics}
-    return render(request, templates, c)
+class LocationDetail(DetailView):
+    context_object_name = "location"
+    model = Location
+
+    def get_context_data(self, **kwargs):
+        context = super(LocationDetail, self).get_context_data(**kwargs)
+        location = context['location']
+        all_articles = Article.articles.filter(location=location)
+        page = self.request.GET.get('page')
+        filter = self.request.GET.get('filter')
+        context['articles_in_location'] = get_article_list(all_articles, page, filter)
+        context['topics_in_location'] = Article.topics.filter(location=location)
+        return context
 
 
 class CategoriesList(ListView):
@@ -61,21 +68,9 @@ class CategoryDetail(DetailView):
         context = super(CategoryDetail, self).get_context_data(**kwargs)
         all_articles = context['category'].articles.filter(is_topic=False)
         page = self.request.GET.get('page')
-        context['articles'] = get_article_list(all_articles, page)
+        filter = self.request.GET.get('filter')
+        context['articles'] = get_article_list(all_articles, page, filter)
         return context
-
-
-def get_article_list(all_articles, page):
-    paginator = Paginator(all_articles, 10)
-
-    try:
-        articles = paginator.page(page)
-    except PageNotAnInteger:
-        articles = paginator.page(1)
-    except EmptyPage:
-        articles = paginator.page(paginator.num_pages)
-
-    return articles
 
 
 class ArticleDetail(DetailView):
@@ -83,7 +78,6 @@ class ArticleDetail(DetailView):
     model = Article
 
     def get_context_data(self, **kwargs):
-
         context = super(ArticleDetail, self).get_context_data(**kwargs)
         article = context['blog_post']
         context['related_articles'] = article.related_posts.all()[:5]
