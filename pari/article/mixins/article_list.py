@@ -6,7 +6,6 @@ class ArticleListMixin(object):
 
     def get_article_list(self, page, filter):
         article_queryset = self.get_article_list_queryset()
-        
         return get_article_list(article_queryset, page, filter)
 
     def get_context_data(self, **kwargs):
