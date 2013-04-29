@@ -83,6 +83,8 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     
     featured_video = models.CharField(max_length=100, null=True, blank=True)
 
+    featured_audio = models.CharField(max_length=100, null=True, blank=True)
+
     related_posts = models.ManyToManyField("self",
                                  verbose_name=_("Related Articles"), blank=True)
     types = models.ManyToManyField(Type, related_name="articles", verbose_name="Article Type")
