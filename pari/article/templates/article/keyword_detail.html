@@ -36,7 +36,7 @@
     <h4><i class="icon-tags"></i> Related Keywords</h4>
     {% for related_keyword in related_keywords %}
     <span class="tag">
-        <a href="{{ related_keyword.get_absolute_url }}">{{ related_keyword.title }}</a>
+        <a href="{% url 'keyword-detail' related_keyword.title %}">{{ related_keyword }}</a>
     </span>
     {% endfor %}
 </div>
