@@ -42,7 +42,7 @@
 
         {% if articles.has_next %}
             <li class="page-nav" data-page="{{ articles.next_page_number }}"><a href="?page={{ articles.next_page_number }}"><i class="icon-angle-right"></i></a></li>
-            <li class="page-nav" data-page="{{ articles.next_page_number }}"><a href="?page={{ articles.paginator.num_pages }}"><i class="icon-double-angle-right"></i></a></li>
+            <li class="page-nav" data-page="{{ articles.paginator.num_pages }}"><a href="?page={{ articles.paginator.num_pages }}"><i class="icon-double-angle-right"></i></a></li>
         {% endif %}
       </ul>
     </div>
