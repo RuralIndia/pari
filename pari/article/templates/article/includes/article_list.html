@@ -13,7 +13,7 @@
     {% for article in articles %}
         <div class="article">
             <div class="article-image">
-                {% capsule_video_for article 278 225 %}
+                {% list_media_for article 278 225 %}
             </div>
             <div class="caption">
                 <h4><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
