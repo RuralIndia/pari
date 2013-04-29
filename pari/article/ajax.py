@@ -1,6 +1,6 @@
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from mezzanine.core.models import Displayable
 
 from mezzanine.generic.models import Keyword
 
@@ -32,6 +32,35 @@ def keyword_article_filter(request, keyword, filter=None, page=1):
     article_queryset = Article.articles.filter(keywords__keyword=keyword)
 
     return article_filter(article_queryset, keyword.title, filter, page)
+
+
+def filter_search_result(article_queryset, q, type, page):
+    article_queryset = [article for article in article_queryset if type == article.__class__.__name__]
+    result_types = [subclass.__name__ for subclass in Displayable.__subclasses__() if "pari" in subclass.__module__]
+    paginator = Paginator(article_queryset, 10)
+
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except EmptyPage:
+        articles = paginator.page(paginator.num_pages)
+
+    render = render_to_string('article/includes/search_result_list.html', {'articles': articles,
+                                                                           'query': q,
+                                                                           'result_types': result_types})
+
+    dajax = Dajax()
+    dajax.assign('#article-list', 'innerHTML', render)
+    dajax.script('ArticleFilter.init();')
+    return dajax.json()
+
+
+@dajaxice_register
+def search_filter(request, q, filter=None, page=1):
+    article_queryset = Displayable.objects.search(q)
+
+    return filter_search_result(article_queryset, q, filter, page)
 
 
 def get_article_list(article_queryset, page, filter):

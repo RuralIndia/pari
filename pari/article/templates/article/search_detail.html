@@ -1,6 +1,6 @@
 {% extends "sidebar_base.html" %}
 
-{% load i18n verbatim_tag mezzanine_tags article_tags %}
+{% load i18n verbatim_tag mezzanine_tags article_tags article_filters keyword_tags %}
 
 {% block meta_title %}{% trans query %}{% endblock %}
 {% block title %}{% trans query %}{% endblock %}
@@ -10,6 +10,7 @@
 {% endmetablock %}{% endblock %}
 
 {% block extra_js %}
+<script type='text/javascript' src="{{ STATIC_URL }}js/jquery.history.js"></script>
 <script type='text/javascript' src="{{ STATIC_URL }}article/js/article_filter.js"></script>
 {% endblock %}
 
@@ -18,7 +19,5 @@
 {% endblock %}
 
 {% block main %}
-<div id="article-list" data-filter-endpoint="keyword_article_filter" data-filter-args-keyword="{{ keyword.id }}">
-    {% article_list articles query types %}
-</div>
+    {% render_results_for articles query result_types%}
 {% endblock %}
