@@ -2,11 +2,13 @@ var ArticleFilter = {
     init: function() {
         $('.type-filter').on('click', $.proxy(function(event){
             var filterElement = $(event.target).parent('.type-filter');
+            var listContainer = $('#article-list');
             if(filterElement.hasClass('active')){
-                $('#article-list').removeData('filter-args-filter');
+                listContainer.removeData('filter-args-filter');
             } else {
-                $('#article-list').data('filter-args-filter', filterElement.data('filter'));
+                listContainer.data('filter-args-filter', filterElement.data('filter'));
             }
+            listContainer.data('filter-args-page', 1);
             this.collectArgsAndSumbit();
         }, this));
 
@@ -26,18 +28,31 @@ var ArticleFilter = {
     },
 
     collectArgsAndSumbit: function(){
+        var nonRequiredArgs = this.collectNonRequiredArgs();
+        this.submit(nonRequiredArgs);
+    },
+
+    collectNonRequiredArgs: function(){
         var filterArgsPrefix = "filterArgs";
-        args = {};
+        return this.collectArgs(filterArgsPrefix);
+    },
+
+    collectRequiredArgs: function(){
+        var filterArgsPrefix = "filterRequiredArgs";
+        return this.collectArgs(filterArgsPrefix);
+    },
+
+    collectArgs: function(argsPrefix){
+        var args = {};
 
         $.each($('#article-list').data(), function(key,value){
-            if(key.substring(0, filterArgsPrefix.length) === filterArgsPrefix){
-                var arg = key.replace(filterArgsPrefix,'').toLowerCase();
+            if(key.substring(0, argsPrefix.length) === argsPrefix){
+                var arg = key.replace(argsPrefix,'').toLowerCase();
                 args[arg] = value;
             }
         });
 
-        var filterEndpoint = $('#article-list').data('filter-endpoint');
-        this.submit(filterEndpoint, args);
+        return args;
     },
 
     historyBind: function(){
@@ -45,14 +60,17 @@ var ArticleFilter = {
             if(this.historyFlag){
                 var State = History.getState();
                 var filterEndpoint = $('#article-list').data('filter-endpoint');
-                this.submit(filterEndpoint, State.data)
+                this.submit(State.data)
             }
             this.historyFlag = true;
         }, this));
     },
 
-    submit: function(filterEndpoint, args){
-        this.updateHistory(args);
+    submit: function(nonRequiredArgs){
+        this.updateHistory(nonRequiredArgs);
+        var requiredArgs = this.collectRequiredArgs();
+        var args = $.extend({}, nonRequiredArgs, requiredArgs);
+        var filterEndpoint = $('#article-list').data('filter-endpoint');
         Dajaxice.pari.article[filterEndpoint](Dajax.process, args);
     },
 

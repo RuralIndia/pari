@@ -31,7 +31,7 @@
 {% endblock %}
 
 {% block maincontent %}
-    <div id="article-list" data-filter-endpoint="location_article_filter" data-filter-args-location="{{ location.id }}">
+    <div id="article-list" data-filter-endpoint="location_article_filter" data-filter-required-args-location="{{ location.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
         {% article_list articles_in_location location.title types %}
     </div>
 {% endblock %}
