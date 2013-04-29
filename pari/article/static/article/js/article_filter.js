@@ -4,7 +4,7 @@ var ArticleFilter = {
             var filterElement = $(event.target).parent('.type-filter');
             var listContainer = $('#article-list');
             if(filterElement.hasClass('active')){
-                listContainer.removeData('filter-args-filter');
+                listContainer.data('filter-args-filter', null);
             } else {
                 listContainer.data('filter-args-filter', filterElement.data('filter'));
             }
@@ -46,7 +46,7 @@ var ArticleFilter = {
         var args = {};
 
         $.each($('#article-list').data(), function(key,value){
-            if(key.substring(0, argsPrefix.length) === argsPrefix){
+            if(value != null && key.substring(0, argsPrefix.length) === argsPrefix){
                 var arg = key.replace(argsPrefix,'').toLowerCase();
                 args[arg] = value;
             }
