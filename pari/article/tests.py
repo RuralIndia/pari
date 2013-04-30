@@ -150,14 +150,6 @@ class ArticleViewsTests(TestCase):
         response = self.client.get(reverse('search-detail'), {'query': 'location'})
         self.assertContains(response, location, status_code=200)
 
-    def test_search_page_contains_all_result_types(self):
-        response = self.client.get(reverse('search-detail'), {'query': 'article'})
-        self.assertContains(response.context['result_types'], ["Article"])
-
-    def test_search_page_contains_all_result_types(self):
-        response = self.client.get(reverse('search-detail'), {'query': 'article'})
-        self.assertEqual(3, len(response.context['result_types']))
-
-    def test_search_page_contains_all_result_types(self):
+    def test_search_page_contains_three_result_types(self):
         response = self.client.get(reverse('search-detail'), {'query': 'article'})
         self.assertEqual(3, len(response.context['result_types']))
