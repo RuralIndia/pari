@@ -149,3 +149,15 @@ class ArticleViewsTests(TestCase):
         location = LocationFactory()
         response = self.client.get(reverse('search-detail'), {'q': 'location'})
         self.assertContains(response, location, status_code=200)
+
+    def test_search_page_contains_all_result_types(self):
+        response = self.client.get(reverse('search-detail'), {'q': 'article'})
+        self.assertContains(response.context['result_types'], ["Article"])
+
+    def test_search_page_contains_all_result_types(self):
+        response = self.client.get(reverse('search-detail'), {'q': 'article'})
+        self.assertEqual(3, len(response.context['result_types']))
+
+    def test_search_page_contains_all_result_types(self):
+        response = self.client.get(reverse('search-detail'), {'q': 'article'})
+        self.assertEqual(3, len(response.context['result_types']))
