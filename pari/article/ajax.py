@@ -49,6 +49,7 @@ def filter_search_result(result_set, query, filter, page):
 
     render = render_to_string('article/includes/search_result_list.html', {'results': results,
                                                                            'query': query,
+                                                                           'filter': filter,
                                                                            'result_types': result_types})
 
     dajax = Dajax()
