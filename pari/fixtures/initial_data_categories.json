@@ -1,0 +1,192 @@
+[
+  {
+    "pk": 1,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The complex world of rural labour. Landless  workers,  farmers, blacksmiths, migrant labourers and many more",
+      "title": "Things we do",
+      "short_url": null,
+      "image": "uploads/category/images/things_we_do.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:13:33.874Z",
+      "slug": "things-we-do",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 2,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The zany world of transportation in rural India -  from ‘jugaads’ to BMWs",
+      "title": "Getting there",
+      "short_url": null,
+      "image": "uploads/category/images/getting_there.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:32:03.693Z",
+      "slug": "getting-there",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 3,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The schools and skills and traditions of rural artisans, artists and crafts-persons",
+      "title": "Things we make",
+      "short_url": null,
+      "image": "uploads/category/images/things_we_make.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:40:55.831Z",
+      "slug": "things-we-make",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 4,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "Rural migrant workers in urban towns --  or headed there.",
+      "title": "The rural in the urban",
+      "short_url": null,
+      "image": "uploads/category/images/the_rural_in_the_urban.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:43:32.891Z",
+      "slug": "the-rural-in-the-urban",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 5,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "About communities and cultures.  Their drama, theatre, music, dance, poems, stories and legends.",
+      "title": "We are",
+      "short_url": null,
+      "image": "uploads/category/images/we_are.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:47:37.463Z",
+      "slug": "we-are",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 6,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The amazing universe of Indian languages  -  everyday people introduce their own tongues",
+      "title": "Tongues",
+      "short_url": null,
+      "image": "uploads/category/images/toungues.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:00:47.057Z",
+      "slug": "tongues",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 7,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "Travellers write on the everyday life of everyday people",
+      "title": "Musafir",
+      "short_url": null,
+      "image": "uploads/category/images/musafir.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:03:35.388Z",
+      "slug": "musafir",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 8,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "Stories and testimonies of the last living fighters in India’s fight for Independence",
+      "title": "Foot-soldiers of freedom",
+      "short_url": null,
+      "image": "uploads/category/images/footsoldiers_of_freedom.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:17:34.208Z",
+      "slug": "foot-soldiers-of-freedom",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 9,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The world and worries of Indian agriculture",
+      "title": "Farming and its crisis",
+      "short_url": null,
+      "image": "uploads/category/images/farming_and_its_crises.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:21:45.555Z",
+      "slug": "farming-and-its-crisis",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 10,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "A children’s focus section",
+      "title": "Small world",
+      "short_url": null,
+      "image": "uploads/category/images/small_world.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:24:42.981Z",
+      "slug": "small-world",
+      "gen_description": false
+    }
+  }
+]
