@@ -19,5 +19,7 @@
 {% endblock %}
 
 {% block main %}
-    {% render_results_for articles query result_types%}
+<div id="article-list" data-filter-endpoint="search_filter" data-filter-args-query="{{ query }}">
+    {% render_results_for results query result_types%}
+</div>
 {% endblock %}

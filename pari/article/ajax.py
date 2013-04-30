@@ -34,20 +34,20 @@ def keyword_article_filter(request, keyword, filter=None, page=1):
     return article_filter(article_queryset, keyword.title, filter, page)
 
 
-def filter_search_result(article_queryset, q, type, page):
-    article_queryset = [article for article in article_queryset if type == article.__class__.__name__]
+def filter_search_result(result_set, query, type, page):
+    result_set = [result for result in result_set if type == result.__class__.__name__]
     result_types = [subclass.__name__ for subclass in Displayable.__subclasses__() if "pari" in subclass.__module__]
-    paginator = Paginator(article_queryset, 10)
+    paginator = Paginator(result_set, 10)
 
     try:
-        articles = paginator.page(page)
+        results = paginator.page(page)
     except PageNotAnInteger:
-        articles = paginator.page(1)
+        results = paginator.page(1)
     except EmptyPage:
-        articles = paginator.page(paginator.num_pages)
+        results = paginator.page(paginator.num_pages)
 
-    render = render_to_string('article/includes/search_result_list.html', {'articles': articles,
-                                                                           'query': q,
+    render = render_to_string('article/includes/search_result_list.html', {'results': results,
+                                                                           'query': query,
                                                                            'result_types': result_types})
 
     dajax = Dajax()
@@ -57,10 +57,10 @@ def filter_search_result(article_queryset, q, type, page):
 
 
 @dajaxice_register
-def search_filter(request, q, filter=None, page=1):
-    article_queryset = Displayable.objects.search(q)
+def search_filter(request, query, filter=None, page=1):
+    result_set = Displayable.objects.search(query)
 
-    return filter_search_result(article_queryset, q, filter, page)
+    return filter_search_result(result_set, query, filter, page)
 
 
 def get_article_list(article_queryset, page, filter):

@@ -142,22 +142,22 @@ class ArticleViewsTests(TestCase):
     def test_search_results_contain_topics(self):
         topic = ArticleFactory()
         topic.is_topic = True
-        response = self.client.get(reverse('search-detail'), {'q': 'article'})
+        response = self.client.get(reverse('search-detail'), {'query': 'article'})
         self.assertContains(response, topic, status_code=200)
 
     def test_search_results_should_contain_locations(self):
         location = LocationFactory()
-        response = self.client.get(reverse('search-detail'), {'q': 'location'})
+        response = self.client.get(reverse('search-detail'), {'query': 'location'})
         self.assertContains(response, location, status_code=200)
 
     def test_search_page_contains_all_result_types(self):
-        response = self.client.get(reverse('search-detail'), {'q': 'article'})
+        response = self.client.get(reverse('search-detail'), {'query': 'article'})
         self.assertContains(response.context['result_types'], ["Article"])
 
     def test_search_page_contains_all_result_types(self):
-        response = self.client.get(reverse('search-detail'), {'q': 'article'})
+        response = self.client.get(reverse('search-detail'), {'query': 'article'})
         self.assertEqual(3, len(response.context['result_types']))
 
     def test_search_page_contains_all_result_types(self):
-        response = self.client.get(reverse('search-detail'), {'q': 'article'})
+        response = self.client.get(reverse('search-detail'), {'query': 'article'})
         self.assertEqual(3, len(response.context['result_types']))

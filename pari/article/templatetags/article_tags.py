@@ -22,5 +22,5 @@ def article_list(articles, title, types, filter):
 
 
 @register.inclusion_tag("article/includes/search_result_list.html")
-def render_results_for(articles, query, types):
-    return {'articles': articles, 'query': query, 'result_types': types}
+def render_results_for(results, query, types):
+    return {'results': results, 'query': query, 'result_types': types}
