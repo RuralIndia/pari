@@ -5,7 +5,7 @@
         <div class="type-filters span2">
             <div>Filter by type:</div>
             {% for type in result_types %}
-            <a class="type-filter" data-filter="{{type}}" data-toggle="tooltip" title="" data-original-title="{{type}}"><i class="icon-exchange"></i></a>
+            <a class="type-filter" data-filter="{{type}}" data-toggle="tooltip" title="" data-original-title="{{type}}"><i class="icon-{{type}}"></i></a>
             {% endfor %}
         </div>
     </div>
