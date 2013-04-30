@@ -34,8 +34,9 @@ def keyword_article_filter(request, keyword, filter=None, page=1):
     return article_filter(article_queryset, keyword.title, filter, page)
 
 
-def filter_search_result(result_set, query, type, page):
-    result_set = [result for result in result_set if type == result.__class__.__name__]
+def filter_search_result(result_set, query, filter, page):
+    if filter is not None:
+        result_set = [result for result in result_set if filter == result.__class__.__name__]
     result_types = [subclass.__name__ for subclass in Displayable.__subclasses__() if "pari" in subclass.__module__]
     paginator = Paginator(result_set, 10)
 

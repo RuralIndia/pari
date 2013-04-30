@@ -1,10 +1,10 @@
 {% load i18n verbatim_tag mezzanine_tags article_tags article_filters keyword_tags %}
     <div id="articles" class="heading row">
-        <h3 class="span10">Articles for "{{ query }}"</h3>
+        <h3 class="span10">Results for "{{ query }}"</h3>
         <div class="type-filters span2">
             <div>Filter by type:</div>
             {% for type in result_types %}
-            <a class="type-filter" data-filter="{{type}}" data-toggle="tooltip" title="" data-original-title="{{type}}"><i class="icon-{{type}}"></i></a>
+            <a class="type-filter" data-filter="{{type}}" data-toggle="tooltip" title="" data-original-title="{{type}}" data-placement="bottom"><i class="icon-{{type}}"></i></a>
             {% endfor %}
         </div>
     </div>
@@ -28,7 +28,7 @@
         </div>
     </div>
     {%empty %}
-    No articles to display. Try clearing filter.
+    No results to display. Try clearing filter.
     {% endfor %}
     <div class="paginator">
         <ul>
