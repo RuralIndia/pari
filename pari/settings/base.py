@@ -159,6 +159,7 @@ STATICFILES_FINDERS = (
 
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
+    ('text/typescript', 'tsc {infile} --out {outfile}'),
 )
 
 COMPRESS_ENABLED = True
