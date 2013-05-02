@@ -24,3 +24,8 @@ def article_list(articles, title, types, filter):
 @register.inclusion_tag("article/includes/search_result_list.html")
 def render_results_for(results, query, types, filter):
     return {'results': results, 'query': query, 'result_types': types, 'filter': filter}
+
+
+@register.inclusion_tag("article/includes/paginator.html")
+def paginate_list(results, page=1):
+    return {'results': results, 'page': page}
