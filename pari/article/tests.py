@@ -154,9 +154,17 @@ class ArticleViewsTests(TestCase):
         response = self.client.get(reverse('search-detail'), {'query': 'article'})
         self.assertEqual(3, len(response.context['result_types']))
 
-    def test_should_contain_filtered_results_while_hitting_by_url(self):
-        article = ArticleFactory(title="test")
-        article2 = ArticleFactory()
-        category = CategoryFactory(title="test")
-        response = self.client.get(reverse('search-detail'),{'query': 'test', 'filter': 'Category', 'page':1})
-        self.assertEqual(1,len(response.context['results']))
+    def test_should_contain_category_with_title_test_when_searched_for_test_and_filtered_by_category(self):
+        category_with_title_test = CategoryFactory(title="test")
+        response = self.client.get(reverse('search-detail'), {'query': 'test', 'filter': 'Category', 'page': 1})
+        self.assertIn(category_with_title_test, response.context['results'])
+
+    def test_should_not_contain_article_with_title_test_when_searched_for_test_and_filtered_by_category(self):
+        article_with_title_test = ArticleFactory(title="test")
+        response = self.client.get(reverse('search-detail'), {'query': 'test', 'filter': 'Category', 'page': 1})
+        self.assertNotIn(article_with_title_test, response.context['results'])
+
+    def test_should_not_contain_article_with_title_not_test_when_searched_for_test_and_filtered_by_category(self):
+        article_with_default_title = ArticleFactory()
+        response = self.client.get(reverse('search-detail'), {'query': 'test', 'filter': 'Category', 'page': 1})
+        self.assertNotIn(article_with_default_title, response.context['results'])
