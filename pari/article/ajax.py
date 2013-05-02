@@ -1,5 +1,4 @@
 from django.template.loader import render_to_string
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from mezzanine.core.models import Displayable
 from mezzanine.generic.models import Keyword
@@ -7,13 +6,15 @@ from mezzanine.generic.models import Keyword
 from dajaxice.decorators import dajaxice_register
 from dajax.core import Dajax
 
-from .models import Article, Category, Type, Location
+from .models import Category, Type, Location
+from .common import get_category_articles, get_location_articles, get_keyword_articles
+from .common import get_paginated_list, get_article_list
 
 
 @dajaxice_register
 def category_article_filter(request, category, filter=None, page=1):
     category = Category.objects.get(pk=category)
-    article_queryset = category.articles.all()
+    article_queryset = get_category_articles(category)
 
     return article_filter(article_queryset, category.title, filter, page)
 
@@ -21,7 +22,7 @@ def category_article_filter(request, category, filter=None, page=1):
 @dajaxice_register
 def location_article_filter(request, location, filter=None, page=1):
     location = Location.objects.get(pk=location)
-    article_queryset = location.article_set.all()
+    article_queryset = get_location_articles(location)
 
     return article_filter(article_queryset, location.title, filter, page)
 
@@ -29,7 +30,7 @@ def location_article_filter(request, location, filter=None, page=1):
 @dajaxice_register
 def keyword_article_filter(request, keyword, filter=None, page=1):
     keyword = Keyword.objects.get(pk=keyword)
-    article_queryset = Article.articles.filter(keywords__keyword=keyword)
+    article_queryset = get_keyword_articles(keyword)
 
     return article_filter(article_queryset, keyword.title, filter, page)
 
@@ -54,13 +55,6 @@ def filter_search_result(result_set, query, filter, page):
                                                                               'result_types': result_types})
 
 
-def get_article_list(article_queryset, page, filter):
-    if filter is not None:
-        article_queryset = article_queryset.filter(types__title__iexact=filter)
-
-    return get_paginated_list(article_queryset, page)
-
-
 def article_filter(article_queryset, title, filter, page):
     articles = get_article_list(article_queryset, page, filter)
 
@@ -68,19 +62,6 @@ def article_filter(article_queryset, title, filter, page):
                                                                         'title': title,
                                                                         'filter': filter,
                                                                         'types': Type.objects.all()})
-
-
-def get_paginated_list(non_paginated, page):
-    paginator = Paginator(non_paginated, 10)
-
-    try:
-        paginated = paginator.page(page)
-    except PageNotAnInteger:
-        paginated = paginator.page(1)
-    except EmptyPage:
-        paginated = paginator.page(paginator.num_pages)
-
-    return paginated
 
 
 def render_dajax_response(template, context):

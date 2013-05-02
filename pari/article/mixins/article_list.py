@@ -1,4 +1,4 @@
-from pari.article.ajax import get_article_list
+from pari.article.common import get_article_list
 
 
 class ArticleListMixin(object):

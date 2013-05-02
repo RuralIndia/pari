@@ -2,6 +2,7 @@ from django.views.generic.detail import DetailView
 
 from pari.article.models import Location, Article
 from pari.article.mixins import ArticleListMixin
+from pari.article.common import get_location_articles
 
 
 class LocationDetail(ArticleListMixin, DetailView):
@@ -10,7 +11,7 @@ class LocationDetail(ArticleListMixin, DetailView):
     model = Location
 
     def get_article_list_queryset(self):
-        return Article.articles.filter(location=self.object)
+        return get_location_articles(self.object)
 
     def get_context_data(self, **kwargs):
         context = super(LocationDetail, self).get_context_data(**kwargs)
