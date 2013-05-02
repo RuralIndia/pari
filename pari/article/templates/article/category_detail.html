@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block main %}
-    <div id="article-list" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
+    <div class="filter-list-container" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
         {% article_list articles category.title types filter %}
     </div>
 {% endblock %}

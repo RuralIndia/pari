@@ -2,7 +2,7 @@ var ArticleFilter = {
     init: function() {
         $('.type-filter').on('click', $.proxy(function(event){
             var filterElement = $(event.target).parent('.type-filter');
-            var listContainer = $('#article-list');
+            var listContainer = $('.filter-list-container');
             if(filterElement.hasClass('active')){
                 listContainer.data('filter-args-filter', null);
             } else {
@@ -16,7 +16,7 @@ var ArticleFilter = {
             event.preventDefault();
             var paginationElement = $(event.target).closest('li');
 
-            $('#article-list').data('filter-args-page', paginationElement.data('page'));
+            $('.filter-list-container').data('filter-args-page', paginationElement.data('page'));
 
             this.collectArgsAndSumbit();
         }, this));
@@ -45,7 +45,7 @@ var ArticleFilter = {
     collectArgs: function(argsPrefix){
         var args = {};
 
-        $.each($('#article-list').data(), function(key,value){
+        $.each($('.filter-list-container').data(), function(key,value){
             if(value != null && key.substring(0, argsPrefix.length) === argsPrefix){
                 var arg = key.replace(argsPrefix,'').toLowerCase();
                 args[arg] = value;
@@ -59,7 +59,7 @@ var ArticleFilter = {
         History.Adapter.bind(window,'statechange',$.proxy(function(){
             if(this.historyFlag){
                 var State = History.getState();
-                var filterEndpoint = $('#article-list').data('filter-endpoint');
+                var filterEndpoint = $('.filter-list-container').data('filter-endpoint');
                 this.submit(State.data)
             }
             this.historyFlag = true;
@@ -70,7 +70,7 @@ var ArticleFilter = {
         this.updateHistory(nonRequiredArgs);
         var requiredArgs = this.collectRequiredArgs();
         var args = $.extend({}, nonRequiredArgs, requiredArgs);
-        var filterEndpoint = $('#article-list').data('filter-endpoint');
+        var filterEndpoint = $('.filter-list-container').data('filter-endpoint');
         Dajaxice.pari.article[filterEndpoint](Dajax.process, args);
     },
 
