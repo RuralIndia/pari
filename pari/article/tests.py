@@ -153,3 +153,10 @@ class ArticleViewsTests(TestCase):
     def test_search_page_contains_three_result_types(self):
         response = self.client.get(reverse('search-detail'), {'query': 'article'})
         self.assertEqual(3, len(response.context['result_types']))
+
+    def test_should_contain_filtered_results_while_hitting_by_url(self):
+        article = ArticleFactory(title="test")
+        article2 = ArticleFactory()
+        category = CategoryFactory(title="test")
+        response = self.client.get(reverse('search-detail'),{'query': 'test', 'filter': 'Category', 'page':1})
+        self.assertEqual(1,len(response.context['results']))
