@@ -2,7 +2,7 @@ import dj_database_url
 
 from .base import *  # noqa
 
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG')
 
 COMPRESS_ENABLED = True
 
