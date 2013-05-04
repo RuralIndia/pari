@@ -4,6 +4,7 @@ media/
 .vagrant
 *.pid
 CACHE
+collectedstatic
 
 # C extensions
 *.so

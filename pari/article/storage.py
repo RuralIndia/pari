@@ -1,9 +1,10 @@
 from django.core.files.storage import get_storage_class
 
 from storages.backends.s3boto import S3BotoStorage
+from filebrowser_safe.storage import S3BotoStorageMixin
 
 
-class CachedS3BotoStorage(S3BotoStorage):
+class CachedS3BotoStorage(S3BotoStorageMixin, S3BotoStorage):
     def __init__(self, *args, **kwargs):
         super(CachedS3BotoStorage, self).__init__(*args, **kwargs)
         self.local_storage = get_storage_class("compressor.storage.CompressorFileStorage")()
