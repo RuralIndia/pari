@@ -6,7 +6,7 @@ from .base import *  # noqa
 
 DATABASES['default'] = dj_database_url.config()
 
-DEBUG = os.environ.get('DJANGO_DEBUG')
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
 
 COMPRESS_ENABLED = True
 
