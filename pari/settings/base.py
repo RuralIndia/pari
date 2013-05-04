@@ -1,6 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
 from unipath import Path
-import os
 
 ######################
 # MEZZANINE SETTINGS #
