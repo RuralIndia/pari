@@ -1,4 +1,4 @@
-var ArticleFilter = {
+var ListFilter = {
     init: function() {
         $('.type-filter').on('click', $.proxy(function(event){
             var filterElement = $(event.target).parent('.type-filter');
@@ -78,7 +78,7 @@ var ArticleFilter = {
 }
 
 $(function(){
-    ArticleFilter.init();
-    ArticleFilter.historyBind();
+    ListFilter.init();
+    ListFilter.historyBind();
     $('.type-filter').tooltip();
 });

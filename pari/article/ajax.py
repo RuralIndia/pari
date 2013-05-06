@@ -69,5 +69,5 @@ def render_dajax_response(template, context):
 
     dajax = Dajax()
     dajax.assign('.filter-list-container', 'innerHTML', render)
-    dajax.script('ArticleFilter.init();')
+    dajax.script('ListFilter.init();')
     return dajax.json()
