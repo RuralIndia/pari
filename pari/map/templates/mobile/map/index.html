@@ -1,16 +1,23 @@
-{% extends "base.html" %}
+{% extends "sidebar_base.html" %}
 {% load i18n verbatim_tag %}
 
 {% block meta_title %}{% trans "Map" %}{% endblock %}
 {% block title %}{% trans "Map" %}{% endblock %}
-{% block extra_js %}
-    <script type='text/javascript' src="{{ STATIC_URL }}map/js/jquery-jvectormap-1.2.2.min.js"></script>
-    <script type='text/javascript' src="{{ STATIC_URL }}map/js/jquery-jvectormap-in-mill-en.js"></script>
-    <script type='text/javascript' src="{{ STATIC_URL }}js/handlebars.js"></script>
-    <script type='text/javascript' src="{{ STATIC_URL }}map/js/map.js"></script>
+
+{% block extra_uncompressed_js %}
+    <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 {% endblock %}
+
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}map/js/map_mobile.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_css %}
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+{% endblock %}
+
 {% block extra_css %}
-    <link href="{{ STATIC_URL }}map/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" media="screen">
+<link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}map/css/map_mobile.less" charset="utf-8">
 {% endblock %}
 
 {% block extra_head %}
@@ -20,12 +27,15 @@
     <li class="active">{% trans "Map" %}</li>
 {% endblock %}
 
-{% block main %}
+{% block maincontent %}
 {% blocktrans %}
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <p>Test</p>
-      </div>
-    </div>
+  
+  <div id="location-map">
+  </div>
 {% endblocktrans %}
+{% endblock %}
+
+{% block sidebar %}
+  <div class="well">
+  </div>
 {% endblock %}
