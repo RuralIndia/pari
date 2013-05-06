@@ -13,4 +13,10 @@ $(function () {
         L.marker(e.latlng).addTo(map);
     });
 
+    $.get('/article/api/locations/?format=json', function(data) {
+        $.each(data, function(i, location){
+            L.marker(location.latLng).addTo(map);
+        })
+    });
+
 });
