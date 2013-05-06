@@ -28,3 +28,7 @@ STATIC_URL = S3_URL
 COMPRESS_URL = STATIC_URL
 MEDIA_URL = STATIC_URL + "media/"
 MEDIA_ROOT=''
+
+STATICFILES_FINDERS += (
+    "django.contrib.staticfiles.finders.DefaultStorageFinder",
+)

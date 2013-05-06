@@ -86,6 +86,11 @@ GEOPOSITION_DEFAULT_ZOOM = 5
 
 GEOPOSITION_DEFAULT_CENTRE = (21.77, 78.87,)
 
+DEVICE_USER_AGENTS = (
+    ("mobile", ("Android", "BlackBerry", "iPhone")),
+    ("desktop", ("Windows", "Macintosh", "Linux")),
+)
+
 
 ########################
 # MAIN DJANGO SETTINGS #

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n verbatim_tag %}
+
+{% block meta_title %}{% trans "Map" %}{% endblock %}
+{% block title %}{% trans "Map" %}{% endblock %}
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}map/js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}map/js/jquery-jvectormap-in-mill-en.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/handlebars.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}map/js/map.js"></script>
+{% endblock %}
+{% block extra_css %}
+    <link href="{{ STATIC_URL }}map/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Map" %}</li>
+{% endblock %}
+
+{% block main %}
+{% blocktrans %}
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <p>Test</p>
+      </div>
+    </div>
+{% endblocktrans %}
+{% endblock %}
