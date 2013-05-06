@@ -11,7 +11,7 @@ class LocationDetail(ArticleListMixin, DetailView):
     model = Location
 
     def get_article_list_queryset(self):
-        return get_paginated_list(get_location_articles(self.object), page=1)
+        return get_location_articles(self.object)
 
     def get_context_data(self, **kwargs):
         context = super(LocationDetail, self).get_context_data(**kwargs)

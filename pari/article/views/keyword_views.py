@@ -14,7 +14,7 @@ class KeywordDetail(ArticleListMixin, DetailView):
     model = Keyword
 
     def get_article_list_queryset(self):
-        return get_paginated_list(get_keyword_articles(self.object), page=1)
+        return get_keyword_articles(self.object)
 
     def get_context_data(self, **kwargs):
 

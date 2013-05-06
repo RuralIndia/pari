@@ -16,4 +16,4 @@ class CategoryDetail(ArticleListMixin, DetailView):
     model = Category
 
     def get_article_list_queryset(self):
-        return get_paginated_list(get_category_articles(self.object), page=1)
+        return get_category_articles(self.object)
