@@ -11,14 +11,15 @@
 {% endblock %}
 {% block extra_css %}
     <link href="{{ STATIC_URL }}map/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" media="screen">
+    <link type="text/less" href="{{ STATIC_URL }}css/map.less" rel="stylesheet"  charset="utf-8"/>
 {% endblock %}
 
 {% block extra_head %}
     {% verbatim %}
       <script id="article-template" type="text/x-handlebars-template">
         <div class="well well-large">
-          <div class="page-header">
-            <h1>{{title}}</h1>
+          <div>
+            <h3><i class="icon-road"></i> {{title}}</h3>
           </div>
           <ul class="nav nav-list">
             {{#if articles}}
@@ -27,7 +28,8 @@
                 <li><a href="{{link}}">{{title}}</a></li>
               {{/each}}
             {{/if}}
-            {{#if topics}}
+              <li class="divider"></li>
+              {{#if topics}}
               <li class="nav-header">Topics</li>
               {{#each topics}}
                 <li><a href="{{link}}">{{title}}</a></li>
