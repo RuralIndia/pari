@@ -14,7 +14,6 @@ except ImportError:
 
 from mezzanine.conf import settings
 from mezzanine import template
-from article_filters import  get_class_name
 
 register = template.Library()
 
