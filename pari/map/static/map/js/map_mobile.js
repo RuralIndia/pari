@@ -13,9 +13,17 @@ $(function () {
         L.marker(e.latlng).addTo(map);
     });
 
+    var divIcon = L.divIcon({className: 'div-icon'});
+
     $.get('/article/api/locations/?format=json', function(data) {
         $.each(data, function(i, location){
-            L.marker(location.latLng).addTo(map);
+            L.marker(location.latLng, {icon: divIcon}).addTo(map).on('click', function(e){
+                var popup = L.popup()
+                             .setLatLng(e.target._latlng)
+                             .setContent('Test popup')
+                             .openOn(map);
+
+            });
         })
     });
 
