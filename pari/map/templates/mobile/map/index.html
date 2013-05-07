@@ -1,4 +1,4 @@
-{% extends "sidebar_base.html" %}
+{% extends "base.html" %}
 {% load i18n verbatim_tag %}
 
 {% block meta_title %}{% trans "Map" %}{% endblock %}
@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}js/handlebars.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}map/js/map_mobile.js"></script>
 {% endblock %}
 
@@ -21,21 +22,41 @@
 {% endblock %}
 
 {% block extra_head %}
+    {% verbatim %}
+      <script id="map-popup-template" type="text/x-handlebars-template">
+        <div>
+          <div>
+            <h3>{{title}}</h3>
+          </div>
+          <ul class="nav nav-list">
+            {{#if articles}}
+              <li class="nav-header">Articles</li>
+              {{#each articles}}
+                <li><a href="{{link}}">{{title}}</a></li>
+              {{/each}}
+            {{/if}}
+            {{#if topics}}
+              <li class="nav-header">Topics</li>
+              {{#each topics}}
+                <li><a href="{{link}}">{{title}}</a></li>
+              {{/each}}
+            {{/if}}
+            <li class="divider"></li>
+            <li><a href="{{link}}">View more content for {{title}}</a></li>
+          </ul>
+        </div>
+      </script>
+    {% endverbatim %}
 {% endblock %}
 
 {% block breadcrumb_menu %}
     <li class="active">{% trans "Map" %}</li>
 {% endblock %}
 
-{% block maincontent %}
+{% block main %}
 {% blocktrans %}
   <h3>Find articles near your location</h3>
   <div id="location-map">
   </div>
 {% endblocktrans %}
-{% endblock %}
-
-{% block sidebar %}
-  <div class="well">
-  </div>
 {% endblock %}

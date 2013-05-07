@@ -9,20 +9,21 @@ $(function () {
     var map = new L.Map('location-map', options).addLayer(mapLayer);
     map.locate({setView : true, maxZoom: 7});
 
-    map.on('locationfound', function(e) {
-        L.marker(e.latlng).addTo(map);
-    });
-
-    var divIcon = L.divIcon({className: 'div-icon'});
+    var source = $("#map-popup-template").html();
+    var template = Handlebars.compile(source);
 
     $.get('/article/api/locations/?format=json', function(data) {
         $.each(data, function(i, location){
-            L.marker(location.latLng, {icon: divIcon}).addTo(map).on('click', function(e){
-                var popup = L.popup()
-                             .setLatLng(e.target._latlng)
-                             .setContent('Test popup')
-                             .openOn(map);
-
+            var id = data[i].id;
+            L.marker(location.latLng).addTo(map).on('click', function(e){
+                $.get('/article/api/locations/' + id + '/article/?format=json', function(locationData) {
+                    var templateHtml= template(locationData);
+                    var popup = L.popup()
+                                .setLatLng(e.target._latlng)
+                                .setContent(templateHtml)
+                                .openOn(map);
+                    $("#side").html(templateHtml);
+                });
             });
         })
     });
