@@ -18,7 +18,7 @@ $(function () {
             L.marker(location.latLng).addTo(map).on('click', function(e){
                 $.get('/article/api/locations/' + id + '/article/?format=json', function(locationData) {
                     var templateHtml= template(locationData);
-                    var popup = L.popup()
+                    var popup = L.popup({closeButton: false, offset: new L.Point(0, -20)})
                                 .setLatLng(e.target._latlng)
                                 .setContent(templateHtml)
                                 .openOn(map);

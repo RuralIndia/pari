@@ -221,7 +221,7 @@ STATIC_ROOT = PROJECT_ROOT.child('static')
 
 COMPRESS_ROOT = STATIC_ROOT
 
-STATICFILES_DIRS = (PROJECT_ROOT.child('static'),)
+# STATICFILES_DIRS = (PROJECT_ROOT.child('static'),)
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
