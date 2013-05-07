@@ -2,7 +2,7 @@ from django.views.generic.detail import DetailView
 
 from pari.article.models import Location, Article
 from pari.article.mixins import ArticleListMixin
-from pari.article.common import get_location_articles, get_paginated_list
+from pari.article.common import get_location_articles
 
 
 class LocationDetail(ArticleListMixin, DetailView):

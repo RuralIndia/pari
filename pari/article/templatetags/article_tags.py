@@ -14,6 +14,7 @@ except ImportError:
 
 from mezzanine.conf import settings
 from mezzanine import template
+from article_filters import  get_class_name
 
 register = template.Library()
 
@@ -55,7 +56,7 @@ def thumbnail(image_url, width, height, quality=95):
     maintained.
     """
     if not image_url:
-        return ""
+        image_url = "no_image.jpg"
 
     image_url = unquote(unicode(image_url))
     if image_url.startswith(settings.MEDIA_URL):

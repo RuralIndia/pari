@@ -5,7 +5,7 @@ from mezzanine.generic.models import Keyword
 
 from pari.article.models import Article
 from pari.article.mixins import ArticleListMixin
-from pari.article.common import get_keyword_articles, get_paginated_list
+from pari.article.common import get_keyword_articles
 
 
 class KeywordDetail(ArticleListMixin, DetailView):
