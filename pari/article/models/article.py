@@ -58,3 +58,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     @property
     def is_video_article(self):
         return self.types.filter(title__iexact='Video').exists()
+
+    @property
+    def get_thumbnail(self):
+        return self.featured_image

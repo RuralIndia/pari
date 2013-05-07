@@ -1,4 +1,4 @@
-{% load static mezzanine_tags article_tags %}
+{% load static mezzanine_tags article_tags article_filters %}
 
 {% if article.featured_video or article.featured_audio %}
 <div class="media-thumbnail">
@@ -26,6 +26,6 @@
 </div>
 {% else %}
 <div class="image-thumbnail">
-    <img src="{% get_media_prefix %}{% thumbnail article.featured_image width height %}" alt="">
+    <img src="{% get_media_prefix %}{% thumbnail article.get_thumbnail width height %}" alt="">
 </div>
 {% endif %}

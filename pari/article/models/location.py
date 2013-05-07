@@ -30,3 +30,7 @@ class Location(Displayable):
 
     class Meta:
         app_label = "article"
+
+    @property
+    def get_thumbnail(self):
+        return ""

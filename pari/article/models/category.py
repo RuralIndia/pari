@@ -26,3 +26,7 @@ class Category(Displayable, AdminThumbMixin):
         verbose_name_plural = _("Categories")
         ordering = ("title",)
         app_label = "article"
+
+    @property
+    def get_thumbnail(self):
+        return self.image
