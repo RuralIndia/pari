@@ -15,6 +15,16 @@ class Album(Displayable):
         verbose_name = _("Album")
         verbose_name_plural = _("Albums")
 
+    @models.permalink
+    def get_absolute_url(self):
+        name = "album-detail"
+        return (name, (), {"slug": self.slug})
+
+    @property
+    def get_thumbnail(self):
+        return self.images.all()[0].file.path
+
+
 
 class AlbumImage(Orderable):
 

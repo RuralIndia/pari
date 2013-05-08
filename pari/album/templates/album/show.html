@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n album_filters article_tags %}
+
+{% block meta_title %}{% trans "Album" %}{% endblock %}
+{% block title %}{% trans "Album" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Album" %}</li>
+{% endblock %}
+
+{% block main %}
+    <h3>{{ album.title }}</h3>
+    <div>{{ album.description }}</div>
+    <div class="images">
+        {% for image in album|all_images %}
+            <div class="image">
+                <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 300 180 %}"/>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
