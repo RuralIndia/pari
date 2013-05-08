@@ -6,7 +6,7 @@ from pari.album.models import Album
 def index(request):
     albums = Album.objects.all()
     templates = ["album/index.html"]
-    return render(request,templates, Context({"albums": albums}))
+    return render(request, templates, Context({"albums": albums}))
 
 
 def show(request, slug):

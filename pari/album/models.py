@@ -25,7 +25,6 @@ class Album(Displayable):
         return self.images.all()[0].file.path
 
 
-
 class AlbumImage(Orderable):
 
     album = models.ForeignKey("Album", related_name="images")
@@ -33,7 +32,6 @@ class AlbumImage(Orderable):
                      upload_to=upload_to("galleries.GalleryImage.file", "galleries"))
     description = models.CharField(_("Description"), max_length=1000,
                                    blank=True)
-
 
     class Meta:
         verbose_name = _("Image")
