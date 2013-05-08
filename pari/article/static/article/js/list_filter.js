@@ -26,7 +26,8 @@ var ListFilter = {
 
     updateHistory: function(args){
         this.historyFlag = false;
-        History.pushState(args, null, "?" + $.param(args));
+        var paramArgs = $.param(args);
+        History.pushState(args, "filter", paramArgs === "" ? null : "?" + paramArgs);
     },
 
     collectArgsAndSumbit: function(){
@@ -62,7 +63,7 @@ var ListFilter = {
             if(this.historyFlag){
                 var State = History.getState();
                 var filterEndpoint = $('.filter-list-container').data('filter-endpoint');
-                this.submit(State.data)
+                this.submit(State.data);
             }
             this.historyFlag = true;
         }, this));
