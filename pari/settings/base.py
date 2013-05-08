@@ -286,6 +286,7 @@ INSTALLED_APPS = (
     #Custom
     "pari.article",
     "pari.map",
+    "pari.album",
 )
 
 # List of processors used by RequestContext to populate the context.
