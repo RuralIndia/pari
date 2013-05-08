@@ -1,9 +1,9 @@
-from django.http import HttpResponse
-from django.template import loader, Context
+from django.template import Context
+from mezzanine.utils.views import render
 from pari.album.models import Album
 
 
 def index(request):
     albums = Album.objects.all()
-    template = loader.get_template("album/index.html")
-    return HttpResponse(template.render(Context({"albums": albums})))
+    templates = ["album/index.html"]
+    return render(request,templates, Context({"albums": albums}))

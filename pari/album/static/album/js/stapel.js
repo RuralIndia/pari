@@ -1,0 +1,3 @@
+$(function () {
+    $( '#tp-grid' ).stapel()
+});

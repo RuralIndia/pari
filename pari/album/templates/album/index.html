@@ -1,14 +1,17 @@
 {% extends "base.html" %}
-{% load i18n album_filters %}
+{% load i18n album_filters article_tags %}
 
 {% block meta_title %}{% trans "Albums" %}{% endblock %}
 {% block title %}{% trans "Albums" %}{% endblock %}
 {% block extra_js %}
-    <script type='text/javascript' src="{{ STATIC_URL }}js/jquery.stapel.js"></script>
-    <script type='text/javascript' src="{{ STATIC_URL }}js/modernizr.custom.63321.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/modernizr.custom.63321.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/jquery.stapel.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/stapel.js"></script>
 {% endblock %}
-{% block extra_css %}
 
+{% block extra_uncompressed_css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}album/css/stapel.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}album/css/custom.css" />
 {% endblock %}
 
 {% block extra_head %}
@@ -20,16 +23,15 @@
 {% endblock %}
 
 {% block main %}
-    {% for album in albums %}
     <ul id="tp-grid" class="tp-grid">
-        <li data-pile="album">
+        {% for album in albums %}
+            {% for image in album|all_images %}
+            <li data-pile="{{ album.title }}">
             <a href="#">
-            <span class="tp-info">
-                <span>Title</span>
-            </span>
-                <img src="" />
+                 <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 270 200 %}" />
             </a>
-        </li>
+            </li>
+        {% endfor %}
+        {% endfor %}
     </ul>
-    {% endfor %}
 {% endblock %}
