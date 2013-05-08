@@ -20,6 +20,8 @@ var ListFilter = {
 
             this.collectArgsAndSumbit();
         }, this));
+
+        this.callbackInit();
     },
 
     updateHistory: function(args){
@@ -72,6 +74,12 @@ var ListFilter = {
         var args = $.extend({}, nonRequiredArgs, requiredArgs);
         var filterEndpoint = $('.filter-list-container').data('filter-endpoint');
         Dajaxice.pari.article[filterEndpoint](Dajax.process, args);
+        this.callbackInit();
+
+    },
+
+    callbackInit: function() {
+        $('.type-filter').tooltip();
     },
 
     historyFlag: true
@@ -80,5 +88,4 @@ var ListFilter = {
 $(function(){
     ListFilter.init();
     ListFilter.historyBind();
-    $('.type-filter').tooltip();
 });
