@@ -23,6 +23,8 @@
 {% endblock %}
 
 {% block main %}
+    <div id="close" class="back"><i class="icon-chevron-left"></i></div>
+    <h3 id="name"></h3>
     <ul id="tp-grid" class="tp-grid">
         {% for album in albums %}
             {% for image in album|all_images %}
