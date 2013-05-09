@@ -19,7 +19,7 @@ urlpatterns = patterns("",
     url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
 
     url(r'^map/', include('pari.map.urls')),
-    url(r'^photos/', include('pari.album.urls')),
+    url(r'^albums/', include('pari.album.urls')),
 
     url(r'^', include(articles_root_patterns)),
     url(r'^article/', include('pari.article.urls')),

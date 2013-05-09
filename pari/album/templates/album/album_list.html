@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n album_filters article_tags %}
+
+{% block meta_title %}{% trans "Albums" %}{% endblock %}
+{% block title %}{% trans "Albums" %}{% endblock %}
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_uncompressed_css %}
+{% endblock %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Albums" %}</li>
+{% endblock %}
+
+{% block main %}
+    {% for album in albums %}
+        <img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 170 %}">
+    {% endfor %}
+{% endblock %}
