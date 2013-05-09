@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n album_filters article_tags %}
+{% load i18n album_filters article_tags article_filters %}
 
 {% block meta_title %}{% trans "Album" %}{% endblock %}
 {% block title %}{% trans "Album" %}{% endblock %}
@@ -13,17 +13,27 @@
     <script type='text/javascript' src="{{ STATIC_URL }}album/js/lightbox.js"></script>
 {% endblock %}
 
-{% block extra_uncompressed_css %}
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/album.less" charset="utf-8">
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css" charset="utf-8">
 {% endblock %}
 
 {% block main %}
     <h3>{{ album.title }}</h3>
     <div class="popup-gallery">
-        {% for image in album|all_images %}
-            <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}">
-                <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 300 180 %}"/>
-            </a>
+        {% for image_group in album|all_images|group_by:3 %}
+            <div class="album-images row">
+                {% for image in image_group %}
+                    <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}">
+                        <div class="span4 grid-column">
+                            <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
+                            <div class="caption">
+                                <p>{{ image.description }}</p>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
         {% endfor %}
     </div>
 {% endblock %}

@@ -317,10 +317,10 @@
     "fields": {
       "status": 2,
       "_order": 3,
-      "titles": "Photos",
-      "description": "Photos",
+      "titles": "Albums",
+      "description": "Albums",
       "parent": null,
-      "title": "Photos",
+      "title": "Albums",
       "short_url": null,
       "login_required": false,
       "site": 1,
@@ -331,7 +331,7 @@
       "publish_date": "2013-05-08T13:15:06.999Z",
       "content_model": "link",
       "in_menus": "1",
-      "slug": "/photos/",
+      "slug": "/albums/",
       "gen_description": true
     }
   },
