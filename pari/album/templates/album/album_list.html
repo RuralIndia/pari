@@ -3,6 +3,7 @@
 
 {% block meta_title %}{% trans "Albums" %}{% endblock %}
 {% block title %}{% trans "Albums" %}{% endblock %}
+
 {% block extra_js %}
 {% endblock %}
 
@@ -19,6 +20,9 @@
 
 {% block main %}
     {% for album in albums %}
+        <a href="{{ album.get_absolute_url }}">
         <img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 170 %}">
+        </a>
+        </div>
     {% endfor %}
 {% endblock %}

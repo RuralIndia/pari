@@ -8,14 +8,22 @@
     <li class="active">{% trans "Album" %}</li>
 {% endblock %}
 
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/lightbox.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css" charset="utf-8">
+{% endblock %}
+
 {% block main %}
     <h3>{{ album.title }}</h3>
-    <div>{{ album.description }}</div>
-    <div class="images">
+    <div class="popup-gallery">
         {% for image in album|all_images %}
-            <div class="image">
+            <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}">
                 <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 300 180 %}"/>
-            </div>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}
