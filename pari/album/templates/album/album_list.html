@@ -7,7 +7,8 @@
 {% block extra_js %}
 {% endblock %}
 
-{% block extra_uncompressed_css %}
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/album_list.less" charset="utf-8">
 {% endblock %}
 
 {% block extra_head %}
@@ -19,10 +20,14 @@
 {% endblock %}
 
 {% block main %}
+    <div class="album-grid">
     {% for album in albums %}
-        <a href="{{ album.get_absolute_url }}">
-        <img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 170 %}">
-        </a>
+        <div class="album">
+            <a href="{{ album.get_absolute_url }}">
+                <img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 170 %}">
+                <div>{{ album.title }}</div>
+            </a>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}
