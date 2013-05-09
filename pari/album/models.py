@@ -32,6 +32,7 @@ class AlbumImage(Orderable):
                      upload_to=upload_to("galleries.GalleryImage.file", "galleries"))
     description = models.CharField(_("Description"), max_length=1000,
                                    blank=True)
+    audio = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name = _("Image")
