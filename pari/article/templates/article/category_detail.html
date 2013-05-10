@@ -19,7 +19,18 @@
 {% endblock %}
 
 {% block main %}
-    <div class="filter-list-container" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
+    <div class="hero-unit category-header">
+        <div class="row">
+            <div class="span4">
+                <img src="{{ MEDIA_URL }}{% thumbnail category.image 300 300 %}" alt="">
+            </div>
+            <div class="caption span">
+                <h1>{{ category.title }}</h1>
+                <p>{{ category.description }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="filter-list-container" data-title="{{ category.title }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
         {% article_list articles category.title types filter %}
     </div>
 {% endblock %}
