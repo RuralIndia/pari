@@ -1,7 +1,6 @@
 from django.views.generic.list import ListView
 
 from mezzanine.core.models import Displayable
-from mezzanine.utils.views import render
 
 from pari.article.common import get_search_results
 
