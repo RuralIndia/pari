@@ -11,11 +11,13 @@
 {% block extra_js %}
     <script type='text/javascript' src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}album/js/lightbox.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/sc-player.js"></script>
 {% endblock %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/album.less" charset="utf-8">
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/sc-player-minimal.css" charset="utf-8">
 {% endblock %}
 
 {% block main %}
@@ -24,7 +26,7 @@
         {% for image_group in album|all_images|group_by:3 %}
             <div class="album-images row">
                 {% for image in image_group %}
-                    <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}">
+                    <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}" data-audio="{{ image.audio }}">
                         <div class="span4 grid-column">
                             <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
                             <div class="caption">
