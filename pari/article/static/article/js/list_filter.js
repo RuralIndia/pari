@@ -2,13 +2,12 @@ var ListFilter = {
     init: function() {
         $('.type-filter').on('click', $.proxy(function(event){
             var filterElement = $(event.target).parent('.type-filter');
-            var listContainer = $('.filter-list-container');
             if(filterElement.hasClass('active')){
-                listContainer.data('filter-args-filter', null);
+                this.listContainer.data('filter-args-filter', null);
             } else {
-                listContainer.data('filter-args-filter', filterElement.data('filter'));
+                this.listContainer.data('filter-args-filter', filterElement.data('filter'));
             }
-            listContainer.data('filter-args-page', 1);
+            this.listContainer.data('filter-args-page', 1);
             this.collectArgsAndSumbit();
         }, this));
 
@@ -16,7 +15,7 @@ var ListFilter = {
             event.preventDefault();
             var paginationElement = $(event.target).closest('li');
 
-            $('.filter-list-container').data('filter-args-page', paginationElement.data('page'));
+            this.listContainer.data('filter-args-page', paginationElement.data('page'));
 
             this.collectArgsAndSumbit();
         }, this));
@@ -27,7 +26,9 @@ var ListFilter = {
     updateHistory: function(args){
         this.historyFlag = false;
         var paramArgs = $.param(args);
-        History.pushState(args, "filter", paramArgs === "" ? null : "?" + paramArgs);
+        History.pushState(args, 
+            this.listContainer.data('title') + (args['filter'] ? ' - ' + args['filter'] : ""), 
+            paramArgs === "" ? null : "?" + paramArgs);
     },
 
     collectArgsAndSumbit: function(){
@@ -48,7 +49,7 @@ var ListFilter = {
     collectArgs: function(argsPrefix){
         var args = {};
 
-        $.each($('.filter-list-container').data(), function(key,value){
+        $.each(this.listContainer.data(), function(key,value){
             if(value != null && key.substring(0, argsPrefix.length) === argsPrefix){
                 var arg = key.replace(argsPrefix,'').toLowerCase();
                 args[arg] = value;
@@ -62,7 +63,7 @@ var ListFilter = {
         History.Adapter.bind(window,'statechange',$.proxy(function(){
             if(this.historyFlag){
                 var State = History.getState();
-                var filterEndpoint = $('.filter-list-container').data('filter-endpoint');
+                var filterEndpoint = this.listContainer.data('filter-endpoint');
                 this.submit(State.data);
             }
             this.historyFlag = true;
@@ -73,7 +74,7 @@ var ListFilter = {
         this.updateHistory(nonRequiredArgs);
         var requiredArgs = this.collectRequiredArgs();
         var args = $.extend({}, nonRequiredArgs, requiredArgs);
-        var filterEndpoint = $('.filter-list-container').data('filter-endpoint');
+        var filterEndpoint = this.listContainer.data('filter-endpoint');
         Dajaxice.pari.article[filterEndpoint](Dajax.process, args);
         this.callbackInit();
 
@@ -83,7 +84,9 @@ var ListFilter = {
         $('.type-filter').tooltip();
     },
 
-    historyFlag: true
+    historyFlag: true,
+
+    listContainer: $('.filter-list-container')
 }
 
 $(function(){

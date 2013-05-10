@@ -1,7 +1,7 @@
 {% extends "sidebar_base.html" %}
 {% load i18n verbatim_tag mezzanine_tags article_tags %}
 
-{% block meta_title %}{% trans keyword.title %}{% endblock %}
+{% block meta_title %}{% trans keyword.title %}{% if filter%} - {{ filter }}{% endif %}{% endblock %}
 {% block title %}{% trans keyword.title %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block maincontent %}
-    <div class="filter-list-container" data-filter-endpoint="keyword_article_filter" data-filter-required-args-keyword="{{ keyword.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
+    <div class="filter-list-container" data-title="{{ keyword.title }}" data-filter-endpoint="keyword_article_filter" data-filter-required-args-keyword="{{ keyword.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
         {% article_list articles_by_keyword keyword.title types filter %}
     </div>
 {% endblock %}

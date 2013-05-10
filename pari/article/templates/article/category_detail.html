@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n verbatim_tag article_tags article_filters mezzanine_tags keyword_tags %}
 
-{% block meta_title %}{{ category.title }}{% endblock %}
+{% block meta_title %}{{ category.title }}{% if filter%} - {{ filter }}{% endif %}{% endblock %}
 {% block title %}{{ category.title }}{% endblock %}
 
 {% block extra_js %}
