@@ -30,13 +30,11 @@
                        data-audio="{{ image.audio }}" class="image-tag">
                         <div class="span4 grid-column">
                             <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
-
                             <div class="caption">
-                                <p>{{ image.description }}
-                                    {% if image.audio %}
-                                        <div class="audio-icon"><i class="icon-volume-up"></i></div>
-                                    {% endif %}
-                                </p>
+                                <p>{{ image.description }}</p>
+                                {% if image.audio %}
+                                    <div class="audio-icon"><i class="icon-volume-up"></i></div>
+                                {% endif %}
                             </div>
                         </div>
                     </a>
