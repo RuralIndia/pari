@@ -11,19 +11,7 @@ $(function() {
         },
         image: {
             tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-            titleSrc: function (item) {
-                sc_player_element = ""
-                if(item.el.attr('data-audio')!='None') {
-                    sc_player_element = '<div class="post"><a href="http://api.soundcloud.com/tracks/'+item.el.attr('data-audio')+'"  class="sc-player">Player</a></div>';
-                }
-                return item.el.attr('title')+sc_player_element
-            }
         },
         closeBtnInside: true,
-        callbacks: {
-            updateStatus: function() {
-                $('a.sc-player').scPlayer();
-            }
-        }
     });
 });
