@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     $('.popup-gallery').magnificPopup({
         delegate: 'a',
         type: 'image',
@@ -14,24 +14,25 @@ $(function() {
             titleSrc: function (item) {
                 sc_player_element = ""
                 audio = item.el.attr('data-audio');
-                if(audio !='None') {
-                    sc_player_element = '<a href="#" class="play-button"><i class="icon-circle-arrow-right"></i></a>';
+                if (audio != 'None') {
+                    sc_player_element = ' <a href="#" class="audio"><i class="icon-volume-up"></i>  <i class="icon-volume-down" style="display: none"></i></a>';
                 }
-                return item.el.attr('title')+sc_player_element
+                return item.el.attr('title') + sc_player_element
             }
         },
         closeBtnInside: true,
         callbacks: {
-            updateStatus: function() {
+            updateStatus: function () {
                 $.scPlayer.stopAll();
                 $('.player').empty()
-                $('.player').append('<a href="http://api.soundcloud.com/tracks/'+audio+'" class="sc-player">Player</a>')
+                $('.player').append('<a href="http://api.soundcloud.com/tracks/' + audio + '" class="sc-player">Player</a>')
                 $('.sc-player').scPlayer();
-                $('.play-button').click(function(){
+                $('.audio').click(function () {
+                    $("i").toggle();
                     $('.sc-play').click();
                 });
             },
-            close: function() {
+            close: function () {
                 $.scPlayer.stopAll();
             }
         }
