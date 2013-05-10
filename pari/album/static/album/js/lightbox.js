@@ -13,8 +13,9 @@ $(function() {
             tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
             titleSrc: function (item) {
                 sc_player_element = ""
-                if(item.el.attr('data-audio')!='None') {
-                    sc_player_element = '<div class="post"><a href="http://api.soundcloud.com/tracks/'+item.el.attr('data-audio')+'"  class="sc-player">Player</a></div>';
+                audio = item.el.attr('data-audio');
+                if(audio !='None') {
+                    sc_player_element = '<a href="#" class="play-button"><i class="icon-circle-arrow-right"></i></a>';
                 }
                 return item.el.attr('title')+sc_player_element
             }
@@ -22,7 +23,16 @@ $(function() {
         closeBtnInside: true,
         callbacks: {
             updateStatus: function() {
-                $('a.sc-player').scPlayer();
+                $.scPlayer.stopAll();
+                $('.player').empty()
+                $('.player').append('<a href="http://api.soundcloud.com/tracks/'+audio+'" class="sc-player">Player</a>')
+                $('.sc-player').scPlayer();
+                $('.play-button').click(function(){
+                    $('.sc-play').click();
+                });
+            },
+            close: function() {
+                $.scPlayer.stopAll();
             }
         }
     });
