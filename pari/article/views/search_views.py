@@ -1,17 +1,24 @@
+from django.views.generic.list import ListView
+
 from mezzanine.core.models import Displayable
 from mezzanine.utils.views import render
-from pari.article.common import get_paginated_list
+
+from pari.article.common import get_search_results
 
 
-def search_detail(request):
-    query = request.GET.get("query")
-    filter = request.GET.get("filter")
-    page = request.GET.get("page", 1)
-    results = Displayable.objects.search(query)
-    if filter is not None:
-        results = [result for result in results if filter == result.__class__.__name__]
-    results = get_paginated_list(results, page)
-    result_types = [subclass.__name__ for subclass in Displayable.__subclasses__() if "pari" in subclass.__module__]
-    templates = [u"article/search_detail.html"]
-    c = {"query": query, "results": results, "result_types": result_types, "filter": filter}
-    return render(request, templates, c)
+class SearchList(ListView):
+    context_object_name = "results"
+    template_name = 'article/search_list.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get("query")
+        filter = self.request.GET.get("filter")
+        page = self.request.GET.get("page", 1)
+        return get_search_results(query, filter, page)
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchList, self).get_context_data(**kwargs)
+        context['result_types'] = [subclass.__name__ for subclass in Displayable.__subclasses__() if "pari" in subclass.__module__]
+        context['filter'] = self.request.GET.get('filter')
+        context['query'] = self.request.GET.get('query')
+        return context

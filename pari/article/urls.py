@@ -5,6 +5,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from .views import LocationListApi, LocationDetailApi, LocationArticleApi
 from .views import LocationDetail, CategoriesList, CategoryDetail, ArticleDetail, KeywordDetail
+from .views import SearchList
 
 root_patterns = patterns('pari.article.views',
     url(r'^categories/(?P<slug>.+)/$', CategoryDetail.as_view(), name='category-detail'),
@@ -13,7 +14,7 @@ root_patterns = patterns('pari.article.views',
     url(r'^topics/(?P<slug>.+)/$', ArticleDetail.as_view(), name='topic-detail'),
     url(r'^locations/(?P<slug>.+)/$', LocationDetail.as_view(), name='location-detail'),
     url(r'^keywords/(?P<slug>.+)/$', KeywordDetail.as_view(template_name="article/keyword_detail.html"), name='keyword-detail'),
-    url(r'^search/$', 'search_detail', name='search-detail'),
+    url(r'^search/$', SearchList.as_view(), name='search-detail'),
 )
 
 
