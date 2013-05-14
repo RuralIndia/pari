@@ -1,53 +1,65 @@
 @import "common.less";
 
 
-.picture (@width, @height) {
+.picture () {
     border: 6px solid #fff;
-    height: @height;
-    width: @width;
+
+    @media (min-width: 1200px) {
+        height: 250px;
+        width: 300px;
+    }
+
+    @media (max-width: 767px) {
+        height: 250px;
+        width: 300px;
+    }
+
     .box-shadow (2px 2px 5px rgba(0,0,0,0.3));
 }
 
-.stack (@width: 300px, @height: 250px, @beforeBg: #003366, @afterBg: #993333 , @beforeRotation: -5deg, @afterRotation: 4deg){
+.stack (@beforeBg: #003366, @afterBg: #993333 , @beforeRotation: -5deg, @afterRotation: 4deg){
     position: relative;
     margin: 24px auto;
 
-    &, &:before, &:after {
-        .picture (@width, @height);
-    }
-
-    &:before, &:after {
-        content: "";
-        position: absolute;
-        z-index: -1;
-
-        -webkit-transform-origin: bottom left;
-        -moz-transform-origin: bottom left;
-        transform-origin: bottom left;
-
-        .transition (0.3s);
-    }
-
     img {
         box-shadow: none;
+        margin: 0 auto;
     }
 
-    &:before {
-        top: 0px;
-        left: -10px;
-        .rotation (@beforeRotation);
-        background: @beforeBg;
+    &, &:before, &:after {
+            .picture;
     }
 
-    &:after {
-        top: 5px; 
-        left: 0px;
-        .rotation (@afterRotation);
-        background: @afterBg;
-    }
+    @media (min-width: 1200px) {
+        &:before, &:after {
+            content: "";
+            position: absolute;
+            z-index: -1;
 
-    &:hover:before, &:hover:after {
-        .rotation (0);
+            -webkit-transform-origin: bottom left;
+            -moz-transform-origin: bottom left;
+            transform-origin: bottom left;
+
+            .transition (0.3s);
+        }
+
+        &:before {
+            top: 0px;
+            left: -10px;
+            .rotation (@beforeRotation);
+            background: @beforeBg;
+        }
+
+        &:after {
+            top: 5px; 
+            left: 0px;
+            .rotation (@afterRotation);
+            background: @afterBg;
+        }
+
+        &:hover:before, &:hover:after {
+            .rotation (0);
+        }
     }
 }
 
