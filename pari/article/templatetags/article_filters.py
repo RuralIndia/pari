@@ -1,3 +1,5 @@
+import random
+
 from django.template import Library
 
 
@@ -22,4 +24,9 @@ def group_by(l, n):
 
 @register.filter
 def get_type(object):
-	return object.__class__.__name__.lower()
+    return object.__class__.__name__.lower()
+
+
+@register.filter
+def get_random(obj, upper):
+    return "%s%d" % (obj, random.randint(1, upper))

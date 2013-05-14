@@ -25,11 +25,12 @@
         <div class="row">
             {% for album in album_group %}
                 <div class="album span4">
-                    <div class="stack"><img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 250 %}"></div>
-                    <div class="caption">
-                        <p>{{ album.description }}</p>
-                        <h3><a href="{{ album.get_absolute_url }}">{{ album.title }}</a></h3>
-                    </div>
+                    <a href="{{ album.get_absolute_url }}">
+                        <div class="{{"stack"|get_random:5 }}"><img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 250 %}"></div>
+                        <div class="caption">
+                            <p>{{ album.description }}</p>
+                            <h3>{{ album.title }}</h3>
+                        </div>
                     </a>
                 </div>
             {% endfor %}
