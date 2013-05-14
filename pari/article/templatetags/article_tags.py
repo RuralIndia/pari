@@ -3,7 +3,6 @@ from urllib import quote, unquote
 
 from django.core.files import File
 from django.core.files.storage import default_storage
-from django.http import HttpResponse
 from django.template.loader import render_to_string
 
 
@@ -42,7 +41,7 @@ def article_list(articles, title, types, filter):
 
 @register.simple_tag(takes_context=True)
 def display_result(context, result, type):
-    return render_to_string("article/includes/"+type+"_atom.html", {'result': result})
+    return render_to_string("article/includes/" + type + "_atom.html", {'result': result})
 
 
 @register.inclusion_tag("article/includes/search_result_list.html")

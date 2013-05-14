@@ -1,11 +1,17 @@
 from django.contrib import admin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
 from pari.album.models import Album, AlbumImage
+from pari.album.forms import AlbumImageInlineFormset
 
 
 class AlbumImageInline(TabularDynamicInlineAdmin):
     model = AlbumImage
     extra = 5
+    formset = AlbumImageInlineFormset
+
+    def get_formset(self, request, obj=None, **kwargs):
+        formset = super(AlbumImageInline, self).get_formset(request, obj, **kwargs)
+        return formset
 
 
 class AlbumAdmin(admin.ModelAdmin):
