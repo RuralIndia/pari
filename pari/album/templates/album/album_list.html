@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n album_filters article_tags %}
+{% load i18n album_filters article_tags article_filters %}
 
 {% block meta_title %}{% trans "Albums" %}{% endblock %}
 {% block title %}{% trans "Albums" %}{% endblock %}
@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block extra_css %}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/album_list.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/album_list.less" charset="utf-8">
 {% endblock %}
 
 {% block extra_head %}
@@ -21,12 +21,18 @@
 
 {% block main %}
     <div class="album-grid">
-    {% for album in albums %}
-        <div class="album">
-            <a href="{{ album.get_absolute_url }}">
-                <img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 170 %}">
-                <div>{{ album.title }}</div>
-            </a>
+    {% for album_group in albums|group_by:3 %}
+        <div class="row">
+            {% for album in album_group %}
+                <div class="album span4">
+                    <div class="stack"><img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 250 %}"></div>
+                    <div class="caption">
+                        <p>{{ album.description }}</p>
+                        <h3><a href="{{ album.get_absolute_url }}">{{ album.title }}</a></h3>
+                    </div>
+                    </a>
+                </div>
+            {% endfor %}
         </div>
     {% endfor %}
     </div>
