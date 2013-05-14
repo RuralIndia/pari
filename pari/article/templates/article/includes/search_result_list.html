@@ -10,23 +10,7 @@
     </div>
 <div class="results">
     {% for result in results %}
-        <div class="result ">
-            <div class="result-image">
-                {% list_media_for result 278 225 %}
-            </div>
-            <div class="caption">
-                <h4><a href="{{ result.get_absolute_url }}">{{ result.title }}</a></h4>
-                <p>{{ result.location.title }}</p>
-                <p>by {{ result.user.username }}</p>
-                <p>{{ result.description }}</p>
-                {% keywords_for result as keywords %}
-                {% for keyword in keywords %}
-                    <span class="tag">
-                        <a href="{% url 'keyword-detail' keyword.title %}">{{ keyword }}</a>
-                    </span>
-                {% endfor %}
-            </div>
-        </div>
+        {% display_result result result|get_type %}
     {%empty %}
         No results to display. Try clearing filter.
     {% endfor %}

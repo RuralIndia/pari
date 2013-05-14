@@ -1,0 +1,19 @@
+{% load i18n verbatim_tag mezzanine_tags article_tags article_filters keyword_tags %}
+<div class="result ">
+<i class="icon-Article result-type"></i>
+<div class="result-image">
+    {% list_media_for result 278 225 %}
+</div>
+<div class="caption">
+    <h4><a href="{{ result.get_absolute_url }}">{{ result.title }}</a></h4>
+    <p>{{ result.location.title }}</p>
+    <p>by {{ result.user.username }}</p>
+    <p>{{ result.description }}</p>
+    {% keywords_for result as keywords %}
+    {% for keyword in keywords %}
+        <span class="tag">
+            <a href="{% url 'keyword-detail' keyword.title %}">{{ keyword }}</a>
+        </span>
+    {% endfor %}
+</div>
+</div>

@@ -19,3 +19,7 @@ def group_by(l, n):
     if l is None:
         return None
     return [l[i:i + n] for i in range(0, len(l), n)]
+
+@register.filter
+def get_type(object):
+	return object.__class__.__name__.lower()

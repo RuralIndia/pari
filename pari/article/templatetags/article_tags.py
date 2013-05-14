@@ -3,6 +3,9 @@ from urllib import quote, unquote
 
 from django.core.files import File
 from django.core.files.storage import default_storage
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+
 
 # Try to import PIL in either of the two ways it can end up installed.
 try:
@@ -14,6 +17,7 @@ except ImportError:
 
 from mezzanine.conf import settings
 from mezzanine import template
+
 
 register = template.Library()
 
@@ -34,6 +38,11 @@ def featured_content_for(article):
 @register.inclusion_tag("article/includes/article_list.html")
 def article_list(articles, title, types, filter):
     return {'articles': articles, 'title': title, 'types': types, 'filter': filter}
+
+
+@register.simple_tag(takes_context=True)
+def display_result(context, result, type):
+    return render_to_string("article/includes/"+type+"_atom.html", {'result': result})
 
 
 @register.inclusion_tag("article/includes/search_result_list.html")
