@@ -56,56 +56,60 @@
             .rotation (@afterRotation);
             background: @afterBg;
         }
-
-        &:hover:before, &:hover:after {
-            .rotation (0);
-        }
     }
 }
 
 .album-grid {
 
     .album {
-            background-color: @alternateBgColor;
-            .rounded (7px);
-            .drop-shadow(1px, 1px, 10px, 0.3);
-            padding: 10px;
-            .box-sizing (border-box);
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
+        background-color: @alternateBgColor;
+        .rounded (7px);
+        .drop-shadow(1px, 1px, 10px, 0.3);
+        padding: 10px;
+        .box-sizing (border-box);
+        margin-bottom: 18px;
+        position: relative;
+        z-index: 1;
 
-            .stack1 {
-                .stack ();
+        .stack1 {
+            .stack ();
+        }
+
+        .stack2{
+            .stack (@beforeBg: #FF9900; @afterBg: #CC3300; @beforeRotation: -2deg; @afterRotation: 3deg);
+        }
+
+        .stack3{
+            .stack (@beforeBg: #009933; @afterBg: #666633; @beforeRotation: 2deg; @afterRotation: -3deg);
+        }
+
+        .stack4{
+            .stack (@beforeBg: #6699FF; @afterBg: #663300; @beforeRotation: -1deg; @afterRotation: 2deg);
+        }
+
+        .stack5{
+            .stack (@beforeBg: #0066CC; @afterBg: #FFCC00; @beforeRotation: -4deg; @afterRotation: 1deg);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        p {
+            color: #999;
+        }
+
+        h3 {
+            color: @headingsColor;
+        }
+
+        &:hover {
+            div[class*='stack'] {
+                &:before, &:after {
+                    .rotation (0);
+                }
+
             }
-
-            .stack2{
-                .stack (@beforeBg: #FF9900; @afterBg: #CC3300; @beforeRotation: -2deg; @afterRotation: 3deg);
-            }
-
-            .stack3{
-                .stack (@beforeBg: #009933; @afterBg: #666633; @beforeRotation: 2deg; @afterRotation: -3deg);
-            }
-
-            .stack4{
-                .stack (@beforeBg: #6699FF; @afterBg: #663300; @beforeRotation: -1deg; @afterRotation: 2deg);
-            }
-
-            .stack5{
-                .stack (@beforeBg: #0066CC; @afterBg: #FFCC00; @beforeRotation: -4deg; @afterRotation: 1deg);
-            }
-
-            a {
-                text-decoration: none;
-            }
-
-            p {
-                color: #999;
-            }
-
-            h3 {
-                color: @headingsColor;
-            }
-
+        }
     }
 }
