@@ -34,7 +34,7 @@ $(function () {
                 $.scPlayer.stopAll();
                 var audio = $('.mfp-title p').data('audio');
                 var controls = $('.mfp-controls');
-                if(audio != "None") {
+                if(audio != "") {
                     var player = $('.player');
                     player.empty();
                     player.append('<a href="http://api.soundcloud.com/tracks/' + audio + '" class="sc-player">Player</a>');

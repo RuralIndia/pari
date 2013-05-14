@@ -25,8 +25,7 @@
         {% for image_group in album|all_images|group_by:3 %}
             <div class="album-images row">
                 {% for image in image_group %}
-                    <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}"
-                       data-audio="{{ image.audio }}" class="image-tag">
+                    <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" class="image-tag">
                         <div class="span4 grid-column">
                             <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
                             <div class="caption">
