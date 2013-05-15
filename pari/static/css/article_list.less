@@ -1,5 +1,10 @@
 @import "common.less";
 
+.icon-Location:before             { content: "\f018"; }
+.icon-Article:before              { content: "\f044"; }
+.icon-Category:before             { content: "\f114"; }
+.icon-Album:before                { content: "\f03e"; }
+
 .heading {
 
     h3 {
@@ -11,8 +16,8 @@
     }
 }
 
-.articles {
-    .article {
+.results {
+    .result {
         .box-sizing(border-box);
         padding: 10px;
         overflow: auto;
@@ -21,8 +26,12 @@
             background: @alternateBgColor;
         }
 
-        .article-image {
+        .result-image {
             float: left;
+        }
+
+        .result-type {
+            float: right;
         }
 
         .caption {

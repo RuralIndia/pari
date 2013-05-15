@@ -9,25 +9,9 @@
         {% endfor %}
     </div>
 </div>
-<div class="articles">
+<div class="results">
     {% for article in articles %}
-        <div class="article">
-            <div class="article-image">
-                {% list_media_for article 278 225 %}
-            </div>
-            <div class="caption">
-                <h4><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
-                <p>{{ article.location.title }}</p>
-                <p>by {{ article.user.username }}</p>
-                <p>{{ article.description }}</p>
-                {% keywords_for article as keywords %}
-                {% for keyword in keywords %}
-                    <span class="tag">
-                        <a href="{% url 'keyword-detail' keyword.title %}">{{ keyword }}</a>
-                    </span>
-                {% endfor %}
-            </div>
-        </div>
+        {% display_result article article|get_type %}
     {%empty %}
         No articles to display. Try clearing filter.
     {% endfor %}
