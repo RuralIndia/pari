@@ -9,9 +9,15 @@
         {% endfor %}
     </div>
 </div>
-<div class="results">
+<div class="articles">
     {% for article in articles %}
+    <div class="article ">
+    <i class="icon-{{ article|get_type }} article-type"></i>
+    <div class="article-image">
+        {% list_media_for article 278 225 %}
+    </div>
         {% display_result article article|get_type %}
+    </div>
     {%empty %}
         No articles to display. Try clearing filter.
     {% endfor %}

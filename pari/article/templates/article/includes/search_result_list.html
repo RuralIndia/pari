@@ -4,13 +4,19 @@
         <div class="type-filters span2">
             <div>Filter by type:</div>
             {% for type in result_types %}
-            <a class="type-filter {% if type == filter %} active{% endif %}" data-filter="{{type}}" data-toggle="tooltip" title="" data-original-title="{{type}}" data-placement="bottom"><i class="icon-{{type}}"></i></a>
+            <a class="type-filter {% if type == filter %} active{% endif %}" data-filter="{{type}}" data-toggle="tooltip" title="" data-original-title="{{type}}" data-placement="bottom"><i class="icon-{{type|lower}}"></i></a>
             {% endfor %}
         </div>
     </div>
 <div class="results">
     {% for result in results %}
-        {% display_result %}
+    <div class="result ">
+    <i class="icon-{{ result|get_type }} result-type"></i>
+    <div class="result-image">
+        {% list_media_for result 278 225 %}
+    </div>
+        {% display_result result result|get_type %}
+    </div>
     {%empty %}
         No results to display. Try clearing filter.
     {% endfor %}
