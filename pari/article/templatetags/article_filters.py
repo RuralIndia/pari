@@ -36,3 +36,8 @@ def get_random(obj, upper):
 @register.filter
 def get_request_url(obj, request):
     return request.build_absolute_uri(get_absolute_url(obj))
+
+
+@register.filter
+def lower(type):
+    return type.lower()
