@@ -31,3 +31,8 @@ def get_type(object):
 @register.filter
 def get_random(obj, upper):
     return "%s%d" % (obj, random.randint(1, upper))
+
+
+@register.filter
+def get_request_url(obj, request):
+    return request.build_absolute_uri(get_absolute_url(obj))

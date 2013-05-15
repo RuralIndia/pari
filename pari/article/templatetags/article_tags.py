@@ -17,6 +17,8 @@ except ImportError:
 from mezzanine.conf import settings
 from mezzanine import template
 
+from .article_filters import get_type
+
 
 register = template.Library()
 
@@ -40,18 +42,28 @@ def article_list(articles, title, types, filter):
 
 
 @register.simple_tag(takes_context=True)
-def display_result(context, result, type):
-    return render_to_string("article/includes/" + type + "_atom.html", {'result': result})
+def display_result(context):
+    return render_to_string("article/includes/%s_atom.html" % get_type(context['result']), 
+                            {'result': context['result'], 'request': context['request']})
 
 
-@register.inclusion_tag("article/includes/search_result_list.html")
-def render_results_for(results, query, types, filter):
-    return {'results': results, 'query': query, 'result_types': types, 'filter': filter}
+@register.inclusion_tag("article/includes/search_result_list.html", takes_context=True)
+def render_results(context):
+    return {'results': context['results'], 
+            'query': context['query'], 
+            'result_types': context['result_types'], 
+            'filter': context['filter'],
+            'request': context['request']}
 
 
 @register.inclusion_tag("article/includes/paginator.html")
 def paginate_list(results, page=1):
     return {'results': results, 'page': page}
+
+
+@register.inclusion_tag("article/includes/share.html")
+def render_share_widgets(title, url):
+    return {'url': url, 'title': title}
 
 
 @register.simple_tag

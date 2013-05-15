@@ -44,7 +44,8 @@ def search_filter(request, query, filter=None, page=1):
     return render_dajax_response('article/includes/search_result_list.html', {'results': results,
                                                                               'query': query,
                                                                               'filter': filter,
-                                                                              'result_types': result_types})
+                                                                              'result_types': result_types,
+                                                                              'request': request})
 
 
 def article_filter(article_queryset, title, filter, page):

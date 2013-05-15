@@ -10,7 +10,7 @@
     </div>
 <div class="results">
     {% for result in results %}
-        {% display_result result result|get_type %}
+        {% display_result %}
     {%empty %}
         No results to display. Try clearing filter.
     {% endfor %}

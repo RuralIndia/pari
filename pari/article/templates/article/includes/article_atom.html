@@ -15,5 +15,8 @@
             <a href="{% url 'keyword-detail' keyword.title %}">{{ keyword }}</a>
         </span>
     {% endfor %}
+    {% with result|get_request_url:request as url %}
+        {% render_share_widgets result.title url %}
+    {% endwith %}
 </div>
 </div>
