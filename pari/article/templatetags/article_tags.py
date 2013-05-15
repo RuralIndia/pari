@@ -43,15 +43,15 @@ def article_list(articles, title, types, filter):
 
 @register.simple_tag(takes_context=True)
 def display_result(context):
-    return render_to_string("article/includes/%s_atom.html" % get_type(context['result']), 
+    return render_to_string("article/includes/%s_atom.html" % get_type(context['result']),
                             {'result': context['result'], 'request': context['request']})
 
 
 @register.inclusion_tag("article/includes/search_result_list.html", takes_context=True)
 def render_results(context):
-    return {'results': context['results'], 
-            'query': context['query'], 
-            'result_types': context['result_types'], 
+    return {'results': context['results'],
+            'query': context['query'],
+            'result_types': context['result_types'],
             'filter': context['filter'],
             'request': context['request']}
 
