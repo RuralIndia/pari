@@ -39,9 +39,9 @@ class TypeAdmin(admin.ModelAdmin):
 class LocationAdmin(admin.ModelAdmin):
     form = LocationForm
     fieldsets = (None, {
-        "fields": ["title", "description", "gen_description", "location"],
+        "fields": ["title", "description", "gen_description", "image", "location"],
     }),
-    list_display = ("title", "description", "location")
+    list_display = ("title", "description", "image", "location")
     list_editable = ()
     list_filter = ()
 

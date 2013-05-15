@@ -1,7 +1,10 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.models import Displayable
+from mezzanine.core.fields import FileField
+from mezzanine.utils.models import upload_to
 
 from geoposition.fields import GeopositionField
 
@@ -11,6 +14,10 @@ class Location(Displayable):
 
     objects = DisplayableManager()
     search_fields = {"title": 10, "description": 5}
+
+    image = FileField(verbose_name=_("Image"),
+                      upload_to=upload_to("article.Location.image", "location"),
+                      format="Image", max_length=255, null=False, blank=False)
 
     def get_as_latLng(self):
         return unicode(self.location).split(',')
@@ -33,4 +40,4 @@ class Location(Displayable):
 
     @property
     def get_thumbnail(self):
-        return ""
+        return self.image
