@@ -1,5 +1,44 @@
 @import "common.less";
 
+.ribbon-wrapper {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    display: none;
+
+    .ribbon {
+        text-align: center;
+        position: relative;
+        padding: 7px 0;
+        left: -5px;
+        top: 15px;
+        width: 120px;
+        background-color: @headingsColor;
+        color: #fff;
+
+        .box-shadow (0px 0px 3px rgba(0,0,0,0.3));
+        .rotation (45deg);
+
+        &:before, &:after {
+            content: "";
+            border-top:   3px solid #D43F3F;
+            border-left:  3px solid transparent;
+            border-right: 3px solid transparent;
+            position:absolute;
+            bottom: -3px;
+        }
+
+        &:before {
+            left: 0;
+        }
+        &:after {
+            right: 0;
+        }
+    }
+}
 
 .picture () {
     border: 6px solid #fff;
@@ -109,7 +148,10 @@
                 &:before, &:after {
                     .rotation (0);
                 }
+            }
 
+            .ribbon-wrapper {
+                display: block;
             }
         }
     }
