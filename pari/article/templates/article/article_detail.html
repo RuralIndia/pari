@@ -21,6 +21,10 @@
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/article.less" charset="utf-8">
 {% endblock %}
 
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/social.js"></script>
+{% endblock %}
+
 {% block maincontent %}
 
 {% block title %}
@@ -30,13 +34,18 @@
     <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
     {% endwith %}
 </p>
-<div class="addthis_toolbox addthis_default_style ">
-<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-<a class="addthis_button_tweet"></a>
-<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+{% with request.build_absolute_uri as url and blog_post.title as title %}
+<div class="social" data-url="{{ url }}">
+    <a target="_blank" href="http://facebook.com/sharer.php?u={{ url }}&amp;t={{ title|urlencode }}"><div class="badge facebook"><i class="icon-facebook-sign"></i><span class="count"></span></div></a>
+    
+    <a target="_blank" href="http://twitter.com/home?status={{ title }}+{{ url }}"><div class="badge twitter"><i class="icon-twitter-sign"></i><span class="count"></span></div></a>
+    
+    <a target="_blank" href="https://plus.google.com/share?url={{ url }}"><div class="badge google-plus"><i class="icon-google-plus-sign"></i></div></a>
+
+
 </div>
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-517435ad3d40b5da"></script>
+{% endwith %}
+
 {% endblock %}
 
 

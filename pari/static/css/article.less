@@ -1,5 +1,46 @@
 @import "common.less";
 
+.badge-effect (@color) {
+    background-color: @color;
+    border: 1px solid @color;
+
+    &:hover {
+        color: @color;
+        background-color: #eee;
+    }
+}
+
+.social {
+    a {
+        text-decoration: none;
+    }
+    .badge {
+        font-size: 200%;
+        color: #fff;
+        .transition (0.3s);
+        .box-sizing (border-box);
+        min-width: 80px;
+        max-width: 160px;
+
+        &.facebook {
+            .badge-effect (#3B5998);
+        }
+
+        &.twitter {
+            .badge-effect (#3498DB);
+        }
+
+        &.google-plus {
+            .badge-effect (#d34836;);
+        }
+
+        .count {
+            margin: 0 10px;
+            font-weight: normal;
+        }
+    }
+}
+
 .addthis_toolbox {
     overflow: visible;
     a {
