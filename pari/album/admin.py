@@ -17,8 +17,11 @@ class AlbumImageInline(TabularDynamicInlineAdmin):
 class AlbumAdmin(admin.ModelAdmin):
     inlines = [AlbumImageInline, ]
     fieldsets = (None, {
-        "fields": ["title", "description", "keywords"],
+        "fields": ["title", "description", "gen_description", "keywords"],
     }),
+
+    list_display = ("title", "description")
+
 
     class Media:
         css = {"all": ("mezzanine/css/admin/gallery.css",)}

@@ -7,7 +7,7 @@
     {% keywords_for result as keywords %}
     {% for keyword in keywords %}
         <span class="tag">
-            <a href="{% url 'keyword-detail' keyword.title %}">{{ keyword }}</a>
+            <a href="{% url 'keyword-detail' keyword.slug %}">{{ keyword }}</a>
         </span>
     {% endfor %}
     {% with result|get_request_url:request as url %}
