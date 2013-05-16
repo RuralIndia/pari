@@ -61,7 +61,7 @@
                 {% for article in article_chunk %}
                   <div class="article span6{% if forloop.parentloop.last and forloop.last %} last{% endif %}">
                     <a href="{{ article|get_absolute_url}}">
-                      <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 320 320 %}" alt="">
+                      <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 360 320 %}" alt="">
                       <div class="caption">
                           <h4>{{ article.title }}</h4>
                           <p>{{ article.location.title }}</p>
