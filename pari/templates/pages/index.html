@@ -34,10 +34,12 @@
         {% for article in article_list %}
           <div class="{% if forloop.first %}active{% endif %} item">
             <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1170 400 %}" alt="">
-            <div class="carousel-caption">
-              <h4>{{ article.title}} <small>{{ article.location.title }}</small></h4>
-              <p>{{ article.description }} <a href="{{ article|get_absolute_url }}">more...</a></p>
-            </div>
+            <a href="{{ article.get_absolute_url }}">
+              <div class="carousel-caption">
+                <h4>{{ article.title}} <small>{{ article.location.title }}</small></h4>
+                <p>{{ article.description }}</p>
+              </div>
+            </a>
           </div>
         {% endfor%}
       </div>
