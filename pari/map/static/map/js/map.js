@@ -31,12 +31,46 @@ var mapInterface = {
 
     onMarkerClick: function (e, index) {
         var id = this.data[index].id;
+        this._populateSideBar(id);
+        this.updateHistory({'location': id});
+    },
+
+    _populateSideBar: function(id) {
         $.get('/article/api/locations/' + id + '/article/?format=json', $.proxy(function(locationData) {
             var templateHtml= this.template(locationData);
             $("#side").html(templateHtml);
         }, this));
-
     },
+
+    _clearSidebar: function() {
+        $("#side").empty();
+    },
+
+    updateHistory: function(args){
+        this.historyFlag = false;
+        var paramArgs = $.param(args);
+        History.pushState(args, 
+            "", 
+            paramArgs === "" ? null : "?" + paramArgs);
+    },
+
+    historyBind: function(){
+        History.Adapter.bind(window,'statechange',$.proxy(function(){
+            if(this.historyFlag){
+                var State = History.getState();
+                console.log(State.data)
+                if(State.data['location']) {
+                    console.log(State.data);
+                    this._populateSideBar(State.data['location']);
+                } else {
+                    this._clearSidebar();
+                }
+            }
+            this.historyFlag = true;
+        }, this));
+    },
+
+    historyFlag: true,
 
     source: $("#article-template").html(),
 
@@ -45,5 +79,6 @@ var mapInterface = {
 
 
 $(function(){
-    mapInterface.init()
+    mapInterface.init();
+    mapInterface.historyBind();
 });
