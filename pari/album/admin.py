@@ -22,7 +22,6 @@ class AlbumAdmin(admin.ModelAdmin):
 
     list_display = ("title", "description")
 
-
     class Media:
         css = {"all": ("mezzanine/css/admin/gallery.css",)}
 
