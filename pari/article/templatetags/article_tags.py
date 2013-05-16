@@ -36,9 +36,13 @@ def featured_content_for(article):
     return {'article': article}
 
 
-@register.inclusion_tag("article/includes/article_list.html")
-def article_list(articles, title, types, filter):
-    return {'articles': articles, 'title': title, 'types': types, 'filter': filter}
+@register.inclusion_tag("article/includes/article_list.html", takes_context=True)
+def article_list(context, title):
+    return {'articles': context['articles'],
+            'title': title,
+            'types': context['types'],
+            'filter': context['filter'],
+            'request': context['request']}
 
 
 @register.simple_tag(takes_context=True)

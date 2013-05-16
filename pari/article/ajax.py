@@ -16,7 +16,7 @@ def category_article_filter(request, category, filter=None, page=1):
     category = Category.objects.get(pk=category)
     article_queryset = get_category_articles(category)
 
-    return article_filter(article_queryset, category.title, filter, page)
+    return article_filter(article_queryset, category.title, filter, page, request)
 
 
 @dajaxice_register
@@ -24,7 +24,7 @@ def location_article_filter(request, location, filter=None, page=1):
     location = Location.objects.get(pk=location)
     article_queryset = get_location_articles(location)
 
-    return article_filter(article_queryset, location.title, filter, page)
+    return article_filter(article_queryset, location.title, filter, page, request)
 
 
 @dajaxice_register
@@ -32,7 +32,7 @@ def keyword_article_filter(request, keyword, filter=None, page=1):
     keyword = Keyword.objects.get(pk=keyword)
     article_queryset = get_keyword_articles(keyword)
 
-    return article_filter(article_queryset, keyword.title, filter, page)
+    return article_filter(article_queryset, keyword.title, filter, page, request)
 
 
 @dajaxice_register
@@ -48,13 +48,14 @@ def search_filter(request, query, filter=None, page=1):
                                                                               'request': request})
 
 
-def article_filter(article_queryset, title, filter, page):
+def article_filter(article_queryset, title, filter, page, request):
     articles = get_article_list(article_queryset, page, filter)
 
     return render_dajax_response('article/includes/article_list.html', {'articles': articles,
                                                                         'title': title,
                                                                         'filter': filter,
-                                                                        'types': Type.objects.all()})
+                                                                        'types': Type.objects.all(),
+                                                                        'request': request})
 
 
 def render_dajax_response(template, context):

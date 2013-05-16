@@ -33,7 +33,9 @@
 
 {% block maincontent %}
     <div class="filter-list-container" data-title="{{ location.title }}" data-filter-endpoint="location_article_filter" data-filter-required-args-location="{{ location.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
-        {% article_list articles_in_location location.title types filter%}
+        {% with articles_in_location as articles %}
+            {% article_list location.title %}
+        {%endwith %}
     </div>
 {% endblock %}
 

@@ -10,13 +10,13 @@
     </div>
 </div>
 <div class="articles">
-    {% for article in articles %}
+    {% for result in articles %}
     <div class="article ">
-    <i class="icon-{{ article|get_type }} article-type"></i>
+        <i class="icon-{{ result|get_type }} article-type"></i>
     <div class="article-image">
-        {% list_media_for article 278 225 %}
+        {% list_media_for result 278 225 %}
     </div>
-        {% display_result article article|get_type %}
+        {% display_result %}
     </div>
     {%empty %}
         No articles to display. Try clearing filter.

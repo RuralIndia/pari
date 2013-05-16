@@ -20,7 +20,9 @@
 
 {% block maincontent %}
     <div class="filter-list-container" data-title="{{ keyword.title }}" data-filter-endpoint="keyword_article_filter" data-filter-required-args-keyword="{{ keyword.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
-        {% article_list articles_by_keyword keyword.title types filter %}
+        {% with articles_by_keyword as articles %}
+        {% article_list keyword.title %}
+        {% endwith %}
     </div>
 {% endblock %}
 
