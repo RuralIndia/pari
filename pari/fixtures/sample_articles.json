@@ -1,0 +1,443 @@
+[
+  {
+    "pk": 1,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The complex world of rural labour. Landless  workers,  farmers, blacksmiths, migrant labourers and many more",
+      "title": "Things we do",
+      "short_url": null,
+      "image": "uploads/category/images/things_we_do.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:13:33.874Z",
+      "slug": "things-we-do",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 2,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The zany world of transportation in rural India -  from ‘jugaads’ to BMWs",
+      "title": "Getting there",
+      "short_url": null,
+      "image": "uploads/category/images/getting_there.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:32:03.693Z",
+      "slug": "getting-there",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 3,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The schools and skills and traditions of rural artisans, artists and crafts-persons",
+      "title": "Things we make",
+      "short_url": null,
+      "image": "uploads/category/images/things_we_make.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:40:55.831Z",
+      "slug": "things-we-make",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 4,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "Rural migrant workers in urban towns --  or headed there.",
+      "title": "The rural in the urban",
+      "short_url": null,
+      "image": "uploads/category/images/the_rural_in_the_urban.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:43:32.891Z",
+      "slug": "the-rural-in-the-urban",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 5,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "About communities and cultures.  Their drama, theatre, music, dance, poems, stories and legends.",
+      "title": "We are",
+      "short_url": null,
+      "image": "uploads/category/images/we_are.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T06:47:37.463Z",
+      "slug": "we-are",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 6,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The amazing universe of Indian languages  -  everyday people introduce their own tongues",
+      "title": "Tongues",
+      "short_url": null,
+      "image": "uploads/category/images/toungues.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:00:47.057Z",
+      "slug": "tongues",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 7,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "Travellers write on the everyday life of everyday people",
+      "title": "Musafir",
+      "short_url": null,
+      "image": "uploads/category/images/musafir.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:03:35.388Z",
+      "slug": "musafir",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 8,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "Stories and testimonies of the last living fighters in India’s fight for Independence",
+      "title": "Foot-soldiers of freedom",
+      "short_url": null,
+      "image": "uploads/category/images/footsoldiers_of_freedom.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:17:34.208Z",
+      "slug": "foot-soldiers-of-freedom",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 9,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "The world and worries of Indian agriculture",
+      "title": "Farming and its crisis",
+      "short_url": null,
+      "image": "uploads/category/images/farming_and_its_crises.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:21:45.555Z",
+      "slug": "farming-and-its-crisis",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 10,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "description": "A children’s focus section",
+      "title": "Small world",
+      "short_url": null,
+      "image": "uploads/category/images/small_world.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-04-30T07:24:42.981Z",
+      "slug": "small-world",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 4,
+    "model": "article.location",
+    "fields": {
+      "status": 2,
+      "description": "Osmanabad  (Marathi: उस्मानाबाद) is a city and a municipal council in Osmanabad district in the Indian state of Maharashtra.",
+      "title": "Osmanabad",
+      "short_url": null,
+      "image": "uploads/location/advance_booking_in_osmanabad_ev_p1010395.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-05-16T05:23:31.472Z",
+      "location": "18.1860659,76.04194089999999",
+      "slug": "osmanabad",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 5,
+    "model": "article.location",
+    "fields": {
+      "status": 2,
+      "description": "Pune",
+      "title": "Pune",
+      "short_url": null,
+      "image": "uploads/location/how_the_other_half_dries.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-05-16T06:19:57.535Z",
+      "location": "18.5204303,73.85674369999992",
+      "slug": "pune",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 6,
+    "model": "article.location",
+    "fields": {
+      "status": 2,
+      "description": "Rural India",
+      "title": "Rural india",
+      "short_url": null,
+      "image": "uploads/location/taking_the_bus_in_rayagada,_odisha_dsc_0936.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-05-16T06:31:48.098Z",
+      "location": "21.77,78.87",
+      "slug": "rural-india",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 7,
+    "model": "article.location",
+    "fields": {
+      "status": 2,
+      "description": "Marathwada",
+      "title": "Marathwada",
+      "short_url": null,
+      "image": "uploads/location/rahuri_factory.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-05-16T08:08:02.329Z",
+      "location": "17.210545,73.27220499999999",
+      "slug": "marathwada",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 1,
+    "model": "article.type",
+    "fields": {
+      "icon_class": "icon-camera",
+      "title": "Photo"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "article.type",
+    "fields": {
+      "icon_class": "icon-facetime-video",
+      "title": "Video"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "article.type",
+    "fields": {
+      "icon_class": "icon-volume-up",
+      "title": "Audio"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "article.article",
+    "fields": {
+      "category_list": [
+        1
+      ],
+      "related_posts": [
+        2
+      ],
+      "short_url": null,
+      "site": 1,
+      "keywords_string": "water environmental issues water rights",
+      "in_sitemap": true,
+      "is_topic": false,
+      "featured_image": "uploads/blog/advance_booking_in_osmanabad_ev_p1010395.jpg",
+      "types": [
+        1
+      ],
+      "title": "When water flows like money",
+      "featured_audio": "",
+      "content": "<div class=\"articleLead\">\r\n<h2>If drought is making many in Osmanabad struggle for survival, it is also boosting a 24-hour trade that thrives on scarcity</h2>\r\n</div>\r\n<p class=\"body\">Bharat Raut spends around Rs.800 a month on petrol &mdash; just to fetch water that belongs to him. So do a lot of others in Takwiki village in Osmanabad district in Marathwada. Almost every household in Takwiki (and other villages) has one member locked into a single task each day: fetching water from wherever they can. Nearly every vehicle you see on Osmanabad&rsquo;s roads is ferrying water somewhere. That includes cycles, bullock carts, motorbikes, jeeps, lorries, vans and tankers. And women carrying it in pots on their heads, hips and shoulders. The drought ensures that most do it for sheer survival. Some, for a neat profit.</p>\r\n<h3>TIMINGS AND DISTANCES</h3>\r\n<p class=\"body\">&ldquo;Yes, every household has a person on full-time water duty,&rdquo; says Bharat a small farmer with five-and-a-half acres. In his family, he is the one. &ldquo;I fetch the water that comes sporadically from the borewell on our own fields. But it&rsquo;s a little over three kilometres away from home.&rdquo; So Bharat hooks four&nbsp;<i>ghadas&nbsp;</i>(plastic pots) to his Hero Honda and makes three trips a day to his fields to return with around 60 litres of water each time. &ldquo;I go there just for the little water the bore gives,&rdquo; he says. &ldquo;The crop itself is dying.&rdquo; There are some 25 motorcycles in this village roving about on this task at any time.</p>\r\n<p class=\"body\">Since each round trip is over six kilometres, Bharat clocks close to 20 km each day, or 600 km a month. That takes up 11 litres of petrol, or around Rs.800 a month for just this task alone. &ldquo;The water timings alternate each week,&rdquo; explains Ajay Niture, who visits a government-controlled source. &ldquo;This week we have power from 10 a.m. to 6 p.m. so we get water during those hours. Next week it will be from midnight to 10 a.m.&rdquo; He does his two-three kilometre trips on a bicycle mounted with seven plastic pots. And he&rsquo;s been to the local hospital twice &mdash; &ldquo;it really hurts your shoulders.&rdquo;</p>\r\n<p class=\"body\">Landless workers run into trouble with employers. &ldquo;Some days you turn up late. Some days you don&rsquo;t make it at all,&rdquo; says Jhambhar Yadav. &ldquo;That delays chores like feeding the animals, which is bad. And this has been on for five months now.&rdquo; Jhambhar has already made two trips with six&nbsp;<i>ghadas&nbsp;</i>on his cycle this morning.</p>\r\n<h3>IMPACTING WOMEN</h3>\r\n<p class=\"body\">Yet their efforts are eclipsed by the women of Takwiki who do multiple trips daily on foot, carrying two to three pots with them. &ldquo;That&rsquo;s 8-10 hours a day on the job,&rdquo; they explain at one of the water sources where they&rsquo;ve congregated. They also tell us of their recycling of water: &ldquo;First you use it for your bath. Then you use that same water for washing clothes. And finally for cleaning out the utensils.&rdquo; The distances the women walk are often greater than those covered by the men on motorbikes. They do far more trips and log over 15-20 km in a day. The stress causes several to fall ill.</p>\r\n<p class=\"body\">Women like Phulwantibai Dhepe have it worse. She is a Dalit and so excluded from many water sources. Even at the government-acquired well from where she fetches her water, &ldquo;I am always last in the line.&rdquo;</p>\r\n<h3>SUGARCANE AND RAIN</h3>\r\n<p class=\"body\">Scarcity impacts on livestock too. With little water and less fodder, &ldquo;those like me who sell milk are in a bad way. My cows are suffering and so am I. I used to make Rs.300 a day selling milk,&rdquo; says Suresh Ved Pathak. &ldquo;Now the yields have fallen and I make just a third of that.&rdquo;</p>\r\n<p class=\"body\">Takwiki is a microcosm of Osmanabad&rsquo;s built-in problems. The village has less than 4,000 people, but maybe 1,500 borewells for irrigation needs. &ldquo;The ones being drilled now are going to 550 feet and beyond,&rdquo; says Bharat Raut. And the main crop in this drought-prone district is sugarcane. &ldquo;We got 397 mm of rainfall least season, as against our normal average rainfall of 767 mm,&rdquo; says Osmanabad Collector K.M. Nagargoje. &ldquo;In itself, 800 mm is not at all bad rainfall. And some regions get by on 400 mm, too.&rdquo;</p>\r\n<p class=\"body\">But you can&rsquo;t get by, even on 800 mm, if your output is 2.6 million metric tons of sugarcane. A crop that demands roughly 18 million litres of water per acre. (Enough to fill seven-and-a-half Olympic swimming pools.) And the number of farmers who can afford to save on water by using drip is very small, just a handful in Takwiki.</p>\r\n<p class=\"body\"></p>\r\n<p class=\"body\">Collector Nagargoje has serious trouble on his hands. And having had a stint with the Groundwater Department, he knows it. Almost all the district&rsquo;s big or medium water projects are at dead storage level. That&rsquo;s when water is below the point from where it can be pumped out or controlled. At that stage, it serves to keep the fish alive. He does have around 3.45 million metric cubic feet left in the district&rsquo;s small projects. That can&rsquo;t last too long in this district of 1.7 million people. He also has 169 water tankers presently serving two towns and 78 villages. And a district where private borewells for irrigation are spreading rapidly.</p>\r\n<p class=\"body\">&ldquo;The ground water table this January was at around 10.75 metres. That&rsquo;s five metres below the five-year average in this region,&rdquo; he says. &ldquo;In some blocks, it&rsquo;s even lower.&rdquo; He remains optimistic about the district&rsquo;s capacity to handle the crisis this year. But knows the existing cropping patterns will thwart rescue plans in the next one.</p>\r\n<h3>PRIVATE TRADE RULES</h3>\r\n<p class=\"body\">Back in Takwiki, indebtedness grows as income falls. &ldquo;The&nbsp;<i>sahucari</i>(money lending) rate here is now anything between Rs.5 to Rs.10 per hundred per month, explains Santosh Yadav. (That&rsquo;s 60 to 120 per cent annually.) Yadav&rsquo;s own family spent nearly Rs.10 lakh in laying down pipelines &mdash; all of which have run dry &mdash; to their fields. And summer isn&rsquo;t far away. Yadav asks: &ldquo;Who can think of that? We&rsquo;re focused on getting past today. One day at a time is all we can handle.&rdquo;</p>\r\n<p class=\"body\">But if the drought makes many struggle for survival, it also boosts a trade that thrives on scarcity. This is visible everywhere. &ldquo;We spend whole days on cell phones trying desperately to buy water from those who have it because they own borewells or some other source,&rdquo; says Bharati Thawale, a social worker. &ldquo;I struck a deal with one of these water-sellers. He was to give me 500 litres for Rs.120. But on the way he got offered Rs.200 for it and sold out. Many frantic calls later, he brought me the water I needed, at 9 p.m. the next night.&rdquo; After that, she&rsquo;s been buying water from a neighbour.</p>\r\n<p class=\"body\">The brisk trade in water is on around the clock across the district. Scarcity drives the rates upwards. The government has requisitioned 720 wells of water. It pays the owners of each of these Rs.12,000 a month. Water from these is free for the public. But the long distances and the huge crowds at these points can be daunting. Which means privateers rule. With them, you bargain by the litre. The price can go well above Rs.200 for 500 litres. The rate spikes sharply if you are buying small quantities. And it will all get worse in coming days. Every colony now has someone with a borewell or other source, milking the scarcity. Here, water flows like money.</p>",
+      "location": 4,
+      "publish_date": "2013-05-16T05:23:35Z",
+      "status": 2,
+      "description": "If drought is making many in Osmanabad struggle for survival, it is also boosting a 24-hour trade that thrives on scarcity.",
+      "expiry_date": null,
+      "featured_video": "",
+      "user": 1,
+      "slug": "when-water-flows-like-money",
+      "gen_description": false,
+      "allow_comments": true,
+      "_meta_title": "",
+      "comments_count": 0,
+      "capsule_video": ""
+    }
+  },
+  {
+    "pk": 2,
+    "model": "article.article",
+    "fields": {
+      "category_list": [
+        9
+      ],
+      "related_posts": [
+        4,
+        1
+      ],
+      "short_url": null,
+      "site": 1,
+      "keywords_string": "Maharashtra drought drying lakes water shortage water crisis Maharashtra irrigation crop failure water-distribution policies water parks",
+      "in_sitemap": true,
+      "is_topic": false,
+      "featured_image": "uploads/blog/how_the_other_half_dries.jpg",
+      "types": [
+        1
+      ],
+      "title": "How the other half dries",
+      "featured_audio": "",
+      "content": "<div class=\"articleLead\">\r\n<h2>How we use water can be as important as how much water we have. Who owns or controls that water will prove crucial</h2>\r\n</div>\r\n<p class=\"body\">&ldquo;Every apartment is a dream come true &mdash; the coronet that tops the king-sized lifestyle of true blue blood.&rdquo; So run the ads. Yup. The blue bloods do it big. Each apartment has its own private swimming pool. These are, after all, &ldquo;super-luxurious, supersized designer apartments.&rdquo; The kind that &ldquo;match the royal lifestyles.&rdquo; There are also the villas the builders proudly announce as their &ldquo;first gated community project.&rdquo; And yes, each of them ranging from 9,000 to 22,000 square feet also offers its own private swimming pool. In yet other buildings coming up, the duplex penthouses will each have, you guessed it: private swimming pools.</p>\r\n<p class=\"body\">These are just in Pune alone. All of them with other amenities needing still more water. A small but proud trend &mdash; with the promise of more to come. All of them in regions of a State lamenting their greatest drought in 40 years. In Maharashtra, Chief Minister Prithviraj Chavan&rsquo;s view, one of our worst droughts ever. In a State where thousands of villages now depend on visits from water tankers. A daily visit if you&rsquo;re lucky. Once or twice a week if you&rsquo;re not. Yet it&rsquo;s as if there is no connection between the swimming pools and the drying lakes. There&rsquo;s very little discussion about it, for sure. As little as there was during two decades when the State rejoiced in the spread of dozens of &ldquo;water parks&rdquo; and water-theme entertainment parks. At one point, a score of them in the Greater Mumbai region alone.</p>\r\n<p class=\"body\"><b>Major diversions</b></p>\r\n<p class=\"body\">Across the drought-hit regions of the State, despair grows. Over 7,000 villages are drought or scarcity-hit. Officially. Thousands of others are also in a bad way but are not classified as drought-hit. Of those declared as affected, some will get a bit of help. The government runs water tanker visits for them. Thousands of others make direct deals with private tankers. Close to half-a-million animals are dependent on cattle camps. Distress sales of cattle go on briskly, too. Water in many reservoirs is below 15 per cent. In some it is close to dead-storage levels. But far more than the searing drought of 1972, this is a man-made one.</p>\r\n<p class=\"body\">There have been huge diversions of water in the last 15 years to industrial projects. And to private companies also in the lifestyle business. To cities from villages. Blood has been shed over such transfers. As in Maval in 2011 when police fired on angry farmers, killing three and wounding 19 others. They were protesting the government acquiring their land for a water pipeline from the Pavana dam to Pimpri Chinchwad. The scale of water loss this implied drew thousands more into the protests as well. The State&rsquo;s response at the time was to book around 1,200 people for &ldquo;attempted murder.&rdquo; And for rioting as well.</p>\r\n<p class=\"body\">Deputy Chief Minister Ajit Pawar also did his best to lock in the control of industry over irrigation. He even tried to amend for the worse, the already regressive Maharashtra Water Resources Regulatory Authority Act. One new clause on his agenda would have barred any challenge to water-distribution policies.</p>\r\n<p class=\"body\">The trends in diversion for lifestyle-entertainment though, are not new. In 2005, a huge &ldquo;Fun &amp; Food Village Water &amp; Amusement Park&rdquo; popped up in Nagpur (Rural) district. That, in a period of real water stress. The Fun &ldquo;Village&rdquo; had 18 kinds of water slides. It also had &ldquo;India&rsquo;s first snowdrome&rdquo; along with an ice rink. It is not easy to maintain snow and ice in 47&deg; heat. That took huge amounts of electricity in a region seeing 15-hour power cuts. It also guzzled massive amounts of water.</p>\r\n<p class=\"body\"><b>Lavasa and agriculture</b></p>\r\n<p class=\"body\">This is also a State that added quite a few golf courses in the past decade or so. It now has 22, with more in the pipeline. Golf courses use huge amounts of water. This has often sparked conflicts with farmers in the past. Golf courses worldwide also use vast amounts of pesticide that can seep into and affect the water of others as well.</p>\r\n<p class=\"body\">Besides, this is a State where we&rsquo;ve seen angry protests over the water soaked up by private projects like Lavasa, &ldquo;Independent India&rsquo;s first hill city.&rdquo; Sharad Pawar has drawn applause for ticking off his own party&rsquo;s minister, Bhaskar Jadhav, for wasteful spending on a family wedding in a time of drought. But the Union Agriculture Minister has always been gung-ho about Lavasa. The project&rsquo;s website noted quite a while ago that it has &ldquo;permission to store&rdquo; 0.87 TMC. That is &mdash; 24.6 billion litres of water.</p>\r\n<p class=\"body\">No State has spent more money to create less irrigation. The&nbsp;<i>Economic Survey 2011-12</i>&nbsp;found that land under irrigation had gone up by just 0.1 per cent of land in a whole decade. Which still means that less than 18 per cent of cropped area in the State is irrigated. That&rsquo;s after spending tens of billions of rupees to produce many millionaires and very little irrigation. The major transfers of water to industry also come in a time of agricultural decline. (A 23 per cent fall in foodgrain in 2011-12 according to the<i>Economic Survey</i>.)</p>\r\n<p class=\"body\">Even as foodcrop declines, fully two-thirds of Maharashtra&rsquo;s sugarcane is grown in drought-prone or water scarce areas. At least one Collector had called for sugarcane crushing in his district to be suspended during this crisis. The sugar factories there together use up to 90 lakh litres a day. Given the power the sugar barons wield, the Collector is more likely to be suspended than the crushing.</p>\r\n<p class=\"body\">The water needed for one acre of sugarcane can irrigate 10-12 acres of foodcrops like&nbsp;<i>jowar</i>. More than half of Maharashtra&rsquo;s irrigation water goes to this crop which takes just six per cent of the cultivated area. Sugarcane requires &ldquo;180 acre inches of water.&rdquo; That is,&nbsp;<i>18 million litres per acre</i>. Eighteen million litres can meet the domestic water needs of 3,000 rural households for a month (That&rsquo;s based on a modest 40 litres a day per person). This in regions where the water table falls every year. That has not deterred Maharashtra from encouraging Rose cultivation &mdash; a very tiny trend but growing swiftly with the promise of more to come. Roses need even more water. They need &ldquo;212 acre inches.&rdquo; Which is &mdash;<i>21.2 million litres of water&nbsp;</i>per acre. Indeed, rose cultivation, small as it is, has been a cause for some celebration in the State. Exports this year went up by some 15-25 per cent. The rupee&rsquo;s slide, an extended winter &mdash; and &ldquo;Valentine&rsquo;s Day&rdquo; &mdash; gifted rose growers this happy situation.</p>\r\n<p class=\"body\">In the last 15 years, the only regulatory frameworks the State has put in place lead to greater privatisation of water. To quicker loss of community control over this natural resource. One that is rapidly depleting. At the same time, the unchecked exploitation of groundwater has made things a lot worse. Maharashtra worked hard to get to the crisis it now faces. Private swimming pools amidst oceans of dry despair. For the rich, there is never a scarcity. For so many of the rest, their hopes evaporate by the day.</p>",
+      "location": 5,
+      "publish_date": "2013-05-16T06:20:46Z",
+      "status": 2,
+      "description": "How we use water can be as important as how much water we have. Who owns or controls that water will prove crucial.",
+      "expiry_date": null,
+      "featured_video": "",
+      "user": 1,
+      "slug": "how-the-other-half-dries",
+      "gen_description": false,
+      "allow_comments": true,
+      "_meta_title": "",
+      "comments_count": 0,
+      "capsule_video": ""
+    }
+  },
+  {
+    "pk": 3,
+    "model": "article.article",
+    "fields": {
+      "category_list": [
+        9
+      ],
+      "related_posts": [],
+      "short_url": null,
+      "site": 1,
+      "keywords_string": "",
+      "in_sitemap": true,
+      "is_topic": false,
+      "featured_image": "uploads/blog/farmers.jpg",
+      "types": [
+        1
+      ],
+      "title": "Over 2,000 fewer farmers every day",
+      "featured_audio": "",
+      "content": "<div class=\"articleLead\">\r\n<h2>The mistaken notion that the 53 per cent of India&rsquo;s population&nbsp;&lsquo;dependent&nbsp;on agriculture&rsquo; are all &lsquo;farmers&rsquo;&nbsp;leads many to dismiss the massive farmers&rsquo; suicides as trivial</h2>\r\n</div>\r\n<p class=\"body\">There are nearly 15 million farmers (&lsquo;Main&rsquo; cultivators) fewer than there were in 1991. Over 7.7 million less since 2001, as the latest Census data show. On average, that&rsquo;s about 2,035 farmers losing &lsquo;Main Cultivator&rsquo; status every single day for the last 20 years. And in a time of jobless growth, they&rsquo;ve had few places to go beyond the lowest, menial ends of the service sector.</p>\r\n<p class=\"body\">A December 2012 report of the Institute of Applied Manpower Research (IAMR) &mdash; a part of the Planning Commission &mdash; puts it this way: &ldquo;employment in total and in non-agricultural sectors has not been growing. This jobless growth in recent years has been accompanied by growth in casualization and informalization.&rdquo; It speaks of an &ldquo;an absolute shift in workers from agriculture of 15 million to services and industry.&rdquo; But many within the sector also likely moved from farmer to agricultural labourer status. Swelling the agrarian underclass.</p>\r\n<p class=\"body\">So how many farmers do we have?</p>\r\n<p class=\"body\">Census 2011 tells us we now have 95.8 million cultivators for whom farming is their main occupation. That&rsquo;s less than 8 per cent of the population. (Down from 103 million in 2001 and 110 million in 1991). Include all marginal cultivators (22.8 million) and that is still less than 10 per cent of the population.</p>\r\n<p class=\"body\">Even if you count together all cultivators and agricultural labourers, the number would be around 263 million or 22 per cent of the population. (Interestingly, this reduced figure comes after a few big states have actually reported a rise in the total number of cultivators. Since 85 per cent of all marginal workers reported more than a 100 days work, this could possibly reflect the reverse pull of MNREGA, among other factors).</p>\r\n<p class=\"body\">Between 1981 and 1991, the number of cultivators (main workers), actually went up from 92 million to 110 million. So the huge decline comes post-1991.</p>\r\n<p class=\"body\">Hold on: aren&rsquo;t 53 per cent of the population farmers?</p>\r\n<p class=\"body\">No. That&rsquo;s a common fallacy. The over 600 million Indians&nbsp;<b>dependent on agriculture&nbsp;</b>are not all farmers. They are deployed in an array of related activities &mdash; including fisheries. This confusion is widespread and innocent.</p>\r\n<p class=\"body\">Yet, there are also a few whose colossal ignorance leads them to dismiss the country&rsquo;s massive farmers&rsquo; suicides as trivial. For instance: &ldquo;at least half of the Indian workforce is engaged in farming. This fact points to a much lower suicide rate per 100,000 individuals for farmers than in the general population.&rdquo; Note how easily those&nbsp;<i>&lsquo;engaged in farming&rsquo;</i>&nbsp;become&nbsp;<i>&lsquo;farmers!&rsquo;</i></p>\r\n<p class=\"body\">As a notion it borders on the whacko. It goes: After all, 53 out of every 100 Indians are farmers. So our 270,940 farm suicides since 1995 are a low number on a population base of over 600 million. So low that we should be agitated over how the suicide rate in the general population can be brought &ldquo;down to the levels prevailing amongst farmers.&rdquo;</p>\r\n<p class=\"body\">Never mind for now the appalling moral position that a quarter of a million human beings taking their lives is hardly alarming. The Bhopal gas tragedy, the worst industrial disaster in human terms, claimed over 20,000 lives. But in this perverse logic, since that was less than 0.003 per cent of the then population, it is rendered meaningless. That position says more about its authors than about the suicides. It shows they are clueless about who a farmer is &mdash; and about what the data show.</p>\r\n<p class=\"body\">It shows even greater ignorance of who defines and counts a &lsquo;farmer suicide.&rsquo;&nbsp;<b>The Census records cultivators. The police count suicides. The police do not read the Census.</b>&nbsp;Not for definitions, anyway.</p>\r\n<p class=\"body\">The Census groups the population into workers and non-workers. The latter would be infants, children, students, housewives, unemployed, aged and retired people. Farmers, or cultivators come under &lsquo;Workers&rsquo; &mdash;&nbsp;<i>a huge category covering many varied groups</i>. Now rural workers account for close to 70 per cent of all workers. And rural workers consist of farmers, agricultural labourers and non-farm workers.</p>\r\n<p class=\"body\"><b>Cultivators (main workers) in the Census are barely eight per cent of the population as a whole. (That&rsquo;s after a two-decade secular decline in this group). The ongoing farm suicides &mdash; 184,169 of them since 2001 according to the National Crime Records Bureau &mdash; are taking place on a smaller and shrinking base. Their intensity has hardly diminished. In most of the States accounting for two-thirds of all farm suicides, the intensity has likely risen.</b></p>\r\n<p class=\"body\">Of course distress affects a much wider population dependent on agriculture. (Farmer bankruptcies crush the village carpenter, and even play a role in weaver suicides). The sufferings of others are as real. It is not as if the agricultural labourer or non-farm worker is having a great time. Both sections have seen distress migrations &mdash; and suicides. (For that matter the owner of a small industrial unit in an urban city could be distress-hit). Their suicides are no less tragic. But it is vital to know&nbsp;<b>who officially gets counted as a farmer</b>. And who gets&nbsp;<b>listed</b>&nbsp;in the &lsquo;farmers&rsquo; suicides. For that tells us more about the ongoing tragedy and gives us a sense of its awful scale.</p>\r\n<p class=\"body\">Everybody who works in the film industry is not an actor. Everyone in the educational system is not a student. And all those in the 53 per cent of the population related to the farming sector are not farmers. Even among those who are, only a limited group gets counted as such when police and governments make farmers&rsquo; suicide lists. Cultivators are counted by the Census. Suicides are recorded by police stations across the country. The numbers collated by State governments. Very different approaches are involved.</p>\r\n<p class=\"body\">The Census considers someone a cultivator if he or she operates a piece of land &mdash; which they may or may not own; State governments and police count only those with a title to land as farmers. The Census records two kinds of cultivators: &lsquo;Main workers&rsquo; and &lsquo;marginal workers.&rsquo; The latter are more like agricultural labourers or non-farm workers since farming is not their main activity. A &lsquo;Main worker&rsquo; in cultivation is someone for whom that is the major occupation for&nbsp;<i>at least half the year</i>. That group makes barely eight per cent of the population as a whole.</p>\r\n<p class=\"body\">Suicides among the others in the agrarian world (within that &ldquo;53 per cent&rdquo;) won&rsquo;t be recorded as &lsquo;farmer suicides.&rsquo; Try getting State governments and their police to do that! Even within the &lsquo;recognised&rsquo; eight per cent, those whose title to land is not clear will not be listed as farmers&rsquo; suicides, should they take their own lives. For instance, women and tenant farmers are routinely excluded. Even eldest sons running the farms &mdash; with the land still in the names of their aged fathers &mdash; would also be omitted.</p>\r\n<p class=\"body\">Police and State governments run the suicide lists, not the Census. Nor does the NCRB, which has neither the vested interest nor the ability to fiddle that data. It merely collates what the State Crime Record Bureaus submit to it. Hence, the Chhattisgarh government could brazenly declare a &lsquo;zero farm suicides&rsquo; figure in 2011. That after the State saw over 7,500 of them (by its own admission) between 2006-10. With all the fiddles in the data, the numbers and intensity remain appalling.</p>\r\n<p class=\"body\">Maharashtra revels in such fraud. With close to 54,000 since 1995, the State has been the worst in farm suicides for over a decade. And even those numbers conceal major exclusions. They&rsquo;ve invented categories like &lsquo;Farmer&rsquo;s relatives suicides,&rsquo; or &ldquo;non-genuine&rdquo; suicides, in order to further trim the numbers. So the State governments and their police, have immense power in re-defining who a farmer is. Watch out for more and more States doing &lsquo;a Chhattisgarh&rsquo; and declaring &lsquo;zero&rsquo; farm suicides in coming months and years.</p>",
+      "location": 6,
+      "publish_date": "2013-05-16T06:31:51.260Z",
+      "status": 2,
+      "description": "The mistaken notion that the 53 per cent of India’s population ‘dependent on agriculture’ are all ‘farmers’ leads many to dismiss the massive farmers’ suicides as trivial.",
+      "expiry_date": null,
+      "featured_video": "",
+      "user": 1,
+      "slug": "over-2000-fewer-farmers-every-day",
+      "gen_description": false,
+      "allow_comments": true,
+      "_meta_title": "",
+      "comments_count": 0,
+      "capsule_video": ""
+    }
+  },
+  {
+    "pk": 4,
+    "model": "article.article",
+    "fields": {
+      "category_list": [
+        4
+      ],
+      "related_posts": [
+        2
+      ],
+      "short_url": null,
+      "site": 1,
+      "keywords_string": "Water scarcity Marathwada Jalna district",
+      "in_sitemap": true,
+      "is_topic": false,
+      "featured_image": "uploads/blog/rahuri_factory.jpg",
+      "types": [
+        1
+      ],
+      "title": "Tankers and the economy of thirst",
+      "featured_audio": "",
+      "content": "<div class=\"articleLead\">\r\n<h2>The water markets of Marathwada are booming. In the town of Jalna alone, tanker owners transact between Rs.6 million and Rs.7.5 million in water sales each day</h2>\r\n</div>\r\n<p class=\"body\">Thirst is Marathwada&rsquo;s greatest crop this season. Forget sugarcane. Thirst, human and industrial, eclipses anything else. Those harvesting it reap tens of millions of rupees each day across the region. The van loads of dried-out cane you see on the roads could end up at cattle camps as fodder. The countless &ldquo;tankers&rdquo; you see on the same roads are making it to the towns, villages and industries for profit. Water markets are the biggest things around. Tankers are their symbol.</p>\r\n<p class=\"body\">Thousands of them criss-cross Marathwada daily, collecting, transporting and selling water. Those contracted by the government are a minority and some of them exist only on paper. It&rsquo;s the privately-operated ones that are crucial to rapidly expanding water markets.</p>\r\n<p class=\"body\">MLAs and Corporators-turned-contractors and contractors-turned-Corporators and MLAs are vital to the tanker economy. Bureaucrats, too. Many own tankers directly or&nbsp;<i>benami</i>.</p>\r\n<p class=\"body\"><b>Water commerce</b></p>\r\n<p class=\"body\">So what is a tanker? Really, just sheets of mild steel plate rolled into big drums. A 10,000-litre water tanker consists of three sheets of 5 ft x 18 ft, each weighing 198 kilograms. The rolled drums are welded together. These can be carried by trucks, lorries and other large vehicles, mounted on them in different ways. Smaller carriers transport cylinders of lower capacity. A 5,000 litre container can go onto the trailer of a big van. It comes all the way down to 1,000 and 500-litre drums that move on mini-tractors, opened-up auto rickshaws and bullock carts.</p>\r\n<p class=\"body\">As the water crisis deepens, hundreds of these are fabricated across the State each day. In Jalna town of Jalna district, there are about 1,200 tankers, trucks, tractors, auto rickshaws flitting about with containers of different sizes. They shuttle between their water sources and desperate sections of the public. The drivers bargain with clients on cell phones. However, the largest amount of water goes to industries that buy in bulk. &ldquo;The tanker owners transact between Rs.6 million to Rs.7.5 million in sales<i>each day</i>,&rdquo; says Laxman Raut of the Marathi daily&nbsp;<i>Loksatta</i>. &ldquo;That&rsquo;s what this single sector of the water market is worth &mdash;&nbsp;<i>in this single town</i>.&rdquo; Raut and his fellow reporters have tracked this region&rsquo;s commerce in water for years.</p>\r\n<p class=\"body\"><b>Tanker technology</b></p>\r\n<p class=\"body\">Container sizes vary. But in this town &ldquo;their average capacity works out to around 5,000 litres. Each of these 1,200 does at least three trips a day. So they carry in all some 18 million litres of water in 24 hours. At the going rate of Rs.350 per thousand litres, that works out to over Rs.6 million a day. The costs can go up depending on whether the use is domestic, or for livestock, or industry.&rdquo;</p>\r\n<p class=\"body\">Scarcity drives the tanker economy. Tankers are being made, repaired, rented, sold and bought. One busy spot we hit&nbsp;<i>en route&nbsp;</i>to Jalna is Rahuri in neighbouring Ahmednagar district. It costs roughly Rs.30,000 to make a 10,000-litre tanker body here. It sells for twice that sum. In Rahuri Factory, a small industries area, we get a crash course in tanker tech. &ldquo;Each 5 ft x 18 ft sheet of MS Plate is 3.5 mm thick (called Gauge 10),&rdquo; explains Shrikant Melawane who owns a fabricating unit. He shows us the &ldquo;rolling machine&rdquo; on which each plate has to be manually rolled.</p>\r\n<p class=\"body\">&ldquo;The 10,000-litre one weighs close to 800 kg,&rdquo; he says. The three sheets of mild steel it requires cost roughly Rs.27,000 (at Rs.35 a kg). Labour charges, electricity and other expenses total a further Rs.3,000. &ldquo;It takes a whole day to make one 10,000-litre tanker,&rdquo; he says. &ldquo;This season has been busy. We&rsquo;ve made 150 (of differing sizes) in three months.&rdquo; There are four units like his within a radius of one kilometre, churning them out at the same pace. And 15 within a three-kilometre radius of Ahmednagar town, on the same job.</p>\r\n<p class=\"body\">&ldquo;The biggest ones &mdash; 20,000-litre tankers, go to cattle camps and industrial units,&rdquo; says Melawane. &ldquo;The 10,000-litre ones go to the cities and big towns. The smallest ones I&rsquo;ve made carry just 1,000 litres.&rdquo; The little ones &ldquo;are bought by small horticulturists. Mostly tiny pomegranate growers who cannot afford drip irrigation. They take these drums on bullock carts and I&rsquo;ve seen them do the watering manually.&rdquo;</p>\r\n<p class=\"body\"><b>From wells, tanks, reservoirs</b></p>\r\n<p class=\"body\">So where&rsquo;s the water coming from? From rampant groundwater exploitation. From private borewells &mdash; some newly drilled just to exploit the scarcity. These could run out as the groundwater crisis worsens. Speculators have purchased existing dug wells that do have water in order to cash in. Some bottled water plants in Jalna town bring it all the way from Buldhana (in Vidarbha) &mdash; itself a high water-stress district. So the scarcity should spread to other regions fairly soon. Some are looting water from public sources, tanks and reservoirs.</p>\r\n<p class=\"body\">The tanker owner buys 10,000 litres for between Rs.1,000 and Rs.1,500. He sells that quantity at Rs.3,500 &mdash; pulling in up to Rs.2,500 on the deal. If he has a captive source like a working borewell or a dug well with water, then his costs are even less. And close to nil if he is looting public water sources.</p>\r\n<p class=\"body\">&ldquo;More than 50,000 (medium and big) tankers have been made across the State this year,&rdquo; says former Member of Parliament (and ex-MLA) Prasad Tanpure. &ldquo;And don&rsquo;t forget the existing thousands from previous years. So it&rsquo;s anyone&rsquo;s guess how many are in action now.&rdquo; Tanpure, a political veteran here, knows the water scene well. Other estimates place the new tanker numbers at one lakh.</p>\r\n<p class=\"body\">Even 50,000 new tankers would mean that fabricators in the State have done close to Rs.2 billion worth of business over the past few months. Of course, some have taken a hit on other fronts as &ldquo;construction work stands suspended. No grills, beams, nothing else,&rdquo; says Melawane. But there are also those jumping into this lucrative market. Back in Jalna, Suresh Pawar, a tanker-maker himself, says: &ldquo;There are over 100 fabricators around this town. That includes 90 who had never done this work before but are doing it now.&rdquo;</p>\r\n<p class=\"body\">In Shelgaon village of Jalna district, farmer (and local politician) Deepak Ambore is spending around Rs.2,000 a day. &ldquo;I get five tanker-loads of water daily to my 18 acres, including my five-acre&nbsp;<i>mosambi</i>orchard. I have to borrow from a&nbsp;<i>sahucar</i>.&rdquo; Why spend so much when the crop seems doomed? &ldquo;Right now, just to keep my orchard alive.&rdquo; Moneylending rates here can be 24 per cent a year or higher.</p>\r\n<p class=\"body\">Things are awful but not at their worst. Not yet. Many in Jalna have lived off tankers for years now. Only the dimensions of the crisis and the numbers of tankers have exploded. The worst is a long way off yet and it isn&rsquo;t just about rainfall. Except for some. As one political leader puts it cynically: &ldquo;If I owned ten tankers, I&rsquo;d have to pray for drought this year, too.&rdquo;</p>",
+      "location": 7,
+      "publish_date": "2013-05-16T08:09:51Z",
+      "status": 2,
+      "description": "The water markets of Marathwada are booming. In the town of Jalna alone, tanker owners transact between Rs.6 million and Rs.7.5 million in water sales each day.",
+      "expiry_date": null,
+      "featured_video": "",
+      "user": 1,
+      "slug": "tankers-and-the-economy-of-thirst",
+      "gen_description": false,
+      "allow_comments": true,
+      "_meta_title": "",
+      "comments_count": 0,
+      "capsule_video": ""
+    }
+  }
+]
