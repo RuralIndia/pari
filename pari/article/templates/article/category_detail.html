@@ -5,12 +5,15 @@
 {% block title %}{{ category.title }}{% endblock %}
 
 {% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}js/jquery.history.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}article/js/list_filter.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}article/js/media_player.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/category.js"></script>
 {% endblock %}
 
 {% block extra_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}album/css/magnific-popup.css" charset="utf-8">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less" charset="utf-8">
 {% endblock %}
 
@@ -21,10 +24,12 @@
 {% block main %}
     <div class="hero-unit category-header">
         <div class="row">
-            <div class="span4">
-                <img src="{{ MEDIA_URL }}{% thumbnail category.image 300 300 %}" alt="">
+            <div class="span3">
+                <a class="image-popup-fit-width" href="{{ MEDIA_URL }}{{ category.image }}" title="{{ category.description }}">
+                    <img src="{{ MEDIA_URL }}{% thumbnail category.image 270 270 %}" alt="">
+                </a>
             </div>
-            <div class="caption span">
+            <div class="caption span8">
                 <h1>{{ category.title }}</h1>
                 <p>{{ category.description }}</p>
             </div>
