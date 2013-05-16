@@ -7,7 +7,7 @@ from pari.article.common import get_location_articles
 
 class LocationDetail(ArticleListMixin, DetailView):
     context_object_name = "location"
-    article_list_context_name = "articles_in_location"
+    article_list_context_name = "articles"
     model = Location
 
     def get_article_list_queryset(self):
