@@ -35,6 +35,15 @@ var mapInterface = {
         this.updateHistory({'location': id});
     },
 
+    _getState: function() {
+        var State = History.getState();
+        if(State.data['location']) {
+            this._populateSideBar(State.data['location']);
+        } else {
+            this._clearSidebar();
+        }
+    },
+
     _populateSideBar: function(id) {
         $.get('/article/api/locations/' + id + '/article/?format=json', $.proxy(function(locationData) {
             var templateHtml= this.template(locationData);
@@ -57,17 +66,11 @@ var mapInterface = {
     historyBind: function(){
         History.Adapter.bind(window,'statechange',$.proxy(function(){
             if(this.historyFlag){
-                var State = History.getState();
-                console.log(State.data)
-                if(State.data['location']) {
-                    console.log(State.data);
-                    this._populateSideBar(State.data['location']);
-                } else {
-                    this._clearSidebar();
-                }
+                this._getState();
             }
             this.historyFlag = true;
         }, this));
+        this._getState();
     },
 
     historyFlag: true,
