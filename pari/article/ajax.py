@@ -16,7 +16,7 @@ def category_article_filter(request, category, filter=None, page=1):
     category = Category.objects.get(pk=category)
     article_queryset = get_category_articles(category)
 
-    return article_filter(article_queryset, category.title, filter, page, request)
+    return article_filter(article_queryset, None, filter, page, request)
 
 
 @dajaxice_register

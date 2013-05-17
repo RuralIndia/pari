@@ -36,6 +36,6 @@
         </div>
     </div>
     <div class="filter-list-container" data-title="{{ category.title }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
-        {% article_list category.title %}
+        {% article_list %}
     </div>
 {% endblock %}

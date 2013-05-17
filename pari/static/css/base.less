@@ -249,18 +249,41 @@ body {
 }
 
 .type-filters {
+
+    display: inline-block;
+    margin: 12px 0;
+
+    &:before {
+        content: 'Filter by:';
+        color:  #333;
+        line-height: 32px;
+    };
+
     .type-filter {
         font-size: 24.5px;
         color: #9C9C9C;
-        margin: 8px;
-        text-decoration: none;
+        margin: 4px;
+        list-style-type: none;
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        background-color: @alternateBgColor;
+        text-align: center;
+        line-height: 32px;
 
-        &.active {
+        .transition (.3s);
+        .box-shadow (0 0 5px rgba(0,0,0,.3));
+        .rounded (2px);
+        &.active{
             color: @headingsColor;
+
+            &:hover {
+                color: #9C9C9C;
+            }
         }
 
         &:hover {
-            color: black;
+            color: @headingsColor;
         }
     }
 }

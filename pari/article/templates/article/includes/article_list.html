@@ -1,12 +1,15 @@
 {% load  article_tags article_filters mezzanine_tags keyword_tags %}
 
 <div id="articles" class="heading row">
-    <h3 class="span10">Articles for "{{ title }}"</h3>
-    <div class="type-filters span2">
-        <div>Filter by article type:</div>
-        {% for type in types %}
-            <a class="type-filter{% if type.title == filter %} active{% endif %}" data-filter="{{ type.title }}" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{{ type.title }}"><i class="{{ type.icon_class }}"></i></a>
-        {% endfor %}
+    {% if title %}
+        <h3 class="span10">Articles for "{{ title }}"</h3>
+    {% endif %}
+    <div class="span4">
+        <ul class="type-filters">
+            {% for type in types %}
+                <li class="type-filter{% if type.title == filter %} active{% endif %}" data-filter="{{ type.title }}" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{{ type.title }}"><i class="{{ type.icon_class }}"></i></li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 <div class="articles">
