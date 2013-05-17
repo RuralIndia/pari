@@ -47,9 +47,9 @@
                 <div class="badge comments">
                 {% if blog_post.allow_comments %}
                     {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-                        <i class = "icon-comments-alt comments-icon"></i><span class="count"></span>
+                        <i class = "icon-comments-alt comments-icon"></i>
                     {% else %}
-                        <i class = "icon-comments-alt comments-icon"></i><span class="count"></span>
+                        <i class = "icon-comments-alt comments-icon"></i>   
                     {% endif %}
                 {% endif %}
                 <span class="count"><a href="{{ blog_post.get_absolute_url }}#disqus_thread" data-disqus-identifier="{% disqus_id_for blog_post %}"></a></span>
