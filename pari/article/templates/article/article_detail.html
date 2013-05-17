@@ -42,32 +42,30 @@
             <a target="_blank" href="http://twitter.com/home?status={{ title }}+{{ url }}"><div class="badge twitter"><i class="icon-twitter-sign"></i><span class="count"></span></div></a>
             
             <a target="_blank" href="https://plus.google.com/share?url={{ url }}"><div class="badge google-plus"><i class="icon-google-plus-sign"></i></div></a>
+            <a href="{{ blog_post.get_absolute_url }}#comments" data-disqus-identifier="{% disqus_id_for blog_post %}">
+                <div class="badge comments">
+                {% if blog_post.allow_comments %}
+                    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                        <i class = "icon-comments-alt comments-icon"></i><span class="count"></span>
+                    {% else %}
+                        <i class = "icon-comments-alt comments-icon"></i><span class="count"></span>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </a>
         </div>
     {% endwith %}
-
 {% endblock %}
 
 
 {% block blog_post_detail_commentlink %}
-<p>
-    {% if blog_post.allow_comments %}
-        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-            (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
-                data-disqus-identifier="{% disqus_id_for blog_post %}">{% spaceless %}
-                {% trans "Comments" %}
-            {% endspaceless %}</a>)
-        {% else %}(<a href="#comments">{% spaceless %}
-            {% blocktrans count blog_post.comments_count as comments_count %}1 comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-            {% endspaceless %}</a>)
-        {% endif %}
-    {% endif %}
-</p>
+
 {% endblock %}
 
 {% featured_content_for blog_post %}
 
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-{% include "generic/includes/disqus_counts.html" %}
+{% include "generic/includes/disqus_counts.html" %} 
 {% endif %}
 
 {% block blog_post_detail_content %}
