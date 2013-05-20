@@ -9,15 +9,14 @@
             </ul>
         </div>
     </div>
-<div class="results">
+<div class="list">
     {% for result in results %}
-    <div class="result ">
-    <i class="icon-{{ result|get_type }} result-type"></i>
-    <div class="result-image">
-        {% list_media_for result 278 225 %}
-    </div>
-        {% display_result %}
-    </div>
+        <div class="item">
+            <div class="item-image">
+                {% list_media_for result 278 225 %}
+            </div>
+            {% display_result %}
+        </div>
     {%empty %}
         No results to display. Try clearing filter.
     {% endfor %}

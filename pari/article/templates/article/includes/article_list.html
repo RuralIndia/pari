@@ -12,17 +12,16 @@
         </ul>
     </div>
 </div>
-<div class="articles">
+<div class="list">
     {% for result in articles %}
-    <div class="article ">
-        <i class="icon-{{ result|get_type }} article-type"></i>
-    <div class="article-image">
-        {% list_media_for result 278 225 %}
-    </div>
-        {% display_result %}
-    </div>
+        <div class="item">
+            <div class="item-image">
+                {% list_media_for result 278 225 %}
+            </div>
+            {% display_result %}
+        </div>
     {%empty %}
-        No articles to display. Try clearing filter.
+        No articles to display. Try clearing filter if applied.
     {% endfor %}
     {% paginate_list articles %}
 </div>
