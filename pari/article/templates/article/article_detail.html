@@ -19,10 +19,20 @@
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/article.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/location.less" charset="utf-8">
 {% endblock %}
 
 {% block extra_js %}
     <script type='text/javascript' src="{{ STATIC_URL }}article/js/social.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/map.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+    <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_css %}
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 {% endblock %}
 
 {% block maincontent %}
@@ -30,9 +40,7 @@
 {% block title %}
     {% editable blog_post.title %}<h2>{{ blog_post.title }}</h2>{% endeditable %}
     <p>
-        {% for location in blog_post|get_locations %}
-            <a href="{{ location.get_absolute_url }}">{{ location.title }}</a>  
-        {% endfor %} | by 
+        by 
         {% with blog_post.user as author %}
             <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
         {% endwith %}
@@ -81,6 +89,11 @@
 {% endblock %}
 
 {% block sidebar %}
+    <div class="well"> 
+        <h4><i class="icon-road"></i> Locations </h4>
+        <p>{{ blog_post|get_location_titles }}</p>
+            <div id="map" class="map-view" data-lat="{{ blog_post|get_latitudes }}" data-long="{{ blog_post|get_longitudes }}"></div>
+    </div>
     <div class="keywords">
         {% keywords_for blog_post as keywords %}
         {% if keywords %}

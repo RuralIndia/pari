@@ -42,11 +42,18 @@ def get_request_url(obj, request):
 def lower(type):
     return type.lower()
 
+
 @register.filter
 def get_location_titles(article):
     locations = [location.title for location in article.locations.all()]
     return ','.join(locations)
 
+
 @register.filter
-def get_locations(article):
-	return article.locations.all()
+def get_latitudes(article):
+    return ','.join(map(str, [location.location.latitude for location in article.locations.all()]))
+
+
+@register.filter
+def get_longitudes(article):
+    return ','.join(map(str, [location.location.longitude for location in article.locations.all()]))
