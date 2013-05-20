@@ -11,7 +11,7 @@ def get_category_articles(category):
 
 
 def get_location_articles(location):
-    return Article.articles.filter(location=location)
+    return Article.articles.filter(locations__location=location)
 
 
 def get_keyword_articles(keyword):

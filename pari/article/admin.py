@@ -15,7 +15,7 @@ blog_fieldsets[0][1]["fields"].insert(7, "capsule_video")
 blog_fieldsets[0][1]["fields"].insert(7, "featured_video")
 blog_fieldsets[0][1]["fields"].insert(7, "featured_audio")
 blog_fieldsets[0][1]["fields"].remove("categories")
-blog_fieldsets[0][1]["fields"].insert(-1, "location")
+blog_fieldsets[0][1]["fields"].insert(-1, "locations")
 blog_fieldsets[0][1]["fields"].insert(-1, "is_topic")
 
 blog_list_display = deepcopy(BlogPostAdmin.list_display)

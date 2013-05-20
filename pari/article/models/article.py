@@ -15,7 +15,7 @@ from .type import Type
 
 
 class Article(Displayable, Ownable, RichText, AdminThumbMixin):
-    location = models.ForeignKey(Location)
+    locations = models.ManyToManyField(Location)
     is_topic = models.BooleanField(verbose_name=_("Is a topic?"), default=False)
     category_list = models.ManyToManyField(Category, verbose_name=_("Categories"),
                                            blank=False, null=False, related_name="articles")

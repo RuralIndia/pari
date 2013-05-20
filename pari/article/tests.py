@@ -58,13 +58,12 @@ class ArticleFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Article
 
     title = factory.Sequence(lambda n: 'Article %s' % n)
-    location = factory.SubFactory(LocationFactory)
     user = factory.SubFactory(UserFactory)
 
 
 class ArticleAdminTests(TestCase):
     def test_includes_location_field(self):
-        self.assertIn("location", ArticleAdmin.fieldsets[0][1]['fields'])
+        self.assertIn("locations", ArticleAdmin.fieldsets[0][1]['fields'])
 
     def test_includes_is_topic_field(self):
         self.assertIn("is_topic", ArticleAdmin.fieldsets[0][1]['fields'])
@@ -86,9 +85,14 @@ class ArticleTests(TestCase):
     def setUp(self):
         self.video_article = ArticleFactory.create()
         self.video_article.types.add(TypeFactory.create())
+        self.video_article.locations.add(LocationFactory.create())
+        self.video_article.locations.add(LocationFactory.create())
 
     def test_is_video_article(self):
         self.assertTrue(self.video_article.is_video_article)
+
+    def test_contains_multiple_locations(self):
+        self.assertTrue(2, self.video_article.locations.count())
 
 
 class LocationTests(TestCase):
