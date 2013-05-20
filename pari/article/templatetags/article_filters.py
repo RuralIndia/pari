@@ -41,3 +41,12 @@ def get_request_url(obj, request):
 @register.filter
 def lower(type):
     return type.lower()
+
+@register.filter
+def get_location_titles(article):
+    locations = [location.title for location in article.locations.all()]
+    return ','.join(locations)
+
+@register.filter
+def get_locations(article):
+	return article.locations.all()

@@ -30,7 +30,9 @@
 {% block title %}
     {% editable blog_post.title %}<h2>{{ blog_post.title }}</h2>{% endeditable %}
     <p>
-        <a href="{{ blog_post.location.get_absolute_url }}">{{ blog_post.location.title }}</a> | by  
+        {% for location in blog_post|get_locations %}
+            <a href="{{ location.get_absolute_url }}">{{ location.title }}</a>  
+        {% endfor %} | by 
         {% with blog_post.user as author %}
             <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
         {% endwith %}
@@ -102,7 +104,7 @@
                     </div>
                     <div class="caption">
                         <h4>{{ article.title|truncatechars:45 }}</h4>
-                        <p>{{ article.location.title }}</p>
+                        <p>{{ article|get_location_titles }}</p>
                         <p>by {{ article.user.username }}</p>
                     </div>
                 </a>

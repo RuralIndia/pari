@@ -36,7 +36,7 @@
             <a href="{{ article.get_absolute_url }}">
               <div class="carousel-caption">
                 <h4>{{ article.title}}</h4>
-                <p>{{ article.location.title }}</p>
+                <p>{{ article|get_location_titles }}</p>
                 <p>{{ article.description }}</p>
               </div>
             </a>
@@ -64,7 +64,7 @@
                       <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 360 320 %}" alt="">
                       <div class="caption">
                           <h4>{{ article.title }}</h4>
-                          <p>{{ article.location.title }}</p>
+                          <p>{{ article|get_location_titles }}</p>
                           <p>{{ article.description }}</p>
                       </div>
                     </a>
