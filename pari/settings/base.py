@@ -16,7 +16,7 @@ from unipath import Path
 
 ADMIN_MENU_ORDER = (
     (_("Content"), ("pages.Page", "article.Article", "article.Location", "article.Category", "article.Type",
-       "generic.ThreadedComment", (_("Media Library"), "fb_browse"),)),
+       "generic.ThreadedComment", "album.Album", (_("Media Library"), "fb_browse"),)),
     (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
     (_("Users"), ("auth.User", "auth.Group",)),
 )
