@@ -11,6 +11,7 @@ DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
 COMPRESS_ENABLED = True
 
 INSTALLED_APPS += (
+    "django_extensions",
     "storages",
 )
 
@@ -27,7 +28,7 @@ S3_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 STATIC_URL = S3_URL
 COMPRESS_URL = STATIC_URL
 MEDIA_URL = STATIC_URL + "media/"
-MEDIA_ROOT=''
+MEDIA_ROOT = ''
 
 STATICFILES_FINDERS += (
     "django.contrib.staticfiles.finders.DefaultStorageFinder",
