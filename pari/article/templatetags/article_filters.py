@@ -45,8 +45,7 @@ def lower(type):
 
 @register.filter
 def get_location_titles(article):
-    locations = [location.title for location in article.locations.all()]
-    return ','.join(locations)
+    return ','.join([location.title for location in article.locations.all()])
 
 
 @register.filter
