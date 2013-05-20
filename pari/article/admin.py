@@ -26,7 +26,7 @@ class ArticleAdmin(BlogPostAdmin):
     fieldsets = blog_fieldsets
     list_display = blog_list_display
     list_filter = ()
-    filter_horizontal = ("category_list", "related_posts",)
+    filter_horizontal = ("category_list", "related_posts", "locations",)
 
 
 class TypeAdmin(admin.ModelAdmin):
