@@ -1,10 +1,8 @@
 import os
 from urllib import quote, unquote
 
-from django.core.files import File
 from django.core.files.storage import default_storage
 from django.template.loader import render_to_string
-
 
 # Try to import PIL in either of the two ways it can end up installed.
 try:
@@ -18,6 +16,7 @@ from mezzanine.conf import settings
 from mezzanine import template
 
 from .article_filters import get_type
+from pari.article.common import upload_to_s3
 
 
 register = template.Library()
@@ -99,9 +98,6 @@ def thumbnail(image_url, width, height, quality=95):
     if image_url_path:
         thumb_url = "%s/%s" % (image_url_path, thumb_url)
 
-    if default_storage.exists(thumb_url):
-        return thumb_url
-
     try:
         thumb_exists = os.path.exists(thumb_path)
     except UnicodeEncodeError:
@@ -143,11 +139,8 @@ def thumbnail(image_url, width, height, quality=95):
     try:
         image = ImageOps.fit(image, (width, height), Image.ANTIALIAS)
         image = image.save(thumb_path, filetype, quality=quality, **image_info)
-        # Push a remote copy of the thumbnail if MEDIA_URL is
-        # absolute.
-        if "://" in settings.MEDIA_URL:
-            with open(thumb_path, "r") as f:
-                default_storage.save(thumb_url, File(f))
+        if settings.S3_URL:
+            upload_to_s3(thumb_url, file_path=thumb_path)
     except Exception:
         # If an error occurred, a corrupted image may have been saved,
         # so remove it, otherwise the check for it existing will just

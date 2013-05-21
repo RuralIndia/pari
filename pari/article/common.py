@@ -2,6 +2,10 @@ from django.db.models import get_models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from mezzanine.core.models import Displayable
+from mezzanine.conf import settings
+
+import boto
+from boto.s3.key import Key
 
 from .models import Article
 
@@ -45,3 +49,15 @@ def get_article_list(article_queryset, page, filter):
         article_queryset = article_queryset.filter(types__title__iexact=filter)
 
     return get_paginated_list(article_queryset, page)
+
+
+def upload_to_s3(key, file_path=None, in_memory_file=None):
+    conn = boto.connect_s3()
+    bucket = conn.get_bucket(settings.AWS_STORAGE_BUCKET_NAME)
+    k = Key(bucket)
+    k.key = "/media/" + key
+    if file_path:
+        k.set_contents_from_filename(file_path)
+    elif in_memory_file:
+        k.set_contents_from_string(in_memory_file.read())
+    k.make_public()

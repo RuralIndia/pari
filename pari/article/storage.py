@@ -1,7 +1,11 @@
-from django.core.files.storage import get_storage_class
+from django.core.files.storage import get_storage_class, FileSystemStorage
 
 from storages.backends.s3boto import S3BotoStorage
-from filebrowser_safe.storage import S3BotoStorageMixin
+from filebrowser_safe.storage import S3BotoStorageMixin, FileSystemStorageMixin
+
+from mezzanine.conf import settings
+
+from .common import upload_to_s3
 
 
 class CachedS3BotoStorage(S3BotoStorageMixin, S3BotoStorage):
@@ -19,3 +23,10 @@ StaticRootS3BotoStorage = lambda: CachedS3BotoStorage(location='')
 
 
 MediaRootS3BotoStorage = lambda: CachedS3BotoStorage(location='media')
+
+
+class ParallelS3Storage(FileSystemStorageMixin, FileSystemStorage):
+    def _save(self, name, content):
+        if settings.S3_URL:
+            upload_to_s3(name, in_memory_file=content)
+            return super(ParallelS3Storage, self)._save(name, content)
