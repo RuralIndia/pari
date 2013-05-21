@@ -16,7 +16,7 @@ from mezzanine.conf import settings
 from mezzanine import template
 
 from .article_filters import get_type
-from pari.article.common import upload_to_s3
+from pari.article.common import upload_to_s3, key_in_s3
 
 
 register = template.Library()
@@ -97,6 +97,10 @@ def thumbnail(image_url, width, height, quality=95):
     image_url_path = os.path.dirname(image_url)
     if image_url_path:
         thumb_url = "%s/%s" % (image_url_path, thumb_url)
+
+    if settings.S3_URL:
+        if key_in_s3(thumb_url):
+            return thumb_url
 
     try:
         thumb_exists = os.path.exists(thumb_path)

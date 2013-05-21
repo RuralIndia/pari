@@ -29,3 +29,5 @@ MIDDLEWARE_CLASSES += (
 DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+S3_URL = None
