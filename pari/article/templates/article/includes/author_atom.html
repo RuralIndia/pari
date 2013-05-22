@@ -1,0 +1,14 @@
+{% load i18n verbatim_tag mezzanine_tags article_tags article_filters keyword_tags %}
+<div class="caption">
+    <h4><a href="{{ result.get_absolute_url }}">{{ result.title }}</a></h4>
+    <p>{{ result.description }}</p>
+    {% keywords_for result as keywords %}
+    {% for keyword in keywords %}
+        <span class="tag">
+            <a href="{% url 'keyword-detail' keyword.slug %}">{{ keyword }}</a>
+        </span>
+    {% endfor %}
+    {% with result|get_request_url:request as url %}
+        {% render_share_widgets result.title url %}
+    {% endwith %}
+</div>
