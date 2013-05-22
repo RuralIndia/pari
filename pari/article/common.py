@@ -21,6 +21,7 @@ def get_location_articles(location):
 def get_keyword_articles(keyword):
     return Article.articles.filter(keywords__keyword=keyword)
 
+
 def get_author_articles(author):
     return Article.articles.filter(author=author)
 
@@ -57,6 +58,7 @@ def get_article_list(article_queryset, page, filter):
 def get_s3_bucket():
     conn = boto.connect_s3()
     return conn.get_bucket(settings.AWS_STORAGE_BUCKET_NAME)
+
 
 def get_s3_key(key):
     return "/media/%s" % key

@@ -17,6 +17,6 @@ class Author(Displayable):
     def get_absolute_url(self):
         return ("author-detail", (), {"slug": unicode(self.slug)})
 
-    @property 
+    @property
     def get_thumbnail(self):
         return self.image

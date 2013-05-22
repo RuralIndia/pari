@@ -2,6 +2,7 @@ from django.views.generic.detail import DetailView
 
 from pari.article.models import Author, Article
 
+
 class AuthorDetail(DetailView):
     context_object_name = "author"
     model = Author

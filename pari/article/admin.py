@@ -61,7 +61,7 @@ class AuthorAdmin(DisplayableAdmin):
     form = AuthorForm
     fieldsets = (None, {
         "fields": ["title", "image", "description"],
-        }),
+    }),
 
 admin.site.unregister(BlogPost)
 admin.site.register(Type, TypeAdmin)
