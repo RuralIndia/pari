@@ -15,14 +15,14 @@
     <script type='text/javascript' src="{{ STATIC_URL }}js/pari.js"></script>
 {% endblock %}
 
-{% block main %}
-<div id="homepage">
+{% block extra_header %}
   <div class="hero-unit home-page">
     <h1>People&#8217;s Archive of Rural India </h1>
     <p>An archive and living journal of oral and visual history of Rural India</p>
   </div>
+
   {% if article_list %}
-    <div id="homeCarousel" class="carousel slide">
+    <div id="homeCarousel" class="carousel slide container">
       <ol class="carousel-indicators">
         {% for count in article_list|length|get_range %}
           <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
@@ -47,7 +47,10 @@
       <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
     </div>
   {% endif %}
+{% endblock %}
 
+{% block main %}
+<div id="homepage">
   {% if recent_articles %}
   <section id="mainsection">
     <div class="main-section">

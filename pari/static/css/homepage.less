@@ -1,11 +1,24 @@
 @import "common.less";
 
-#homepage {
-    .main-section {
-        @bg: #E8E8E8;
-        position: relative;
-        background-color: @bg;
-        .full-size-background (@bg);
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    .hero-unit {
+        text-align: center;
+        background-color: #fff;
+        padding: 0;
+
+        h1 {
+            font-weight: 200;
+            font-family: arial, sans-serif;
+            letter-spacing: 0px;
+        }
+
+        p {
+            .section-header
+        }
     }
 
     .carousel-control {
@@ -25,6 +38,16 @@
             left: 0;
             .border-radius(8px, 8px, 0, 0);
         }
+    }
+}
+
+#homepage {
+    .main-section {
+        @bg: #E8E8E8;
+        position: relative;
+        background-color: @bg;
+        .full-size-background (@bg);
+        margin-top: 609px;
     }
 
     .recent-articles{
@@ -125,19 +148,5 @@
         }
     }
 
-    .hero-unit {
-        text-align: center;
-        background-color: #fff;
-        padding: 0;
-
-        h1 {
-            font-weight: 200;
-            font-family: arial, sans-serif;
-            letter-spacing: 0px;
-        }
-
-        p {
-            .section-header
-        }
-    }
+    
 }
