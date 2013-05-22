@@ -11,6 +11,7 @@ from .forms import LocationForm, CategoryForm, TypeForm
 blog_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
 blog_fieldsets[0][1]["fields"].insert(1, "category_list")
 blog_fieldsets[0][1]["fields"].insert(1, "types")
+blog_fieldsets[0][1]["fields"].insert(1, "author")
 blog_fieldsets[0][1]["fields"].insert(7, "capsule_video")
 blog_fieldsets[0][1]["fields"].insert(7, "featured_video")
 blog_fieldsets[0][1]["fields"].insert(7, "featured_audio")

@@ -59,6 +59,7 @@ class ArticleFactory(factory.DjangoModelFactory):
 
     title = factory.Sequence(lambda n: 'Article %s' % n)
     user = factory.SubFactory(UserFactory)
+    author = "author"
 
 
 class ArticleAdminTests(TestCase):

@@ -17,7 +17,7 @@ class Location(Displayable):
 
     image = FileField(verbose_name=_("Image"),
                       upload_to=upload_to("article.Location.image", "location"),
-                      format="Image", max_length=255, null=False, blank=False)
+                      format="Image", max_length=255, null=True, blank=True)
 
     def get_as_latLng(self):
         return unicode(self.location).split(',')

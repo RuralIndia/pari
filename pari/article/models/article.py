@@ -3,7 +3,7 @@ from django.db import models
 
 from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.fields import FileField
-from mezzanine.utils.models import AdminThumbMixin, upload_to
+from mezzanine.utils.models import AdminThumbMixin
 from mezzanine.core.models import Displayable, Ownable, RichText
 from mezzanine.generic.fields import CommentsField
 
@@ -23,8 +23,9 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
                                          default=True)
     comments = CommentsField(verbose_name=_("Comments"))
     featured_image = FileField(verbose_name=_("Featured Image"),
-        upload_to=upload_to("blog.BlogPost.featured_image", "blog"),
         format="Image", max_length=255, null=True, blank=True)
+
+    author = models.CharField(max_length=100, null=False, blank=False)
 
     capsule_video = models.CharField(max_length=100, null=True, blank=True)
 
