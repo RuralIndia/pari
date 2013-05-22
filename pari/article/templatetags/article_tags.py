@@ -1,14 +1,13 @@
 import os
 from urllib import quote, unquote
 
-from django.core.files.storage import default_storage
 from django.template.loader import render_to_string
 
 from mezzanine.conf import settings
 from mezzanine import template
 
 from .article_filters import get_type
-from pari.article.common import key_in_s3, create_thumbnail
+from pari.article.storage import create_thumbnail
 
 
 register = template.Library()
@@ -63,12 +62,6 @@ def render_share_widgets(title, url):
 
 @register.simple_tag
 def thumbnail(image_url, width, height, quality=95):
-    """
-    Given the URL to an image, resizes the image using the given width and
-    height on the first time it is requested, and returns the URL to the new
-    resized image. if width or height are zero then original ratio is
-    maintained.
-    """
     if not image_url:
         image_url = "no_image.jpg"
 
@@ -89,24 +82,5 @@ def thumbnail(image_url, width, height, quality=95):
     image_url_path = os.path.dirname(image_url)
     if image_url_path:
         thumb_url = "%s/%s" % (image_url_path, thumb_url)
-
-    if settings.S3_URL:
-        if key_in_s3(thumb_url):
-            return thumb_url
-
-    try:
-        thumb_exists = os.path.exists(thumb_path)
-    except UnicodeEncodeError:
-        # The image that was saved to a filesystem with utf-8 support,
-        # but somehow the locale has changed and the filesystem does not
-        # support utf-8.
-        from mezzanine.core.exceptions import FileSystemEncodingChanged
-        raise FileSystemEncodingChanged()
-    if thumb_exists:
-        # Thumbnail exists, don't generate it.
-        return thumb_url
-    elif not default_storage.exists(image_url):
-        # Requested image does not exist, just return its URL.
-        return image_url
 
     return create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype)

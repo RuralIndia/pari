@@ -3,11 +3,11 @@ from django.db import models
 
 from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.fields import FileField
-from mezzanine.utils.models import AdminThumbMixin
 from mezzanine.core.models import Displayable, Ownable, RichText
 from mezzanine.generic.fields import CommentsField
 
 from pari.article.managers import ArticleManager, TopicManager
+from pari.article.mixins import AdminThumbMixin
 
 from .category import Category
 from .location import Location
@@ -63,3 +63,19 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     @property
     def get_thumbnail(self):
         return self.featured_image
+
+
+def get_category_articles(category):
+    return category.articles.filter(is_topic=False)
+
+
+def get_location_articles(location):
+    return Article.articles.filter(locations__location=location)
+
+
+def get_keyword_articles(keyword):
+    return Article.articles.filter(keywords__keyword=keyword)
+
+
+def get_author_articles(author):
+    return Article.articles.filter(author=author)

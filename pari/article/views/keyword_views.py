@@ -3,9 +3,8 @@ from itertools import chain
 
 from mezzanine.generic.models import Keyword
 
-from pari.article.models import Article
+from pari.article.models import Article, get_keyword_articles
 from pari.article.mixins import ArticleListMixin
-from pari.article.common import get_keyword_articles
 
 
 class KeywordDetail(ArticleListMixin, DetailView):

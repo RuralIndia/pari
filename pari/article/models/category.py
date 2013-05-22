@@ -3,8 +3,10 @@ from django.db import models
 
 from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.models import Displayable
-from mezzanine.utils.models import AdminThumbMixin, upload_to
+from mezzanine.utils.models import upload_to
 from mezzanine.core.fields import FileField
+
+from pari.article.mixins import AdminThumbMixin
 
 
 class Category(Displayable, AdminThumbMixin):

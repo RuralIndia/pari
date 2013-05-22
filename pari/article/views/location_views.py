@@ -1,8 +1,7 @@
 from django.views.generic.detail import DetailView
 
-from pari.article.models import Location, Article
+from pari.article.models import Location, Article, get_location_articles
 from pari.article.mixins import ArticleListMixin
-from pari.article.common import get_location_articles
 
 
 class LocationDetail(ArticleListMixin, DetailView):

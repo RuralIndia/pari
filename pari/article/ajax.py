@@ -6,8 +6,7 @@ from mezzanine.generic.models import Keyword
 from dajaxice.decorators import dajaxice_register
 from dajax.core import Dajax
 
-from .models import Category, Type, Location, Author
-from .common import get_category_articles, get_location_articles, get_keyword_articles, get_author_articles
+from .models import Category, Type, Location, Author, get_category_articles, get_location_articles, get_keyword_articles, get_author_articles
 from .common import get_article_list, get_search_results
 
 

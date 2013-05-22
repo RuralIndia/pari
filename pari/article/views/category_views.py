@@ -3,7 +3,7 @@ from django.views.generic.detail import DetailView
 
 from pari.article.models import Category
 from pari.article.mixins import ArticleListMixin
-from pari.article.common import get_category_articles
+from pari.article.models import get_category_articles
 
 
 class CategoriesList(ListView):
