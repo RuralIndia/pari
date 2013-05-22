@@ -1,7 +1,7 @@
 Django==1.5.1
 Fabric==1.5.3
 Mezzanine==1.4.6
-Pillow==2.0.0
+Pillow==1.7.8
 South==0.7.6
 Unipath==0.2.1
 bleach==1.2
