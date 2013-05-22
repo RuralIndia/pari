@@ -20,7 +20,10 @@
 {% endblock %}
 
 {% block main %}
+    <div class="album-header">
     <h3>{{ album.title }}</h3>
+        {{ album.description }}
+    </div>
     <div class="popup-gallery">
         {% for image_group in album|all_images|group_by:3 %}
             <div class="album-images row">
