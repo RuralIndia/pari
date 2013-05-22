@@ -1,5 +1,9 @@
+import os
+
 from django.db.models import get_models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.files.storage import default_storage
+
 
 from mezzanine.core.models import Displayable
 from mezzanine.conf import settings
@@ -8,6 +12,13 @@ import boto
 from boto.s3.key import Key
 
 from .models import Article
+
+try:
+    from PIL import Image, ImageFile, ImageOps
+except ImportError:
+    import Image
+    import ImageFile
+    import ImageOps
 
 
 def get_category_articles(category):
@@ -77,4 +88,43 @@ def upload_to_s3(key, file_path=None, in_memory_file=None):
 
 def key_in_s3(key):
     bucket = get_s3_bucket()
-    return bucket.get_key(get_s3_key(key)) != None
+    return bucket.get_key(get_s3_key(key)) is not None
+
+
+def create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, quality=95):
+    f = default_storage.open(image_url)
+    try:
+        image = Image.open(f)
+    except:
+        return image_url
+
+    image_info = image.info
+    width = int(width)
+    height = int(height)
+
+    if width == image.size[0] and height == image.size[1]:
+        return image_url
+
+    if width == 0:
+        width = image.size[0] * height / image.size[1]
+    elif height == 0:
+        height = image.size[1] * width / image.size[0]
+    if image.mode not in ("P", "L", "RGBA"):
+        image = image.convert("RGBA")
+
+    # Required for progressive jpgs.
+    ImageFile.MAXBLOCK = image.size[0] * image.size[1]
+
+    try:
+        image = ImageOps.fit(image, (width, height), Image.ANTIALIAS)
+        image = image.save(thumb_path, filetype, quality=quality, **image_info)
+        if settings.S3_URL:
+            upload_to_s3(thumb_url, file_path=thumb_path)
+    except Exception:
+        try:
+            os.remove(thumb_path)
+        except Exception:
+            pass
+        return image_url
+
+    return thumb_url

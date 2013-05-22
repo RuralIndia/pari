@@ -4,19 +4,11 @@ from urllib import quote, unquote
 from django.core.files.storage import default_storage
 from django.template.loader import render_to_string
 
-# Try to import PIL in either of the two ways it can end up installed.
-try:
-    from PIL import Image, ImageFile, ImageOps
-except ImportError:
-    import Image
-    import ImageFile
-    import ImageOps
-
 from mezzanine.conf import settings
 from mezzanine import template
 
 from .article_filters import get_type
-from pari.article.common import upload_to_s3, key_in_s3
+from pari.article.common import key_in_s3, create_thumbnail
 
 
 register = template.Library()
@@ -117,41 +109,4 @@ def thumbnail(image_url, width, height, quality=95):
         # Requested image does not exist, just return its URL.
         return image_url
 
-    f = default_storage.open(image_url)
-    try:
-        image = Image.open(f)
-    except:
-        # Invalid image format
-        return image_url
-
-    image_info = image.info
-    width = int(width)
-    height = int(height)
-
-    # If already right size, don't do anything.
-    if width == image.size[0] and height == image.size[1]:
-        return image_url
-    # Set dimensions.
-    if width == 0:
-        width = image.size[0] * height / image.size[1]
-    elif height == 0:
-        height = image.size[1] * width / image.size[0]
-    if image.mode not in ("P", "L", "RGBA"):
-        image = image.convert("RGBA")
-    # Required for progressive jpgs.
-    ImageFile.MAXBLOCK = image.size[0] * image.size[1]
-    try:
-        image = ImageOps.fit(image, (width, height), Image.ANTIALIAS)
-        image = image.save(thumb_path, filetype, quality=quality, **image_info)
-        if settings.S3_URL:
-            upload_to_s3(thumb_url, file_path=thumb_path)
-    except Exception:
-        # If an error occurred, a corrupted image may have been saved,
-        # so remove it, otherwise the check for it existing will just
-        # return the corrupted image next time it's requested.
-        try:
-            os.remove(thumb_path)
-        except Exception:
-            pass
-        return image_url
-    return thumb_url
+    return create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype)
