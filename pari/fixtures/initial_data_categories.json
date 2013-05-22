@@ -4,7 +4,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
-      "description": "The complex world of rural labour. Landless  workers,  farmers, blacksmiths, migrant labourers and many more",
+      "description": "The complex world of rural labour. Landless  workers,  farmers and many more",
       "title": "Things we do",
       "short_url": null,
       "image": "uploads/category/images/things_we_do.jpg",
@@ -99,7 +99,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
-      "description": "The amazing universe of Indian languages  -  everyday people introduce their own tongues",
+      "description": "The amazing universe of Indian languages  - people introduce their own tongues",
       "title": "Tongues",
       "short_url": null,
       "image": "uploads/category/images/toungues.jpg",
