@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load i18n verbatim_tag article_tags article_filters mezzanine_tags keyword_tags %}
+
+{% block meta_title %}{{ author.title }}{% endblock %}
+{% block title %}{{ author.title }}{% endblock %}
+
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/jquery.history.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/list_filter.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/media_player.js"></script>
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/author.less" charset="utf-8">
+{% endblock %}
+
+{% block main %}
+	<div class="hero-unit author-header">
+        <div class="row">
+            <div class="span3">
+                <img src="{{ MEDIA_URL }}{% thumbnail author.image 270 270 %}" alt="">
+            </div>
+            <div class="caption span8">
+                <h1>{{ author.title }}</h1>
+                <p>{{ author.description }}</p>
+            </div>
+        </div>
+    </div>
+	 <div class="filter-list-container" data-title="{{ author.title }}" data-filter-endpoint="author_article_filter" data-filter-required-args-author="{{ author.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
+		{% article_list %}
+	</div>
+{% endblock %}

@@ -21,6 +21,9 @@ def get_location_articles(location):
 def get_keyword_articles(keyword):
     return Article.articles.filter(keywords__keyword=keyword)
 
+def get_author_articles(author):
+    return Article.articles.filter(author=author)
+
 
 def get_paginated_list(non_paginated, page):
     paginator = Paginator(non_paginated, 10)

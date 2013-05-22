@@ -4,12 +4,13 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework.urlpatterns import format_suffix_patterns
 
 from .views import LocationListApi, LocationDetailApi, LocationArticleApi
-from .views import LocationDetail, CategoriesList, CategoryDetail, ArticleDetail, KeywordDetail
+from .views import LocationDetail, CategoriesList, CategoryDetail, ArticleDetail, KeywordDetail, AuthorDetail
 from .views import SearchList
 
 root_patterns = patterns('pari.article.views',
     url(r'^categories/(?P<slug>.+)/$', CategoryDetail.as_view(), name='category-detail'),
     url(r'^categories/$', CategoriesList.as_view(), name='category-list'),
+    url(r'^authors/(?P<slug>.+)/$', AuthorDetail.as_view(), name='author-detail'),
     url(r'^articles/(?P<slug>.+)/$', ArticleDetail.as_view(), name='article-detail'),
     url(r'^topics/(?P<slug>.+)/$', ArticleDetail.as_view(), name='topic-detail'),
     url(r'^locations/(?P<slug>.+)/$', LocationDetail.as_view(), name='location-detail'),

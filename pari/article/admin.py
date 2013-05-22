@@ -5,8 +5,8 @@ from mezzanine.blog.models import BlogPost
 from mezzanine.blog.admin import BlogPostAdmin
 from mezzanine.core.admin import DisplayableAdmin
 
-from .models import Article, Location, Category, Type
-from .forms import LocationForm, CategoryForm, TypeForm
+from .models import Article, Location, Category, Type, Author
+from .forms import LocationForm, CategoryForm, TypeForm, AuthorForm
 
 blog_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
 blog_fieldsets[0][1]["fields"].insert(1, "category_list")
@@ -57,8 +57,15 @@ class CategoryAdmin(DisplayableAdmin):
     list_filter = ()
 
 
+class AuthorAdmin(DisplayableAdmin):
+    form = AuthorForm
+    fieldsets = (None, {
+        "fields": ["title", "image", "description"],
+        }),
+
 admin.site.unregister(BlogPost)
 admin.site.register(Type, TypeAdmin)
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Author, AuthorAdmin)
 admin.site.register(Article, ArticleAdmin)

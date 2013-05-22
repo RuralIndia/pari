@@ -8,7 +8,7 @@ import factory
 from geoposition import Geoposition
 
 from .admin import ArticleAdmin
-from .models import Article, Location, Type, Category
+from .models import Article, Location, Type, Category, Author
 
 
 class LocationFactory(factory.DjangoModelFactory):
@@ -39,6 +39,12 @@ class TypeFactory(factory.DjangoModelFactory):
     title = 'Video'
 
 
+class AuthorFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Author
+
+    title = 'Author'
+
+
 class CategoryFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Category
 
@@ -59,7 +65,7 @@ class ArticleFactory(factory.DjangoModelFactory):
 
     title = factory.Sequence(lambda n: 'Article %s' % n)
     user = factory.SubFactory(UserFactory)
-    author = "author"
+    author = factory.SubFactory(AuthorFactory)
 
 
 class ArticleAdminTests(TestCase):
@@ -155,9 +161,9 @@ class ArticleViewsTests(TestCase):
         response = self.client.get(reverse('search-detail'), {'query': 'location'})
         self.assertContains(response, location, status_code=200)
 
-    def test_search_page_contains_four_result_types(self):
+    def test_search_page_contains_five_result_types(self):
         response = self.client.get(reverse('search-detail'), {'query': 'article'})
-        self.assertEqual(4, len(response.context['result_types']))
+        self.assertEqual(5, len(response.context['result_types']))
 
     def test_should_contain_category_with_title_test_when_searched_for_test_and_filtered_by_category(self):
         category_with_title_test = CategoryFactory(title="test")

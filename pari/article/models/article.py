@@ -25,7 +25,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     featured_image = FileField(verbose_name=_("Featured Image"),
         format="Image", max_length=255, null=True, blank=True)
 
-    author = models.CharField(max_length=100, null=False, blank=False)
+    author = models.ForeignKey("Author", related_name='articles')
 
     capsule_video = models.CharField(max_length=100, null=True, blank=True)
 

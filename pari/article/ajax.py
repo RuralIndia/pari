@@ -6,8 +6,8 @@ from mezzanine.generic.models import Keyword
 from dajaxice.decorators import dajaxice_register
 from dajax.core import Dajax
 
-from .models import Category, Type, Location
-from .common import get_category_articles, get_location_articles, get_keyword_articles
+from .models import Category, Type, Location, Author
+from .common import get_category_articles, get_location_articles, get_keyword_articles, get_author_articles
 from .common import get_article_list, get_search_results
 
 
@@ -15,6 +15,14 @@ from .common import get_article_list, get_search_results
 def category_article_filter(request, category, filter=None, page=1):
     category = Category.objects.get(pk=category)
     article_queryset = get_category_articles(category)
+
+    return article_filter(article_queryset, None, filter, page, request)
+
+
+@dajaxice_register
+def author_article_filter(request, author, filter=None, page=1):
+    author = Author.objects.get(pk=author)
+    article_queryset = get_author_articles(author)
 
     return article_filter(article_queryset, None, filter, page, request)
 

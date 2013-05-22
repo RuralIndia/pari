@@ -40,7 +40,10 @@
 {% block title %}
     {% editable blog_post.title %}<h2>{{ blog_post.title }}</h2>{% endeditable %}
     <p>
-        by {{ blog_post.author }}
+        by 
+        {% with blog_post.author as author %}
+            <a href="{% url "author-detail" author.slug %}">{{author.title}}</a>
+        {% endwith %}
     </p>
     {% with request.build_absolute_uri as url and blog_post.title as title %}
         <div class="social" data-url="{{ url }}">
