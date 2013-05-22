@@ -16,5 +16,5 @@ class LocationDetail(ArticleListMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(LocationDetail, self).get_context_data(**kwargs)
         location = context['location']
-        context['topics_in_location'] = Article.topics.filter(locations__location=location)
+        context['topics_in_location'] = Article.topics.filter(locations__location__contains=location.location)
         return context
