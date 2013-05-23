@@ -37,6 +37,57 @@
             .border-radius(8px, 8px, 0, 0);
         }
     }
+
+    @media (min-width: 979px) {
+        .carousel-caption {
+            background-color: rgba(255, 255, 255, 0.74902);
+            bottom: 5%;
+            left: 50%;
+            right: 10%;
+            min-height: 25%;
+            max-height: 25%;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .carousel-control {
+            top: 50%;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .carousel-control{
+            height: 70px;
+            width: 50px;
+            font-size: 190px;
+            line-height: 37px;
+        }
+    }
+
+    @media (min-width: 480px) {
+        .carousel-caption {
+            background-color: rgba(255, 255, 255, 0.74902);
+        }
+        .carousel-caption h4 small {
+            color: #333;
+        }
+        .carousel-caption p {
+            color: #333;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .carousel-caption {
+            position: relative;
+        }
+    }
+}
+
+#holder {
+    #main_content {
+        margin-top: 609px;
+    }
 }
 
 #homepage {
@@ -45,7 +96,6 @@
         position: relative;
         background-color: @bg;
         .full-size-background (@bg);
-        margin-top: 609px;
     }
 
     .recent-articles{
