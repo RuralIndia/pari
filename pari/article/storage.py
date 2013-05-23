@@ -1,12 +1,11 @@
 import os
 import StringIO
 
-from django.core.files.storage import get_storage_class, FileSystemStorage, default_storage
+from django.core.files.storage import FileSystemStorage, default_storage
 
 from mezzanine.conf import settings
 
-from storages.backends.s3boto import S3BotoStorage
-from filebrowser_safe.storage import S3BotoStorageMixin, FileSystemStorageMixin
+from filebrowser_safe.storage import FileSystemStorageMixin
 import boto
 from boto.s3.key import Key
 try:
@@ -15,23 +14,6 @@ except ImportError:
     import Image
     import ImageFile
     import ImageOps
-
-
-class CachedS3BotoStorage(S3BotoStorageMixin, S3BotoStorage):
-    def __init__(self, *args, **kwargs):
-        super(CachedS3BotoStorage, self).__init__(*args, **kwargs)
-        self.local_storage = get_storage_class("compressor.storage.CompressorFileStorage")()
-
-    def save(self, name, content):
-        name = super(CachedS3BotoStorage, self).save(name, content)
-        self.local_storage._save(name, content)
-        return name
-
-
-StaticRootS3BotoStorage = lambda: CachedS3BotoStorage(location='')
-
-
-MediaRootS3BotoStorage = lambda: CachedS3BotoStorage(location='media')
 
 
 class ParallelS3Storage(FileSystemStorageMixin, FileSystemStorage):
