@@ -95,7 +95,11 @@ def create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, 
         get_s3_content(image_url, f)
         f.seek(0)
     else:
-        f = default_storage.open(image_url)
+        try:
+            f = default_storage.open(image_url)
+        except:
+            return image_url
+
     try:
         image = Image.open(f)
     except:
