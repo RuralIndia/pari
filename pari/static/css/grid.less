@@ -1,6 +1,6 @@
 @import "common.less";
 
-.grid-row (@captionHeight: 119px) {
+.grid-row (@captionHeight: 50px, @maxCaptionHeight: 119px) {
 
     .grid-column {
         position: relative;
@@ -9,6 +9,11 @@
         &:hover {
             .caption {
                 .dark-caption;
+                height: @maxCaptionHeight;
+                .transition(0.2s);
+                .description {
+                    display: block;
+                }
             }
         }
 
@@ -22,7 +27,7 @@
             padding: 10px;
             word-wrap: break-word;
             min-height: @captionHeight;
-            max-height: @captionHeight;
+            max-height: @maxCaptionHeight;
 
             h4 {
                 color: @headingsColor;
