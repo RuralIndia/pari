@@ -6,8 +6,11 @@ from mezzanine.generic.models import Keyword
 from dajaxice.decorators import dajaxice_register
 from dajax.core import Dajax
 
-from .models import Category, Type, Location, Author, get_category_articles, get_location_articles, get_keyword_articles, get_author_articles
+from .models import (Category, Type, Location, Author,
+                     get_category_articles, get_location_articles, get_keyword_articles,
+                     get_author_articles, get_archive_articles)
 from .common import get_article_list, get_search_results
+from .templatetags.article_filters import month_name
 
 
 @dajaxice_register
@@ -40,6 +43,13 @@ def keyword_article_filter(request, keyword, filter=None, page=1):
     article_queryset = get_keyword_articles(keyword)
 
     return article_filter(article_queryset, keyword.title, filter, page, request)
+
+
+@dajaxice_register
+def archive_article_filter(request, month, year, filter=None, page=1):
+    article_queryset = get_archive_articles(month, year)
+
+    return article_filter(article_queryset, "{0} {1}".format(month_name(month), year), filter, page, request)
 
 
 @dajaxice_register

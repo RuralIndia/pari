@@ -79,3 +79,7 @@ def get_keyword_articles(keyword):
 
 def get_author_articles(author):
     return Article.articles.filter(author=author)
+
+
+def get_archive_articles(month, year):
+    return Article.objects.filter(publish_date__year=year, publish_date__month=month)

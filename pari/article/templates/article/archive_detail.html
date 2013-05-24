@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n verbatim_tag article_filters mezzanine_tags article_tags keyword_tags %}
+
+{% block meta_title %}{{ title }}{% endblock %}
+
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}js/jquery.history.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/list_filter.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}article/js/media_player.js"></script>
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/category.less" charset="utf-8">
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "{{ category.title }}" %}</li>
+{% endblock %}
+
+{% block main %}
+    <div class="filter-list-container" data-title="{{ title }}" data-filter-endpoint="archive_article_filter" data-filter-required-args-year="{{ year }}" data-filter-required-args-month="{{ month }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
+        {% article_list title %}
+    </div>
+{% endblock %}

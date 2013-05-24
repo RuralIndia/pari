@@ -1,4 +1,5 @@
 import random
+import calendar
 
 from django.template import Library
 
@@ -41,6 +42,11 @@ def get_request_url(obj, request):
 @register.filter
 def lower(type):
     return type.lower()
+
+
+@register.filter
+def month_name(month_number):
+    return calendar.month_name[int(month_number)]
 
 
 @register.filter
