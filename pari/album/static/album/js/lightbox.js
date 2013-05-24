@@ -34,15 +34,22 @@ $(function () {
                 $.scPlayer.stopAll();
                 var audio = $('.mfp-title p').data('audio');
                 var controls = $('.mfp-controls');
-                if(audio != "") {
+                if(audio && audio != "") {
                     var player = $('.player');
                     player.empty();
                     player.append('<a href="http://api.soundcloud.com/tracks/' + audio + '" class="sc-player">Player</a>');
-                    $('.sc-player').scPlayer();
-                    
+                    slideShow = $('.album-controls').is(':hidden');
+                    $('.sc-player').scPlayer({
+                        autoPlay: slideShow
+                    });
                     controls.show();
-                    $('i.icon-play', controls).show();
-                    $('i.icon-pause', controls).hide();
+                    if (slideShow) {
+                        $('.icon-play', controls).hide();
+                        $('.icon-pause', controls).show();
+                    } else {
+                        $('.icon-play', controls).show();
+                        $('.icon-pause', controls).hide();
+                    }
                     $('.audio', controls).click(function () {
                         $('.audio', controls).toggle();
                         $('.sc-play').click();
@@ -53,7 +60,14 @@ $(function () {
             },
             close: function () {
                 $.scPlayer.stopAll();
+                $('.album-controls').show();
             }
         }
+    });
+    $('.album-audio').click(function () {
+        $('.album-controls').hide();
+        $('.sc-play').click();
+        $('.image-tag').click();
+        $('.audio').click();
     });
 });

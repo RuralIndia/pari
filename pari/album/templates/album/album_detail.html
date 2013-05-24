@@ -23,6 +23,11 @@
     <div class="album-header">
     <h3>{{ album.title }}</h3>
         {{ album.description }}
+        <div class="mfp-img-holder">
+            <div class="album-controls" title="Start slideshow with audio">
+                <i class="icon-play album-audio"></i><i class="icon-pause album-audio" style="display:none"></i>
+            </div>
+        </div>
     </div>
     <div class="popup-gallery">
         {% for image_group in album|all_images|group_by:3 %}
