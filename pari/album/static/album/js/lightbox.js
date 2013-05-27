@@ -43,13 +43,8 @@ $(function () {
                         autoPlay: slideShow
                     });
                     controls.show();
-                    if (slideShow) {
-                        $('.icon-play', controls).hide();
-                        $('.icon-pause', controls).show();
-                    } else {
-                        $('.icon-play', controls).show();
-                        $('.icon-pause', controls).hide();
-                    }
+                    $('.icon-play', controls).show();
+                    $('.icon-pause', controls).hide();
                     $('.audio', controls).click(function () {
                         $('.sc-play').click();
                     });
@@ -63,15 +58,15 @@ $(function () {
             }
         }
     });
+
     $('.album-audio').click(function () {
         $('.album-controls').hide();
-        $('.sc-play').click();
         $('.image-tag').click();
-        $('.audio').click();
     });
+
     var togglePlayButton = function() {
         $('.audio', $('.mfp-controls')).toggle();
-    }
+    };
 
     $(document).bind('onPlayerPause.scPlayer', togglePlayButton)
                 .bind('onPlayerPlay.scPlayer', togglePlayButton);
