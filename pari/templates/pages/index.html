@@ -8,10 +8,12 @@
 {% endblock %}
 
 {% block extra_css %}
+  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/datepicker.less" charset="utf-8">
   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/homepage.less" charset="utf-8">
 {% endblock %}
 
 {% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}js/datepicker.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}js/pari.js"></script>
 {% endblock %}
 
@@ -76,6 +78,7 @@
               </div>
             {% endfor %}
           </div>
+
           <div class="categories span4">
             <h4><i class="icon-reorder"></i> Categories</h4>
             <div class="list">
@@ -89,7 +92,8 @@
                 </a>
               {% endfor %}
             </div>
-
+            <h4><i class="icon-calendar"></i> Archive</h4>
+            <div class="datepicker" data-date-format="dd-mm-yyyy" data-url="/archive/" data-start="{{ start_time|date:"d-m-Y" }}" data-end="{{ end_time|date:"d-m-Y" }}"></div>
           </div>
         </div>
       </div>

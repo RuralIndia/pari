@@ -40,11 +40,10 @@
 {% block title %}
     {% editable blog_post.title %}<h2>{{ blog_post.title }}</h2>{% endeditable %}
     <p>
-        
         {% with blog_post.author as author %}
             <a href="{% url "author-detail" author.slug %}"><i class="icon-user"></i>  {{author.title}}</a>
         {% endwith %}
-        | <a href=""><i class="icon-calendar"></i> {{ blog_post.publish_date|date }}</a>
+        | <a href="{{ blog_post.publish_date|archive_url }}"><i class="icon-calendar"></i> {{ blog_post.publish_date|date }}</a>
     </p>
     {% with request.build_absolute_uri as url and blog_post.title as title %}
         <div class="social" data-url="{{ url }}">

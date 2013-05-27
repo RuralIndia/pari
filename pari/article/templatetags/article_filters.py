@@ -2,6 +2,7 @@ import random
 import calendar
 
 from django.template import Library
+from django.core.urlresolvers import reverse
 
 
 register = Library()
@@ -62,3 +63,10 @@ def get_latitudes(article):
 @register.filter
 def get_longitudes(article):
     return ','.join(map(str, [location.location.longitude for location in article.locations.all()]))
+
+
+@register.filter
+def archive_url(date):
+    month = date.month
+    year = date.year
+    return reverse('archive-detail', kwargs={"year": year, "month": month})

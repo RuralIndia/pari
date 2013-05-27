@@ -1,12 +1,10 @@
 $(function(){
-    $('#subnav-wrapper').height($('#subnav').height());
-    $('#subnav').affix({
-        offset: {top: function() {
-            var element = $('#subnav');
-            if(!element.data('top')){
-                element.data('top', element.position().top);
-            }
-            return element.data('top');
-        }}
+    var datePicker = $('.datepicker');
+    var startDate = datePicker.data('start');
+    var endDate = datePicker.data('end');
+    datePicker.datepicker({minViewMode: 1, startDate: startDate, endDate: endDate}).on('changeMonth',function (e){
+        var month = e.date.getMonth() + 1;
+        var year = e.date.getFullYear();
+        window.location = datePicker.data('url') + year + "/" + month;
     });
 });
