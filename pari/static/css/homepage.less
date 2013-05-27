@@ -1,7 +1,10 @@
 @import "common.less";
 
 #header {
-    .fixed-header;
+
+    @media (min-width: 980px){
+        .fixed-header;
+    }
 
     .hero-unit {
         text-align: center;
@@ -10,7 +13,6 @@
 
         h1 {
             font-weight: 200;
-            font-family: arial, sans-serif;
             letter-spacing: 0px;
         }
 
@@ -86,7 +88,9 @@
 
 #holder {
     #main_content {
-        margin-top: 609px;
+        @media (min-width: 980px){
+            margin-top: 609px;
+        }
     }
 }
 

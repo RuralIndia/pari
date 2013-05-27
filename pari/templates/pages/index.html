@@ -14,6 +14,8 @@
 
 {% block extra_js %}
     <script type='text/javascript' src="{{ STATIC_URL }}js/datepicker.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/matchmedia.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/picturefill.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}js/pari.js"></script>
 {% endblock %}
 
@@ -34,7 +36,14 @@
       <div class="carousel-inner">
         {% for article in article_list %}
           <div class="{% if forloop.first %}active{% endif %} item">
-            <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1170 400 %}" alt="">
+            <div data-picture data-alt="">
+              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 600 400 %}"></div>
+              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 800 600 %}" data-media="(min-width: 481px)"></div>
+              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1170 400 %}" data-media="(min-width: 980px)"></div>
+              <noscript>
+                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 800 400 %}" alt="">
+              </noscript>
+            </div>
             <a href="{{ article.get_absolute_url }}">
               <div class="carousel-caption">
                 <h4>{{ article.title}}</h4>
