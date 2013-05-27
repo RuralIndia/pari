@@ -51,7 +51,6 @@ $(function () {
                         $('.icon-pause', controls).hide();
                     }
                     $('.audio', controls).click(function () {
-                        $('.audio', controls).toggle();
                         $('.sc-play').click();
                     });
                 } else {
@@ -70,4 +69,10 @@ $(function () {
         $('.image-tag').click();
         $('.audio').click();
     });
+    var togglePlayButton = function() {
+        $('.audio', $('.mfp-controls')).toggle();
+    }
+
+    $(document).bind('onPlayerPause.scPlayer', togglePlayButton)
+                .bind('onPlayerPlay.scPlayer', togglePlayButton);
 });
