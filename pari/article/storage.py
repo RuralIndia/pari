@@ -20,7 +20,7 @@ class ParallelS3Storage(FileSystemStorageMixin, FileSystemStorage):
     def _save(self, name, content):
         if settings.S3_URL:
             upload_to_s3(name, in_memory_file=content)
-            return super(ParallelS3Storage, self)._save(name, content)
+        return super(ParallelS3Storage, self)._save(name, content)
 
 
 def get_s3_bucket():
