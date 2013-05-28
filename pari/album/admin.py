@@ -6,7 +6,7 @@ from pari.album.forms import AlbumImageInlineFormset
 
 class AlbumImageInline(TabularDynamicInlineAdmin):
     model = AlbumImage
-    extra = 5
+    extra = 15
     formset = AlbumImageInlineFormset
 
     def get_formset(self, request, obj=None, **kwargs):
@@ -17,7 +17,7 @@ class AlbumImageInline(TabularDynamicInlineAdmin):
 class AlbumAdmin(admin.ModelAdmin):
     inlines = [AlbumImageInline, ]
     fieldsets = (None, {
-        "fields": ["title", "description", "gen_description", "audio", "keywords"],
+        "fields": ["title", "description", "gen_description", "cover", "audio", "keywords"],
     }),
 
     list_display = ("title", "description")

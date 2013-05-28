@@ -10,7 +10,10 @@ from mezzanine.utils.models import upload_to
 
 
 class Album(Displayable):
-    audio = models.CharField(max_length=100, null=True, blank=True)
+    audio = models.CharField(verbose_name=_("Introductory Audio"), max_length=100, null=True, blank=True)
+
+    cover = FileField(verbose_name=_("Cover Image"),
+        format="Image", max_length=255, null=True, blank=True)
 
     class Meta:
         verbose_name = _("Album")

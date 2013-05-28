@@ -20,34 +20,44 @@
 {% endblock %}
 
 {% block main %}
-    <div class="album-header">
-    <h3>{{ album.title }}</h3>
-        {{ album.description }}
+<div class="popup-gallery">
+<div class="hero-unit album-header">
+    <div class="row">
+        <div class="span3">
+        <a class="cover image-tag" href="{{ MEDIA_URL }}{{ album.cover }}" title="{{ album.description }}" data-audio="{{ album.audio|default_if_none:"" }}">
+            <img src="{{ MEDIA_URL }}{% thumbnail album.cover 270 270 %}" alt="">
+        </a>
+        </div>
+        <div class="caption span8">
+            <h2>{{ album.title }}</h2>
+            <p>{{ album.description }}</p>
+        </div>
         <div class="mfp-img-holder">
-            <div class="album-controls" title="Start slideshow with audio">
-                <i class="icon-play album-audio"></i><i class="icon-pause album-audio" style="display:none"></i>
+            <div class="album-controls" data-album-audio="{{ album.audio }}">
+            Start slideshow with audio <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i>
             </div>
         </div>
     </div>
-    <div class="popup-gallery">
-        {% for image_group in album|all_images|group_by:3 %}
-            <div class="album-images row">
-                {% for image in image_group %}
-                    <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" class="image-tag">
-                        <div class="span4 grid-column">
-                            <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
-                            <div class="caption">
-                                <p>{{ image.description }}</p>
-                                {% if image.audio %}
-                                    <div class="audio-icon"><i class="icon-microphone"></i></div>
-                                {% endif %}
-                            </div>
+</div>
+    {% for image_group in album|all_images|group_by:3 %}
+        <div class="album-images row">
+            {% for image in image_group %}
+                <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" class="image-tag">
+                    <div class="span4 grid-column">
+                        <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
+                        <div class="caption">
+                            <p>{{ image.description }}</p>
+                            {% if image.audio %}
+                                <div class="audio-icon"><i class="icon-microphone"></i></div>
+                            {% endif %}
                         </div>
-                    </a>
-                {% endfor %}
-            </div>
-        {% endfor %}
-    </div>
-    <div class="player hidden">
-    </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+<div class="player hidden">
+    <a href="http://api.soundcloud.com/tracks/{{ album.audio }}" class="sc-player">Player</a>
+</div>
 {% endblock %}

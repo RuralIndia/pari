@@ -55,13 +55,20 @@ $(function () {
             close: function () {
                 $.scPlayer.stopAll();
                 $('.album-controls').show();
+                $('.player').empty();
+                $('.player').append('<a href="http://api.soundcloud.com/tracks/' + $('.album-controls').data('album-audio') + '" class="sc-player">Player</a>');
+                $('.sc-player').scPlayer();
             }
         }
     });
 
-    $('.album-audio').click(function () {
+    $('.album-controls').click(function () {
         $('.album-controls').hide();
         $('.image-tag').click();
+    });
+
+    $('.cover').click(function() {
+        $('.album-controls').hide();
     });
 
     var togglePlayButton = function() {
