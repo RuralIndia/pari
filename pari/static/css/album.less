@@ -37,10 +37,14 @@ h3 {
         margin-bottom: 40px;
 }
 
-.audio-control() {
-  position: absolute;
+.mfp-img-holder {
+  position: relative;
+  
+  .mfp-controls {
+    position: absolute;
     .box-sizing(content-box);
     background-color: rgba(255, 255, 255, 0.74902);
+    bottom: 10%;
     right: 10%;
     min-width: 70px;
     max-width: 70px;
@@ -57,18 +61,14 @@ h3 {
         color: @headingsColor;
       }
     }
-}
-
-.mfp-img-holder {
-  position: relative;
-  
-  .mfp-controls {
-    .audio-control;
-    bottom: 10%;
   }
 }
 
 .album-controls {
-  size: 5px;
+  position: absolute;
+  font-size: 14px;
   margin-left: 95%;
+  &:hover {
+    color: @headingsColor;
+  }
 }

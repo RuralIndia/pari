@@ -21,24 +21,24 @@
 
 {% block main %}
 <div class="popup-gallery">
-<div class="hero-unit album-header">
-    <div class="row">
-        <div class="span3">
-        <a class="cover image-tag" href="{{ MEDIA_URL }}{{ album.cover }}" title="{{ album.description }}" data-audio="{{ album.audio|default_if_none:"" }}">
-            <img src="{{ MEDIA_URL }}{% thumbnail album.cover 270 270 %}" alt="">
-        </a>
-        </div>
-        <div class="caption span8">
-            <h2>{{ album.title }}</h2>
-            <p>{{ album.description }}</p>
-        </div>
-        <div class="mfp-img-holder">
-            <div class="album-controls" data-album-audio="{{ album.audio }}">
-            Start slideshow with audio <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i>
+    <div class="hero-unit album-header">
+        <div class="row">
+            <div class="span3">
+            <a class="cover image-tag" href="{{ MEDIA_URL }}{{ album.cover }}" title="{{ album.description }}" data-audio="{{ album.audio|default_if_none:"" }}">
+                <img src="{{ MEDIA_URL }}{% thumbnail album.cover 270 270 %}" alt="">
+            </a>
+            </div>
+            <div class="caption span8">
+                <h2>{{ album.title }}</h2>
+                <p>{{ album.description }}</p>
+            </div>
+            <div class="mfp-img-holder">
+                <div class="album-controls" data-album-audio="{{ album.audio }}">
+                <p>Start slideshow {% if album.audio %}with audio {% endif %} <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
     {% for image_group in album|all_images|group_by:3 %}
         <div class="album-images row">
             {% for image in image_group %}
