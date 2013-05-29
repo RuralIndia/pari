@@ -1,3 +1,30 @@
 img {
     margin: 10px;
 }
+
+.image-container {
+    position: relative;
+    margin: auto;
+    width: auto;
+}
+
+.image-container img {
+}
+
+.image-container:after {
+    position: absolute;
+    height: auto;
+    width: auto;
+    display: block;
+    padding:2%;
+    background:rgba(242, 242, 242, 0.80);
+    content:attr(data-label);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.droptext {
+    font-size: 150%;
+}
