@@ -91,6 +91,8 @@ DEVICE_USER_AGENTS = (
     ("desktop", ("Windows", "Macintosh", "Linux")),
 )
 
+RICHTEXT_WIDGET_CLASS = 'pari.article.forms.TinyMceWidget'
+
 
 ########################
 # MAIN DJANGO SETTINGS #

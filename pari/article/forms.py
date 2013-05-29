@@ -27,3 +27,13 @@ class TypeForm(forms.ModelForm):
 class AuthorForm(DisplayableForm):
     class Meta:
         model = Author
+
+
+class TinyMceWidget(forms.Textarea):
+
+    class Media:
+        js = ('js/tinymce/tinymce.min.js', 'js/tinymce_setup.js')
+
+    def __init__(self, *args, **kwargs):
+        super(TinyMceWidget, self).__init__(*args, **kwargs)
+        self.attrs["class"] = "mceEditor"
