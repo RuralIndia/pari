@@ -10,4 +10,4 @@ def get_file_path(image):
 
 @register.filter
 def all_images(album):
-    return album.images.all()
+    return album.images.filter(is_cover=False)

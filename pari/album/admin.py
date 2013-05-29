@@ -28,6 +28,6 @@ class AlbumAdmin(admin.ModelAdmin):
 
     class Media:
         css = {"all": ("mezzanine/css/admin/gallery.css",)}
-        js = ("/pari/static/album/js/admin.js",)
+        js = ("/static/album/js/admin.js",)
 
 admin.site.register(Album, AlbumAdmin)

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$('input[id*="is_cover"]')[0].checked = true;
 	$('input[id*="is_cover"]').click(function(){
 			if ($('input[id*="is_cover"]:checked').length > 1) {
 				$('input[id*="is_cover"]:checked').each(function() {
