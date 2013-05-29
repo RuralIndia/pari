@@ -23,9 +23,6 @@ class Album(Displayable):
         help_text=_("Upload a zip file containing images, and "
                     "they'll be imported into this gallery."))
 
-    cover = FileField(verbose_name=_("Cover Image"),
-        format="Image", max_length=255, null=True, blank=True)
-
     class Meta:
         verbose_name = _("Album")
         verbose_name_plural = _("Albums")
@@ -36,8 +33,12 @@ class Album(Displayable):
         return (name, (), {"slug": self.slug})
 
     @property
+    def cover(self):
+        return self.images.filter(is_cover='true')[0].file.path
+
+    @property
     def get_thumbnail(self):
-        return self.images.all()[0].file.path
+        return self.cover
 
     def save(self, delete_zip_import=True, *args, **kwargs):
         """
@@ -89,6 +90,7 @@ class AlbumImage(Orderable):
     description = models.CharField(_("Description"), max_length=1000,
                                    blank=True)
     audio = models.CharField(max_length=100, null=True, blank=True)
+    is_cover = models.BooleanField(verbose_name="Album cover", default=False)
 
     class Meta:
         verbose_name = _("Image")
