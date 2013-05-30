@@ -32,7 +32,7 @@ if (typeof tinyMCE != 'undefined') {
         ],
         content_css: "/static/css/tinymce.css",
 
-        toolbar1: "insertfile undo redo | styleselect | bold italic lineheight | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image caption droptext",
+        toolbar1: "insertfile undo redo | styleselect | bold italic lineheight droptext | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image caption",
         toolbar2: "fullscreen print preview media | forecolor backcolor",
         image_advtab: true,
         templates: [
