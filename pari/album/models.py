@@ -83,10 +83,10 @@ class Album(Displayable):
                                         unicode(name, errors="ignore"))
                     saved_path = default_storage.save(path, ContentFile(data))
                 self.images.add(AlbumImage(file=saved_path))
-                self.set_cover()
             if delete_zip_import:
                 zip_file.close()
                 self.zip_import.delete(save=True)
+            self.set_cover()
 
 
 class AlbumImage(Orderable):
