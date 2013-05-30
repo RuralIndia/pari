@@ -33,6 +33,9 @@ class TinyMceWidget(forms.Textarea):
 
     class Media:
         js = ('js/tinymce/tinymce.min.js', 'js/tinymce_setup.js')
+        css = {
+            'all': ('css/tinymce_overrides.css',),
+        }
 
     def __init__(self, *args, **kwargs):
         super(TinyMceWidget, self).__init__(*args, **kwargs)

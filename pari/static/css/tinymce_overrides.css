@@ -1,0 +1,7 @@
+button:hover {
+    background: none;
+}
+
+div.mce-container.mce-tinymce.mce-panel {
+    margin-left: 130px;
+}
