@@ -32,7 +32,7 @@ if (typeof tinyMCE != 'undefined') {
         ],
         content_css: "/static/css/tinymce.css",
 
-        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image caption droptext",
+        toolbar1: "insertfile undo redo | styleselect | bold italic lineheight | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image caption droptext",
         toolbar2: "fullscreen print preview media | forecolor backcolor",
         image_advtab: true,
         templates: [
@@ -40,7 +40,8 @@ if (typeof tinyMCE != 'undefined') {
             {title: 'Test template 2', content: 'Test 2'}
         ],
         formats : {
-            droptext: {inline: 'span', classes: "droptext"}
+            droptext: {inline: 'span', classes: "droptext"},
+            lineheight: {block: 'p', styles: {'lineHeight': '%value'}}
         },
 
         setup: function(ed) {
@@ -49,6 +50,21 @@ if (typeof tinyMCE != 'undefined') {
                 icon: false,
                 onclick: function() {
                     ed.formatter.apply('droptext');
+                }
+            });
+            ed.addButton('lineheight', {
+                text: 'Line height',
+                icon: false,
+                onclick: function() {
+                    ed.windowManager.open({
+                        title: 'Specify line height',
+                        body: [
+                            {type: 'textbox', name: 'lineheight', label: 'Value'}
+                        ],
+                        onsubmit: function(e) {
+                            ed.formatter.apply('lineheight', {value: e.data.lineheight});
+                        }
+                    });
                 }
             });
         }
