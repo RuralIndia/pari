@@ -40,6 +40,11 @@ class Album(Displayable):
     def get_thumbnail(self):
         return self.cover
 
+    def set_cover(self):
+        image = self.images.all()[0]
+        image.is_cover = True
+        image.save()
+
     def save(self, delete_zip_import=True, *args, **kwargs):
         """
         If a zip file is uploaded, extract any images from it and add
@@ -78,6 +83,7 @@ class Album(Displayable):
                                         unicode(name, errors="ignore"))
                     saved_path = default_storage.save(path, ContentFile(data))
                 self.images.add(AlbumImage(file=saved_path))
+                self.set_cover()
             if delete_zip_import:
                 zip_file.close()
                 self.zip_import.delete(save=True)
