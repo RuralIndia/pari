@@ -17,7 +17,6 @@ from zipfile import ZipFile
 
 
 class Album(Displayable):
-    audio = models.CharField(verbose_name=_("Introductory Audio"), max_length=100, null=True, blank=True)
     zip_import = models.FileField(verbose_name=_("Zip import"), blank=True,
         upload_to=upload_to("galleries.Gallery.zip_import", "galleries"),
         help_text=_("Upload a zip file containing images, and "
@@ -34,16 +33,19 @@ class Album(Displayable):
 
     @property
     def cover(self):
-        return self.images.filter(is_cover=True)[0].file.path
+        return self.images.get(is_cover=True).file.path
 
     @property
     def get_thumbnail(self):
         return self.cover
 
-    def set_cover(self):
-        image = self.images.all()[0]
-        image.is_cover = True
-        image.save()
+    @property
+    def has_cover(self):
+        return self.images.filter(is_cover=True).exists()
+
+    @property
+    def get_cover(self):
+        return self.images.get(is_cover=True)
 
     def save(self, delete_zip_import=True, *args, **kwargs):
         """
@@ -59,6 +61,7 @@ class Album(Displayable):
                 from PIL import Image
             except ImportError:
                 import Image
+            first = True
             for name in zip_file.namelist():
                 data = zip_file.read(name)
                 try:
@@ -82,11 +85,14 @@ class Album(Displayable):
                     path = os.path.join(GALLERIES_UPLOAD_DIR, self.slug,
                                         unicode(name, errors="ignore"))
                     saved_path = default_storage.save(path, ContentFile(data))
-                self.images.add(AlbumImage(file=saved_path))
+                album_image = AlbumImage(file=saved_path)
+                if first and not self.has_cover:
+                    album_image.is_cover = True
+                    first = False
+                self.images.add(album_image)
             if delete_zip_import:
                 zip_file.close()
                 self.zip_import.delete(save=True)
-            self.set_cover()
 
 
 class AlbumImage(Orderable):
