@@ -7,3 +7,5 @@ django-debug-toolbar==0.9.4
 django-extensions==1.1.1
 nose==1.2.1
 factory_boy==2.0.2
+selenium==2.33.0
+pytest==2.3.5
