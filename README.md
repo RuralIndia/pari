@@ -41,3 +41,9 @@ python manage.py loaddata pari/fixtures/initial_data_1.json
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 ```
+
+### Functional tests
+
+Functional tests are written using selenium(webdriver) with py.test as test runner.
+
+To execute tests, do `build.sh functional` or just `py.test` at project root dir.
