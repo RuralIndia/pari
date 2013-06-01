@@ -15,6 +15,7 @@ class AdminPage(Page):
         
     def open(self):
         self.driver.get(self.URL)
+        return self
     
     def wait_for_loading(self):
         wait = WebDriverWait(self.driver, 10)
