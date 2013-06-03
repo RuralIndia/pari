@@ -1,15 +1,12 @@
 from django.views.generic.detail import DetailView
 
-from pari.article.models import Author, Article
+from pari.article.models import Author, Article, get_author_articles
+from pari.article.mixins import ArticleListMixin
 
 
-class AuthorDetail(DetailView):
+class AuthorDetail(ArticleListMixin, DetailView):
     context_object_name = "author"
     model = Author
 
-    def get_context_data(self, **kwargs):
-        context = super(AuthorDetail, self).get_context_data(**kwargs)
-        author = context['author']
-        context['filter'] = ""
-        context['articles'] = Article.articles.filter(author=author)
-        return context
+    def get_article_list_queryset(self):
+        return get_author_articles(self.object)
