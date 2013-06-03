@@ -30,7 +30,7 @@ class Command(BaseCommand):
                 except ObjectDoesNotExist:
                     new_article = Article()
                     new_article.title = title
-                    type_of_import = "Update"
+                    type_of_import = "Import"
                 print "{0} {1}".format(type_of_import, title)
                 
                 try:
@@ -57,7 +57,7 @@ class Command(BaseCommand):
 
                 for k in jsoncontent['keywords']:
                     try:
-                        keyword = Keyword.objects.get(title=k)
+                        keyword = Keyword.objects.get(title__iexact=k)
                     except ObjectDoesNotExist:
                         keyword = Keyword(title=k)
                         keyword.save()

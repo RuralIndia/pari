@@ -63,7 +63,7 @@ def render_share_widgets(title, url):
 @register.simple_tag
 def thumbnail(image_url, width, height, quality=95):
     if not image_url:
-        image_url = "no_image.jpg"
+        image_url = "no_image.png"
 
     image_url = unquote(unicode(image_url))
     if image_url.startswith(settings.MEDIA_URL):
