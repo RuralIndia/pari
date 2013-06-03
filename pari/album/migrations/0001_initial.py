@@ -23,6 +23,7 @@ class Migration(SchemaMigration):
             ('expiry_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
             ('short_url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
             ('in_sitemap', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('zip_import', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
             ('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
         ))
         db.send_create_signal(u'album', ['Album'])
@@ -34,6 +35,8 @@ class Migration(SchemaMigration):
             ('album', self.gf('django.db.models.fields.related.ForeignKey')(related_name='images', to=orm['album.Album'])),
             ('file', self.gf('mezzanine.core.fields.FileField')(max_length=200)),
             ('description', self.gf('django.db.models.fields.CharField')(max_length=1000, blank=True)),
+            ('audio', self.gf('django.db.models.fields.CharField')(max_length=100, null=True, blank=True)),
+            ('is_cover', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
         db.send_create_signal(u'album', ['AlbumImage'])
 
@@ -62,15 +65,18 @@ class Migration(SchemaMigration):
             'site': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['sites.Site']"}),
             'slug': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'null': 'True', 'blank': 'True'}),
             'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'})
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'}),
+            'zip_import': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'})
         },
         u'album.albumimage': {
             'Meta': {'ordering': "('_order',)", 'object_name': 'AlbumImage'},
             '_order': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'album': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'images'", 'to': u"orm['album.Album']"}),
+            'audio': ('django.db.models.fields.CharField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.CharField', [], {'max_length': '1000', 'blank': 'True'}),
             'file': ('mezzanine.core.fields.FileField', [], {'max_length': '200'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'is_cover': ('django.db.models.fields.BooleanField', [], {'default': 'False'})
         },
         u'contenttypes.contenttype': {
             'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
