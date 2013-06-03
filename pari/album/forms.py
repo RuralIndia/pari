@@ -14,7 +14,7 @@ class AlbumImageInlineFormset(forms.models.BaseInlineFormSet):
             raise ValidationError(u'Upload at the least one image to the album.')
 
         if not self.has_cover():
-            raise ValidationError(u'Choose a cover pic')
+            raise ValidationError(u'Choose a cover image')
 
     def save(self):
         if self.has_cover() and self.instance.has_cover:
