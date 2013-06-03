@@ -24,14 +24,14 @@ class Command(BaseCommand):
             for line in f:
                 jsoncontent = json.loads(line)
                 title = jsoncontent['title'][0].encode('utf-8').strip()
-                print "before"
                 try:
                     new_article = Article.objects.get(title=title)
-                    print u"Update {0}".format(new_article.title)
+                    type_of_import = "Update"
                 except ObjectDoesNotExist:
                     new_article = Article()
                     new_article.title = title
-                    print u"Import {0}".format(new_article.title)
+                    type_of_import = "Update"
+                print "{0} {1}".format(type_of_import, title)
 
                 new_article.author = Author.objects.get(title=jsoncontent['author'][0])
                 new_article.user = User.objects.get(pk=1)
@@ -50,5 +50,6 @@ class Command(BaseCommand):
                         keyword = Keyword(title=k)
                         keyword.save()
 
-                    new_article.keywords.add(AssignedKeyword(keyword=keyword))
+                    if not new_article.keywords.filter(keyword=keyword).exists():
+                        new_article.keywords.add(AssignedKeyword(keyword=keyword))
 
