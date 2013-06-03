@@ -32,8 +32,14 @@ class Command(BaseCommand):
                     new_article.title = title
                     type_of_import = "Update"
                 print "{0} {1}".format(type_of_import, title)
+                
+                try:
+                    author=Author.objects.get(title=jsoncontent['author'][0])
+                except ObjectDoesNotExist:
+                    author = Author(title=jsoncontent['author'][0])
+                    author.save()
+                new_article.author = author
 
-                new_article.author = Author.objects.get(title=jsoncontent['author'][0])
                 new_article.user = User.objects.get(pk=1)
                 new_article.content = jsoncontent['content']
                 new_article.publish_date = datetime.strptime(jsoncontent['date'], "%B %d, %Y").replace(tzinfo=timezone.utc)
@@ -41,15 +47,20 @@ class Command(BaseCommand):
                 new_article.save()
 
                 new_article.types.add(Type.objects.get(title='Photo'))
-                new_article.locations.add(Location.objects.get(title='Rural india'))
+
+                location_name = jsoncontent['location'].strip(',\n')
+                try:
+                    location = Location.objects.get(title__iexact=location_name)
+                    new_article.locations.add(location)
+                except ObjectDoesNotExist:
+                    pass
 
                 for k in jsoncontent['keywords']:
                     try:
                         keyword = Keyword.objects.get(title=k)
-                    except:
+                    except ObjectDoesNotExist:
                         keyword = Keyword(title=k)
                         keyword.save()
 
                     if not new_article.keywords.filter(keyword=keyword).exists():
                         new_article.keywords.add(AssignedKeyword(keyword=keyword))
-
