@@ -20,6 +20,11 @@ def homepage_context(request, page):
 
 
 def get_archive_range():
-    start_time = Article.objects.all().order_by('publish_date')[0].publish_date
     end_time = timezone.now()
+
+    try:
+        start_time = Article.objects.all().order_by('publish_date')[0].publish_date
+    except IndexError:
+        start_time = end_time
+
     return start_time, end_time
