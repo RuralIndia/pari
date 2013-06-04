@@ -37,7 +37,8 @@ def article_list(context, title=None):
 
 @register.simple_tag(takes_context=True)
 def display_result(context):
-    return render_to_string("article/includes/%s_atom.html" % get_type(context['result']),
+    return render_to_string(["article/includes/%s_atom.html" % get_type(context['result']),
+                             "article/includes/default_atom.html"],
                             {'result': context['result'], 'request': context['request']})
 
 
