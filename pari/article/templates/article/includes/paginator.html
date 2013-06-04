@@ -11,7 +11,7 @@
 
         {% if results.has_next %}
             <li class="page-nav" data-page="{{ results.next_page_number }}"><a href="?page={{ results.next_page_number }}"><i class="icon-angle-right"></i></a></li>
-            <li class="page-nav" data-page="{{ results.next_page_number }}"><a href="?page={{ results.paginator.num_pages }}"><i class="icon-double-angle-right"></i></a></li>
+            <li class="page-nav" data-page="{{ results.paginator.num_pages }}"><a href="?page={{ results.paginator.num_pages }}"><i class="icon-double-angle-right"></i></a></li>
         {% endif %}
     </ul>
 </div>
