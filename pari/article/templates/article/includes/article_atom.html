@@ -3,7 +3,7 @@
     <h4><a href="{{ result.get_absolute_url }}">{{ result.title }}</a></h4>
     <p>{{ result|get_location_titles }}</p>
     <p>by {{ result.user.username }}</p>
-    <p>{{ result.description }}</p>
+    <p>{{ result.short_description }}</p>
     {% keywords_for result as keywords %}
     {% for keyword in keywords %}
         <span class="tag">

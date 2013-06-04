@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
+from django.template.defaultfilters import truncatewords
 
 from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.fields import FileField
@@ -64,6 +65,9 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     def get_thumbnail(self):
         return self.featured_image
 
+    @property
+    def short_description(self):
+        return truncatewords(self.description, 20)
 
 def get_category_articles(category):
     return category.articles.filter(is_topic=False)
