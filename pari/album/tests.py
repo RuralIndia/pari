@@ -23,21 +23,27 @@ class AlbumImageFactory(factory.DjangoModelFactory):
 
 
 class AlbumAdminTests(TestCase):
+    def setUp(self):
+        self.album = AlbumFactory()
+
     def test_includes_zip_import(self):
         self.assertIn("zip_import", AlbumAdmin.fieldsets[0][1]['fields'])
 
     def test_includes_image_inline(self):
         self.assertIn(AlbumImageInline, AlbumAdmin.inlines)
 
+    def setup_formset(self, data, album):
+        AlbumImageFactoryFormset = inlineformset_factory(Album, AlbumImage, formset=AlbumImageInlineFormset)
+        formset = AlbumImageFactoryFormset(data, prefix='form', instance=album)
+        return formset
+
     def test_album_is_invalid_if_it_has_no_image(self):
-        album = AlbumFactory()
         data = {
             'form-TOTAL_FORMS': u'1',
             'form-INITIAL_FORMS': u'0',
             'form-MAX_NUM_FORMS': u'',
         }
-        AlbumImageFactoryFormset = inlineformset_factory(Album, AlbumImage, formset=AlbumImageInlineFormset)
-        formset = AlbumImageFactoryFormset(data, prefix='form', instance=album)
+        formset = self.setup_formset(data, self.album)
         self.assertFalse(formset.is_valid())
         self.assertEqual(len(formset.non_form_errors()), 1)
         self.assertIn("Choose a cover image", formset.non_form_errors())
@@ -50,13 +56,11 @@ class AlbumAdminTests(TestCase):
             'form-INITIAL_FORMS': u'0',
             'form-MAX_NUM_FORMS': u'',
         }
-        AlbumImageFactoryFormset = inlineformset_factory(Album, AlbumImage, formset=AlbumImageInlineFormset)
-        formset = AlbumImageFactoryFormset(data, prefix='form', instance=album_with_zip_file)
+        formset = self.setup_formset(data, album_with_zip_file)
         self.assertTrue(formset.is_valid())
         self.assertEqual(len(formset.non_form_errors()), 0)
 
     def test_album_is_valid_if_an_image_is_uploaded_as_cover(self):
-        album = AlbumFactory()
         data = {
             'form-TOTAL_FORMS': u'1',
             'form-INITIAL_FORMS': u'0',
@@ -65,13 +69,11 @@ class AlbumAdminTests(TestCase):
             'form-0-is_cover': u'True',
             'form-0-_order': u'1',
         }
-        AlbumImageFactoryFormset = inlineformset_factory(Album, AlbumImage, formset=AlbumImageInlineFormset)
-        formset = AlbumImageFactoryFormset(data, prefix='form', instance=album)
+        formset = self.setup_formset(data, self.album)
         self.assertTrue(formset.is_valid())
         self.assertEqual(len(formset.non_form_errors()), 0)
 
     def test_album_is_invalid_if_no_image_is_chosen_as_cover(self):
-        album = AlbumFactory()
         data = {
             'form-TOTAL_FORMS': u'1',
             'form-INITIAL_FORMS': u'0',
@@ -79,14 +81,12 @@ class AlbumAdminTests(TestCase):
             'form-0-file': u'file.png',
             'form-0-_order': u'1',
         }
-        AlbumImageFactoryFormset = inlineformset_factory(Album, AlbumImage, formset=AlbumImageInlineFormset)
-        formset = AlbumImageFactoryFormset(data, prefix='form', instance=album)
+        formset = self.setup_formset(data, self.album)
         self.assertFalse(formset.is_valid())
         self.assertEqual(len(formset.non_form_errors()), 1)
         self.assertIn("Choose a cover image", formset.non_form_errors())
 
     def test_album_is_invalid_if_image_is_not_uploaded_but_cover_is_checked(self):
-        album = AlbumFactory()
         data = {
             'form-TOTAL_FORMS': u'1',
             'form-INITIAL_FORMS': u'0',
@@ -94,8 +94,7 @@ class AlbumAdminTests(TestCase):
             'form-0-_order': u'1',
             'form-0-is_cover': u'True',
         }
-        AlbumImageFactoryFormset = inlineformset_factory(Album, AlbumImage, formset=AlbumImageInlineFormset)
-        formset = AlbumImageFactoryFormset(data, prefix='form', instance=album)
+        formset = self.setup_formset(data, self.album)
         self.assertFalse(formset.is_valid())
         keys = [key for error in formset.errors for key in error.keys()]
         self.assertEqual(len(keys), 1)
@@ -112,7 +111,6 @@ class AlbumAdminTests(TestCase):
             'form-0-is_cover': u'True',
             'form-0-_order': u'1',
         }
-        AlbumImageFactoryFormset = inlineformset_factory(Album, AlbumImage, formset=AlbumImageInlineFormset)
-        formset = AlbumImageFactoryFormset(data, prefix='form', instance=album_with_zip_file)
+        formset = self.setup_formset(data, album_with_zip_file)
         formset.save()
         self.assertEqual(formset.instance.cover, 'file.png')
