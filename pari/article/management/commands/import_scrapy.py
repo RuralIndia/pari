@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 
 from django.utils import timezone
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -14,9 +14,11 @@ from pari.article.models import Article, Author, Type, Location
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
-        make_option("-f", "--filename",
-                action="store", type="string", dest="filename"),
-        )
+                    make_option("-f", "--filename",
+                                action="store",
+                                type="string",
+                                dest="filename",
+                                ),)
 
     def handle(self, *args, **options):
         jsonfilename = options['filename']
@@ -32,7 +34,7 @@ class Command(BaseCommand):
                     new_article.title = title
                     type_of_import = "Import"
                 print "{0} {1}".format(type_of_import, title)
-                
+
                 try:
                     author=Author.objects.get(title=jsoncontent['author'][0])
                 except ObjectDoesNotExist:

@@ -1,6 +1,6 @@
 from django.views.generic.detail import DetailView
 
-from pari.article.models import Author, Article, get_author_articles
+from pari.article.models import Author, get_author_articles
 from pari.article.mixins import ArticleListMixin
 
 
