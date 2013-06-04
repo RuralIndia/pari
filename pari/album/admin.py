@@ -16,7 +16,7 @@ class AlbumAdmin(admin.ModelAdmin):
         "fields": ["title", "description", "gen_description", "keywords", "zip_import"],
     }),
 
-    list_display = ("title", "description")
+    list_display = ("title",)
 
     class Media:
         css = {"all": ("mezzanine/css/admin/gallery.css",)}

@@ -20,6 +20,7 @@ urlpatterns = patterns("",
 
     url(r'^map/', include('pari.map.urls')),
     url(r'^albums/', include('pari.album.urls')),
+    url(r'^contribute/', include('pari.contribution.urls')),
 
     url(r'^', include(articles_root_patterns)),
     url(r'^article/', include('pari.article.urls')),

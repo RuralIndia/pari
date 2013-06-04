@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n album_filters article_tags article_filters %}
+
+{% block meta_title %}{% trans "Albums" %}{% endblock %}
+{% block title %}{% trans "Albums" %}{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/album_list.less" charset="utf-8">
+{% endblock %}
+
+{% block extra_head %}
+
+{% endblock %}
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Albums" %}</li>
+{% endblock %}
+
+{% block main %}
+{% for contribution in contributions %}
+        {{ contribution.title }}
+        <img src="{% thumbnail article.featured_image width height %}" alt=""/>
+        {{ contribution.description }}
+{% endfor %}
+{% endblock %}
