@@ -345,7 +345,7 @@
     "model": "pages.page",
     "fields": {
       "status": 2,
-      "_order": 4,
+      "_order": 5,
       "titles": "Contribute",
       "description": "Contribute",
       "parent": null,
@@ -374,7 +374,7 @@
     "model": "pages.page",
     "fields": {
       "status": 2,
-      "_order": 5,
+      "_order": 4,
       "titles": "Resources",
       "description": "Resources",
       "parent": null,
