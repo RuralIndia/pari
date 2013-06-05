@@ -3,3 +3,53 @@
 .categories {
   .grid-row;
 }
+
+.list {
+  .row {
+    .box-sizing(border-box);
+    padding: 14px;
+
+    &:nth-child(odd){
+      background: @alternateBgColor;
+    }
+
+    &>:first-child {
+      margin-left: 0;
+    }
+
+    .image {
+      @media (max-width: 767px) {
+        display: inline;
+      }
+
+      @media (min-width: 768px) and (max-width: 979px) {
+        float: left;
+        margin-left: 10px
+      }
+    }
+
+    .title {
+      @media (max-width: 767px) {
+        display: inline;
+        margin-left: 20px;
+      }
+
+      font-size: 20px;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+      color:  @headingsColor;
+      margin-top: 15px;
+      margin-bottom: 25px;
+    }
+
+    .description {
+      @media (min-width: 768px) and (max-width: 979px) {
+        float: left;
+        margin-left: 20px
+      }
+      @media (max-width: 767px) {
+        margin-top: 10px;
+      }
+    }
+  }
+  margin-bottom: 40px;
+}

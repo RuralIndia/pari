@@ -20,15 +20,13 @@
 {% endblock %}
 
 {% block main %}
-    {% for contribution_group in contributions|group_by:3 %}
-        <div class="categories row">
-        {% for contribution in contribution_group %}
-            <div class="span4 grid-column">
-            <div class="image"><img src="{{ MEDIA_URL }}{% thumbnail contribution.image 140 140 %}" alt=""/></div>
-            <div class="title">{{ contribution.title }}</div>
-            <div class="description">{{ contribution.description }}</div>
-            </div>
-        {% endfor %}
+<div class="list">
+    {% for contribution in contributions %}
+        <div class="row">
+            <div class="image span2"><img src="{{ MEDIA_URL }}{% thumbnail contribution.image 100 100 %}" alt=""/></div>
+            <div class="title span2">{{ contribution.title }}</div>
+            <div class="description span8">{{ contribution.description }}</div>
         </div>
     {% endfor %}
+</div>
 {% endblock %}
