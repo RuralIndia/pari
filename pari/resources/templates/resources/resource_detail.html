@@ -1,0 +1,28 @@
+{% extends "sidebar_base.html" %}
+{% load i18n verbatim_tag mezzanine_tags article_tags %}
+
+{% block meta_title %}{% trans resource.title %}{% if filter%} - {{ filter }}{% endif %}{% endblock %}
+{% block title %}{% trans resource.title %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+    {{ resource.title }}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}
+    {{ resource.description }}
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resource.less" charset="utf-8">
+{% endblock %}
+
+{% block maincontent %}
+    <h1>{{ resource.title }}</h1>
+{% endblock %}
+
+{% block sidebar %}
+    
+{% endblock %}
