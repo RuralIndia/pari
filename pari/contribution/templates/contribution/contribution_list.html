@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load i18n album_filters article_tags article_filters %}
 
-{% block meta_title %}{% trans "Albums" %}{% endblock %}
-{% block title %}{% trans "Albums" %}{% endblock %}
+{% block meta_title %}{% trans "Contributions" %}{% endblock %}
+{% block title %}{% trans "Contributions" %}{% endblock %}
 
 {% block extra_js %}
 {% endblock %}
 
 {% block extra_css %}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/album_list.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/contribution_list.less" charset="utf-8">
 {% endblock %}
 
 {% block extra_head %}
@@ -20,9 +20,15 @@
 {% endblock %}
 
 {% block main %}
-{% for contribution in contributions %}
-        {{ contribution.title }}
-        <img src="{% thumbnail article.featured_image width height %}" alt=""/>
-        {{ contribution.description }}
-{% endfor %}
+    {% for contribution_group in contributions|group_by:3 %}
+        <div class="categories row">
+        {% for contribution in contribution_group %}
+            <div class="span4 grid-column">
+            <div class="image"><img src="{{ MEDIA_URL }}{% thumbnail contribution.image 140 140 %}" alt=""/></div>
+            <div class="title">{{ contribution.title }}</div>
+            <div class="description">{{ contribution.description }}</div>
+            </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
 {% endblock %}
