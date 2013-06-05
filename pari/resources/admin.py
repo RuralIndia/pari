@@ -10,6 +10,7 @@ class FactoidInline(admin.TabularInline):
     fk_name = "resource"
     fields = ('image', 'title')
 
+
 class ResourceAdmin(DisplayableAdmin):
     fieldsets = (None, {
         "fields": ["title", "description", "gen_description", "embed_source"],

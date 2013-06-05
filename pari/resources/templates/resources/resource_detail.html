@@ -28,4 +28,12 @@
         <h3 class="section-header">{{ resource.title }}</h1>
         <p>{{ resource.description }}</p>
     </div>
+    <div class="well">
+        <h3 class="section-header">Factoids</h3>
+        <ul>
+            {%for factoid in resource.factoids.all %}
+                <li>{{ factoid.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

@@ -15,8 +15,9 @@ from unipath import Path
 # Controls the ordering and grouping of the admin menu.
 
 ADMIN_MENU_ORDER = (
-    (_("Content"), ("pages.Page", "article.Article", "article.Location", "article.Category", "article.Type",
-       "generic.ThreadedComment", "album.Album", (_("Media Library"), "fb_browse"),)),
+    (_("Content"), ("pages.Page", "article.Article", "article.Author", "article.Location", "article.Category", "article.Type",
+       "album.Album", "resources.Resource", "resources.Factoid", "contribution.Contribution",
+       (_("Media Library"), "fb_browse"),)),
     (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
     (_("Users"), ("auth.User", "auth.Group",)),
 )
