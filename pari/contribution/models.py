@@ -8,7 +8,7 @@ from pari.article.mixins import AdminThumbMixin
 
 class Contribution(Displayable, AdminThumbMixin):
     image = FileField(verbose_name=_("Image"),
-                               format="Image", max_length=255, null=True, blank=True)
+                     format="Image", max_length=255, null=True, blank=True)
     admin_thumb_field = "image"
 
     objects = DisplayableManager()

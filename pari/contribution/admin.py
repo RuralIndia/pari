@@ -14,4 +14,3 @@ class ContributionAdmin(DisplayableAdmin):
     list_filter = ()
 
 admin.site.register(Contribution, ContributionAdmin)
-
