@@ -20,9 +20,12 @@
 {% endblock %}
 
 {% block maincontent %}
-    <h1>{{ resource.title }}</h1>
+    {% render_slideshare_embed resource.embed_source %}
 {% endblock %}
 
 {% block sidebar %}
-    
+    <div class="well">
+        <h3 class="section-header">{{ resource.title }}</h1>
+        <p>{{ resource.description }}</p>
+    </div>
 {% endblock %}

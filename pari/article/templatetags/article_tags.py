@@ -61,6 +61,11 @@ def render_share_widgets(title, url):
     return {'url': url, 'title': title}
 
 
+@register.inclusion_tag("article/includes/slideshare_embed.html")
+def render_slideshare_embed(id):
+    return {'id': id}
+
+
 @register.simple_tag
 def thumbnail(image_url, width, height, quality=95):
     if not image_url:

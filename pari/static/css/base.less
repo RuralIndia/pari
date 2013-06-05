@@ -200,22 +200,27 @@ h1, h2, h3, h4, h5 {
     margin: 8px 0;
 }
 
-.video-container {
+.video-container, .embed-container {
     position: relative;
     padding-bottom: 56.25%;
     padding-top: 30px; 
-    height: 0; 
-    overflow: hidden;
+    height: 0;
+    margin-bottom: 10px;
 }
 
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.embed-container-tall {
+    padding-bottom: 100%;
+}
+
+.embed-container,
+.video-container {
+    iframe, object, embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .media-thumbnail {
@@ -387,7 +392,6 @@ h1, h2, h3, h4, h5 {
 
         span:first-child {
             margin: 10px;
-
         }
 
     }
@@ -401,6 +405,10 @@ h1, h2, h3, h4, h5 {
     .type-filters {
         margin-top: 10px;
     }
+}
+
+.section-header {
+    .section-header;
 }
 
 .icon-location:before             { content: "\f018"; }
