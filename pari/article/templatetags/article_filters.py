@@ -4,6 +4,8 @@ import calendar
 from django.template import Library
 from django.core.urlresolvers import reverse
 
+from mezzanine.pages.models import Page
+
 
 register = Library()
 
@@ -70,3 +72,8 @@ def archive_url(date):
     month = date.month
     year = date.year
     return reverse('archive-detail', kwargs={"year": year, "month": month})
+
+
+@register.filter
+def get_page(name):
+    return Page.objects.get(title=name)
