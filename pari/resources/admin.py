@@ -1,11 +1,12 @@
 from django.contrib import admin
 
 from mezzanine.core.admin import DisplayableAdmin
+from mezzanine.core.admin import TabularDynamicInlineAdmin
 
 from .models import Resource, Factoid
 
 
-class FactoidInline(admin.TabularInline):
+class FactoidInline(TabularDynamicInlineAdmin):
     model = Factoid
     fk_name = "resource"
     fields = ('image', 'title')
