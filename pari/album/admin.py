@@ -13,7 +13,7 @@ class AlbumImageInline(TabularDynamicInlineAdmin):
 class AlbumAdmin(admin.ModelAdmin):
     inlines = [AlbumImageInline, ]
     fieldsets = (None, {
-        "fields": ["title", "description", "gen_description", "keywords", "zip_import", "articles"],
+        "fields": ["title", "description", "gen_description", "keywords", "zip_import", "articles", "predominant_tone"],
     }),
 
     list_display = ("title",)

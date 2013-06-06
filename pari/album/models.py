@@ -26,6 +26,17 @@ class Album(Displayable):
 
     articles = models.ManyToManyField(Article, blank=True)
 
+    TONE_CHOICES = (
+        ('grey', 'Greyscale'),
+        ('colour', 'Colour')
+    )
+
+    TONE_DEFAULT = 'colour'
+
+    predominant_tone = models.CharField(max_length=10,
+                                        choices=TONE_CHOICES,
+                                        default=TONE_DEFAULT)
+
     class Meta:
         verbose_name = _("Album")
         verbose_name_plural = _("Albums")

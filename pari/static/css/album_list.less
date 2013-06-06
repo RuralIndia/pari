@@ -56,7 +56,25 @@
     .box-shadow (2px 2px 5px rgba(0,0,0,0.3));
 }
 
-.stack (@beforeBg: #003366, @afterBg: #993333 , @beforeRotation: -5deg, @afterRotation: 4deg){
+.stack-effect (@beforeBg: #003366, @afterBg: #993333 , @beforeRotation: -5deg, @afterRotation: 4deg) {
+    @media (min-width: 1200px) {
+        &:before {
+            .rotation (@beforeRotation);
+            background: @beforeBg;
+        }
+
+        &:after {
+            .rotation (@afterRotation);
+            background: @afterBg;
+        }
+    }
+}
+
+.stack-effect-grey (@beforeRotation: -5deg, @afterRotation: 4deg) {
+    .stack-effect (@beforeBg: #333, @afterBg: #fff , @beforeRotation: @beforeRotation, @afterRotation: @afterRotation);
+}
+
+.stack {
     position: relative;
     margin: 24px auto;
 
@@ -66,7 +84,7 @@
     }
 
     &, &:before, &:after {
-            .picture;
+        .picture;
     }
 
     @media (min-width: 1200px) {
@@ -85,15 +103,11 @@
         &:before {
             top: 0px;
             left: -10px;
-            .rotation (@beforeRotation);
-            background: @beforeBg;
         }
 
         &:after {
             top: 5px; 
             left: 0px;
-            .rotation (@afterRotation);
-            background: @afterBg;
         }
     }
 }
@@ -112,23 +126,23 @@
         border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
 
         .stack1 {
-            .stack ();
+            .stack-effect ();
         }
 
         .stack2{
-            .stack (@beforeBg: #FF9900; @afterBg: #CC3300; @beforeRotation: -2deg; @afterRotation: 3deg);
+            .stack-effect (@beforeBg: #FF9900; @afterBg: #CC3300; @beforeRotation: -2deg; @afterRotation: 3deg);
         }
 
         .stack3{
-            .stack (@beforeBg: #009933; @afterBg: #666633; @beforeRotation: 2deg; @afterRotation: -3deg);
+            .stack-effect (@beforeBg: #009933; @afterBg: #666633; @beforeRotation: 2deg; @afterRotation: -3deg);
         }
 
         .stack4{
-            .stack (@beforeBg: #6699FF; @afterBg: #663300; @beforeRotation: -1deg; @afterRotation: 2deg);
+            .stack-effect (@beforeBg: #6699FF; @afterBg: #663300; @beforeRotation: -1deg; @afterRotation: 2deg);
         }
 
         .stack5{
-            .stack (@beforeBg: #0066CC; @afterBg: #FFCC00; @beforeRotation: -4deg; @afterRotation: 1deg);
+            .stack-effect (@beforeBg: #0066CC; @afterBg: #FFCC00; @beforeRotation: -4deg; @afterRotation: 1deg);
         }
 
         a {
@@ -142,6 +156,28 @@
 
         h3 {
             color: @headingsColor;
+        }
+
+        &-grey {
+            .stack1 {
+                .stack-effect-grey ();
+            }
+
+            .stack2{
+                .stack-effect-grey (@beforeRotation: -2deg; @afterRotation: 3deg);
+            }
+
+            .stack3{
+                .stack-effect-grey (@beforeRotation: 2deg; @afterRotation: -3deg);
+            }
+
+            .stack4{
+                .stack-effect-grey (@beforeRotation: -1deg; @afterRotation: 2deg);
+            }
+
+            .stack5{
+                .stack-effect-grey (@beforeRotation: -4deg; @afterRotation: 1deg);
+            }            
         }
 
         &:hover {
