@@ -90,3 +90,9 @@ def thumbnail(image_url, width, height, quality=95):
         thumb_url = "%s/%s" % (image_url_path, thumb_url)
 
     return create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype)
+
+
+@register.inclusion_tag("contribution/includes/form_fields.html", takes_context=True)
+def fields_for(context, form):
+    context["form_for_fields"] = form
+    return context

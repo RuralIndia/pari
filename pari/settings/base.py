@@ -94,6 +94,8 @@ DEVICE_USER_AGENTS = (
 
 RICHTEXT_WIDGET_CLASS = 'pari.article.forms.TinyMceWidget'
 
+FORMS_USE_HTML5 = True
+
 
 ########################
 # MAIN DJANGO SETTINGS #

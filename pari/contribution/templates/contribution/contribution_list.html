@@ -23,17 +23,17 @@
     {% with contact_us_page.form as page_form %}
         {{ page_form.content|richtext_filter|safe }}
     {% endwith %}
-    <form action="/contact-us/" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-        {% fields_for contact_us_form %}
-        <div class="form-actions">
-            <input class="btn btn-primary btn-large" type="submit" value="{{ contact_us_page.form.button_text }}">
-        </div>
-    </form>
+    <div contactform clearfix>
+        <form action="/contact-us/" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+            {% fields_for contact_us_form %}
+        </form>
+    </div>
     <div class="list">
         <h3>How can I contribute to the archive?</h3>
         {% for contribution in contributions %}
             <div class="row">
-                <div class="image span2"><img src="{{ MEDIA_URL }}{% thumbnail contribution.image 100 100 %}" alt=""/></div>
+                <div class="image span2"><img src="{{ MEDIA_URL }}{% thumbnail contribution.image 100 100 %}" alt=""/>
+                </div>
                 <div class="title span2">{{ contribution.title }}</div>
                 <div class="description span8">{{ contribution.description }}</div>
             </div>
