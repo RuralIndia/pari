@@ -15,12 +15,16 @@ from mezzanine.galleries.models import GALLERIES_UPLOAD_DIR
 
 from zipfile import ZipFile
 
+from pari.article.models import Article
+
 
 class Album(Displayable):
     zip_import = models.FileField(verbose_name=_("Zip import"), blank=True,
         upload_to=upload_to("galleries.Gallery.zip_import", "galleries"),
         help_text=_("Upload a zip file containing images, and "
                     "they'll be imported into this gallery."))
+
+    articles = models.ManyToManyField(Article, blank=True)
 
     class Meta:
         verbose_name = _("Album")
