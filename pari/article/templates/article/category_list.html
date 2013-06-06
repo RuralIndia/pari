@@ -23,7 +23,7 @@
             {% for category in category_group %}
                 <a href="{{ category|get_absolute_url}}">
                     <div class="span4 grid-column">
-                        <img src="{{ MEDIA_URL }}{% thumbnail category.image 370 300 %}" alt="">
+                        <img src="{{ MEDIA_URL }}{% thumbnail category.image 370 300 %}" width="370" height="300" alt="">
                         <div class="caption">
                             <h4>{{ category.title }}</h4>
                             <p class="description">{{ category.description }}</p>
