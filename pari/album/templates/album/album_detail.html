@@ -31,12 +31,13 @@
             <div class="caption span8">
                 <h2>{{ album.title }}</h2>
                 <p>{{ album.description }}</p>
-            </div>
-            <div class="mfp-img-holder">
+                <div class="mfp-img-holder">
                 <div class="album-controls" data-album-audio="{{ album.audio }}">
-                <p>Start slideshow {% if album.audio %}with audio {% endif %} <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i></p>
+                    <button class="btn btn-large btn-inverse">Start slideshow {% if album.audio %}with audio {% endif %} <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i></p>
                 </div>
             </div>
+            </div>
+            
         </div>
     </div>
     {% for image_group in album|all_images|group_by:3 %}
