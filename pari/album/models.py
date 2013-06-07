@@ -37,6 +37,8 @@ class Album(Displayable):
                                         choices=TONE_CHOICES,
                                         default=TONE_DEFAULT)
 
+    type_filter_order = 3
+
     class Meta:
         verbose_name = _("Album")
         verbose_name_plural = _("Albums")

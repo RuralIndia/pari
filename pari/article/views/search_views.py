@@ -1,8 +1,6 @@
 from django.views.generic.list import ListView
 
-from mezzanine.core.models import Displayable
-
-from pari.article.common import get_search_results
+from pari.article.common import get_search_results, get_result_types
 
 
 class SearchList(ListView):
@@ -17,7 +15,8 @@ class SearchList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(SearchList, self).get_context_data(**kwargs)
-        context['result_types'] = [subclass.__name__ for subclass in Displayable.__subclasses__() if "pari" in subclass.__module__]
-        context['filter'] = self.request.GET.get('filter')
+        filter = self.request.GET.get('filter')
+        context['filter'] = filter
+        context['result_types'] = get_result_types(filter)
         context['query'] = self.request.GET.get('query')
         return context

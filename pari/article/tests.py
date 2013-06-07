@@ -9,6 +9,7 @@ from geoposition import Geoposition
 
 from .admin import ArticleAdmin
 from .models import Article, Location, Type, Category, Author
+from .common import get_result_types
 
 
 class LocationFactory(factory.DjangoModelFactory):
@@ -163,7 +164,7 @@ class ArticleViewsTests(TestCase):
 
     def test_search_page_contains_five_result_types(self):
         response = self.client.get(reverse('search-detail'), {'query': 'article'})
-        self.assertEqual(5, len(response.context['result_types']))
+        self.assertEqual(8, len(response.context['result_types']))
 
     def test_should_contain_category_with_title_test_when_searched_for_test_and_filtered_by_category(self):
         category_with_title_test = CategoryFactory(title="test")
@@ -179,3 +180,21 @@ class ArticleViewsTests(TestCase):
         article_with_default_title = ArticleFactory()
         response = self.client.get(reverse('search-detail'), {'query': 'test', 'filter': 'Category', 'page': 1})
         self.assertNotIn(article_with_default_title, response.context['results'])
+
+
+class CommonTests(TestCase):
+    def test_should_get_default_order_of_result_types(self):
+        result_types = get_result_types(None)
+        self.assertEqual(['Article', 'Album', 'Resource', 'Category'], result_types[:4])
+
+    def test_should_not_change_order_for_higher_ranked_types_when_filtered(self):
+        result_types = get_result_types(filter='Album')
+        self.assertEqual(['Article', 'Album', 'Resource', 'Category'], result_types[:4])
+
+    def test_should_not_change_order_for_lowest_ranked_displayed_type_when_filtered(self):
+        result_types = get_result_types(filter='Category')
+        self.assertEqual(['Article', 'Album', 'Resource', 'Category'], result_types[:4])
+
+    def test_should_promote_type_when_filtered(self):
+        result_types = get_result_types(filter='Factoid')
+        self.assertEqual(['Article', 'Album', 'Resource', 'Factoid'], result_types[:4])

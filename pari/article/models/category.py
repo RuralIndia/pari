@@ -19,6 +19,8 @@ class Category(Displayable, AdminThumbMixin):
     objects = DisplayableManager()
     search_fields = {"title": 10, "description": 5}
 
+    type_filter_order = 1
+
     @models.permalink
     def get_absolute_url(self):
         return ("category-detail", (), {"slug": self.slug})

@@ -31,3 +31,24 @@ def get_article_list(article_queryset, page, filter):
         article_queryset = article_queryset.filter(types__title__iexact=filter)
 
     return get_paginated_list(article_queryset, page)
+
+
+def get_result_types(filter, display_count=4):
+    return [subclass.__name__ for subclass in
+            sorted([subclass for subclass in Displayable.__subclasses__()
+                    if "pari" in subclass.__module__],
+            key=lambda x: type_sort_order(x, filter, display_count), reverse=True)]
+
+
+def type_sort_order(x, filter, display_count=4):
+    defined_order = getattr(x, 'type_filter_order', 0)
+    is_filtered = x.__name__ == filter
+    if defined_order > 1:
+        return defined_order
+    if defined_order == 1:
+        if is_filtered:
+            return defined_order
+        else:
+            return 0
+    if is_filtered:
+        return 1

@@ -40,6 +40,8 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
 
     admin_thumb_field = "featured_image"
 
+    type_filter_order = 4
+
     objects = DisplayableManager()
     articles = ArticleManager()
     topics = TopicManager()

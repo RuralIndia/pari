@@ -1,6 +1,5 @@
 from django.template.loader import render_to_string
 
-from mezzanine.core.models import Displayable
 from mezzanine.generic.models import Keyword
 
 from dajaxice.decorators import dajaxice_register
@@ -9,7 +8,7 @@ from dajax.core import Dajax
 from .models import (Category, Type, Location, Author,
                      get_category_articles, get_location_articles, get_keyword_articles,
                      get_author_articles, get_archive_articles)
-from .common import get_article_list, get_search_results
+from .common import get_article_list, get_search_results, get_result_types
 from .templatetags.article_filters import month_name
 
 
@@ -56,7 +55,7 @@ def archive_article_filter(request, month, year, filter=None, page=1):
 def search_filter(request, query, filter=None, page=1):
     results = get_search_results(query, filter, page)
 
-    result_types = [subclass.__name__ for subclass in Displayable.__subclasses__() if "pari" in subclass.__module__]
+    result_types = get_result_types(filter)
 
     return render_dajax_response('article/includes/search_result_list.html', {'results': results,
                                                                               'query': query,

@@ -14,6 +14,8 @@ class Resource(Displayable):
     objects = DisplayableManager()
     search_fields = {"title": 10, "description": 5}
 
+    type_filter_order = 2
+
     @models.permalink
     def get_absolute_url(self):
         return ("resource-detail", (), {"slug": self.slug})
