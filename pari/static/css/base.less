@@ -274,16 +274,37 @@ h1, h2, h3, h4, h5 {
     }
 }
 
+.type-filters-container {
+    position: relative;
+    .view-all {
+        position: absolute;
+        top: 22px;
+        left: 240px;
+        list-style-type: none;
+        display: inline-block;
+        color: #9C9C9C;
+    }
+}
+
 .type-filters {
 
     display: inline-block;
     margin: 12px 0;
+
+    width: 238px;
+    height: 38px;
+    overflow: hidden;
 
     &:before {
         content: 'Filter by:';
         color:  #333;
         line-height: 32px;
     };
+
+    &.expanded {
+        width: 100%;
+        height: auto;
+    }
 
     .type-filter {
         font-size: 24.5px;

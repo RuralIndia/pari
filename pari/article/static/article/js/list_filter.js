@@ -20,6 +20,12 @@ var ListFilter = {
             this.collectArgsAndSumbit();
         }, this));
 
+        $('.view-all').on('click', $.proxy(function(event){
+            $('.type-filters').addClass('expanded');
+            target = $(event.target);
+            target.hide();
+        }, this));
+
         this.callbackInit();
     },
 
@@ -81,7 +87,7 @@ var ListFilter = {
     },
 
     callbackInit: function() {
-        $('.type-filter').tooltip();
+        $('[data-toggle="tooltip"]').tooltip();
     },
 
     historyFlag: true,
