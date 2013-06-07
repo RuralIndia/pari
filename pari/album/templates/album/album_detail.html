@@ -33,7 +33,7 @@
                 <p>{{ album.description }}</p>
                 <div class="mfp-img-holder">
                 <div class="album-controls" data-album-audio="{{ album.audio }}">
-                    <button class="btn btn-large btn-inverse">Start slideshow {% if album.audio %}with audio {% endif %} <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i></p>
+                    <button class="btn btn-large btn-{{ album.predominant_tone }}">Start slideshow {% if album.audio %}with audio {% endif %} <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i></p>
                 </div>
             </div>
             </div>

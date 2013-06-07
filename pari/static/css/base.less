@@ -413,6 +413,14 @@ h1, h2, h3, h4, h5 {
     .section-header;
 }
 
+.btn-colour {
+    .buttonBackground (@headingsColor, lighten(@headingsColor, 10%));
+}
+
+.btn-grey {
+    .buttonBackground (#444, #222)
+}
+
 .icon-location:before             { content: "\f018"; }
 .icon-article:before              { content: "\f044"; }
 .icon-category:before             { content: "\f114"; }
