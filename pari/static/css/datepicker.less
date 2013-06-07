@@ -18,52 +18,19 @@
 @orange:                #f89406;
 @baseLineHeight:        18px;
 
-// Mixins
-
-// Border Radius
 .border-radius(@radius: 5px) {
   -webkit-border-radius: @radius;
      -moz-border-radius: @radius;
           border-radius: @radius;
 }
 
-// Button backgrounds
-.buttonBackground(@startColor, @endColor) {
-  .reset-filter();
+.selectionBackground(@startColor, @endColor) {
   &:hover, &:active, &.active, &.disabled, &[disabled] {
-    background-color: darken(@headingsColor, 10%);
-
+   background-color: darken(@headingsColor, 10%);
   }
   &:active,
   &.active {
     background-color: @headingsColor;
-  }
-}
-
-// Reset filters for IE
-.reset-filter() {
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-
-// Gradient Bar Colors for buttons and alerts
-.gradientBar(@primaryColor, @secondaryColor) {
-  #gradient > .vertical(@primaryColor, @secondaryColor);
-  border-color: @secondaryColor @secondaryColor darken(@secondaryColor, 15%);
-  border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) fadein(rgba(0,0,0,.1), 15%);
-}
-
-// Gradients
-#gradient {
-  .vertical(@startColor: #555, @endColor: #333) {
-    background-color: mix(@startColor, @endColor, 60%);
-    background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
-    background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
-    background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
-    background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
-    background-image: linear-gradient(top, @startColor, @endColor); // The standard
-    background-repeat: repeat-x;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
   }
 }
 
@@ -158,7 +125,7 @@
     &.today.disabled,
     &.today.disabled:hover {
       @todayBackground: lighten(@orange, 30%);
-      .buttonBackground(@todayBackground, spin(@todayBackground, 20));
+      .selectionBackground(@todayBackground, spin(@todayBackground, 20));
       color: #000 !important;
     }
     &.range,
@@ -174,14 +141,14 @@
     &.range.today.disabled,
     &.range.today.disabled:hover {
       @todayBackground: mix(@orange, @grayLighter);
-      .buttonBackground(@todayBackground, spin(@todayBackground, 20));
+      .selectionBackground(@todayBackground, spin(@todayBackground, 20));
       .border-radius(0);
     }
     &.selected,
     &.selected:hover,
     &.selected.disabled,
     &.selected.disabled:hover {
-      .buttonBackground(lighten(@grayLight, 10), darken(@grayLight, 10));
+      .selectionBackground(lighten(@grayLight, 10), darken(@grayLight, 10));
       color: #fff;
       text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     }
@@ -189,7 +156,7 @@
     &.active:hover,
     &.active.disabled,
     &.active.disabled:hover {
-      .buttonBackground(@btnPrimaryBackground, spin(@btnPrimaryBackground, 20));
+      .selectionBackground(@btnPrimaryBackground, spin(@btnPrimaryBackground, 20));
       color: #fff;
       text-shadow: 0 -1px 0 rgba(0,0,0,.25);
     }
@@ -216,7 +183,7 @@
       &.active:hover,
       &.active.disabled,
       &.active.disabled:hover {
-        .buttonBackground(@btnPrimaryBackground, spin(@btnPrimaryBackground, 20));
+        .selectionBackground(@btnPrimaryBackground, spin(@btnPrimaryBackground, 20));
         color: #fff;
         text-shadow: 0 -1px 0 rgba(0,0,0,.25);
       }
