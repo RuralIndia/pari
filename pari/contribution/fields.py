@@ -11,6 +11,6 @@ class CaptchaField(ReCaptchaField):
 
 class ContributionsField(ChoiceField):
     def __init__(self, *args, **kwargs):
-        choices = Contribution.objects.values_list('title','title')
+        choices = Contribution.objects.values_list('title', 'title')
         kwargs['choices'] = choices
         super(ContributionsField, self).__init__(*args, **kwargs)
