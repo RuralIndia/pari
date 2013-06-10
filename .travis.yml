@@ -7,4 +7,4 @@ env:
 before_script:
   - "flake8 --exclude=migrations --ignore=E501,E225,E128,E126 ."
 script:
-  - python manage.py test
+  - python manage.py test pari
