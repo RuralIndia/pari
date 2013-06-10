@@ -275,11 +275,10 @@ h1, h2, h3, h4, h5 {
 }
 
 .type-filters-container {
-    position: relative;
+
     .view-all {
-        position: absolute;
-        top: 22px;
-        left: 240px;
+        float: left;
+        padding-top: 20px;
         list-style-type: none;
         display: inline-block;
         color: #9C9C9C;
@@ -294,6 +293,8 @@ h1, h2, h3, h4, h5 {
     width: 238px;
     height: 38px;
     overflow: hidden;
+    float: left;
+    .transition (1s, @property: width);
 
     &:before {
         content: 'Filter by:';
@@ -303,7 +304,9 @@ h1, h2, h3, h4, h5 {
 
     &.expanded {
         width: 100%;
-        height: auto;
+        @media(max-width: 480px){
+            height: auto;
+        }
     }
 
     .type-filter {
