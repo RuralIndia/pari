@@ -1,3 +1,5 @@
+from captcha.fields import ReCaptchaField
+from django.forms import Form
 from pari.article.forms import DisplayableForm
 from pari.contribution.models import Contribution
 
@@ -9,3 +11,7 @@ class ContributionForm(DisplayableForm):
 
     class Meta:
         model = Contribution
+
+
+class CaptchaForm(Form):
+    captcha = ReCaptchaField(attrs={'theme': 'clean'})

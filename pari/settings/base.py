@@ -95,7 +95,10 @@ DEVICE_USER_AGENTS = (
 RICHTEXT_WIDGET_CLASS = 'pari.article.forms.TinyMceWidget'
 
 FORMS_USE_HTML5 = True
+RECAPTCHA_USE_SSL = True
 
+RECAPTCHA_PUBLIC_KEY = '6LdQguISAAAAAPNt_0pFGdVXubB1MJn9J-im-3KD'
+RECAPTCHA_PRIVATE_KEY = '6LdQguISAAAAAJgLhCqkCNbjkhG1J9_2Q2kLEsAO'
 
 ########################
 # MAIN DJANGO SETTINGS #
@@ -267,6 +270,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
+    "captcha",
 
     #Mezzanine CMS
     "mezzanine.boot",

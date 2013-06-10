@@ -17,7 +17,7 @@
         {% if field.is_hidden %}
             {{ field }}
         {% else %}
-            <div class="control-group span3 input_{{ field.id_for_label }} {{ field.field.type }}
+            <div class="control-group span5 input_{{ field.id_for_label }} {{ field.field.type }}
             {% if field.errors %} error{% endif %}">
                 {{ field }}
                 {% if field.errors %}
@@ -30,8 +30,8 @@
             </div>
         {% endif %}
     {% endfor %}
-    <div class="span3">
-        <input class="btn btn-primary btn-large" type="submit" value="{{ contact_us_page.form.button_text }}">
+    <div class="span4">
+        <input class="btn btn-primary btn-small" type="submit" value="{{ contact_us_page.form.button_text }}">
     </div>
 </div>
 
