@@ -72,7 +72,11 @@ DASHBOARD_TAGS = (
 #         {"blank": True, "default": 1},
 #     ),
 # )
-
+FORMS_EXTRA_FIELDS = (
+    (99,
+     "captcha.fields.ReCaptchaField",
+     "captcha"),
+)
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
 BLOG_USE_FEATURED_IMAGE = True

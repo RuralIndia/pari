@@ -11,7 +11,3 @@ class ContributionForm(DisplayableForm):
 
     class Meta:
         model = Contribution
-
-
-class CaptchaForm(Form):
-    captcha = ReCaptchaField(attrs={'theme': 'clean'})
