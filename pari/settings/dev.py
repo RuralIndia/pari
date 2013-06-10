@@ -30,6 +30,4 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-S3_URL = None
-
 DEFAULT_FILE_STORAGE = 'pari.article.storage.ParallelS3Storage'

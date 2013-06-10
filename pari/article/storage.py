@@ -18,9 +18,13 @@ except ImportError:
 
 class ParallelS3Storage(FileSystemStorageMixin, FileSystemStorage):
     def _save(self, name, content):
-        if settings.S3_URL:
+        if is_s3_storage():
             upload_to_s3(name, in_memory_file=content)
         return super(ParallelS3Storage, self)._save(name, content)
+
+
+def is_s3_storage():
+    return hasattr(settings, 'S3_URL') and settings.S3_URL is not None
 
 
 def get_s3_bucket():
@@ -57,7 +61,7 @@ def get_s3_content(key, f):
 
 
 def is_file_exists(path, url):
-    if settings.S3_URL:
+    if is_s3_storage():
         return key_in_s3(url)
     return os.path.exists(path)
 
@@ -72,7 +76,7 @@ def create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, 
     if thumb_exists:
         return thumb_url
 
-    if settings.S3_URL:
+    if is_s3_storage():
         f = StringIO.StringIO()
         get_s3_content(image_url, f)
         f.seek(0)
@@ -106,7 +110,7 @@ def create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, 
 
     try:
         image = ImageOps.fit(image, (width, height), Image.ANTIALIAS)
-        if settings.S3_URL:
+        if is_s3_storage():
             thumb_f = StringIO.StringIO()
             image.save(thumb_f, filetype, quality=quality, **image_info)
             upload_to_s3(thumb_url, string_io=thumb_f)
