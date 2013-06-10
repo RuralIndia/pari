@@ -75,7 +75,10 @@ DASHBOARD_TAGS = (
 FORMS_EXTRA_FIELDS = (
     (99,
      "pari.contribution.fields.CaptchaField",
-     "captcha"),
+     "Captcha"),
+    (98,
+     "pari.contribution.fields.ContributionsField",
+     "Contributions"),
 )
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
