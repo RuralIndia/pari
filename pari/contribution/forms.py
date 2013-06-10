@@ -1,5 +1,3 @@
-from captcha.fields import ReCaptchaField
-from django.forms import Form
 from pari.article.forms import DisplayableForm
 from pari.contribution.models import Contribution
 
