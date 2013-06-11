@@ -471,8 +471,8 @@
       "required": true,
       "label": "Name",
       "visible": true,
-      "help_text": "help text",
-      "placeholder_text": "Enter your name here..",
+      "help_text": "",
+      "placeholder_text": "Name",
       "choices": ""
     }
   },
@@ -536,7 +536,7 @@
       "label": "Contributions",
       "visible": true,
       "help_text": "",
-      "placeholder_text": "",
+      "placeholder_text": "Contribute by?",
       "choices": ""
     }
   }
