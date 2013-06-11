@@ -1,0 +1,171 @@
+@import "common.less";
+
+.backface-visibility (@type: hidden) {
+  -webkit-backface-visibility: @type;
+  -moz-backface-visibility: @type;
+  -ms-backface-visibility: @type;
+  backface-visibility: @type;
+}
+
+.transform (@type) {
+  -webkit-transform: @type;
+  -moz-transform: @type;
+  -o-transform: @type;
+  -ms-transform: @type;
+  transform: @type;
+}
+
+.item {
+  width: 200px;
+  height: 230px;
+  position: relative;
+  display: inline-block;
+
+  .transition(0.4s);
+
+  .content {
+
+    &:hover {
+      .front {
+        .transform (rotateY(180deg));
+      }
+      .back {
+        .transform (rotateY(-180deg));
+      }
+    }
+
+    position: absolute;
+    top: 145px;
+    left: 17px;
+    .front {
+      .backface-visibility (hidden);
+    }
+    .back {
+      .backface-visibility (hidden);
+      .transform (rotateY(180deg));
+    }
+  }
+}
+
+.hexagon2 {
+  position: absolute;
+  width: 200px;
+  height: 400px;
+  top: -85px;
+}
+
+.hexagon {
+  overflow: hidden;
+  visibility: hidden;
+
+  -webkit-transform: rotate(120deg);
+  -moz-transform: rotate(120deg);
+  -o-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  transform: rotate(120deg);
+  cursor: pointer;
+}
+
+.hexagon-in1 {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  -webkit-transform: rotate(-60deg);
+  -moz-transform: rotate(-60deg);
+  -o-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+}
+
+.hexagon-in2 {
+  -webkit-box-shadow: inset 0 0 0 200px rgba(176, 218, 212, 0.48);
+  box-shadow: inset 0 0 0 200px rgba(176, 218, 212, 0.48);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+
+  -webkit-background-size: 125%;
+  -moz-background-size: 125%;
+  background-size: 125%;
+  visibility: visible;
+
+  -webkit-transform: rotate(-60deg);
+  -moz-transform: rotate(-60deg);
+  -o-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+
+}
+
+
+.item:nth-child(9n-3) {
+  margin-left: 101px;
+}
+
+.item:nth-child(n+5) {
+  margin-top: -55px;
+}
+
+.item:nth-child(9n+1) {
+//  margin-top: 55px;
+  margin-left: 0;
+
+}
+
+@media (max-width: 820px) {
+  .lab_item:nth-child(5n-1) {
+    margin-left: 102px;
+  }
+
+  .lab_item:nth-child(n+4) {
+    margin-top: -62px;
+  }
+
+  .lab_item:nth-child(7n-2) {
+    margin-left: 0px;
+  }
+
+  .lab_item:nth-child(n+5) {
+    margin-top: -56px;
+  }
+}
+
+@media (max-width: 640px) {
+  .item:nth-child(5n-1) {
+    margin-left: 0px;
+  }
+
+  .item:nth-child(3n) {
+    margin-left: 102px;
+  }
+
+  .item:nth-child(n+3) {
+    margin-top: -56px;
+  }
+
+}
+
+@media (max-width: 450px) {
+  .item:nth-child(3n) {
+    margin-left: 0px;
+  }
+
+  .item:nth-child(2n) {
+    margin-left: 102px;
+  }
+
+  .item:nth-child(n+2) {
+    margin-top: -56px;
+  }
+
+}
