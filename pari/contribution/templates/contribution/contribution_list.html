@@ -21,6 +21,7 @@
 {% endblock %}
 
 {% block main %}
+    <h3>How can I contribute to the archive?</h3>
     <div class="contactform clearfix">
         {% with contact_us_page.form as page_form %}
             {{ page_form.content|richtext_filter|safe }}
@@ -30,7 +31,6 @@
         </form>
     </div>
     <div class="list">
-        <h3>How can I contribute to the archive?</h3>
         {% for contribution in contributions %}
             <div class="row">
                 <div class="image span2"><img src="{{ MEDIA_URL }}{% thumbnail contribution.image 100 100 %}" alt=""/>

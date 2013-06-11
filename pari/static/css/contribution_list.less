@@ -1,84 +1,89 @@
 @import "common.less";
 
 .input {
-  float: left;
-  @media (max-width: 767px) {
-    float: none;
-  }
-  textarea {
-    height: 80px;
-  }
-  input:not(.btn), textarea {
-    @media (min-width: 768px) and (max-width: 979px) {
-      width: 150px;
+    float: left;
+    @media (max-width: 767px) {
+        float: none;
     }
-  }
+    textarea {
+        height: 80px;
+    }
+    input:not(.btn), textarea {
+        @media (min-width: 768px) and (max-width: 979px) {
+            width: 150px;
+        }
+    }
 }
 
 #recaptcha_table {
-  width: 100px;
+    width: 100px;
 }
 
 #recaptcha_logo {
-  display: none;
-}
-
-.extra {
-  display: none;
+    display: none;
 }
 
 .contactform {
-  background-color: beige;
-  padding: 5px 5px;
-  border-radius: 5px
+    background-color: lighten(@navColor, 50%);
+    padding: 5px 5px;
+    border-radius: 5px;
+    margin: 10px 0;
+
+    height: 83px;
+    overflow: hidden;
+    .transition (0.4s, @property: height);
+
+    &.expanded {
+        height: 250px;
+    }
 }
 
 .list {
-  .row {
-    .box-sizing(border-box);
-    padding: 14px;
+    .row {
+        .box-sizing(border-box);
+        padding: 14px;
 
-    &:nth-child(odd){
-      background: @alternateBgColor;
+        &:nth-child(odd){
+            background: @alternateBgColor;
+        }
+
+        &>:first-child {
+            margin-left: 0;
+        }
+
+        .image {
+            @media (max-width: 767px) {
+                display: inline;
+            }
+
+            @media (min-width: 768px) and (max-width: 979px) {
+                float: left;
+                margin-left: 10px
+            }
+        }
+
+        .title {
+            @media (max-width: 767px) {
+                display: inline;
+                margin-left: 20px;
+            }
+
+            font-size: 20px;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+            color:  @headingsColor;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .description {
+            @media (min-width: 768px) and (max-width: 979px) {
+                float: left;
+                margin-left: 20px
+            }
+            @media (max-width: 767px) {
+                margin-top: 10px;
+            }
+        }
     }
-
-    &>:first-child {
-      margin-left: 0;
-    }
-
-    .image {
-      @media (max-width: 767px) {
-        display: inline;
-      }
-
-      @media (min-width: 768px) and (max-width: 979px) {
-        float: left;
-        margin-left: 10px
-      }
-    }
-
-    .title {
-      @media (max-width: 767px) {
-        display: inline;
-        margin-left: 20px;
-      }
-
-      font-size: 20px;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.75);
-      color:  @headingsColor;
-      margin-top: 15px;
-      margin-bottom: 25px;
-    }
-
-    .description {
-      @media (min-width: 768px) and (max-width: 979px) {
-        float: left;
-        margin-left: 20px
-      }
-      @media (max-width: 767px) {
-        margin-top: 10px;
-      }
-    }
-  }
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
