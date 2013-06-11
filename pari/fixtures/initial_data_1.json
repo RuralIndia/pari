@@ -481,7 +481,7 @@
     "model": "forms.field",
     "fields": {
       "field_type": 2,
-      "_order": 2,
+      "_order": 3,
       "form": 6,
       "default": "",
       "required": true,
@@ -505,6 +505,38 @@
       "visible": true,
       "help_text": "",
       "placeholder_text": "Email",
+      "choices": ""
+    }
+  },
+  {
+    "pk": 4,
+    "model": "forms.field",
+    "fields": {
+      "field_type": 99,
+      "_order": 4,
+      "form": 6,
+      "default": "",
+      "required": true,
+      "label": "Captcha",
+      "visible": true,
+      "help_text": "",
+      "placeholder_text": "",
+      "choices": ""
+    }
+  },
+  {
+    "pk": 5,
+    "model": "forms.field",
+    "fields": {
+      "field_type": 98,
+      "_order": 2,
+      "form": 6,
+      "default": "",
+      "required": true,
+      "label": "Contributions",
+      "visible": true,
+      "help_text": "",
+      "placeholder_text": "",
       "choices": ""
     }
   }
