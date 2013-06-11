@@ -1,13 +1,12 @@
 @import "common.less";
 
-
 .input {
   float: left;
   @media (max-width: 767px) {
     float: none;
   }
   textarea {
-    height: 40px;
+    height: 80px;
   }
   input:not(.btn), textarea {
     @media (min-width: 768px) and (max-width: 979px) {
@@ -22,6 +21,16 @@
 
 #recaptcha_logo {
   display: none;
+}
+
+.extra {
+  display: none;
+}
+
+.contactform {
+  background-color: beige;
+  padding: 5px 5px;
+  border-radius: 5px
 }
 
 .list {

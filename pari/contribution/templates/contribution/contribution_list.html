@@ -5,6 +5,7 @@
 {% block title %}{% trans "Contributions" %}{% endblock %}
 
 {% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}contribution/js/contactus.js"></script>
 {% endblock %}
 
 {% block extra_css %}
@@ -20,10 +21,10 @@
 {% endblock %}
 
 {% block main %}
-    {% with contact_us_page.form as page_form %}
-        {{ page_form.content|richtext_filter|safe }}
-    {% endwith %}
-    <div contactform clearfix>
+    <div class="contactform clearfix">
+        {% with contact_us_page.form as page_form %}
+            {{ page_form.content|richtext_filter|safe }}
+        {% endwith %}
         <form action="/contact-us/" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
             {% fields_for contact_us_form %}
         </form>
