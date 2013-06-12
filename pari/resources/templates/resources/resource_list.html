@@ -24,7 +24,7 @@
     <div id="main_content">
         <div class="resources">
         {% for resource in resources %}
-            <div class="item">
+            <div class="item item-{{ resource|get_type }}">
                 <a href="{{ resource|get_absolute_url }}">
                     <div class="hexagon hexagon2">
                         <div class="hexagon-in1">

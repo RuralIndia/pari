@@ -5,6 +5,7 @@
 @hexColor: lighten(@alternateBgColor, 5%);
 @hexColorHover: @navColor;
 @hexText: @headingsColor;
+@factoidHexColor: #753500;
 
 .backface-visibility (@type: hidden) {
     -webkit-backface-visibility: @type;
@@ -54,6 +55,12 @@
     a {
         color: @hexText;
         text-decoration: none;
+    }
+
+    &-factoid {
+        .hexagon-in2 {
+            .box-shadow (inset 0 0 0 @hexWidth @factoidHexColor);
+        }
     }
 }
 
