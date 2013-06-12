@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
@@ -33,8 +34,15 @@ class Factoid(Displayable, AdminThumbMixin):
                       format="Image", max_length=255, null=True, blank=True)
 
     admin_thumb_field = "image"
+    external_link = models.CharField(max_length=100, blank=True)
 
-    class Meta:
+    def get_absolute_url(self):
+        if self.resource:
+            return reverse("resource-detail", kwargs={"slug": self.resource.slug})
+        else:
+            return self.external_link
+
+class Meta:
         verbose_name = _("Factoid")
         verbose_name_plural = _("Factoids")
         ordering = ("title",)

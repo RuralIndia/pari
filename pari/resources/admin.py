@@ -26,7 +26,7 @@ class ResourceAdmin(DisplayableAdmin):
 
 class FactoidAdmin(DisplayableAdmin):
     fieldsets = (None, {
-        "fields": ["title", "description", "gen_description", "image"],
+        "fields": ["title", "description", "gen_description", "image", "external_link"],
     }),
     list_display = ("admin_thumb", "title", "description")
     list_editable = ()
