@@ -57,9 +57,11 @@
       </div>
       {% block extra_header %}{% endblock %}
     </div>
-    <div id="main_content" class="container">
-        {% block main %}{% endblock %}
-    </div>
+    {% block main_wrapper %}
+      <div id="main_content" class="container">
+          {% block main %}{% endblock %}
+      </div>
+    {%endblock %}
     <div id="push"></div>
   </div>
 

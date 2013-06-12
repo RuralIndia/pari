@@ -5,7 +5,7 @@
 {% block title %}{% trans "Resources" %}{% endblock %}
 
 {% block extra_js %}
-    <script type='text/javascript' src="{{ STATIC_URL }}contribution/js/contactus.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}resources/js/resources.js"></script>
 {% endblock %}
 
 {% block extra_css %}
@@ -20,27 +20,24 @@
     <li class="active">{% trans "Resources" %}</li>
 {% endblock %}
 
-{% block main %}
-        <div class="resources span11">
+{% block main_wrapper %}
+    <div id="main_content">
+        <div class="resources">
         {% for resource in resources %}
             <div class="item">
-            <a href="{{ resource|get_absolute_url }}">
                 <div class="hexagon hexagon2">
                         <div class="hexagon-in1">
                             <div class="hexagon-in2">
                                 <div class="content">
                                     <div class="front">
-                                        <p class="text">{{ resource.title }}</p>
-                                    </div>
-                                    <div class="back">
-                                        <p class="text">{{ resource.description }}</p>
+                                        <a href="{{ resource|get_absolute_url }}">{{ resource.title }}</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                 </div>
-            </a>
             </div>
         {% endfor %}
         </div>
+    </div>
 {% endblock %}
