@@ -2,7 +2,9 @@
 
 @hexWidth: 200px;
 @hexHeight: 230px;
-@hexColor: lighten(@alternateBgColor, 0%);
+@hexColor: lighten(@alternateBgColor, 5%);
+@hexColorHover: @navColor;
+@hexText: @headingsColor;
 
 .backface-visibility (@type: hidden) {
     -webkit-backface-visibility: @type;
@@ -24,13 +26,34 @@
     height: @hexHeight;
     position: relative;
     display: inline-block;
-
     .transition(0.4s);
 
     .content {
         position: absolute;
-        top: 145px;
-        left: 17px;
+        top: 35%;
+        width: @hexWidth;
+        max-width: @hexWidth;
+        height: 29%;
+        max-height: 29%;
+        display: table;
+        p {
+            max-width: 100%;
+            width: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+    }
+    &:hover {
+        .transform(scale(1.3));
+        z-index: 999;
+        .hexagon-in2 {
+            .box-shadow (~"inset 0 0 0 @{hexWidth} @{hexColorHover}");
+        }
+    }
+    a {
+        color: @hexText;
+        text-decoration: none;
     }
 }
 
@@ -81,7 +104,7 @@
 }
 
 .hexagon-in2 {
-    .box-shadow (inset 0 0 0 @hexWidth @hexColor);
+    .box-shadow (~"inset 0 0 0 @{hexWidth} @{hexColor}");
     overflow: hidden;
     width: 100%;
     height: 100%;

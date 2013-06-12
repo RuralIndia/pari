@@ -25,17 +25,15 @@
         <div class="resources">
         {% for resource in resources %}
             <div class="item">
-                <div class="hexagon hexagon2">
+                <a href="{{ resource|get_absolute_url }}">
+                    <div class="hexagon hexagon2">
                         <div class="hexagon-in1">
                             <div class="hexagon-in2">
-                                <div class="content">
-                                    <div class="front">
-                                        <a href="{{ resource|get_absolute_url }}">{{ resource.title }}</a>
-                                    </div>
-                                </div>
+                                <div class="content"><p>{{ resource.title }}</p></div>
                             </div>
                         </div>
-                </div>
+                    </div>
+                </a>
             </div>
         {% endfor %}
         </div>
