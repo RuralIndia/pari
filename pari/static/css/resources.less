@@ -33,6 +33,15 @@
 }
 
 .hex-widthifier () {
+    @media(max-width: 1419px) {
+        width: 225px;
+    }
+    @media(max-width: 1365px) {
+        width: 200px;
+    }
+    @media(max-width: 1213px) {
+        width: 194px;
+    }
     @media(min-width: 1420px) {
         width: @hexWidth;
     }
@@ -48,6 +57,15 @@
 }
 
 .hex-marginifier () {
+    @media(max-width: 1419px) {
+        margin-left: 225px/2;
+    }
+    @media(max-width: 1365px) {
+        margin-left: @hexWidth/2;
+    }
+    @media(max-width: 1213px) {
+        margin-left: 194px/2;
+    }
     @media(min-width: 1420px) {
         margin-left: @hexWidth/2;
     }
@@ -63,6 +81,15 @@
 }
 
 .hex-marginifier-top () {
+    @media(max-width: 1419px) {
+        margin-top: -35px;
+    }
+    @media(max-width: 1365px) {
+        margin-top: -55px;
+    }
+    @media(max-width: 1213px) {
+        margin-top: -63px;
+    }
     @media(min-width: 1420px) {
         margin-top: -55px;
     }
@@ -121,12 +148,24 @@
     }
 }
 
-.item:nth-child(13n-5) {
-    .hex-marginifier;
+@media(min-width: 1420px) {
+
+    .item:nth-child(13n-5) {
+        .hex-marginifier;
+    }
+    .item:nth-child(n+7) {
+        .hex-marginifier-top;
+    }
 }
 
-.item:nth-child(n+7) {
-    .hex-marginifier-top;
+@media(max-width: 1419px) {
+
+    .item:nth-child(11n-4) {
+        .hex-marginifier;
+    }
+    .item:nth-child(n+6) {
+        .hex-marginifier-top;
+    }
 }
 
 .item-half {
