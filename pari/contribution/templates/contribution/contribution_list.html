@@ -32,10 +32,10 @@
     </div>
     <div class="list">
         {% for contribution in contributions %}
-            <div class="row">
-                <div class="image span2"><img src="{{ MEDIA_URL }}{% thumbnail contribution.image 100 100 %}" alt=""/>
+            <div class="contribution clearfix">
+                <div class="image span3"><img src="{{ MEDIA_URL }}{% thumbnail contribution.image 170 170 %}" alt=""/>
                 </div>
-                <div class="title span2">{{ contribution.title }}</div>
+                <div class="title span8">{{ contribution.title }}</div>
                 <div class="description span8">{{ contribution.description }}</div>
             </div>
         {% endfor %}
