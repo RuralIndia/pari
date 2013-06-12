@@ -22,6 +22,7 @@
 
 {% block main_wrapper %}
     <div id="main_content">
+    <div class="refresh" title="Show me a different set of Resources"><a href=""><i class="icon-refresh"></i></a></div>
         <div class="resources">
         {% for resource in resources %}
             <div class="item item-{{ resource|get_type }}">
