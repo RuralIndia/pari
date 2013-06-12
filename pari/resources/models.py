@@ -42,8 +42,9 @@ class Factoid(Displayable, AdminThumbMixin):
         else:
             return self.external_link
 
+
 class Meta:
-        verbose_name = _("Factoid")
-        verbose_name_plural = _("Factoids")
-        ordering = ("title",)
-        app_label = "resources"
+    verbose_name = _("Factoid")
+    verbose_name_plural = _("Factoids")
+    ordering = ("title",)
+    app_label = "resources"

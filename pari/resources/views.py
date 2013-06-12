@@ -10,9 +10,11 @@ class ResourceList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ResourceList, self).get_context_data(**kwargs)
-        context['resources'] = list(chain(Resource.objects.all().order_by('?')[:18], Factoid.objects.all().order_by('?')[:2]))
+        context['resources'] = list(
+            chain(Resource.objects.all().order_by('?')[:18], Factoid.objects.all().order_by('?')[:2]))
         random.shuffle(context['resources'])
         return context
+
 
 class ResourceDetail(DetailView):
     context_object_name = "resource"
