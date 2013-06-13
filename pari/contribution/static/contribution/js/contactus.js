@@ -1,5 +1,6 @@
 $(function () {
-    $('.compressed').click(function() {
-        $('.contactform').addClass('expanded');
+    $('.contactform').on('click.contactus', function() {
+        $(this).addClass('expanded');
+        $(this).off('click.contactus');
     });
 });

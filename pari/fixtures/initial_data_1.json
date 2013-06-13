@@ -447,97 +447,27 @@
     }
   },
   {
-    "pk": 6,
-    "model": "forms.form",
+    "pk": 7,
+    "model": "pages.page",
     "fields": {
-      "email_message": "",
-      "email_copies": "",
-      "button_text": "Submit",
-      "response": "<p>Thanks</p>",
-      "content": "<p>Feel free to contact us</p>",
-      "send_email": true,
-      "email_subject": "",
-      "email_from": ""
-    }
-  },
-  {
-    "pk": 1,
-    "model": "forms.field",
-    "fields": {
-      "field_type": 1,
-      "_order": 0,
-      "form": 6,
-      "default": "",
-      "required": true,
-      "label": "Name",
-      "visible": true,
-      "help_text": "",
-      "placeholder_text": "Name",
-      "choices": ""
-    }
-  },
-  {
-    "pk": 2,
-    "model": "forms.field",
-    "fields": {
-      "field_type": 2,
-      "_order": 3,
-      "form": 6,
-      "default": "",
-      "required": true,
-      "label": "Content",
-      "visible": true,
-      "help_text": "",
-      "placeholder_text": "Leave us a message",
-      "choices": ""
-    }
-  },
-  {
-    "pk": 3,
-    "model": "forms.field",
-    "fields": {
-      "field_type": 3,
-      "_order": 1,
-      "form": 6,
-      "default": "",
-      "required": true,
-      "label": "Email",
-      "visible": true,
-      "help_text": "",
-      "placeholder_text": "Email",
-      "choices": ""
-    }
-  },
-  {
-    "pk": 4,
-    "model": "forms.field",
-    "fields": {
-      "field_type": 99,
-      "_order": 4,
-      "form": 6,
-      "default": "",
-      "required": true,
-      "label": "Captcha",
-      "visible": true,
-      "help_text": "",
-      "placeholder_text": "",
-      "choices": ""
-    }
-  },
-  {
-    "pk": 5,
-    "model": "forms.field",
-    "fields": {
-      "field_type": 98,
-      "_order": 2,
-      "form": 6,
-      "default": "",
-      "required": true,
-      "label": "Contributions",
-      "visible": true,
-      "help_text": "",
-      "placeholder_text": "Contribute by?",
-      "choices": ""
+      "status": 2,
+      "_order": 6,
+      "titles": "ContributeForm",
+      "description": "How would you like to contribute to the archive?",
+      "parent": null,
+      "title": "ContributeForm",
+      "short_url": null,
+      "login_required": false,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": "",
+      "expiry_date": null,
+      "publish_date": "2013-06-12T11:03:33.441Z",
+      "content_model": "form",
+      "in_menus": "",
+      "slug": "contributeform",
+      "gen_description": true
     }
   }
 ]

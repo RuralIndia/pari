@@ -21,13 +21,10 @@
 {% endblock %}
 
 {% block main %}
-    <h3>How can I contribute to the archive?</h3>
     <div class="contactform clearfix">
-        {% with contact_us_page.form as page_form %}
-            {{ page_form.content|richtext_filter|safe }}
-        {% endwith %}
-        <form action="/contact-us/" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-            {% fields_for contact_us_form %}
+        <h3>{{ contribute_form_page.form.content|richtext_filter|safe }}</h3>
+        <form class="form-horizontal" action="/contact-us/" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+            {% fields_for contribute_form contribute_form_page %}
         </form>
     </div>
     <div class="list">

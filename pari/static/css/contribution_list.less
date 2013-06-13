@@ -1,16 +1,5 @@
 @import "common.less";
 
-.input {
-    float: left;
-    @media (max-width: 767px) {
-        float: none;
-    }
-}
-
-#recaptcha_table {
-    width: 100px;
-}
-
 #recaptcha_logo {
     display: none;
 }
@@ -20,17 +9,21 @@ textarea {
 }
 
 .contactform {
-    background-color: lighten(@navColor, 50%);
+    h3 {
+        color: #333;
+        margin-bottom: 24px;
+    }
+    background-color: #9E9E9E;
     padding: 5px 5px;
     border-radius: 5px;
     margin: 10px 0;
 
-    height: 83px;
+    height: 93px;
     overflow: hidden;
     .transition (0.4s, @property: height);
 
     &.expanded {
-        height: 250px;
+        height: 300px;
     }
 }
 
