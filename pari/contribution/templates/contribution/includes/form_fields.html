@@ -12,12 +12,12 @@
     <input type="hidden" name="referrer" value="{{ request.META.HTTP_REFERER }}">
     {% csrf_token %}
 {% endnevercache %}
-<div class="input row">
+<div class="input">
     {% for field in form_for_fields %}
         {% if field.is_hidden %}
             {{ field }}
         {% else %}
-            <div class="control-group span3 input_{{ field.id_for_label }} {{ field.field.type }}{% if field.errors %} error{% endif %}">
+            <div class="form-field span4 input_{{ field.id_for_label }} {{ field.field.type }}{% if field.errors %} error{% endif %}">
                 {{ field }}
                 {% if field.errors %}
                     <span class="help-inline">
@@ -29,11 +29,8 @@
             </div>
         {% endif %}
     {% endfor %}
+    <button class="btn btn-primary btn-colour" type="submit">{{ page.form.button_text }}</button>
 </div>
-<div class="row">
-    <div class="span3">
-        <input class="btn btn-inverse" type="submit" value="{{ page.form.button_text }}">
-    </div>
-</div>
+
 
 

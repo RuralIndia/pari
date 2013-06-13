@@ -23,7 +23,7 @@
 {% block main %}
     <div class="contactform clearfix">
         <h3>{{ contribute_form_page.form.content|richtext_filter|safe }}</h3>
-        <form class="form-horizontal" action="/contact-us/" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+        <form action="/contact-us/" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
             {% fields_for contribute_form contribute_form_page %}
         </form>
     </div>

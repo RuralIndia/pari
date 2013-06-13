@@ -1,30 +1,82 @@
 @import "common.less";
 
-#recaptcha_logo {
-    display: none;
-}
-
-textarea {
-    height: 40px;
-}
 
 .contactform {
     h3 {
         color: #333;
         margin-bottom: 24px;
     }
-    background-color: #9E9E9E;
+    background-color: #9E9D95;
     padding: 5px 5px;
     border-radius: 5px;
     margin: 10px 0;
+    position: relative;
 
-    height: 93px;
+    height: 91px;
     overflow: hidden;
     .transition (0.4s, @property: height);
 
     &.expanded {
-        height: 300px;
+        height: 310px;
     }
+
+    textarea {
+        height: 60px;
+    }
+
+    .form-field {
+        & > * {
+            width: 90%;
+        }
+
+        & > select {
+            width: 94%;
+        }
+    }
+
+    @media (max-width: 767px) {
+        height: 110px;
+        .input {
+            position: relative;
+            button[type="submit"] {
+                display: inline;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+            .form-field {
+                display: none;
+            }
+        }
+
+        &.expanded {
+            height: 455px;
+            .input {
+                .span4 
+
+                .span4 > select {
+                    width: 98%;
+                }
+
+                button[type="submit"] {
+                    margin-top: 15px;
+                    position: relative;
+                }
+                .form-field {
+                    display: inline;
+
+                    & > * {
+                        width: 96%;
+                    }
+
+                    & > select {
+                        width: 98%;
+                    }
+                }
+
+            }
+        }
+    }    
 }
 
 .list {

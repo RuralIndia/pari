@@ -92,6 +92,8 @@ def thumbnail(image_url, width, height, quality=95):
     return create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype)
 
 
-@register.inclusion_tag("contribution/includes/form_fields.html")
-def fields_for(form, page):
-    return {'form_for_fields': form, 'page': page}
+@register.inclusion_tag("contribution/includes/form_fields.html", takes_context=True)
+def fields_for(context, form, page):
+    context['form_for_fields'] = form
+    context['page'] = page
+    return context
