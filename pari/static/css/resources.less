@@ -2,10 +2,11 @@
 
 @hexWidth: 200px;
 @hexHeight: 230px;
-@hexColor: #FFDAB9;
-@hexColorHover: @navColor;
-@hexText: @headingsColor;
-@factoidHexColor: #753500;
+@hexColor: darken(@headingsColor, 30%);
+@hexText: black;
+@hexColorHover: darken(@hexColor, 10%);
+@factoidHexColor: #FCAA58;
+@factoidHexColorHover: darken(@factoidHexColor, 10%);
 
 .backface-visibility (@type: hidden) {
     -webkit-backface-visibility: @type;
@@ -46,7 +47,13 @@
         width: 224px;
     }
     @media(max-width: 1167px) {
-        width: 220px;
+        width: 219px;
+    }
+    @media(max-width: 1143px) {
+        width: 205px;
+    }
+    @media(max-width: 1070px) {
+        width: 188px;
     }
     @media(min-width: 1420px) {
         width: @hexWidth;
@@ -69,14 +76,20 @@
     @media(max-width: 1365px) {
         margin-left: @hexWidth/2;
     }
-    @media(max-width: 1213px) {
+    @media(max-width: 1215px) {
         margin-left: 194px/2;
     }
     @media(max-width: 1183px) {
         margin-left: 224px/2;
     }
     @media(max-width: 1167px) {
-        margin-left: 220px/2;
+        margin-left: 219px/2;
+    }
+    @media(max-width: 1143px) {
+        margin-left: 205px/2;
+    }
+    @media(max-width: 1070px) {
+        margin-left: 188px/2;
     }
     @media(min-width: 1420px) {
         margin-left: @hexWidth/2;
@@ -99,7 +112,7 @@
     @media(max-width: 1365px) {
         margin-top: -55px;
     }
-    @media(max-width: 1213px) {
+    @media(max-width: 1215px) {
         margin-top: -63px;
     }
     @media(max-width: 1183px) {
@@ -107,6 +120,12 @@
     }
     @media(max-width: 1167px) {
         margin-top: -39px;
+    }
+    @media(max-width: 1143px) {
+        margin-top: -55px;
+    }
+    @media(max-width: 1070px) {
+        margin-top: -71px;
     }
     @media(min-width: 1420px) {
         margin-top: -55px;
@@ -161,6 +180,11 @@
     &-factoid {
         .hexagon-in2 {
             .box-shadow (inset 0 0 0 @hexWidth @factoidHexColor);
+        }
+        &:hover {
+            .hexagon-in2 {
+                .box-shadow (~"inset 0 0 0 @{hexWidth} @{factoidHexColorHover}");
+            }
         }
     }
 }
