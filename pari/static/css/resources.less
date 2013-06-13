@@ -2,7 +2,7 @@
 
 @hexWidth: 200px;
 @hexHeight: 230px;
-@hexColor: lighten(@alternateBgColor, 5%);
+@hexColor: #FFDAB9;
 @hexColorHover: @navColor;
 @hexText: @headingsColor;
 @factoidHexColor: #753500;
@@ -42,6 +42,12 @@
     @media(max-width: 1213px) {
         width: 194px;
     }
+    @media(max-width: 1183px) {
+        width: 224px;
+    }
+    @media(max-width: 1167px) {
+        width: 220px;
+    }
     @media(min-width: 1420px) {
         width: @hexWidth;
     }
@@ -65,6 +71,12 @@
     }
     @media(max-width: 1213px) {
         margin-left: 194px/2;
+    }
+    @media(max-width: 1183px) {
+        margin-left: 224px/2;
+    }
+    @media(max-width: 1167px) {
+        margin-left: 220px/2;
     }
     @media(min-width: 1420px) {
         margin-left: @hexWidth/2;
@@ -90,6 +102,12 @@
     @media(max-width: 1213px) {
         margin-top: -63px;
     }
+    @media(max-width: 1183px) {
+        margin-top: -32px;
+    }
+    @media(max-width: 1167px) {
+        margin-top: -39px;
+    }
     @media(min-width: 1420px) {
         margin-top: -55px;
     }
@@ -107,7 +125,6 @@
 .item, .item-half {
 
     .hex-widthifier;
-
     height: @hexHeight;
     position: relative;
     display: inline-block;
@@ -158,12 +175,21 @@
     }
 }
 
-@media(max-width: 1419px) {
+@media (min-width: 1183px) and (max-width: 1419px) {
 
     .item:nth-child(11n-4) {
         .hex-marginifier;
     }
     .item:nth-child(n+6) {
+        .hex-marginifier-top;
+    }
+}
+
+@media(max-width: 1183px) {
+    .item:nth-child(9n-3) {
+        .hex-marginifier;
+    }
+    .item:nth-child(n+5) {
         .hex-marginifier-top;
     }
 }
