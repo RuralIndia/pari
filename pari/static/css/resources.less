@@ -55,6 +55,9 @@
     @media(max-width: 1070px) {
         width: 188px;
     }
+    @media(max-width: 985px) {
+        width: 233px;
+    }
     @media(min-width: 1420px) {
         width: @hexWidth;
     }
@@ -91,6 +94,9 @@
     @media(max-width: 1070px) {
         margin-left: 188px/2;
     }
+    @media(max-width: 985px) {
+        margin-left: 233px/2;
+    }
     @media(min-width: 1420px) {
         margin-left: @hexWidth/2;
     }
@@ -126,6 +132,9 @@
     }
     @media(max-width: 1070px) {
         margin-top: -71px;
+    }
+    @media(max-width: 985px) {
+        margin-top: -30px;
     }
     @media(min-width: 1420px) {
         margin-top: -55px;
@@ -209,11 +218,20 @@
     }
 }
 
-@media(max-width: 1183px) {
+@media (min-width: 986px) and (max-width: 1183px) {
     .item:nth-child(9n-3) {
         .hex-marginifier;
     }
     .item:nth-child(n+5) {
+        .hex-marginifier-top;
+    }
+}
+
+@media (max-width: 985px) {
+    .item:nth-child(7n-2) {
+        .hex-marginifier;
+    }
+    .item:nth-child(n+4) {
         .hex-marginifier-top;
     }
 }
