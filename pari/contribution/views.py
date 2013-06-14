@@ -12,7 +12,7 @@ class ContributionList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ContributionList, self).get_context_data(**kwargs)
-        contribute_form_page = get_page('ContributeForm')
+        contribute_form_page = get_page('Contribute Form')
         contribute_form = form_processor(self.request, contribute_form_page)
         context['contribute_form'] = contribute_form['form']
         context['contribute_form_page'] = contribute_form_page

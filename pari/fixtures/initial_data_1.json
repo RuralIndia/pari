@@ -441,7 +441,7 @@
         "expiry_date": null,
         "publish_date": "2013-06-06T12:05:39Z",
         "content_model": "form",
-        "in_menus": "1,3",
+        "in_menus": "",
         "slug": "contact-us",
         "gen_description": true
     }
@@ -452,10 +452,10 @@
     "fields": {
       "status": 2,
       "_order": 6,
-      "titles": "ContributeForm",
-      "description": "How would you like to contribute to the archive?",
+      "titles": "Contribute Form",
+      "description": "Would you like to contribute to the archive?",
       "parent": null,
-      "title": "ContributeForm",
+      "title": "Contribute Form",
       "short_url": null,
       "login_required": false,
       "site": 1,
@@ -466,7 +466,7 @@
       "publish_date": "2013-06-12T11:03:33.441Z",
       "content_model": "form",
       "in_menus": "",
-      "slug": "contributeform",
+      "slug": "contribute-form",
       "gen_description": true
     }
   }
