@@ -34,11 +34,15 @@
   }
 }
 
+.responsive-datepicker () {
+    width: 100%;
+}
+
 .datepicker {
   padding: 4px;
   .border-radius(4px);
   &-inline {
-    width: 362px;
+    .responsive-datepicker ();
   }
   direction: ltr;
   &&-rtl {
@@ -86,7 +90,7 @@
   }
   table{
     margin: 0;
-    width: 362px;
+    .responsive-datepicker ();
   }
   td,
   th{
