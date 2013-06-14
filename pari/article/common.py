@@ -1,4 +1,6 @@
-from django.db.models import get_models
+from random import randint
+
+from django.db.models import get_models, Max
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from mezzanine.core.models import Displayable
@@ -38,6 +40,17 @@ def get_result_types(filter, display_count=4):
             sorted([subclass for subclass in Displayable.__subclasses__()
                     if "pari" in subclass.__module__],
             key=lambda x: type_sort_order(x, filter, display_count), reverse=True)]
+
+
+def get_random_entries(model, count=1):
+   max_id = model.objects.aggregate(Max('id'))['id__max']
+   i = 0
+   while i < count:
+       try:
+           yield model.objects.get(pk=randint(1, max_id))
+           i += 1
+       except model.DoesNotExist:
+           pass
 
 
 def type_sort_order(x, filter, display_count=4):

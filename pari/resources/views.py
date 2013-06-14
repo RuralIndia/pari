@@ -1,19 +1,22 @@
-from django.views.generic import DetailView, ListView
 from itertools import chain
 import random
+
+from django.views.generic import DetailView, ListView
+
 from .models import Resource, Factoid
+from pari.article.common import get_random_entries
 
 
 class ResourceList(ListView):
     context_object_name = "resources"
-    model = Resource
+    template_name = "resources/resource_list.html"
 
-    def get_context_data(self, **kwargs):
-        context = super(ResourceList, self).get_context_data(**kwargs)
-        context['resources'] = list(
-            chain(Resource.objects.all().order_by('?')[:16], Factoid.objects.all().order_by('?')[:4]))
-        random.shuffle(context['resources'])
-        return context
+    def get_queryset(self):
+        resources = get_random_entries(Resource, 16)
+        factoids = get_random_entries(Factoid, 4)
+        entries = list(chain(resources, factoids))
+        random.shuffle(entries)
+        return entries
 
 
 class ResourceDetail(DetailView):
