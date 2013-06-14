@@ -29,7 +29,7 @@
                 <a href="{{ resource|get_absolute_url }}">
                     <div class="hexagon hexagon2">
                         <div class="hexagon-in1">
-                            <div class="hexagon-in2">
+                            <div class="hexagon-in2"{% if resource.image %} style="background-image:url({{ MEDIA_URL}}{% thumbnail resource.image 400 400 %})"{% endif %}>
                                 <div class="content"><p>{{ resource.title }}</p></div>
                             </div>
                         </div>
