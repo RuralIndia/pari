@@ -58,6 +58,24 @@
     @media(max-width: 985px) {
         width: 233px;
     }
+    @media(max-width: 943px) {
+        width: 215px;
+    }
+    @media(max-width: 872px) {
+        width: 191px;
+    }
+    @media(max-width: 775px) {
+        width: 170px;
+    }
+    @media(max-width: 692px) {
+        width: @hexWidth;
+    }
+    @media(max-width: 608px) {
+        width: 175px;
+    }
+    @media(max-width: 532px) {
+        width: 150px;
+    }
     @media(min-width: 1420px) {
         width: @hexWidth;
     }
@@ -97,6 +115,24 @@
     @media(max-width: 985px) {
         margin-left: 233px/2;
     }
+    @media(max-width: 943px) {
+        margin-left: 215px/2;
+    }
+    @media(max-width: 872px) {
+        margin-left: 191px/2;
+    }
+    @media(max-width: 775px) {
+        margin-left: 170px/2;
+    }
+    @media(max-width: 692px) {
+        margin-left: @hexWidth/2;
+    }
+    @media(max-width: 608px) {
+        margin-left: 175px/2;
+    }
+    @media(max-width: 532px) {
+        margin-left: 148px/2;
+    }
     @media(min-width: 1420px) {
         margin-left: @hexWidth/2;
     }
@@ -135,6 +171,24 @@
     }
     @media(max-width: 985px) {
         margin-top: -30px;
+    }
+    @media(max-width: 943px) {
+        margin-top: -45px;
+    }
+    @media(max-width: 872px) {
+        margin-top: -65px;
+    }
+    @media(max-width: 775px) {
+        margin-top: -85px;
+    }
+    @media(max-width: 692px) {
+        margin-top: -55px;
+    }
+    @media(max-width: 608px) {
+        margin-top: -80px;
+    }
+    @media(max-width: 532px) {
+        margin-top: -102px;
     }
     @media(min-width: 1420px) {
         margin-top: -55px;
@@ -239,11 +293,20 @@
     }
 }
 
-@media (max-width: 985px) {
+@media (min-width: 692px) and (max-width: 985px) {
     .item:nth-child(7n-2) {
         .hex-marginifier;
     }
     .item:nth-child(n+4) {
+        .hex-marginifier-top;
+    }
+}
+
+@media (max-width: 691px) {
+    .item:nth-child(5n-1) {
+        .hex-marginifier;
+    }
+    .item:nth-child(n+3) {
         .hex-marginifier-top;
     }
 }
