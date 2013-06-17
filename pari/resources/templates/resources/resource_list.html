@@ -5,7 +5,7 @@
 {% block title %}{% trans "Resources" %}{% endblock %}
 
 {% block extra_js %}
-    <script type='text/javascript' src="{{ STATIC_URL }}resources/js/resources.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/masonry.pkgd.min.js"></script>
 {% endblock %}
 
 {% block extra_css %}
@@ -22,18 +22,16 @@
 
 {% block main_wrapper %}
     <div id="main_content">
-    <div class="refresh" title="Show me a different set of Resources"><a href=""><i class="icon-refresh"></i></a></div>
-        <div class="resources">
+        <div id="container" class="container js-masonry" data-masonry-options='{ "itemSelector": ".item",  "columnWidth": 120, "gutter": 5, "stamp": ".stamp" }'>
+        <div class="item item-hero hero-unit">
+            <h1>Resources</h1>
+            <p>All official and independent reports on rural India</p>
+            <a href=""><i class="icon-refresh"></i> Load new content</a>
+        </div>
         {% for resource in resources %}
-            <div class="item item-{{ resource|get_type }}">
+            <div class="item item-{{ resource|get_type }} {{ "item"|get_random:4 }}" {% if resource.image %} style="background-image:url({{ MEDIA_URL}}{% thumbnail resource.image 400 400 %})"{% endif %}>
                 <a href="{{ resource|get_absolute_url }}">
-                    <div class="hexagon hexagon2">
-                        <div class="hexagon-in1">
-                            <div class="hexagon-in2"{% if resource.image %} style="background-image:url({{ MEDIA_URL}}{% thumbnail resource.image 400 400 %})"{% endif %}>
-                                <div class="content"><p>{{ resource.title }}</p></div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="content"><p>{{ resource.title }}</p></div>
                 </a>
             </div>
         {% endfor %}
