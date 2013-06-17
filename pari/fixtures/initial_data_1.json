@@ -469,5 +469,34 @@
       "slug": "contribute-form",
       "gen_description": true
     }
+  },
+  {
+    "pk": 8,
+    "model": "pages.page",
+    "fields": {
+      "status": 2,
+      "_order": 7,
+      "titles": "Resources",
+      "description": "Resources",
+      "parent": null,
+      "title": "Resources",
+      "short_url": null,
+      "login_required": false,
+      "site": 1,
+      "in_sitemap": false,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-06-17T04:58:33.670Z",
+      "content_model": "link",
+      "in_menus": "1",
+      "slug": "/resources/",
+      "gen_description": true
+    }
+  },
+  {
+    "pk": 8,
+    "model": "pages.link",
+    "fields": {}
   }
 ]
