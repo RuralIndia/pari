@@ -5,6 +5,7 @@ from django.template import Library
 from django.core.urlresolvers import reverse
 
 from mezzanine.pages.models import Page
+from mezzanine.conf import settings
 
 
 register = Library()
@@ -77,3 +78,8 @@ def archive_url(date):
 @register.filter
 def get_page(name):
     return Page.objects.get(title=name)
+
+
+@register.filter
+def get_setting(name):
+    return getattr(settings, name)
