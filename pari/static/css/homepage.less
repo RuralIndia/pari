@@ -200,5 +200,43 @@
         }
     }
 
+    .social-icons {
+        text-align: center;
+        ul {
+            @radius: 30px;
+            display: inline-block;
+            list-style-type: none;
+            li {
+                display: inline-block;
+                width: @radius * 2;
+                height: @radius * 2;
+                .rounded (@radius);
+                .transition (0.3s);
+
+                text-align: center;
+                font-size: @radius;
+                line-height: @radius * 2;
+                background-color: @alternateBgColor;
+                margin: 10px;
+
+                a {
+                    text-decoration: none;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    color: #000;
+                }
+
+                &:hover {
+                    background-color: darken(@alternateBgColor,20%);
+                    a {
+                        color: @headingsColor;
+                    }
+                    .box-shadow (inset 0 0 10px @alternateBgColor);
+                }
+            }
+        }
+    }
+
     
 }
