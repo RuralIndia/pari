@@ -32,3 +32,31 @@
     }
     margin-bottom: 40px;
 }
+
+.mfp-img-holder {
+    position: relative;
+
+    .mfp-controls {
+        position: absolute;
+        .box-sizing(content-box);
+        background-color: rgba(255, 255, 255, 0.74902);
+        bottom: 10%;
+        right: 10%;
+        min-width: 70px;
+        max-width: 70px;
+        min-height: 50px;
+        max-height: 50px;
+        margin: 10px;
+        .border-radius (5px, 5px, 5px, 5px);
+        text-align: center;
+
+        i {
+            line-height: 50px;
+            font-size: 30px;
+            &:hover {
+                color: @headingsColor;
+            }
+        }
+    }
+}
+
