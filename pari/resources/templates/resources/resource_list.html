@@ -29,7 +29,7 @@
             <a href=""><i class="icon-refresh"></i> Load new content</a>
         </div>
         {% for resource in resources %}
-            <div class="item item-{{ resource|get_type }} {{ "item"|get_random:4 }}" {% if resource.image %} style="background-image:url({{ MEDIA_URL}}{% thumbnail resource.image 400 400 %})"{% endif %}>
+            <div class="item item-{{ resource|get_type }} {{ "item"|get_random:2 }}" {% if resource.image %} style="background-image:url({{ MEDIA_URL}}{% thumbnail resource.image 400 400 %})"{% endif %}>
                 <a href="{{ resource|get_absolute_url }}">
                     <div class="content"><p>{{ resource.title }}</p></div>
                 </a>
