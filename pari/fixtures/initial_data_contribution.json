@@ -1,0 +1,135 @@
+[
+  {
+    "pk": 1,
+    "model": "contribution.contribution",
+    "fields": {
+      "status": 2,
+      "description": "You can produce content for the archive by making films  like the ones you see already on it, so long as these are within PARI’s mandate and objectives. Get in touch with us to know what would be suitable for the archive. The basic principle: it’s got to be on the everyday lives of everyday people in rural India. Share your ideas about what topics/ areas you would like to make a film on. We can take it further from there. Know that you can record content for PARI on your cell phone camera.",
+      "title": "Make a film",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-06-06T04:19:10.119Z",
+      "slug": "make-a-film",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 2,
+    "model": "contribution.contribution",
+    "fields": {
+      "status": 2,
+      "description": "You could back a film-maker or a photojournalist, maybe someone you know, requiring support and encouragement and who you think would make a valuable contribution to the archive. You could help financially with a fellowship for such talented filmmakers or journalists.  At PARI, we want to create fellowships that will enable a journalist, film maker or photographer spend time in rural regions, capturing stories that would otherwise go unrecorded or undocumented.",
+      "title": "Back a film-maker or photojournalist",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-06-12T08:50:18.123Z",
+      "slug": "back-a-film-maker-or-photojournalist",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 3,
+    "model": "contribution.contribution",
+    "fields": {
+      "status": 2,
+      "description": "You could write content for existing films or edit content that has been written but needs the careful eye of an editor. You can also write independent content for our print section. You could translate the sub-titles of films on PARI into other languages. Having those in as many Indian languages as possible is a major objective. You could also translate other written content into different languages.",
+      "title": "Write/ Edit",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-06-19T10:38:36.669Z",
+      "slug": "write-edit",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 4,
+    "model": "contribution.contribution",
+    "fields": {
+      "status": 2,
+      "description": "Find online content already on the archive and send us links to it. Or, further, research a vital topic   -  for instance, the lives of agricultural labourers in rural India  --  and collaborate with us on building a fund of information, photographs and data on that. Also, send us any studies or reports you know of  that exist in electronic form that are relevant to rural India. Have a look at the “Resources”  section to know what’s already there and get a better idea of what we’re looking for.",
+      "title": "Research",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-06-19T10:39:20.820Z",
+      "slug": "research",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 5,
+    "model": "contribution.contribution",
+    "fields": {
+      "status": 2,
+      "description": "You can back already ongoing film / writing projects by funding them. You can even back one you drum up yourself so long as it fits the mandate and objectives of the archive. Maybe there’s an aspect of rural India from your home state or district that you believe demands attention. Make something of it for the archive. Write to us if you are keen on this avenue.",
+      "title": "Back a Project",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-06-19T10:39:44.594Z",
+      "slug": "back-a-project",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 6,
+    "model": "contribution.contribution",
+    "fields": {
+      "status": 2,
+      "description": "We’re trying to equip as many rural citizens with video / audio equipment  that will help them be direct contributors to the archive. To tell their own stories or record those unfolding in the world around them.  We’d welcome  new / used  video / audio equipment  that you would like to give to these rural citizens (not necessarily professional journalists) to help them in those efforts. Want to give away / buy some equipment for them?  Get in touch with us.",
+      "title": "Back the efforts of others",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-06-19T10:40:33.988Z",
+      "slug": "back-the-efforts-of-others",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 7,
+    "model": "contribution.contribution",
+    "fields": {
+      "status": 2,
+      "description": "You could also contribute financially. Send us a cheque or by make a contribution online. We aim at raising what we can from the public, while steering  clear of direct government or corporate funding, to protect PARI’s independence. You can also volunteer your time, labour and skills for the archive. We need you.",
+      "title": "Back Us",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-06-19T10:40:51.852Z",
+      "slug": "back-us",
+      "gen_description": false
+    }
+  }
+]
