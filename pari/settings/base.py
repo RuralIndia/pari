@@ -289,7 +289,7 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
-    #"mezzanine.accounts",
+    "mezzanine.accounts",
     #"mezzanine.mobile",
 
     "south",
@@ -305,7 +305,11 @@ INSTALLED_APPS = (
     "pari.album",
     "pari.contribution",
     "pari.resources",
+    "pari.user",
 )
+
+AUTH_PROFILE_MODULE = "user.Profile"
+ACCOUNTS_VERIFICATION_REQUIRED = True
 
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its
