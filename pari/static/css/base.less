@@ -98,7 +98,6 @@ h1, h2, h3, h4, h5 {
                 color: @headingsColor;
                 .user{
                     width: 80px;
-                    text-align: center;
                     padding: 3px 20px 2px 20px;
                     border-radius: 0px 0px 25px 25px;
                     margin-top: -5px;
@@ -112,6 +111,8 @@ h1, h2, h3, h4, h5 {
                         position: absolute;
                         right: 150px;
                         top: 60px;
+                        text-align: center;
+                        border-bottom: 2px solid @navBottomBorder;
                     }
                     @media (max-width: 978px) {
                         position: relative;
@@ -125,6 +126,20 @@ h1, h2, h3, h4, h5 {
                     .caret {
                         border-top-color: @headingsColor !important;
                         border-bottom-color: @headingsColor !important;
+                    }
+                    .login-form {
+                        width: 220px;
+                        text-align: left;
+                        @media (min-width: 979px) {
+                            position: absolute;
+                            left: -80px;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            background-color: @navColor !important;
+                        }
+                        .submit_button {
+                            text-align: center;
+                        }
                     }
                 }
             }
@@ -253,20 +268,6 @@ h1, h2, h3, h4, h5 {
         left: 0;
         width: 100%;
         height: 100%;
-    }
-}
-
-.login-form {
-    width: 220px;
-    @media (min-width: 979px) {
-        position: absolute;
-        left: -80px;
-        padding-left: 10px;
-        padding-right: 10px;
-        background-color: @navColor !important;
-    }
-    .submit_button {
-        text-align: center;
     }
 }
 
