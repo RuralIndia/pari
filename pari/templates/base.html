@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
-{% load pages_tags accounts_tags mezzanine_tags i18n future dajaxice_templatetags %}
+{% load pages_tags mezzanine_tags i18n future dajaxice_templatetags %}
 {% load static from staticfiles %}
 <head>
 
@@ -64,18 +64,7 @@
                     <div class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<b class="caret"></b></a>
                     <ul class="login-form dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <li>
-                            {% login_form as form %}
-                            <form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %} action="/accounts/login/">
-                                {% fields_for form %}
-                                <div class="submit_button">
-                                    <button class="btn btn-primary btn-colour" type="submit">Login</button>
-                                </div>
-                                {% url "signup" as signup_url %}
-                                {% blocktrans with request.GET.next as next %} <a href="{{ signup_url }}?next={{ next }}">Register</a>{% endblocktrans %} |
-                                {% url "mezzanine_password_reset" as password_reset_url %}
-                                {% url "profile_update" as profile_update_url %}
-                                {% blocktrans %}<a href="{{ password_reset_url }}?next={{ profile_update_url }}">Reset your password</a>{% endblocktrans %}
-                            </form>
+                            {% include "includes/login_form.html" %}
                         </li>
                     </ul>
                     </div>
