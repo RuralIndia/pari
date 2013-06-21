@@ -1,0 +1,36 @@
+{% load mezzanine_tags article_filters %}
+
+{% if form_for_fields.non_field_errors %}
+    <div class="control-group error non-field-errors">
+        {% for error in form_for_fields.non_field_errors %}
+            <span class="help-inline">{{ error }}</span>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% nevercache %}
+    <input type="hidden" name="referrer" value="{{ request.META.HTTP_REFERER }}">
+    {% csrf_token %}
+{% endnevercache %}
+<div class="input">
+    {% for field in form_for_fields %}
+        {% if field.is_hidden %}
+            {{ field }}
+        {% else %}
+            <div class="form-field input_{{ field.id_for_label }} {{ field.field.type }}{% if field.errors %} error{% endif %}">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <span class="help-inline">
+                        {% for e in field.errors %}
+                            {% if not forloop.first %} / {% endif %}{{ e }}
+                        {% endfor %}
+                    </span>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+

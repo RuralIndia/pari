@@ -95,6 +95,21 @@ h1, h2, h3, h4, h5 {
 
             .container {
                 margin-top: 10px;
+                color: @headingsColor;
+                .user{
+                    position: absolute;
+                    right: 0px;
+                    top: 25px;
+                    a {
+                        text-decoration: none;
+                        color: @headingsColor;
+                    }
+                    @media (min-width: 979px) {
+                        position: absolute;
+                        right: 175px;
+                        top: 60px;
+                    }
+                }
             }
         }
 
@@ -102,7 +117,6 @@ h1, h2, h3, h4, h5 {
 
             .navbar-search {
                 position: relative;
-                top: 27px;
                 .search-query {
                     width: 289px;
                     padding-right: 29px !important;
@@ -222,6 +236,18 @@ h1, h2, h3, h4, h5 {
         left: 0;
         width: 100%;
         height: 100%;
+    }
+}
+
+.login_form {
+    position: absolute;
+    left: -80px;
+    width: 220px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: @alternateBgColor;
+    .submit_button {
+        text-align: center;
     }
 }
 
