@@ -24,7 +24,7 @@
     <div class="hero-unit album-header">
         <div class="row">
             <div class="span3">
-            <a class="cover image-tag" href="{{ MEDIA_URL }}{{ album.cover }}" title="{{ album.description }}" data-audio="{{ album.audio|default_if_none:"" }}">
+            <a class="cover image-tag" href="{{ MEDIA_URL }}{{ album.cover }}" title="{{ album.get_cover.description }}" data-audio="{{ album.get_cover.audio|default_if_none:"" }}">
                 <img src="{{ MEDIA_URL }}{% thumbnail album.cover 270 270 %}" alt="">
             </a>
             </div>
@@ -33,7 +33,7 @@
                 <p>{{ album.description }}</p>
                 <div class="mfp-img-holder">
                 <div class="album-controls" data-album-audio="{{ album.audio }}">
-                    <button class="btn btn-large btn-{{ album.predominant_tone }}">Start slideshow {% if album.audio %}with audio {% endif %} <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i></p>
+                    <button class="btn btn-large btn-{{ album.predominant_tone }}">Start slideshow {% if album.audio %}with audio {% endif %} <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i></button>
                 </div>
             </div>
             </div>
