@@ -9,7 +9,7 @@ from pari.contribution.models import Contribution
 
 class CaptchaField(ReCaptchaField):
     def __init__(self, *args, **kwargs):
-        attrs = {'theme': 'white', 'width': '30'}
+        attrs = {'theme': 'custom', 'custom_theme_widget': 'recaptcha_widget'}
         super(CaptchaField, self).__init__(None, None, None, attrs, *args, **kwargs)
 
 
