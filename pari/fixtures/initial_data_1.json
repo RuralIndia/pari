@@ -244,7 +244,7 @@
       "publish_date": "2013-02-25T04:44:26.786Z",
       "content_model": "link",
       "in_menus": "1,2,3",
-      "slug": "map",
+      "slug": "/map/",
       "gen_description": true
     }
   },
