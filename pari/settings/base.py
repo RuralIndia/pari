@@ -157,7 +157,7 @@ SECRET_KEY = "ddd8bef6-495d-4925-ae37-1f13f9fe679404584f84-f4db-4f15-a096-72f545
 #   * Receive x-headers
 INTERNAL_IPS = ("127.0.0.1",)
 
-ALLOWED_HOSTS = ["localhost", "ruralindiaonline.org"]
+ALLOWED_HOSTS = ["localhost"]
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

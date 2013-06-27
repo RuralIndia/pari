@@ -2,6 +2,8 @@ import os
 
 from .base import *  # noqa
 
+ALLOWED_HOSTS.append("www.ruralindiaonline.org")
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

@@ -5,6 +5,8 @@ DEBUG = True
 
 COMPRESS_ENABLED = False
 
+ALLOWED_HOSTS.append("dev.ruralindiaonline.org")
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
