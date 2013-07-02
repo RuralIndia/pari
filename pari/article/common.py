@@ -44,13 +44,16 @@ def get_result_types(filter, display_count=4):
 
 def get_random_entries(model, count=1):
     max_id = model.objects.aggregate(Max('id'))['id__max']
-    i = 0
-    while i < count:
-        try:
-            yield model.objects.get(pk=randint(1, max_id))
-            i += 1
-        except model.DoesNotExist:
-            pass
+    if max_id:
+        i = 0
+        while i < count:
+            try:
+                yield model.objects.get(pk=randint(1, max_id))
+                i += 1
+            except model.DoesNotExist:
+                pass
+    else:
+        pass
 
 
 def type_sort_order(x, filter, display_count=4):
