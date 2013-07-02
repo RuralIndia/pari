@@ -1,7 +1,8 @@
+import os
 from .base import *  # noqa
 
 
-DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', 'true'))
 
 COMPRESS_ENABLED = False
 
