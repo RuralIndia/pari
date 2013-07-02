@@ -16,9 +16,9 @@
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
 {% endifinstalled %}
 
+<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 {% block extra_uncompressed_css %}{% endblock %}
 {% compress css %}
-<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
 <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}font/font-awesome.less" charset="utf-8">
