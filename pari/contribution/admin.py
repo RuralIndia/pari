@@ -7,7 +7,7 @@ from pari.contribution.models import Contribution
 class ContributionAdmin(DisplayableAdmin):
     form = ContributionForm
     fieldsets = (None, {
-        "fields": ["title", "description", "gen_description", "image"],
+        "fields": ["title", "description", "gen_description", "icon"],
     }),
     list_display = ("admin_thumb", "title",)
     list_editable = ()

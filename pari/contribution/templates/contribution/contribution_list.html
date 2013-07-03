@@ -30,7 +30,7 @@
     <div class="list">
         {% for contribution in contributions %}
             <div class="contribution clearfix">
-                <div class="image span3"><img src="{{ MEDIA_URL }}{% thumbnail contribution.image 170 170 %}" alt=""/>
+                <div class="span3 icon"><i class="icon-{{ contribution.icon }}"></i>
                 </div>
                 <div class="title span8">{{ contribution.title }}</div>
                 <div class="description span8">{{ contribution.description }}</div>

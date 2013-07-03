@@ -6,7 +6,7 @@
         color: #333;
         margin-bottom: 24px;
     }
-    background-color: #9E9D95;
+    background-color: @contactFormBgColor;
     padding: 5px 5px;
     border-radius: 5px;
     margin: 10px 0;
@@ -92,14 +92,16 @@
             margin-left: 0;
         }
 
-        .image {
+        .icon {
             @media (max-width: 767px) {
                 display: inline;
+                left: 10px;
+                top: 10px;
             }
 
             @media (min-width: 768px) and (max-width: 979px) {
                 float: left;
-                margin-left: 10px
+                left: 30px
             }
         }
 
@@ -128,4 +130,15 @@
         }
     }
     margin-bottom: 40px;    
+}
+
+.icon {
+    position: relative;
+    left: 70px;
+    top: 30px;
+
+    i {
+        font-size: 100px;
+        color: @contactFormBgColor;
+    }
 }
