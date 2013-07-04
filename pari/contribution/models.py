@@ -14,6 +14,7 @@ class Contribution(Displayable, AdminThumbMixin):
         verbose_name = _("Contribution")
         verbose_name_plural = _("Contributions")
         app_label = "contribution"
+        ordering = ['pk']
 
     @models.permalink
     def get_absolute_url(self):
