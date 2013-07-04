@@ -1,5 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from pari.album.models import Album
+from pari.article.forms import DisplayableForm, TinyMceWidget
 
 
 class AlbumImageInlineFormset(forms.models.BaseInlineFormSet):
@@ -29,3 +31,12 @@ class AlbumImageInlineFormset(forms.models.BaseInlineFormSet):
 
     def submitted_cover(self):
         return [image for image in self.cleaned_data if image and image['is_cover']]
+
+
+class AlbumForm(DisplayableForm):
+    def __init__(self, *args, **kwargs):
+        super(AlbumForm, self).__init__(*args, **kwargs)
+        self.fields['meta_data'].widget = TinyMceWidget(attrs={'rows': 10, 'cols': 30})
+
+    class Meta:
+        model = Album

@@ -15,7 +15,7 @@ from mezzanine.galleries.models import GALLERIES_UPLOAD_DIR
 
 from zipfile import ZipFile
 
-from pari.article.models import Article
+from pari.article.models import Article, Location
 
 
 class Album(Displayable):
@@ -25,6 +25,8 @@ class Album(Displayable):
                     "they'll be imported into this gallery."))
 
     articles = models.ManyToManyField(Article, blank=True)
+    location = models.ManyToManyField(Location, blank=True)
+    meta_data = models.CharField(verbose_name=_("About the album"), max_length=200, blank=True)
 
     TONE_CHOICES = (
         ('grey', 'Greyscale'),
