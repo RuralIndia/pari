@@ -28,10 +28,35 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('resources', ['Resource'])
 
+        # Adding model 'Factoid'
+        db.create_table(u'resources_factoid', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('keywords_string', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
+            ('site', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sites.Site'])),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=500)),
+            ('slug', self.gf('django.db.models.fields.CharField')(max_length=2000, null=True, blank=True)),
+            ('_meta_title', self.gf('django.db.models.fields.CharField')(max_length=500, null=True, blank=True)),
+            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
+            ('gen_description', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('status', self.gf('django.db.models.fields.IntegerField')(default=2)),
+            ('publish_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('expiry_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
+            ('short_url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
+            ('in_sitemap', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('resource', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='factoids', null=True, to=orm['resources.Resource'])),
+            ('image', self.gf('mezzanine.core.fields.FileField')(max_length=255, null=True, blank=True)),
+            ('external_link', self.gf('django.db.models.fields.CharField')(max_length=100, blank=True)),
+            ('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
+        ))
+        db.send_create_signal(u'resources', ['Factoid'])
+
 
     def backwards(self, orm):
         # Deleting model 'Resource'
         db.delete_table(u'resources_resource')
+
+        # Deleting model 'Factoid'
+        db.delete_table(u'resources_factoid')
 
 
     models = {
@@ -55,6 +80,26 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'site': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['sites.Site']"}),
             'slug': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'null': 'True', 'blank': 'True'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'})
+        },
+        u'resources.factoid': {
+            'Meta': {'object_name': 'Factoid'},
+            '_meta_title': ('django.db.models.fields.CharField', [], {'max_length': '500', 'null': 'True', 'blank': 'True'}),
+            'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'expiry_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'external_link': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
+            'gen_description': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('mezzanine.core.fields.FileField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'in_sitemap': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'keywords': ('mezzanine.generic.fields.KeywordsField', [], {'object_id_field': "'object_pk'", 'to': u"orm['generic.AssignedKeyword']", 'frozen_by_south': 'True'}),
+            'keywords_string': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
+            'publish_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'resource': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'factoids'", 'null': 'True', 'to': "orm['resources.Resource']"}),
+            'short_url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
+            'site': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['sites.Site']"}),
+            'slug': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'null': 'True', 'blank': 'True'}),
+            'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '500'})
         },
         'resources.resource': {

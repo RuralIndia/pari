@@ -23,7 +23,7 @@ class Migration(SchemaMigration):
             ('expiry_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
             ('short_url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
             ('in_sitemap', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('image', self.gf('mezzanine.core.fields.FileField')(max_length=255, null=True, blank=True)),
+            ('icon', self.gf('django.db.models.fields.CharField')(max_length=20, blank=True)),
             ('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
         ))
         db.send_create_signal('contribution', ['Contribution'])
@@ -43,13 +43,13 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         'contribution.contribution': {
-            'Meta': {'ordering': "('title',)", 'object_name': 'Contribution'},
+            'Meta': {'ordering': "['pk']", 'object_name': 'Contribution'},
             '_meta_title': ('django.db.models.fields.CharField', [], {'max_length': '500', 'null': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'expiry_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'gen_description': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'icon': ('django.db.models.fields.CharField', [], {'max_length': '20', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image': ('mezzanine.core.fields.FileField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'in_sitemap': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'keywords': ('mezzanine.generic.fields.KeywordsField', [], {'object_id_field': "'object_pk'", 'to': u"orm['generic.AssignedKeyword']", 'frozen_by_south': 'True'}),
             'keywords_string': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),

@@ -12,6 +12,7 @@ class Migration(SchemaMigration):
         db.create_table(u'user_profile', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
+            ('address', self.gf('django.db.models.fields.TextField')(max_length=200, null=True)),
         ))
         db.send_create_signal(u'user', ['Profile'])
 
@@ -60,6 +61,7 @@ class Migration(SchemaMigration):
         },
         u'user.profile': {
             'Meta': {'object_name': 'Profile'},
+            'address': ('django.db.models.fields.TextField', [], {'max_length': '200', 'null': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'})
         }
