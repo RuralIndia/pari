@@ -47,7 +47,7 @@
                     <div class="span4 grid-column">
                         <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
                         <div class="caption">
-                            <p>{{ image.description }}</p>
+                            <p>{{ image.description|truncatechars:50 }}</p>
                             {% if image.audio %}
                                 <div class="audio-icon"><i class="icon-microphone"></i></div>
                             {% endif %}
