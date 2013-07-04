@@ -57,12 +57,13 @@ class Command(BaseCommand):
                 except ObjectDoesNotExist:
                     pass
 
-                for k in jsoncontent['keywords']:
-                    try:
-                        keyword = Keyword.objects.get(title__iexact=k)
-                    except ObjectDoesNotExist:
-                        keyword = Keyword(title=k)
-                        keyword.save()
+                if hasattr(jsoncontent, 'keywords'):
+                    for k in jsoncontent['keywords']:
+                        try:
+                            keyword = Keyword.objects.get(title__iexact=k)
+                        except ObjectDoesNotExist:
+                            keyword = Keyword(title=k)
+                            keyword.save()
 
-                    if not new_article.keywords.filter(keyword=keyword).exists():
-                        new_article.keywords.add(AssignedKeyword(keyword=keyword))
+                        if not new_article.keywords.filter(keyword=keyword).exists():
+                            new_article.keywords.add(AssignedKeyword(keyword=keyword))
