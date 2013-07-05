@@ -1,8 +1,6 @@
 from optparse import make_option
 import json
-from datetime import datetime
 
-from django.utils import timezone
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
