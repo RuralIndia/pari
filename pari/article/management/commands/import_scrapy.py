@@ -44,18 +44,18 @@ class Command(BaseCommand):
 
                 new_article.user = User.objects.get(pk=1)
                 new_article.content = jsoncontent['content']
-                new_article.publish_date = datetime.strptime(jsoncontent['date'], "%B %d, %Y").replace(tzinfo=timezone.utc)
+                new_article.publish_date = jsoncontent['date']
 
                 new_article.save()
 
                 new_article.types.add(Type.objects.get(title='Photo'))
-
-                location_name = jsoncontent['location'].strip(',\n')
-                try:
-                    location = Location.objects.get(title__iexact=location_name)
-                    new_article.locations.add(location)
-                except ObjectDoesNotExist:
-                    pass
+                if jsoncontent['location']:
+                    location_name = jsoncontent['location'].strip(',\n')
+                    try:
+                        location = Location.objects.get(title__iexact=location_name)
+                        new_article.locations.add(location)
+                    except ObjectDoesNotExist:
+                        pass
 
                 if hasattr(jsoncontent, 'keywords'):
                     for k in jsoncontent['keywords']:
