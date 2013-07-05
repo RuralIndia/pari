@@ -11,16 +11,17 @@ from django.utils.translation import ugettext_lazy as _
 from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable, Orderable
 from mezzanine.utils.models import upload_to
-from mezzanine.galleries.models import GALLERIES_UPLOAD_DIR
 
 from zipfile import ZipFile
 
 from pari.article.models import Article, Location
 
+ALBUMS_UPLOAD_DIR = "uploads/albums/"
+
 
 class Album(Displayable):
     zip_import = models.FileField(verbose_name=_("Zip import"), blank=True,
-        upload_to=upload_to("galleries.Gallery.zip_import", "galleries"),
+        upload_to=upload_to("album.Album.zip_import", "albums"),
         help_text=_("Upload a zip file containing images, and "
                     "they'll be imported into this gallery."))
 
@@ -91,7 +92,7 @@ class Album(Displayable):
                 except:
                     continue
                 name = os.path.split(name)[1]
-                path = os.path.join(GALLERIES_UPLOAD_DIR, self.slug,
+                path = os.path.join(ALBUMS_UPLOAD_DIR, self.slug,
                                     name.decode("utf-8"))
                 try:
                     saved_path = default_storage.save(path, ContentFile(data))
@@ -101,7 +102,7 @@ class Album(Displayable):
                          "characters in its path, but somehow the current "
                          "locale does not support utf-8. You may need to set "
                          "'LC_ALL' to a correct value, eg: 'en_US.UTF-8'.")
-                    path = os.path.join(GALLERIES_UPLOAD_DIR, self.slug,
+                    path = os.path.join(ALBUMS_UPLOAD_DIR, self.slug,
                                         unicode(name, errors="ignore"))
                     saved_path = default_storage.save(path, ContentFile(data))
                 album_image = AlbumImage(file=saved_path)
@@ -117,7 +118,7 @@ class Album(Displayable):
 class AlbumImage(Orderable):
     album = models.ForeignKey("Album", related_name="images")
     file = FileField(_("File"), max_length=200, format="Image",
-                     upload_to=upload_to("galleries.GalleryImage.file", "galleries"))
+                     upload_to=upload_to("album.Album.file", "albums"))
     description = models.CharField(_("Description"), max_length=1000,
                                    blank=True)
     audio = models.CharField(max_length=100, null=True, blank=True)
