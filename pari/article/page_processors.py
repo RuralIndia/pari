@@ -6,7 +6,7 @@ from .models import Article, Category
 
 @processor_for("/")
 def homepage_context(request, page):
-    article_list = Article.articles.filter(featured_image__isnull=False)[:5]
+    article_list = Article.articles.exclude(featured_image__isnull=True).exclude(featured_image='')[:5]
     categories = Category.objects.all()
     recent_articles = Article.articles.order_by('-publish_date')[:6]
     start_time, end_time = get_archive_range()
@@ -23,7 +23,7 @@ def get_archive_range():
     end_time = timezone.now()
 
     try:
-        start_time = Article.objects.all().order_by('publish_date')[0].publish_date
+        start_time = Article.articles.order_by('publish_date')[0].publish_date
     except IndexError:
         start_time = end_time
 

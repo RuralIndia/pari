@@ -73,7 +73,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
 
 
 def get_category_articles(category):
-    return category.articles.filter(is_topic=False)
+    return Article.articles.filter(category_list__pk=category.pk)
 
 
 def get_location_articles(location):
@@ -89,4 +89,4 @@ def get_author_articles(author):
 
 
 def get_archive_articles(month, year):
-    return Article.objects.filter(publish_date__year=year, publish_date__month=month)
+    return Article.articles.filter(publish_date__year=year, publish_date__month=month)
