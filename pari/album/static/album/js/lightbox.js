@@ -1,6 +1,6 @@
 $(function () {
     $('.popup-gallery').magnificPopup({
-        delegate: 'a',
+        delegate: '.mfp-image',
         type: 'image',
         tLoading: 'Loading image #%curr%...',
         mainClass: 'mfp-img-mobile',

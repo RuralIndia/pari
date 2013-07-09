@@ -24,7 +24,7 @@
     <div class="hero-unit album-header">
         <div class="row">
             <div class="span3">
-            <a class="cover image-tag" href="{{ MEDIA_URL }}{{ album.cover }}" title="{{ album.get_cover.description }}" data-audio="{{ album.get_cover.audio|default_if_none:"" }}">
+            <a class="mfp-image cover image-tag" href="{{ MEDIA_URL }}{{ album.cover }}" title="{{ album.get_cover.description }}" data-audio="{{ album.get_cover.audio|default_if_none:"" }}">
                 <img src="{{ MEDIA_URL }}{% thumbnail album.cover 270 270 %}" alt="">
             </a>
             </div>
@@ -35,6 +35,14 @@
                 <div class="album-controls" data-album-audio="{{ album.audio }}">
                     <button class="btn btn-large btn-{{ album.predominant_tone }}">Start slideshow {% if album.audio %}with audio {% endif %} <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i></button>
                 </div>
+                <div class="related-articles">
+                    <p>Related Articles:</p>
+                    <ul>
+                    {% for article in album.articles.all %}
+                        <li class="tag"><a href="{{article.get_absolute_url}}">{{article.title}}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
             </div>
             </div>
             
@@ -43,7 +51,7 @@
     {% for image_group in album|all_images|group_by:3 %}
         <div class="album-images row">
             {% for image in image_group %}
-                <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" class="image-tag">
+                <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" class="image-tag mfp-image">
                     <div class="span4 grid-column">
                         <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
                         <div class="caption">

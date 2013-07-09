@@ -1,22 +1,31 @@
 @import "grid.less";
 
+@sidebarWidth: 21%;
+@gutterWidth: 2%;
+@sidebarLocation: 100% - @sidebarWidth;
+@imageLocation: 2.5%;
+@imageWidth: 100% - @sidebarWidth - @imageLocation - @gutterWidth;
+@arrowRightLocation: 100% - @imageWidth;
+
+
+
 .popup-gallery {
     .album-images {
         .grid-row (50px, 50px);
-
         .grid-column {
-
             .caption {
+                .dark-caption;
+                padding: 10px 0;
+
                 p {
-                    float: left;
+                    line-height: 18px;
                 }
 
                 .audio-icon {
-                    i {
-                        float: right;
-                    }
+                    position: absolute;
+                    top: 0;
+                    right: 0;
                 }
-
             }
         }
     }
@@ -31,6 +40,27 @@
         margin-bottom: 10px;
     }
     margin-bottom: 40px;
+
+    .related-articles {
+        font-size: 14px;
+        color: @navColor;
+        margin-top: 12px;
+        p {
+            margin-bottom: 0;
+        }
+        ul {
+            margin: 0;
+            display: inline-block;
+            li {
+                display: inline;
+                list-style: none;
+                a {
+                    color: #000;
+                }
+            }
+        }
+        
+    }
 }
 
 .mfp-container {
@@ -44,10 +74,10 @@
 
     .mfp-bottom-bar {
         top: 0;
-        width: 25%;
-        left: 75%;
+        width: @sidebarWidth;
+        left: @sidebarLocation;
         .box-sizing(border-box);
-        padding: 40px 5px;
+        padding: 40px 8px;
         margin-top: 0;
         height: 100%;
         background-color: #fff;
@@ -58,8 +88,8 @@
 
     .mfp-img-holder {
         position: relative;
-        left: 0;
-        width: 73%;
+        left: @imageLocation;
+        width: @imageWidth;
 
         .mfp-controls {
             position: absolute;
