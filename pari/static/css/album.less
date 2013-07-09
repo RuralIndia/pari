@@ -1,13 +1,11 @@
 @import "grid.less";
 
-@sidebarWidth: 21%;
-@gutterWidth: 2%;
+@sidebarWidth: 20%;
+@gutterWidth: 2.5%;
 @sidebarLocation: 100% - @sidebarWidth;
 @imageLocation: 2.5%;
 @imageWidth: 100% - @sidebarWidth - @imageLocation - @gutterWidth;
-@arrowRightLocation: 100% - @imageWidth;
-
-
+@arrowRightLocation: @sidebarWidth;
 
 .popup-gallery {
     .album-images {
@@ -15,7 +13,7 @@
         .grid-column {
             .caption {
                 .dark-caption;
-                padding: 10px 0;
+                padding: 10px 2px;
 
                 p {
                     line-height: 18px;
@@ -118,7 +116,7 @@
 
 .mfp-arrow {
     &.mfp-arrow-right {
-        right:27%;
+        right: @arrowRightLocation;
     }
 }
 

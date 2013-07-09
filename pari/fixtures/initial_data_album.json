@@ -5,6 +5,7 @@
     "fields": {
       "status": 2,
       "articles": [
+        1
       ],
       "description": "Recycling energy takes cycles and lots of energy",
       "title": " The koilawallahs of Godda",
@@ -15,7 +16,9 @@
       "_meta_title": null,
       "predominant_tone": "grey",
       "expiry_date": null,
-      "publish_date": "2013-07-04T11:44:06.403Z",
+      "publish_date": "2013-07-04T11:44:06Z",
+      "location": [],
+      "meta_data": "",
       "slug": "the-koilawallahs-of-godda",
       "gen_description": false,
       "zip_import": ""

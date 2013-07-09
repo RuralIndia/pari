@@ -423,6 +423,14 @@
     }
   },
   {
+    "pk": 4,
+    "model": "article.type",
+    "fields": {
+      "icon_class": "icon-file-text-alt",
+      "title": "Text"
+    }
+  },
+  {
     "pk": 6,
     "model": "pages.page",
     "fields": {
