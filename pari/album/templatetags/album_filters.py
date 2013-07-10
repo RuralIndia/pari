@@ -10,4 +10,4 @@ def get_file_path(image):
 
 @register.filter
 def all_images(album):
-    return album.images.filter(is_cover=False)
+    return album.images.filter(is_cover=False).prefetch_related('location', 'photographer')

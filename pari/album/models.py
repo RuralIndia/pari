@@ -115,21 +115,26 @@ class Album(Displayable):
                 self.zip_import.delete(save=True)
 
 
-class AlbumImage(Orderable):
+class AlbumImage(Orderable, Displayable):
     album = models.ForeignKey("Album", related_name="images")
     file = FileField(_("File"), max_length=200, format="Image",
                      upload_to=upload_to("album.Album.file", "albums"))
-    description = models.CharField(_("Description"), max_length=1000,
-                                   blank=True)
-    audio = models.CharField(max_length=100, null=True, blank=True)
+    audio = models.CharField(max_length=30, null=True, blank=True)
     is_cover = models.BooleanField(verbose_name="Album cover", default=False)
+    photographer = models.ForeignKey("article.Author", related_name='photographs')
+    location = models.ForeignKey(Location, verbose_name=_("Location"), blank=True)
 
     class Meta:
-        verbose_name = _("Image")
-        verbose_name_plural = _("Images")
+        verbose_name = _("AlbumImage")
+        verbose_name_plural = _("AlbumImages")
 
     def __unicode__(self):
         return self.description
+
+    @models.permalink
+    def get_absolute_url(self):
+        name = "album-image-detail"
+        return (name, (), {"slug": self.album.slug, "order": self._order})
 
     def save(self, *args, **kwargs):
         """

@@ -1,0 +1,36 @@
+{% extends "sidebar_base.html" %}
+{% load i18n verbatim_tag mezzanine_tags article_tags article_filters album_filters comment_tags%}
+
+{% block meta_title %}{% trans image.album.title %} - {{ image|get_order }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+    {{ image.album.title }}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}
+    {{ image.description }}
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/album_image.less" charset="utf-8">
+{% endblock %}
+
+{% block maincontent %}
+    <img src="{{MEDIA_URL}}{% thumbnail image|get_file_path 0 0 %}"></img>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="well">
+        <h3>{{ image.album.title }}</h3>
+        <p>{{ image|get_order }} of {{image.album.images.count }}</p>
+        {{ image.description }}
+        {% include "article/includes/social.html" with item=image %}
+    </div>
+{% endblock %}
+
+{% block maincontent_2 %}
+    {% comments_for image %}
+{% endblock %}

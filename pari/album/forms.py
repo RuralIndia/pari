@@ -1,5 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
+
 from pari.album.models import Album
 from pari.article.forms import DisplayableForm, TinyMceWidget
 
@@ -36,7 +37,7 @@ class AlbumImageInlineFormset(forms.models.BaseInlineFormSet):
 class AlbumForm(DisplayableForm):
     def __init__(self, *args, **kwargs):
         super(AlbumForm, self).__init__(*args, **kwargs)
-        self.fields['meta_data'].widget = TinyMceWidget(attrs={'rows': 10, 'cols': 30})
+        self.fields['meta_data'].widget = TinyMceWidget(attrs={'rows': 10, 'cols': 20})
 
     class Meta:
         model = Album

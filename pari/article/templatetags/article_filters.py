@@ -83,3 +83,8 @@ def get_page(name):
 @register.filter
 def get_setting(name):
     return getattr(settings, name)
+
+
+@register.filter
+def get_order(item):
+    return item._order + 1

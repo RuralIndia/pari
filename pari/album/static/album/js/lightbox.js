@@ -12,7 +12,12 @@ $(function () {
         image: {
             tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
             titleSrc: function (item) {
-                return '<p data-audio="' + item.el.attr('data-audio') + '">' + item.el.attr('title') + '</p>'
+                return '<div>'+
+                            '<h4>'+ item.el.attr('data-photographer') + '</h4>' +
+                            '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
+                            '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
+                            '<p class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.attr('title') + '</p>' +
+                        '</div>'
             },
         markup: '<div class="mfp-figure">'+
                     '<div class="mfp-close"></div>'+
@@ -32,7 +37,7 @@ $(function () {
         callbacks: {
             updateStatus: function () {
                 $.scPlayer.stopAll();
-                var audio = $('.mfp-title p').data('audio');
+                var audio = $('.mfp-title .image-caption').data('audio');
                 var controls = $('.mfp-controls');
                 if(audio && audio != "") {
                     var player = $('.player');

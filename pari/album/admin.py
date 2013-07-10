@@ -8,6 +8,9 @@ class AlbumImageInline(TabularDynamicInlineAdmin):
     model = AlbumImage
     extra = 15
     formset = AlbumImageInlineFormset
+    fieldsets = (None, {
+        "fields": ["file", "description", "audio", "photographer", "location", "publish_date", "is_cover"],
+    }),
 
 
 class AlbumAdmin(admin.ModelAdmin):
