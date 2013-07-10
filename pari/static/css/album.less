@@ -7,6 +7,8 @@
 @imageWidth: 100% - @sidebarWidth - @imageLocation - @gutterWidth;
 @arrowRightLocation: @sidebarWidth;
 
+@switchOver: 979px;
+
 .popup-gallery {
     .album-images {
         .grid-row (50px, 50px);
@@ -82,12 +84,28 @@
         .mfp-title {
             color: #000;
         }
+
+        @media (max-width: @switchOver) {
+            left: 0;
+            top: @sidebarLocation;
+            width: 100%;
+            height: @sidebarWidth;
+            padding: 8px;
+        }
     }
 
     .mfp-img-holder {
         position: relative;
         left: @imageLocation;
         width: @imageWidth;
+
+        @media (max-width: @switchOver) {
+            width: 100%;
+            height: @imageWidth;
+            img {
+                height: @imageWidth;
+            }
+        }
 
         .mfp-controls {
             position: absolute;
@@ -117,6 +135,9 @@
 .mfp-arrow {
     &.mfp-arrow-right {
         right: @arrowRightLocation;
+        @media (max-width: @switchOver) {
+            right: 0;
+        }
     }
 }
 
