@@ -5,7 +5,6 @@
     "fields": {
       "status": 2,
       "articles": [
-        1
       ],
       "description": "Recycling energy takes cycles and lots of energy",
       "title": " The koilawallahs of Godda",
@@ -28,168 +27,350 @@
     "pk": 1,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 8,
-      "description": " The koilawallahs move in lines of  8 to 20. If your cycle falls down, you can’t pick it up yourself. You need the help of the others",
+      "description": " The koilawallahs move in lines of 8 to 20",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:13Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah  9009.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234305"
+      "audio": "97234305",
+      "slug": "no-title-8",
+      "gen_description": true
     }
   },
   {
     "pk": 2,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 0,
-      "description": " The koilawallahs, or coal carriers of Godda district try earning a living by picking up coal from the waste dumps near the Rajmahal mining project at Lalmatiya and pushing huge loads of it  --  ranging from 100 to 250 kilograms  --  to Godda town 40 kilometres away. There, poor consumers buy this cheap coal via local merchants. It’s a national energy saving, but has been criminalised by officialdom. And the koilawallahs would be lucky to earn a net of Rs. 30 per trip. These photographs were shot in September 1993, on a Nikon F 3. Godda was then in the state of Bihar. Since  year 2000, it has been a part of Jharkhand state. You can also read the original report on the coal carriers of that time, appearing in the book Everybody Loves A Good Drought, by clicking on the print icon.",
+      "description": " The koilawallahs, or coal carriers of Godda district try earning a living by picking up coal from the waste dumps near the Rajmahal mining project at Lalmatiya and pushing huge loads of it  --  ranging from 100 to 250 kilograms  --  to Godda town 40 kilometres away",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:22:50Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 1001.jpg",
+      "photographer": 1,
       "is_cover": true,
-      "audio": "97234283"
+      "audio": "97234283",
+      "slug": "no-title",
+      "gen_description": true
     }
   },
   {
     "pk": 3,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 1,
-      "description": "Kishen Yadav pushing his heavy load of coal on a bicycle with reinforced bars and without a chain (since he’s removed that to reduce friction). He’s on his 40-km journey from Lalmatiya to Godda town. Some koilawallahs push further, maybe up to 60 or even 80 km away. From their meagre earnings, they pay a hafta (a ‘cut’ or bribe) to the coal mafia and at various police checkpoints",
+      "description": "Kishen Yadav pushing his heavy load of coal on a bicycle with reinforced bars and without a chain (since he’s removed that to reduce friction)",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:05Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 2002.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "100128214"
+      "audio": "100128214",
+      "slug": "no-title-1",
+      "gen_description": true
     }
   },
   {
     "pk": 4,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 2,
-      "description": " The loads range between 150 to 250 kilograms. That’s why they reinforce the hubs, bars and joints of the bicycle. It’s being used as a trolley, not as a cycle",
+      "description": " The loads range between 150 to 250 kilograms",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:06Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 3003.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234291"
+      "audio": "97234291",
+      "slug": "no-title-2",
+      "gen_description": true
     }
   },
   {
     "pk": 5,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 3,
-      "description": " Arun Sah used to push much heavier loads. That changed after he hurt his back very badly",
+      "description": " Arun Sah used to push much heavier loads",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:07Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 4005.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234294"
+      "audio": "97234294",
+      "slug": "no-title-3",
+      "gen_description": true
     }
   },
   {
     "pk": 6,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 4,
       "description": "Imagine trying to push this one 40-60 kilometres or more!",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:09Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 5005.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234297"
+      "audio": "97234297",
+      "slug": "no-title-4",
+      "gen_description": true
     }
   },
   {
     "pk": 7,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 5,
-      "description": "Manto Manjhi takes a break. Behind him  -  the full kit: the coal, a reinforced bicycle, a cycle pump and more",
+      "description": "Manto Manjhi takes a break",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:09Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 6006.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234299"
+      "audio": "97234299",
+      "slug": "no-title-5",
+      "gen_description": true
     }
   },
   {
     "pk": 8,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 6,
       "description": "Puran is around 14 years old, but the strenuous labour he does makes him look older and tougher  ",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:10Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 7007.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234300"
+      "audio": "97234300",
+      "slug": "no-title-6",
+      "gen_description": true
     }
   },
   {
     "pk": 9,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 7,
-      "description": "Puran’s load is lighter, relatively speaking, but that doesn’t mean you and I can do it. Don’t push it  ",
+      "description": "Puran’s load is lighter, relatively speaking, but that doesn’t mean you and I can do it",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:12Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 8008.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234304"
+      "audio": "97234304",
+      "slug": "no-title-7",
+      "gen_description": true
     }
   },
   {
     "pk": 10,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 9,
-      "description": "Team effort is also important in coping with uphill stretches or while crossing a pond or stream. In tough situations, the group joins hands to get one bike across at a time",
+      "description": "Team effort is also important in coping with uphill stretches or while crossing a pond or stream",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:15Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 10010 CV.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234307"
+      "audio": "97234307",
+      "slug": "no-title-9",
+      "gen_description": true
     }
   },
   {
     "pk": 11,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 10,
-      "description": " Men from different castes sitting down together for their meal  -  unusual in itself, even if they do not share from each other’s lunch box. There are Yadavs, Dalits and Banias here. Barring Brahmins and Rajputs, most castes found in Godda have some poor members in this occupation  ",
+      "description": " Men from different castes sitting down together for their meal  -  unusual in itself, even if they do not share from each other’s lunch box",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:15Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 11011.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234309"
+      "audio": "97234309",
+      "slug": "no-title-10",
+      "gen_description": true
     }
   },
   {
     "pk": 12,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 11,
       "description": " When ‘parking’ a fully-laden bicycle, you use a metal rod, or a very strong wooden stick, propping up the load on one side",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:16Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 12012.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234310"
+      "audio": "97234310",
+      "slug": "no-title-11",
+      "gen_description": true
     }
   },
   {
     "pk": 13,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 12,
-      "description": " This overladen bike collapsed and has probably done its last journey for a while. The excess weight had twisted its bars, joints and a wheel.",
+      "description": " This overladen bike collapsed and has probably done its last journey for a while",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:29Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 13013.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234311"
+      "audio": "97234311",
+      "slug": "no-title-12",
+      "gen_description": true
     }
   },
   {
     "pk": 14,
     "model": "album.albumimage",
     "fields": {
+      "status": 2,
       "album": 1,
       "_order": 13,
-      "description": "With a cargo so huge, even a mild upward incline has the koilawallah struggling. Note the angle of the group leader’s feet to his torso as he strains to  negotiate the incline",
+      "description": "With a cargo so huge, even a mild upward incline has the koilawallah struggling",
+      "title": "no title",
+      "short_url": null,
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "1993-09-01T18:24:32Z",
+      "location": 1,
       "file": "uploads/albums/the-koilawallahs-of-godda/Godda Koilawallah 14014.jpg",
+      "photographer": 1,
       "is_cover": false,
-      "audio": "97234313"
+      "audio": "97234313",
+      "slug": "no-title-13",
+      "gen_description": true
     }
   }
 ]
