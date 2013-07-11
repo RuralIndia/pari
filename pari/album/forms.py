@@ -8,12 +8,13 @@ from pari.article.forms import DisplayableForm, TinyMceWidget
 class AlbumImageInlineFormset(forms.models.BaseInlineFormSet):
     def clean(self):
         if self.instance.zip_import:
+            del self.errors[:]
             return
 
         if any(self.errors):
             return
 
-        if not self.cleaned_data:
+        if not any(self.cleaned_data):
             raise ValidationError(u'Upload at the least one image to the album.')
 
         if not self.has_cover():
@@ -38,6 +39,13 @@ class AlbumForm(DisplayableForm):
     def __init__(self, *args, **kwargs):
         super(AlbumForm, self).__init__(*args, **kwargs)
         self.fields['meta_data'].widget = TinyMceWidget(attrs={'rows': 10, 'cols': 20})
+
+    def clean(self):
+        cleaned_data = super(AlbumForm, self).clean()
+        if cleaned_data['zip_import'] and not (cleaned_data['location'] and cleaned_data['photographer']):
+            raise ValidationError(u'Specify photographer and location when doing zip import')
+
+        return cleaned_data
 
     class Meta:
         model = Album

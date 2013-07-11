@@ -26,7 +26,9 @@ class Album(Displayable):
                     "they'll be imported into this gallery."))
 
     articles = models.ManyToManyField(Article, blank=True)
-    location = models.ManyToManyField(Location, blank=True)
+    location = models.ForeignKey(Location, related_name='albums', blank=True, null=True)
+    photographer = models.ForeignKey("article.Author", related_name='albums', blank=True, null=True)
+
     meta_data = models.CharField(verbose_name=_("About the album"), max_length=200, blank=True)
 
     TONE_CHOICES = (
@@ -105,7 +107,7 @@ class Album(Displayable):
                     path = os.path.join(ALBUMS_UPLOAD_DIR, self.slug,
                                         unicode(name, errors="ignore"))
                     saved_path = default_storage.save(path, ContentFile(data))
-                album_image = AlbumImage(file=saved_path)
+                album_image = AlbumImage(file=saved_path, location=self.location, photographer=self.photographer)
                 if first and not self.has_cover:
                     album_image.is_cover = True
                     first = False
@@ -122,7 +124,7 @@ class AlbumImage(Orderable, Displayable):
     audio = models.CharField(max_length=30, null=True, blank=True)
     is_cover = models.BooleanField(verbose_name="Album cover", default=False)
     photographer = models.ForeignKey("article.Author", related_name='photographs')
-    location = models.ForeignKey(Location, verbose_name=_("Location"), blank=True)
+    location = models.ForeignKey(Location, verbose_name=_("Location"))
 
     class Meta:
         verbose_name = _("AlbumImage")

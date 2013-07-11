@@ -17,7 +17,9 @@ class AlbumAdmin(admin.ModelAdmin):
     form = AlbumForm
     inlines = [AlbumImageInline, ]
     fieldsets = (None, {
-        "fields": ["title", "description", "gen_description", "meta_data", "location", "publish_date", "keywords", "zip_import", "articles", "predominant_tone"],
+        "fields": ["title", "description", "gen_description", "meta_data",
+                   "publish_date", "keywords", "zip_import", "location",
+                   "photographer", "articles", "predominant_tone"],
     }),
 
     list_display = ("title",)
