@@ -65,6 +65,15 @@
 
 .mfp-container {
     padding: 0;
+
+    .mfp-figure {
+        .mfp-close {
+            right: @sidebarWidth;
+            @media (max-width: @switchOver) {
+                right: 0;
+            }
+        }
+    }
 }
 
 .mfp-content {
