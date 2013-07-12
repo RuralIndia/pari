@@ -17,6 +17,13 @@ $(function () {
                             '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
                             '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
                             '<p class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.attr('title') + '</p>' +
+                            '<div class="btn-toolbar">'+
+                                '<div class="btn-group">'+
+                                    '<a class="btn" href="' + item.el.attr('data-url') +'"><i class="icon-share"></i></a>'+
+                                    '<a class="btn" href="' + item.el.attr('data-url') +'#comments"><i class="icon-comment-alt"></i></a>'+
+                                    '<a class="btn btn-fullscreen" href="#"><i class="icon-fullscreen"></i></a>'+
+                                '</div>'+
+                            '</div>'
                         '</div>'
             },
         markup: '<div class="mfp-figure">'+
@@ -39,6 +46,18 @@ $(function () {
                 $.scPlayer.stopAll();
                 var audio = $('.mfp-title .image-caption').data('audio');
                 var controls = $('.mfp-controls');
+
+                $('.btn-fullscreen').on('click', function() {
+                    $('.mfp-container').addClass('mfp-container-fullscreen');
+                    return false;
+
+                });
+
+                $('.mfp-figure').on('click', function() {
+                    $('.mfp-container').removeClass('mfp-container-fullscreen');
+
+                });
+
                 if(audio && audio != "") {
                     var player = $('.player');
                     player.empty();
