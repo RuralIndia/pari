@@ -23,7 +23,7 @@ $(function () {
                                     '<a class="btn" href="' + item.el.attr('data-url') +'#comments"><i class="icon-comment-alt"></i></a>'+
                                     '<a class="btn btn-fullscreen" href="#"><i class="icon-fullscreen"></i></a>'+
                                 '</div>'+
-                            '</div>'
+                            '</div>'+
                         '</div>'
             },
         markup: '<div class="mfp-figure">'+
