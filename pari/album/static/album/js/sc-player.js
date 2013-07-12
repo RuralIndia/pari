@@ -88,12 +88,10 @@
         $doc.trigger('scPlayer:onAudioReady');
       },
       onPlay: function() {
-          $('.sc-pause').removeClass('hidden')
-          $doc.trigger('scPlayer:onMediaPlay');
+        $doc.trigger('scPlayer:onMediaPlay');
       },
       onPause: function() {
-          $('.sc-play').show()
-          $doc.trigger('scPlayer:onMediaPause');
+        $doc.trigger('scPlayer:onMediaPause');
       },
       onEnd: function() {
         $doc.trigger('scPlayer:onMediaEnd');
