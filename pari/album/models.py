@@ -136,7 +136,7 @@ class AlbumImage(Orderable, Displayable):
     @models.permalink
     def get_absolute_url(self):
         name = "album-image-detail"
-        return (name, (), {"slug": self.album.slug, "order": self._order})
+        return (name, (), {"slug": self.album.slug, "order": self._order + 1})
 
     def save(self, *args, **kwargs):
         """
