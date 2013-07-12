@@ -5,7 +5,7 @@ import factory
 import mock
 
 from pari.album.admin import AlbumAdmin, AlbumImageInline
-from pari.album.forms import AlbumImageInlineFormset, AlbumForm
+from pari.album.forms import AlbumImageInlineFormset
 from pari.album.models import Album, AlbumImage
 from pari.article.tests import LocationFactory, AuthorFactory
 
@@ -34,7 +34,7 @@ class AlbumAdminTests(TestCase):
 
     def setup_formset(self, data, album):
         AlbumImageFactoryFormset = inlineformset_factory(Album, AlbumImage, formset=AlbumImageInlineFormset)
-        return AlbumImageFactoryFormset(data, prefix='form', instance=album)    
+        return AlbumImageFactoryFormset(data, prefix='form', instance=album)
 
     def test_admin_includes_zip_import(self):
         self.assertIn("zip_import", AlbumAdmin.fieldsets[0][1]['fields'])
