@@ -8,10 +8,12 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script type='text/javascript' src="{{ STATIC_URL }}album/js/soundcloud.player.api.js"></script>
-    <script type='text/javascript' src="{{ STATIC_URL }}album/js/sc-player.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}album/js/magnific-popup.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}album/js/lightbox.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+    <script type='text/javascript' src="https://w.soundcloud.com/player/api.js"></script>
 {% endblock %}
 
 {% block extra_css %}
@@ -35,8 +37,8 @@
                 <h2>{{ album.title }}</h2>
                 <p>{{ album.description }}</p>
                 <div class="mfp-img-holder">
-                <div class="album-controls" data-album-audio="{{ album.audio }}">
-                    <button class="btn btn-large btn-{{ album.predominant_tone }}">Start slideshow {% if album.audio %}with audio {% endif %} <i class="icon-play album-audio"></i><i class="icon-pause album-audio" title= "Skip introduction" style="display:none"></i></button>
+                <div class="album-controls">
+                    <button class="btn btn-large btn-{{ album.predominant_tone }}">Start slideshow <i class="icon-play album-audio"></i></button>
                 </div>
                 {% with album.articles.all as articles %}
                     {% if articles %}
@@ -73,7 +75,8 @@
         </div>
     {% endfor %}
 </div>
-<div class="player hidden">
-    <a href="http://api.soundcloud.com/tracks/{{ album.audio }}" class="sc-player">Player</a>
-</div>
+
+<iframe id="album-widget" width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F97234283&amp;color=ff6600&amp;auto_play=false&amp;show_artwork=false"></iframe>
+
+
 {% endblock %}

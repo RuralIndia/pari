@@ -1,104 +1,147 @@
-$(function () {
-    $('.popup-gallery').magnificPopup({
-        delegate: '.mfp-image',
-        type: 'image',
-        tLoading: 'Loading image #%curr%...',
-        mainClass: 'mfp-img-mobile',
-        gallery: {
-            enabled: true,
-            navigateByImgClick: true,
-            preload: [0, 1]
-        },
-        image: {
-            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-            titleSrc: function (item) {
-                return '<div>'+
-                            '<h4>'+ item.el.attr('data-photographer') + '</h4>' +
-                            '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
-                            '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
-                            '<p class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.attr('title') + '</p>' +
-                            '<div class="btn-toolbar">'+
-                                '<div class="btn-group">'+
-                                    '<a class="btn" href="' + item.el.attr('data-url') +'"><i class="icon-share"></i></a>'+
-                                    '<a class="btn" href="' + item.el.attr('data-url') +'#comments"><i class="icon-comment-alt"></i></a>'+
-                                    '<a class="btn btn-fullscreen" href="#"><i class="icon-fullscreen"></i></a>'+
+var Album = {
+    init: function() {
+        this._initSoundCloudWidget();
+
+        this._initPopup();
+        this._initControls();
+    },
+
+    _popup: null,
+    _widget: null,
+
+    _initPopup: function() {
+        this._popup = $('.popup-gallery').magnificPopup({
+
+            delegate: '.mfp-image',
+            type: 'image',
+            
+            tLoading: 'Loading image #%curr%...',
+            mainClass: 'mfp-album-popup',
+            
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [0, 2],
+            },
+                    
+            image: {
+                cursor: null,
+                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+
+                titleSrc: function (item) {
+                    return '<div>'+
+                                '<h4>'+ item.el.attr('data-photographer') + '</h4>' +
+                                '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
+                                '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
+                                '<p class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.attr('title') + '</p>' +
+                                '<div class="btn-toolbar">'+
+                                    '<div class="btn-group">'+
+                                        '<a class="btn" href="' + item.el.attr('data-url') +'"><i class="icon-share"></i></a>'+
+                                        '<a class="btn" href="' + item.el.attr('data-url') +'#comments"><i class="icon-comment-alt"></i></a>'+
+                                        '<a class="btn btn-fullscreen" href="#"><i class="icon-fullscreen"></i></a>'+
+                                    '</div>'+
                                 '</div>'+
+                            '</div>'
+                },
+
+                markup: '<div class="mfp-figure">'+
+                            '<div class="mfp-close"></div>'+
+                            '<div class="mfp-img-holder">'+
+                                '<div class="mfp-img"></div>'+
+                                '<div class="mfp-controls">'+
+                                    '<i class="icon-play audio"></i><i class="icon-pause audio" style="display:none"></i>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="mfp-bottom-bar">'+
+                                '<div class="mfp-title"></div>'+
+                                '<div class="mfp-counter"></div>'+
                             '</div>'+
                         '</div>'
             },
-        markup: '<div class="mfp-figure">'+
-                    '<div class="mfp-close"></div>'+
-                    '<div class="mfp-img-holder">'+
-                        '<div class="mfp-img"></div>'+
-                        '<div class="mfp-controls">'+
-                            '<i class="icon-play audio"></i><i class="icon-pause audio" style="display:none"></i>'+
-                        '</div>'+
-                    '</div>'+
-                    '<div class="mfp-bottom-bar">'+
-                        '<div class="mfp-title"></div>'+
-                        '<div class="mfp-counter"></div>'+
-                    '</div>'+
-                '</div>'
-        },
-        closeBtnInside: true,
-        callbacks: {
-            updateStatus: function () {
-                $.scPlayer.stopAll();
-                var audio = $('.mfp-title .image-caption').data('audio');
-                var controls = $('.mfp-controls');
+            closeBtnInside: true,
+            callbacks: {
+                updateStatus: $.proxy(function () {
 
-                $('.btn-fullscreen').on('click', function() {
-                    $('.mfp-container').addClass('mfp-container-fullscreen');
-                    return false;
+                    this._initImage();
 
-                });
+                    var audio = $('.mfp-title .image-caption').data('audio');
+                    var controls = $('.mfp-controls');
+                    if(audio && audio != "") {
+                        var slideshow = this._popup.data('slideshow');
+                        slideshow ? this._initPauseButton() : this._initPlayButton();
 
-                $('.mfp-figure').on('click', function() {
-                    $('.mfp-container').removeClass('mfp-container-fullscreen');
+                        controls.show();
+                        controls.off('click');
+                        controls.on('click', $.proxy(this._toggleWidget, this));
 
-                });
-
-                if(audio && audio != "") {
-                    var player = $('.player');
-                    player.empty();
-                    player.append('<a href="http://api.soundcloud.com/tracks/' + audio + '" class="sc-player">Player</a>');
-                    slideShow = $('.album-controls').is(':hidden');
-                    $('.sc-player').scPlayer({
-                        autoPlay: slideShow
-                    });
-                    controls.show();
-                    $('.icon-play', controls).show();
-                    $('.icon-pause', controls).hide();
-                    $('.audio', controls).click(function () {
-                        $('.sc-play').click();
-                    });
-                } else {
-                    controls.hide();
-                }
-            },
-            close: function () {
-                $.scPlayer.stopAll();
-                $('.album-controls').show();
-                $('.player').empty();
-                $('.player').append('<a href="http://api.soundcloud.com/tracks/' + $('.album-controls').data('album-audio') + '" class="sc-player">Player</a>');
-                $('.sc-player').scPlayer();
+                        this._reloadWidget(audio, slideshow);
+                    } else {
+                        controls.hide();
+                    }
+                }, this),
+                close: $.proxy(function () {
+                    this._stopWidget();
+                    this._popup.removeData('slideshow');
+                }, this)
             }
-        }
-    });
+        });
+    },
 
-    $('.album-controls').click(function () {
-        $('.album-controls').hide();
-        $('.image-tag').click();
-    });
+    _initSoundCloudWidget: function() {
+        this._widget = SC.Widget("album-widget");
 
-    $('.cover').click(function() {
-        $('.album-controls').hide();
-    });
+        this._widget.bind(SC.Widget.Events.FINISH, $.proxy(this._initPlayButton, this));
+    },
 
-    var togglePlayButton = function() {
-        $('.audio', $('.mfp-controls')).toggle();
-    };
+    _reloadWidget: function(audio, autoplay) {
+        autoplay = autoplay || false;
+        this._widget.load('http://api.soundcloud.com/tracks/' + audio, {'auto_play': autoplay});
+    },
 
-    $(document).bind('onPlayerPause.scPlayer', togglePlayButton)
-                .bind('onPlayerPlay.scPlayer', togglePlayButton);
+    _toggleWidget: function() {
+        this._widget.toggle();
+        this._togglePlayButton();
+    },
+
+    _stopWidget: function() {
+        this._widget.pause();
+    },
+
+    _initControls: function() {
+        $('.album-controls').click($.proxy(function () {
+            this._popup.data('slideshow', 'true');
+            this._popup.magnificPopup('open');
+        }, this));
+    },
+
+    _initImage: function() {
+        $('.btn-fullscreen').on('click', function() {
+            $('.mfp-container').addClass('mfp-container-fullscreen');
+            return false;
+
+        });
+
+        $('.mfp-figure').on('click', function() {
+            $('.mfp-container').removeClass('mfp-container-fullscreen');
+
+        });
+    },
+
+    _togglePlayButton: function() {
+        $('.audio').toggle();
+    },
+
+    _initPlayButton: function(){
+        $('.icon-play', '.mfp-controls').show();
+        $('.icon-pause', '.mfp-controls').hide();
+    },
+
+    _initPauseButton: function(){
+        $('.icon-play', '.mfp-controls').hide();
+        $('.icon-pause', '.mfp-controls').show();
+    }
+}
+
+$(function() {
+    Album.init();
 });
