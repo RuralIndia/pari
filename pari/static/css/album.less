@@ -132,13 +132,14 @@
         width: @sidebarWidth;
         left: @sidebarLocation;
         .box-sizing(border-box);
-        padding: 40px 8px;
+        padding: 40px 12px;
         margin-top: 0;
         height: 100%;
         background-color: #fff;
 
         .mfp-title {
             color: #000;
+            padding: 0;
         }
 
         p {
@@ -146,15 +147,18 @@
         }
 
         .image-heading {
-            margin-bottom: 0;
+            margin-bottom: 4px;
+            text-align: center;
         }
 
         .image-date, .image-location, .image-location-description {
             font-size: 13px;
+            line-height: 18px;
+            text-align: center;
         }
 
         .image-caption {
-            margin-top: 18px;
+            margin-top: 36px;
         }
 
         @media (max-width: @switchOver) {
