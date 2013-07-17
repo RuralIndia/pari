@@ -4,8 +4,8 @@
     "model": "article.location",
     "fields": {
       "status": 2,
-      "description": "Then Bihar, now in Jharkhand",
-      "title": "Lalmatiya, Godda",
+      "description": "Jharkhand",
+      "title": "Godda district",
       "short_url": null,
       "image": "",
       "site": 1,
@@ -24,8 +24,8 @@
     "model": "article.author",
     "fields": {
       "status": 2,
-      "description": "Sainath",
-      "title": "Sainath",
+      "description": "P. Sainath",
+      "title": "P. Sainath",
       "short_url": null,
       "image": "",
       "site": 1,
@@ -34,7 +34,7 @@
       "_meta_title": null,
       "expiry_date": null,
       "publish_date": "2013-07-09T18:04:53.740Z",
-      "slug": "sainath",
+      "slug": "p-sainath",
       "gen_description": true
     }
   }

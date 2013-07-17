@@ -30,9 +30,10 @@ var Album = {
 
                 titleSrc: function (item) {
                     return '<div>'+
-                                '<h4>'+ item.el.attr('data-photographer') + '</h4>' +
+                                '<h4 class="image-heading">'+ item.el.attr('data-photographer') + '</h4>' +
                                 '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
                                 '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
+                                '<p class="image-location-description">' + item.el.attr('data-location-description') + '</p>' +
                                 '<p class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.attr('title') + '</p>' +
                                 '<div class="btn-toolbar">'+
                                     '<div class="btn-group">'+
