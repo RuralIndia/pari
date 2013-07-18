@@ -50,9 +50,9 @@ class LocationAdmin(admin.ModelAdmin):
 class CategoryAdmin(DisplayableAdmin):
     form = CategoryForm
     fieldsets = (None, {
-        "fields": ["title", "description", "gen_description", "image"],
+        "fields": ["title", "description", "gen_description", "image", "_order"],
     }),
-    list_display = ("admin_thumb", "title", "description")
+    list_display = ("admin_thumb", "title", "description", "_order")
     list_editable = ()
     list_filter = ()
 

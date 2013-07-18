@@ -4,6 +4,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 1,
       "description": "The complex world of rural labour. Landless  workers,  farmers and many more",
       "title": "Things we do",
       "short_url": null,
@@ -23,6 +24,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 12,
       "description": "The zany world of transportation in rural India -  from ‘jugaads’ to BMWs",
       "title": "Getting there",
       "short_url": null,
@@ -42,6 +44,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 2,
       "description": "The schools and skills and traditions of rural artisans, artists and crafts-persons",
       "title": "Things we make",
       "short_url": null,
@@ -61,6 +64,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 5,
       "description": "Rural migrant workers in urban towns --  or headed there.",
       "title": "The rural in the urban",
       "short_url": null,
@@ -80,6 +84,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 9,
       "description": "About communities and cultures.  Their drama, theatre, music, dance, poems, stories and legends.",
       "title": "We are",
       "short_url": null,
@@ -99,10 +104,11 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 3,
       "description": "The amazing universe of Indian languages  - people introduce their own tongues",
       "title": "Tongues",
       "short_url": null,
-      "image": "uploads/category/images/toungues.jpg",
+      "image": "",
       "site": 1,
       "in_sitemap": true,
       "keywords_string": "",
@@ -118,6 +124,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 4,
       "description": "Travellers write on the everyday life of everyday people",
       "title": "Musafir",
       "short_url": null,
@@ -137,6 +144,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 10,
       "description": "Stories and testimonies of the last living fighters in India’s fight for Independence",
       "title": "Foot-soldiers of freedom",
       "short_url": null,
@@ -156,6 +164,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 0,
       "description": "The world and worries of Indian agriculture",
       "title": "Farming and its crisis",
       "short_url": null,
@@ -175,6 +184,7 @@
     "model": "article.category",
     "fields": {
       "status": 2,
+      "_order": 11,
       "description": "A children’s focus section",
       "title": "Small world",
       "short_url": null,
@@ -186,6 +196,146 @@
       "expiry_date": null,
       "publish_date": "2013-04-30T07:24:42.981Z",
       "slug": "small-world",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 11,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "_order": 13,
+      "description": "The myriad faces of rural India",
+      "title": "Faces",
+      "short_url": null,
+      "image": "uploads/category/images/faces.jpg",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-07-17T10:03:20.453Z",
+      "slug": "faces",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 12,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "_order": 6,
+      "description": "",
+      "title": "Women",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-07-17T10:03:20.453Z",
+      "slug": "women",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 13,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "_order": 7,
+      "description": "",
+      "title": "Dalits",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-07-17T10:03:20.453Z",
+      "slug": "dalits",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 14,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "_order": 8,
+      "description": "",
+      "title": "Adivasis",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-07-17T10:03:20.453Z",
+      "slug": "adivasis",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 15,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "_order": 15,
+      "description": "",
+      "title": "Health",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-07-17T10:03:20.453Z",
+      "slug": "health",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 16,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "_order": 16,
+      "description": "",
+      "title": "Folklore",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-07-17T10:03:20.453Z",
+      "slug": "folklore",
+      "gen_description": false
+    }
+  },
+  {
+    "pk": 17,
+    "model": "article.category",
+    "fields": {
+      "status": 2,
+      "_order": 17,
+      "description": "",
+      "title": "Games",
+      "short_url": null,
+      "image": "",
+      "site": 1,
+      "in_sitemap": true,
+      "keywords_string": "",
+      "_meta_title": null,
+      "expiry_date": null,
+      "publish_date": "2013-07-17T10:03:20.453Z",
+      "slug": "games",
       "gen_description": false
     }
   }
