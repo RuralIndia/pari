@@ -1,13 +1,12 @@
 var Album = {
     init: function() {
         this._initSoundCloudWidget();
-
         this._initPopup();
         this._initControls();
     },
 
     _popup: null,
-    _widget: null,
+    _sound: null,
 
     _initPopup: function() {
         this._popup = $('.popup-gallery').magnificPopup({
@@ -89,23 +88,40 @@ var Album = {
     },
 
     _initSoundCloudWidget: function() {
-        this._widget = SC.Widget("album-widget");
-
-        this._widget.bind(SC.Widget.Events.FINISH, $.proxy(this._initPlayButton, this));
+        SC.initialize({
+            client_id: "d129911dd3c35ec537c30a06990bd902",
+        });
     },
 
     _reloadWidget: function(audio, autoplay) {
-        autoplay = autoplay || false;
-        this._widget.load('http://api.soundcloud.com/tracks/' + audio, {'auto_play': autoplay});
+        SC.stream("/tracks/" + audio, $.proxy(function(sound){
+            if(this._sound){
+                this._sound.stop();
+            }
+            this._sound = sound;
+            if(autoplay){
+                this._playWidget();
+            }
+        }, this));
+    },
+
+    _playWidget: function() {
+        this._sound.play({
+            onfinish: this._initPlayButton
+        });
     },
 
     _toggleWidget: function() {
-        this._widget.toggle();
         this._togglePlayButton();
+        if(this._sound.playState === 0) {
+            this._playWidget();
+            return;
+        }
+        this._sound.togglePause();
     },
 
     _stopWidget: function() {
-        this._widget.pause();
+        this._sound.stop();
     },
 
     _initControls: function() {
@@ -119,12 +135,10 @@ var Album = {
         $('.btn-fullscreen').on('click', function() {
             $('.mfp-container').addClass('mfp-container-fullscreen');
             return false;
-
         });
 
         $('.mfp-figure').on('click', function() {
             $('.mfp-container').removeClass('mfp-container-fullscreen');
-
         });
     },
 
