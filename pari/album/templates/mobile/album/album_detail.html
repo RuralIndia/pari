@@ -1,0 +1,16 @@
+{% extends "album/album_detail.html" %}
+
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/klass.min.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/code.photoswipe.jquery-3.0.5.min.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/album_mobile.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/photoswipe.css" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/album.less" charset="utf-8">
+{% endblock %}
