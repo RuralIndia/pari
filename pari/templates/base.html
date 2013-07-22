@@ -93,10 +93,9 @@
       </div>
     </div>
   </div>
-  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   {% block extra_uncompressed_js %}{% endblock %}
   {% compress js %}
-    <script src="{{ STATIC_URL }}mezzanine/js/{{ settings.JQUERY_FILENAME }}"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
     {% dajaxice_js_import %}
     <script src="{{ STATIC_URL }}dajax/jquery.dajax.core.js"></script>
