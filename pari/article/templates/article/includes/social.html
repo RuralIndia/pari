@@ -1,3 +1,5 @@
+{% load disqus_tags %}
+
 {% with request.build_absolute_uri as url and item.title as title %}
     <div class="social" data-url="{{ url }}">
         <a target="_blank" href="http://facebook.com/sharer.php?u={{ url }}&amp;t={{ title|urlencode }}"><div class="badge facebook"><i class="icon-facebook-sign"></i><span class="count"></span></div></a>
