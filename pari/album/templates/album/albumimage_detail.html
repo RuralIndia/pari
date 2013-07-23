@@ -1,5 +1,5 @@
 {% extends "sidebar_base.html" %}
-{% load i18n verbatim_tag mezzanine_tags article_tags article_filters album_filters comment_tags%}
+{% load i18n verbatim_tag mezzanine_tags article_tags article_filters album_filters comment_tags %}
 
 {% block meta_title %}{% trans image.album.title %} - {{ image|get_order }}{% endblock %}
 
@@ -27,7 +27,9 @@
         <h3>{{ image.album.title }}</h3>
         <p>{{ image|get_order }} of {{image.album.images.count }}</p>
         {{ image.description }}
-        {% include "article/includes/social.html" with item=image %}
+        {% with image|get_request_url:request as url %}
+            {% render_share_widgets image.album.title url %}
+        {% endwith %}
     </div>
 {% endblock %}
 
