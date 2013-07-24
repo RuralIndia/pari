@@ -2,6 +2,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.conf import register_setting
 
+
+register_setting(
+    name="SITE_FULL_TITLE",
+    label=_("Full Site Title"),
+    description="Expanded title",
+    editable=True,
+    default="People's Archive of Rural India",
+)
 register_setting(
     name="SOCIAL_FACEBOOK",
     label=_("Facebook Page Url"),

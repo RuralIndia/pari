@@ -58,7 +58,7 @@
     "model": "conf.setting",
     "fields": {
       "site": 1,
-      "value": "People's Archive Of Rural India",
+      "value": "An archive and living journal of oral and visual history of Rural India",
       "name": "SITE_TAGLINE"
     }
   },

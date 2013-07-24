@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n mezzanine_tags article_filters article_tags %}
 
-{% block meta_title %}{% trans "People's Archive of Rural India" %}{% endblock %}
+{% block meta_title %}{{ "SITE_FULL_TITLE"|get_setting }}{% endblock %}
 
 {% block breadcrumb_menu %}
 <li class="active">{% trans "Home" %}</li>
@@ -21,8 +21,8 @@
 
 {% block extra_header %}
   <div class="hero-unit home-page">
-    <h1>People&#8217;s Archive of Rural India </h1>
-    <p>An archive and living journal of oral and visual history of Rural India</p>
+    <h1>{{ "SITE_FULL_TITLE"|get_setting }}</h1>
+    <p>{{ "SITE_TAGLINE"|get_setting }}</p>
   </div>
 
   {% if article_list %}
