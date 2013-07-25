@@ -110,6 +110,8 @@ RECAPTCHA_PRIVATE_KEY = '6LdQguISAAAAAJgLhCqkCNbjkhG1J9_2Q2kLEsAO'
 AUTH_PROFILE_MODULE = "user.Profile"
 ACCOUNTS_VERIFICATION_REQUIRED = True
 
+SSL_FORCE_URL_PREFIXES = ("/admin", "/account", "/accounts",)
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
@@ -344,8 +346,7 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.TemplateForHostMiddleware",
     "mezzanine.core.middleware.AdminLoginInterfaceSelectorMiddleware",
     "mezzanine.core.middleware.SitePermissionMiddleware",
-    # Uncomment the following if using any of the SSL settings:
-    # "mezzanine.core.middleware.SSLRedirectMiddleware",
+    "mezzanine.core.middleware.SSLRedirectMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
