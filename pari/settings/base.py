@@ -110,7 +110,8 @@ RECAPTCHA_PRIVATE_KEY = '6LdQguISAAAAAJgLhCqkCNbjkhG1J9_2Q2kLEsAO'
 AUTH_PROFILE_MODULE = "user.Profile"
 ACCOUNTS_VERIFICATION_REQUIRED = True
 
-SSL_FORCE_URL_PREFIXES = ("/admin", "/account", "/accounts",)
+SSL_FORCE_URL_PREFIXES = ("/admin", "/account", )
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 ########################
 # MAIN DJANGO SETTINGS #
