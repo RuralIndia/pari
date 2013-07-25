@@ -4,7 +4,10 @@ from .prod import *  # noqa
 
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', 'true'))
 
-ALLOWED_HOSTS.append("dev.ruralindiaonline.org")
+HOSTNAME = "dev.ruralindiaonline.org"
+
+ALLOWED_HOSTS.append(HOSTNAME)
+SSL_FORCE_HOST = HOSTNAME
 
 INSTALLED_APPS += (
     "debug_toolbar",

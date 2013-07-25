@@ -2,7 +2,11 @@ import os
 
 from .base import *  # noqa
 
-ALLOWED_HOSTS.append("www.ruralindiaonline.org")
+HOSTNAME = "www.ruralindiaonline.org"
+
+ALLOWED_HOSTS.append(HOSTNAME)
+SSL_FORCE_HOST = HOSTNAME
+
 
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
