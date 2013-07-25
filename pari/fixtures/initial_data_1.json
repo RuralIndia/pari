@@ -198,15 +198,6 @@
     }
   },
   {
-    "pk": 25,
-    "model": "conf.setting",
-    "fields": {
-      "site": 1,
-      "value": "www.ruralindiaonline.org",
-      "name": "SSL_FORCE_HOST"
-    }
-  },
-  {
     "pk": 26,
     "model": "conf.setting",
     "fields": {

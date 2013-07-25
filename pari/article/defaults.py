@@ -38,3 +38,12 @@ register_setting(
     editable=True,
     default="https://github.com/ruralindia/pari",
 )
+register_setting(
+    name="TEMPLATE_ACCESSIBLE_SETTINGS",
+    description=_("Sequence of setting names available within templates."),
+    editable=False,
+    default=(
+        "SITE_FULL_TITLE",
+    ),
+    append=True,
+)

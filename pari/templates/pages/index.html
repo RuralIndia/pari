@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n mezzanine_tags article_filters article_tags %}
 
-{% block meta_title %}{{ "SITE_FULL_TITLE"|get_setting }}{% endblock %}
+{% block meta_title %}{{ settings.SITE_FULL_TITLE }}{% endblock %}
 
 {% block breadcrumb_menu %}
 <li class="active">{% trans "Home" %}</li>
@@ -21,8 +21,8 @@
 
 {% block extra_header %}
   <div class="hero-unit home-page">
-    <h1>{{ "SITE_FULL_TITLE"|get_setting }}</h1>
-    <p>{{ "SITE_TAGLINE"|get_setting }}</p>
+    <h1>{{ settings.SITE_FULL_TITLE }}</h1>
+    <p>{{ settings.SITE_TAGLINE }}</p>
   </div>
 
   {% if article_list %}
