@@ -107,6 +107,9 @@ RECAPTCHA_USE_SSL = True
 RECAPTCHA_PUBLIC_KEY = '6LdQguISAAAAAPNt_0pFGdVXubB1MJn9J-im-3KD'
 RECAPTCHA_PRIVATE_KEY = '6LdQguISAAAAAJgLhCqkCNbjkhG1J9_2Q2kLEsAO'
 
+AUTH_PROFILE_MODULE = "user.Profile"
+ACCOUNTS_VERIFICATION_REQUIRED = True
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
@@ -307,9 +310,6 @@ INSTALLED_APPS = (
     "pari.resources",
     "pari.user",
 )
-
-AUTH_PROFILE_MODULE = "user.Profile"
-ACCOUNTS_VERIFICATION_REQUIRED = True
 
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its

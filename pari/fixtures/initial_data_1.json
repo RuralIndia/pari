@@ -94,7 +94,7 @@
     "model": "conf.setting",
     "fields": {
       "site": 1,
-      "value": "False",
+      "value": "True",
       "name": "SSL_ENABLED"
     }
   },
@@ -114,15 +114,6 @@
       "site": 1,
       "value": "True",
       "name": "COMMENTS_DEFAULT_APPROVED"
-    }
-  },
-  {
-    "pk": 14,
-    "model": "conf.setting",
-    "fields": {
-      "site": 1,
-      "value": "",
-      "name": "BLOG_BITLY_USER"
     }
   },
   {
@@ -180,15 +171,6 @@
     }
   },
   {
-    "pk": 21,
-    "model": "conf.setting",
-    "fields": {
-      "site": 1,
-      "value": "",
-      "name": "BLOG_BITLY_KEY"
-    }
-  },
-  {
     "pk": 22,
     "model": "conf.setting",
     "fields": {
@@ -220,10 +202,82 @@
     "model": "conf.setting",
     "fields": {
       "site": 1,
-      "value": "",
+      "value": "www.ruralindiaonline.org",
       "name": "SSL_FORCE_HOST"
     }
   },
+  {
+    "pk": 26,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "ACCOUNTS_APPROVAL_EMAILS"
+    }
+  },
+  {
+    "pk": 27,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "",
+      "name": "BITLY_ACCESS_TOKEN"
+    }
+  },
+  {
+    "pk": 28,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "https://github.com/ruralindia/pari",
+      "name": "SOCIAL_GITHUB_REPO"
+    }
+  },
+  {
+    "pk": 29,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "http://twitter.com",
+      "name": "SOCIAL_TWITTER"
+    }
+  },
+  {
+    "pk": 30,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "http://plus.google.com",
+      "name": "SOCIAL_GOOGLE_PLUS"
+    }
+  },
+  {
+    "pk": 31,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "http://facebook.com",
+      "name": "SOCIAL_FACEBOOK"
+    }
+  },
+  {
+    "pk": 33,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "False",
+      "name": "RATINGS_ACCOUNT_REQUIRED"
+    }
+  },
+  {
+    "pk": 34,
+    "model": "conf.setting",
+    "fields": {
+      "site": 1,
+      "value": "People's Archive of Rural India",
+      "name": "SITE_FULL_TITLE"
+    }
+  },  
   {
     "pk": 1,
     "model": "pages.page",
