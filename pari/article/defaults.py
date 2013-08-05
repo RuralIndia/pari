@@ -11,6 +11,13 @@ register_setting(
     default="People's Archive of Rural India",
 )
 register_setting(
+    name="ANALYTICS_PIWIK_URL",
+    label=_("PIWIK hosted instance url ( don't include the protocol)"),
+    description="Anyalytics with PIWIK",
+    editable=True,
+    default="analytics-ruralindiaonline.rhcloud.com",
+)
+register_setting(
     name="SOCIAL_FACEBOOK",
     label=_("Facebook Page Url"),
     description="Facebook Page Url for PARI",
@@ -43,7 +50,7 @@ register_setting(
     description=_("Sequence of setting names available within templates."),
     editable=False,
     default=(
-        "SITE_FULL_TITLE",
+        "SITE_FULL_TITLE", "ANALYTICS_PIWIK_URL",
     ),
     append=True,
 )
