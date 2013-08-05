@@ -18,6 +18,12 @@ register_setting(
     default="analytics-ruralindiaonline.rhcloud.com",
 )
 register_setting(
+    name="ANALYTICS_ENABLED",
+    description="Setting to enable / disable analytics",
+    editable=True,
+    default=False,
+)
+register_setting(
     name="SOCIAL_FACEBOOK",
     label=_("Facebook Page Url"),
     description="Facebook Page Url for PARI",
@@ -50,7 +56,7 @@ register_setting(
     description=_("Sequence of setting names available within templates."),
     editable=False,
     default=(
-        "SITE_FULL_TITLE", "ANALYTICS_PIWIK_URL",
+        "SITE_FULL_TITLE", "ANALYTICS_PIWIK_URL", "ANALYTICS_ENABLED",
     ),
     append=True,
 )
