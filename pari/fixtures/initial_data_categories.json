@@ -326,16 +326,16 @@
       "status": 2,
       "_order": 17,
       "description": "",
-      "title": "Games",
+      "title": "Sports and Games",
       "short_url": null,
-      "image": "",
+      "image": "uploads/category/images/sports.jpg",
       "site": 1,
       "in_sitemap": true,
       "keywords_string": "",
       "_meta_title": null,
       "expiry_date": null,
       "publish_date": "2013-07-17T10:03:20.453Z",
-      "slug": "games",
+      "slug": "sports-games",
       "gen_description": false
     }
   }
