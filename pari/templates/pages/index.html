@@ -2,6 +2,7 @@
 {% load i18n mezzanine_tags article_filters article_tags %}
 
 {% block meta_title %}{{ settings.SITE_FULL_TITLE }}{% endblock %}
+{% block meta_description %}{{ settings.SITE_TAGLINE }}{% endblock %}
 
 {% block breadcrumb_menu %}
 <li class="active">{% trans "Home" %}</li>
