@@ -1,6 +1,6 @@
 Django==1.5.1
 Fabric==1.5.3
-Mezzanine==1.4.10
+Mezzanine==1.4.7
 Pillow==1.7.8
 South==0.7.6
 Unipath==0.2.1
