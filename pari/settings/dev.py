@@ -34,3 +34,11 @@ DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 DEFAULT_FILE_STORAGE = 'pari.article.storage.ParallelS3Storage'
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://search-ruralindiaonline.rhcloud.com/',
+        'INDEX_NAME': 'haystack',
+    },
+}

@@ -283,7 +283,8 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
-    "captcha",
+
+    "haystack",
 
     #Mezzanine CMS
     "mezzanine.boot",
@@ -304,6 +305,7 @@ INSTALLED_APPS = (
     "compressor",
     'dajaxice',
     'dajax',
+    "captcha",
 
     #Custom
     "pari.article",

@@ -6,8 +6,8 @@ from django.template.loader import render_to_string
 from mezzanine.conf import settings
 from mezzanine import template
 
-from .article_filters import get_type
 from pari.article.storage import create_thumbnail
+from pari.article.common import searcher
 
 
 register = template.Library()
@@ -37,7 +37,8 @@ def article_list(context, title=None):
 
 @register.simple_tag(takes_context=True)
 def display_result(context):
-    return render_to_string(["article/includes/%s_atom.html" % get_type(context['result']),
+    atom_name = searcher.get_atom_name(context['result'])
+    return render_to_string(["article/includes/%s_atom.html" % atom_name,
                              "article/includes/default_atom.html"],
                             {'result': context['result'], 'request': context['request']})
 
