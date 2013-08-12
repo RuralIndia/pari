@@ -1,4 +1,4 @@
-{% load i18n verbatim_tag mezzanine_tags article_tags article_filters keyword_tags %}
+{% load i18n verbatim_tag mezzanine_tags article_tags article_filters keyword_tags search_tags %}
     <div id="results" class="heading row">
         <h3 class="span12">Results for "{{ query }}"</h3>
         <div class="span12 type-filters-container">
@@ -16,7 +16,7 @@
             <div class="item-image">
                 {% list_media_for result 278 225 %}
             </div>
-            {% display_result %}
+            {% display_search_result %}
         </div>
     {%empty %}
         No results to display. Try clearing filter.

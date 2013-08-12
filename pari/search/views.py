@@ -1,11 +1,13 @@
 from django.views.generic.list import ListView
 
-from pari.article.common import get_search_results, get_result_types
+from pari.article.common import get_result_types
+
+from .models import get_search_results
 
 
 class SearchList(ListView):
     context_object_name = "results"
-    template_name = 'article/search_list.html'
+    template_name = 'search/search_list.html'
 
     def get_queryset(self):
         query = self.request.GET.get("query")

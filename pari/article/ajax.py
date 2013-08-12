@@ -5,10 +5,12 @@ from mezzanine.generic.models import Keyword
 from dajaxice.decorators import dajaxice_register
 from dajax.core import Dajax
 
+from pari.search.models import get_search_results
+
 from .models import (Category, Type, Location, Author,
                      get_category_articles, get_location_articles, get_keyword_articles,
                      get_author_articles, get_archive_articles)
-from .common import get_article_list, get_search_results, get_result_types
+from .common import get_article_list, get_result_types
 from .templatetags.article_filters import month_name
 
 
@@ -57,11 +59,11 @@ def search_filter(request, query, filter=None, page=1):
 
     result_types = get_result_types(filter)
 
-    return render_dajax_response('article/includes/search_result_list.html', {'results': results,
-                                                                              'query': query,
-                                                                              'filter': filter,
-                                                                              'result_types': result_types,
-                                                                              'request': request})
+    return render_dajax_response('search/includes/search_result_list.html', {'results': results,
+                                                                             'query': query,
+                                                                             'filter': filter,
+                                                                             'result_types': result_types,
+                                                                             'request': request})
 
 
 def article_filter(article_queryset, title, filter, page, request):

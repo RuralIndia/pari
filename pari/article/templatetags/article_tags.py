@@ -7,8 +7,8 @@ from mezzanine.conf import settings
 from mezzanine import template
 
 from pari.article.storage import create_thumbnail
-from pari.article.common import searcher
 
+from .article_filters import get_type
 
 register = template.Library()
 
@@ -37,19 +37,10 @@ def article_list(context, title=None):
 
 @register.simple_tag(takes_context=True)
 def display_result(context):
-    atom_name = searcher.get_atom_name(context['result'])
+    atom_name = get_type(context['result'])
     return render_to_string(["article/includes/%s_atom.html" % atom_name,
                              "article/includes/default_atom.html"],
                             {'result': context['result'], 'request': context['request']})
-
-
-@register.inclusion_tag("article/includes/search_result_list.html", takes_context=True)
-def render_results(context):
-    return {'results': context['results'],
-            'query': context['query'],
-            'result_types': context['result_types'],
-            'filter': context['filter'],
-            'request': context['request']}
 
 
 @register.inclusion_tag("article/includes/paginator.html")
