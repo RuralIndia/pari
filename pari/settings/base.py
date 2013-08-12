@@ -314,6 +314,7 @@ INSTALLED_APPS = (
     "pari.contribution",
     "pari.resources",
     "pari.user",
+    "pari.search",
 )
 
 # List of processors used by RequestContext to populate the context.

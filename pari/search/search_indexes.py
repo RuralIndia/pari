@@ -1,5 +1,5 @@
 from haystack import indexes
-from .models import Location
+from pari.article.models import Location
 
 
 class LocationIndex(indexes.SearchIndex, indexes.Indexable):
