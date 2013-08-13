@@ -138,6 +138,10 @@ class AlbumImage(Orderable, Displayable):
         name = "album-image-detail"
         return (name, (), {"slug": self.album.slug, "order": self._order + 1})
 
+    @property
+    def get_thumbnail(self):
+        return self.file
+
     def save(self, *args, **kwargs):
         """
         If no description is given when created, create one from the

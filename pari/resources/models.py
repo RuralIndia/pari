@@ -21,6 +21,10 @@ class Resource(Displayable):
     def get_absolute_url(self):
         return ("resource-detail", (), {"slug": self.slug})
 
+    @property
+    def get_thumbnail(self):
+        return ""
+
     class Meta:
         verbose_name = _("Resource")
         verbose_name_plural = _("Resources")
@@ -42,9 +46,12 @@ class Factoid(Displayable, AdminThumbMixin):
         else:
             return self.external_link
 
+    @property
+    def get_thumbnail(self):
+        return ""
 
-class Meta:
-    verbose_name = _("Factoid")
-    verbose_name_plural = _("Factoids")
-    ordering = ("title",)
-    app_label = "resources"
+    class Meta:
+        verbose_name = _("Factoid")
+        verbose_name_plural = _("Factoids")
+        ordering = ("title",)
+        app_label = "resources"

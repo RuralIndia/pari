@@ -284,8 +284,6 @@ INSTALLED_APPS = (
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
 
-    "haystack",
-
     #Mezzanine CMS
     "mezzanine.boot",
     "mezzanine.conf",

@@ -20,3 +20,7 @@ class Contribution(Displayable, AdminThumbMixin):
     def get_absolute_url(self):
         name = "contribution-detail"
         return (name, (), {"slug": self.slug})
+
+    @property
+    def get_thumbnail(self):
+        return ""

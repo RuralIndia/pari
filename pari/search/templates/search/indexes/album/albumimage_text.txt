@@ -1,0 +1,3 @@
+{{ object.album.title }}
+{{ object.description }}
+{{ object.photographer }}
