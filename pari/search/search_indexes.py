@@ -8,7 +8,6 @@ if "haystack" in settings.INSTALLED_APPS:
     from pari.contribution.models import Contribution
     from pari.resources.models import Resource, Factoid
 
-
     class DisplayableIndex(indexes.SearchIndex, indexes.Indexable):
         text = indexes.CharField(document=True, use_template=True)
         title = indexes.CharField(model_attr='title')
@@ -31,13 +30,11 @@ if "haystack" in settings.INSTALLED_APPS:
         def index_queryset(self, using=None):
             return self.get_model().objects.filter()
 
-
     class LocationIndex(DisplayableIndex):
         location = indexes.CharField(model_attr='location')
 
         model = Location
         haystack_use_for_indexing = True
-
 
     class AlbumIndex(DisplayableIndex):
         photographer = indexes.CharField(model_attr='photographer')
@@ -45,7 +42,6 @@ if "haystack" in settings.INSTALLED_APPS:
 
         model = Album
         haystack_use_for_indexing = True
-
 
     class AlbumImageIndex(DisplayableIndex):
         photographer = indexes.CharField(model_attr='photographer')
@@ -57,26 +53,21 @@ if "haystack" in settings.INSTALLED_APPS:
         model = AlbumImage
         haystack_use_for_indexing = True
 
-
     class AuthorIndex(DisplayableIndex):
         model = Author
         haystack_use_for_indexing = True
-
 
     class CategoryIndex(DisplayableIndex):
         model = Category
         haystack_use_for_indexing = True
 
-
     class ContributionIndex(DisplayableIndex):
         model = Contribution
         haystack_use_for_indexing = True
 
-
     class ResourceIndex(DisplayableIndex):
         model = Resource
         haystack_use_for_indexing = True
-
 
     class FactoidIndex(DisplayableIndex):
         model = Factoid
