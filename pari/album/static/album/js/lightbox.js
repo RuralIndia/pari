@@ -121,7 +121,9 @@ var Album = {
     },
 
     _stopWidget: function() {
-        this._sound.stop();
+        if(this._sound){
+            this._sound.stop();
+        }
     },
 
     _initControls: function() {
