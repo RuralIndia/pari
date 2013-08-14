@@ -1,6 +1,8 @@
 from optparse import make_option
 import json
+from datetime import datetime
 
+from django.utils.timezone import utc
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
@@ -41,8 +43,14 @@ class Command(BaseCommand):
                 new_article.author = author
 
                 new_article.user = User.objects.get(pk=1)
-                new_article.content = jsoncontent['content']
-                new_article.publish_date = jsoncontent['date']
+                new_article.content = jsoncontent['content'] + "<p><em>This article was originally published on The Hindu at <a href=\"{0}\">{0}</a></em></p>".format(jsoncontent['link'][0])
+
+                try:
+                    date = datetime.strptime(jsoncontent['date'], "%B %d, %Y").replace(tzinfo=utc)
+                    new_article.publish_date = date
+                except:
+                    new_article.publish_date = jsoncontent['date']
+                new_article.status = 1 #draft
 
                 new_article.save()
 
