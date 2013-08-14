@@ -40,7 +40,7 @@ def get_random(obj, upper):
 
 @register.filter
 def get_request_url(obj, request):
-    return request.build_absolute_uri(get_absolute_url(obj))
+    return request.build_absolute_uri(obj.get_absolute_url)
 
 
 @register.filter
@@ -51,11 +51,6 @@ def lower(type):
 @register.filter
 def month_name(month_number):
     return calendar.month_name[int(month_number)]
-
-
-@register.filter
-def get_location_titles(article):
-    return ','.join([location.title for location in article.locations.all()])
 
 
 @register.filter

@@ -4,7 +4,7 @@ if "haystack" in settings.INSTALLED_APPS:
     from haystack import indexes
 
     from pari.album.models import Album, AlbumImage
-    from pari.article.models import Location, Author, Category
+    from pari.article.models import Article, Location, Author, Category
     from pari.contribution.models import Contribution
     from pari.resources.models import Resource, Factoid
 
@@ -28,7 +28,21 @@ if "haystack" in settings.INSTALLED_APPS:
             return self.model
 
         def index_queryset(self, using=None):
-            return self.get_model().objects.filter()
+            return self.get_model().objects.filter(status=1)
+
+    class ArticleIndex(DisplayableIndex):
+        get_location_titles = indexes.CharField()
+        author = indexes.CharField(model_attr='author')
+        short_description = indexes.CharField()
+
+        model = Article
+        haystack_use_for_indexing = True
+
+        def prepare_get_location_titles(self, obj):
+            return obj.get_location_titles
+
+        def prepare_short_description(self, obj):
+            return obj.short_description
 
     class LocationIndex(DisplayableIndex):
         location = indexes.CharField(model_attr='location')

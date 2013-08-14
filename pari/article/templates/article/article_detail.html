@@ -77,7 +77,7 @@
 {% block sidebar %}
     <div class="well"> 
         <h4><i class="icon-road"></i> Locations </h4>
-        <p>{{ blog_post|get_location_titles }}</p>
+        <p>{{ blog_post.get_location_titles }}</p>
             <div id="map" class="map-view" data-lat="{{ blog_post|get_latitudes }}" data-long="{{ blog_post|get_longitudes }}"></div>
     </div>
     <div class="keywords">
@@ -103,7 +103,7 @@
                     </div>
                     <div class="caption">
                         <h4>{{ article.title|truncatechars:45 }}</h4>
-                        <p>{{ article|get_location_titles }}</p>
+                        <p>{{ article.get_location_titles }}</p>
                         <p>by {{ article.user.username }}</p>
                     </div>
                 </a>

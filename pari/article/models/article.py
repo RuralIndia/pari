@@ -60,6 +60,10 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
         return (name, (), {"slug": self.slug})
 
     @property
+    def get_location_titles(self):
+        return ','.join([location.title for location in self.locations.all()])
+
+    @property
     def is_video_article(self):
         return self.types.filter(title__iexact='Video').exists()
 
