@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>{% block meta_title %}{% endblock %}</title>
 <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
 
@@ -38,6 +39,12 @@
 
 </head>
 <body id="{% block body_id %}body{% endblock %}" data-spy="scroll" data-target="#subnav">
+  <!--[if lt IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="{{ STATIC_URL }}js/html5shiv.js"></script>
+  <![endif]-->
   <div id="holder">
     <div id="header">
       <div id="mainnav" class="navbar navbar-static-top">
@@ -123,11 +130,8 @@
       <!-- End Piwik Code -->
     {% endif %}
     {% block extra_js %}{% endblock %}
-    <!--[if lt IE 9]>
-    <script src="{{ STATIC_URL }}js/html5shiv.js"></script>
-    <![endif]-->
+    
   {% endcompress %}
   {% include "includes/footer_scripts.html" %}
-
 </body>
 </html>
