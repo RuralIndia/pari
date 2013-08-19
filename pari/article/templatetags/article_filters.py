@@ -1,5 +1,6 @@
 import random
 import calendar
+import inspect
 
 from django.template import Library
 from django.core.urlresolvers import reverse
@@ -40,7 +41,11 @@ def get_random(obj, upper):
 
 @register.filter
 def get_request_url(obj, request):
-    return request.build_absolute_uri(obj.get_absolute_url)
+    if inspect.ismethod(getattr(obj, 'get_absolute_url')):
+        url = obj.get_absolute_url()
+    else:
+        url = obj.get_absolute_url
+    return request.build_absolute_uri(url)
 
 
 @register.filter
