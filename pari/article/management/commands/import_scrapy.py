@@ -55,7 +55,7 @@ class Command(BaseCommand):
                 new_article.save()
 
                 new_article.types.add(Type.objects.get(title='Photo'))
-                if jsoncontent['location']:
+                if hasattr(jsoncontent, 'location'):
                     location_name = jsoncontent['location'].strip(',\n')
                     try:
                         location = Location.objects.get(title__iexact=location_name)
