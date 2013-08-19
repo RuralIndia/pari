@@ -193,7 +193,7 @@
     "model": "conf.setting",
     "fields": {
       "site": 1,
-      "value": "twpari",
+      "value": "ruralindia",
       "name": "COMMENTS_DISQUS_SHORTNAME"
     }
   },

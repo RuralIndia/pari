@@ -8,6 +8,8 @@ COMPRESS_ENABLED = False
 
 ALLOWED_HOSTS.append("dev.ruralindiaonline.org")
 
+COMMENTS_DISQUS_SHORTNAME = "twpari"
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
