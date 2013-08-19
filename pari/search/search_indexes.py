@@ -22,7 +22,7 @@ if "haystack" in settings.INSTALLED_APPS:
             return obj.get_absolute_url()
 
         def prepare_get_thumbnail(self, obj):
-            return unicode(obj.get_thumbnail)
+            return unicode(obj.get_thumbnail or '')
 
         def get_model(self):
             return self.model
