@@ -28,7 +28,7 @@ if "haystack" in settings.INSTALLED_APPS:
             return self.model
 
         def index_queryset(self, using=None):
-            return self.get_model().objects.filter(status=1)
+            return self.get_model().objects.filter(status=2)
 
     class ArticleIndex(DisplayableIndex):
         get_location_titles = indexes.CharField()
