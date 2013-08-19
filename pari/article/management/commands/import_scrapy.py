@@ -50,7 +50,7 @@ class Command(BaseCommand):
                     new_article.publish_date = date
                 except:
                     new_article.publish_date = jsoncontent['date']
-                new_article.status = 1 #draft
+                new_article.status = 1  # draft
 
                 new_article.save()
 
