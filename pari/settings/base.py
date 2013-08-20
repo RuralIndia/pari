@@ -113,6 +113,20 @@ ACCOUNTS_VERIFICATION_REQUIRED = True
 SSL_FORCE_URL_PREFIXES = ("/admin", "/account", )
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
+SEARCH_MODEL_CHOICES = (
+    "pages.Page", 
+    "blog.BlogPost", 
+    "article.Article", 
+    "article.Location",
+    "article.Category",
+    "article.Author",
+    "album.Album",
+    "album.AlbumImage",
+    "resources.Resource",
+    "resources.Factoid",
+    "contribution.Contribution",
+)
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
