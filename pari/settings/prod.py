@@ -33,3 +33,12 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+
+INSTALLED_APPS += (
+    "djrill",
+)
+
+#Email Settings
+MANDRILL_API_KEY = "Xo7IEp88tI2JPB1toVZ5gg"
+DEFAULT_FROM_EMAIL = "do-no-reply@ruralindiaonline.org"
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
