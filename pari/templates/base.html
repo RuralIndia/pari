@@ -83,6 +83,15 @@
           </div>
         </div>
       </div>
+      <div class="container messages">
+        {% nevercache %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" data-alert="alert">
+              <a class="close" href="#" onclick="$(this).parent().fadeOut('fast'); return false;">×</a>{{ message }}
+            </div>
+          {% endfor %}
+        {% endnevercache %}
+      </div>
       {% block extra_header %}{% endblock %}
     </div>
     {% block main_wrapper %}
