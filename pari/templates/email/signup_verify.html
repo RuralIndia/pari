@@ -1,0 +1,6 @@
+{% load i18n %}
+{% block main %}
+<p>{% trans "Hi, thanks for creating your account with PARI." %}</p>
+<p>{% trans "Please use the link below to activate it." %}</p>
+<p><a href="http://{{ request.get_host }}{{ verify_url }}">http://{{ request.get_host }}{{ verify_url }}</a></p>
+{% endblock %}
