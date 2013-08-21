@@ -114,9 +114,9 @@ SSL_FORCE_URL_PREFIXES = ("/admin", "/account", "/asset_proxy")
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 SEARCH_MODEL_CHOICES = (
-    "pages.Page", 
-    "blog.BlogPost", 
-    "article.Article", 
+    "pages.Page",
+    "blog.BlogPost",
+    "article.Article",
     "article.Location",
     "article.Category",
     "article.Author",

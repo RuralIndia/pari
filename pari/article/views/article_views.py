@@ -1,7 +1,7 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from pari.article.models import Article, get_archive_articles
+from pari.article.models import Article, get_archive_articles, get_all_articles
 from pari.article.mixins import ArticleListMixin
 from pari.article.templatetags.article_filters import month_name
 
@@ -33,4 +33,17 @@ class ArchiveDetail(ArticleListMixin, ListView):
         context['month'] = self.month
         context['month_as_name'] = month_name(self.month)
         context['title'] = "{0} {1}".format(context['month_as_name'], self.year)
+        return context
+
+
+class ArticleList(ArticleListMixin, ListView):
+    context_object_name = "articles"
+    model = Article
+
+    def get_article_list_queryset(self):
+        return get_all_articles()
+
+    def get_context_data(self, **kwargs):
+        context = super(ArticleList, self).get_context_data(**kwargs)
+        context['title'] = "All articles"
         return context

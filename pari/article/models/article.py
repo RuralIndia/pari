@@ -76,6 +76,10 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
         return truncatewords(self.description, 20)
 
 
+def get_all_articles():
+    return Article.articles.all()
+
+
 def get_category_articles(category):
     return Article.articles.filter(category_list__pk=category.pk)
 

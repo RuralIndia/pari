@@ -9,9 +9,16 @@ from pari.search.models import get_search_results
 
 from .models import (Category, Type, Location, Author,
                      get_category_articles, get_location_articles, get_keyword_articles,
-                     get_author_articles, get_archive_articles)
+                     get_author_articles, get_archive_articles, get_all_articles)
 from .common import get_article_list, get_result_types
 from .templatetags.article_filters import month_name
+
+
+@dajaxice_register
+def all_article_filter(request, category, filter=None, page=1):
+    article_queryset = get_all_articles()
+
+    return article_filter(article_queryset, None, filter, page, request)
 
 
 @dajaxice_register
