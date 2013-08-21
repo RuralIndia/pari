@@ -69,7 +69,7 @@
       <div class="container">
         <div class="row">
           <div class="recent-articles span8">
-            <h4><i class="icon-time"></i> Recent articles</h4>
+            <h4><i class="icon-time"></i> Recent articles <a href=""><small>Browse all articles <i class="icon-double-angle-right"></i></small></a></h4>
 
             {% for article_chunk in recent_articles|group_by:2 %}
               <div class="row-fluid">
@@ -90,7 +90,7 @@
           </div>
 
           <div class="categories span4">
-            <h4><i class="icon-reorder"></i> Categories</h4>
+            <h4><i class="icon-reorder"></i> Categories <a href="/categories"><small>View all categories <i class="icon-double-angle-right"></i></small></a></h4>
             <div class="list">
               {% for category in categories %}
                 <a href="{{category|get_absolute_url}}">
