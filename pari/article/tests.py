@@ -5,11 +5,13 @@ from django.core.urlresolvers import reverse
 from mezzanine.accounts.models import User
 
 import factory
+from mock import patch
 from geoposition import Geoposition
 
 from .admin import ArticleAdmin
 from .models import Article, Location, Type, Category, Author
 from .common import get_result_types
+from .rich_text_filter import article_content_filter
 
 
 class LocationFactory(factory.DjangoModelFactory):
@@ -67,6 +69,7 @@ class ArticleFactory(factory.DjangoModelFactory):
     title = factory.Sequence(lambda n: 'Article %s' % n)
     user = factory.SubFactory(UserFactory)
     author = factory.SubFactory(AuthorFactory)
+    content = "<div>Content</div>"
 
 
 class ArticleAdminTests(TestCase):
@@ -198,3 +201,30 @@ class CommonTests(TestCase):
     def test_should_promote_type_when_filtered(self):
         result_types = get_result_types(filter='Factoid')
         self.assertEqual(['Article', 'Album', 'Resource', 'Factoid'], result_types[:4])
+
+
+class RichTextFilterTests(TestCase):
+    def test_should_return_content_with_no_change_if_no_image(self):
+        content = "<div><p>Test</p><div>with no image</div></div>"
+        new_content = article_content_filter(content)
+        self.assertEqual(content, new_content)
+
+    def test_should_not_change_external_images(self):
+        content = "<div><p>Test</p><div>image: <img src=\"http://example.com/a.jpg\" width=\"300\" height=\"300\"/></div></div>"
+        new_content = article_content_filter(content)
+        self.assertEqual(content, new_content)
+
+    def test_should_not_change_image_source_if_no_dimension_specified(self):
+        content = "<div><p>Test</p><div>image: <img src=\"http://example.com/a.jpg\"/></div></div>"
+        new_content = article_content_filter(content)
+        self.assertEqual(content, new_content)
+
+    @patch('pari.article.templatetags.article_tags.thumbnail')
+    def test_should_use_thumbnail(self, mock_thumbnail):
+        print mock_thumbnail
+        mock_thumbnail.return_value="a-300x300.jpg"
+        content = "<div><p>Test</p><div>image: <img src=\"/static/media/a.jpg\" width=\"300\" height=\"300\"/></div></div>"
+        expected_content = "<div><p>Test</p><div>image: <img src=\"/static/media/a-300x300.jpg\" width=\"300\" height=\"300\"/></div></div>"
+        new_content = article_content_filter(content)
+        mock_thumbnail.assert_called_once_with("/static/media/a.jpg", '300', '300')
+        self.assertEqual(expected_content, new_content)

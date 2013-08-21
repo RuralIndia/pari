@@ -101,6 +101,10 @@ DEVICE_USER_AGENTS = (
 
 RICHTEXT_WIDGET_CLASS = 'pari.article.forms.TinyMceWidget'
 
+RICHTEXT_FILTERS = (
+    'pari.article.rich_text_filter.article_content_filter',
+)
+
 FORMS_USE_HTML5 = True
 RECAPTCHA_USE_SSL = True
 
@@ -204,6 +208,8 @@ COMPRESS_PRECOMPILERS = (
 )
 
 COMPRESS_ENABLED = True
+
+COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 
 WSGI_APPLICATION = "pari.wsgi.application"
 

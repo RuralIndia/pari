@@ -1,6 +1,7 @@
 if (typeof tinyMCE != 'undefined') {
     tinymce.init({
         selector: ".mceEditor",
+        relative_urls: false,
         height : 400,
         file_browser_callback: function (field_name, url, type, win) {
             var frame = tinyMCE.activeEditor.windowManager.open({
