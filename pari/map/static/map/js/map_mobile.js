@@ -1,12 +1,11 @@
 $(function () {
-    var options = {center : new L.LatLng(21.7679,78.8718), zoom : 3 };
+    var mapUrl = 'http://{s}.tile.cloudmade.com/ed59fdae04b74250b6cbf0bace768308/997/256/{z}/{x}/{y}.png',
+        mapLayer = new L.TileLayer(mapUrl, {
+            maxZoom: 7,
+            attribution: '&copy; 2013 <a href="http://cloudmade.com/">CloudMade</a> – Map data ODbL 2013 <a href="http://www.openstreetmap.org/">OpenStreetMap.org</a> contributors – <a href="http://cloudmade.com/website-terms-conditions">Terms of Use</a>'
+        });
     
-    var mapUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png',
-        osm = new L.TileLayer(mapUrl, {maxZoom: 3});
-    
-    var mapLayer = new L.TileLayer(mapUrl);
-    
-    var map = new L.Map('location-map', options).addLayer(mapLayer);
+    var map = new L.Map('location-map', {}).addLayer(mapLayer);
     map.locate({setView : true, maxZoom: 7});
 
     var source = $("#map-popup-template").html();

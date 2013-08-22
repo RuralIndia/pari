@@ -29,11 +29,11 @@
 {% endblock %}
 
 {% block extra_uncompressed_js %}
-    <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 {% endblock %}
 
 {% block extra_uncompressed_css %}
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
 {% endblock %}
 
 {% block maincontent %}
@@ -78,7 +78,8 @@
     <div class="well"> 
         <h4><i class="icon-road"></i> Locations </h4>
         <p>{{ blog_post.get_location_titles }}</p>
-            <div id="map" class="map-view" data-lat="{{ blog_post|get_latitudes }}" data-long="{{ blog_post|get_longitudes }}"></div>
+
+        <div id="map" class="map-view" data-lat="{{ blog_post|get_latitudes }}" data-long="{{ blog_post|get_longitudes }}"></div>
     </div>
     <div class="keywords">
         {% keywords_for blog_post as keywords %}
