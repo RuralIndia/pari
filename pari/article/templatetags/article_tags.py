@@ -89,3 +89,8 @@ def fields_for(context, form, page):
     context['form_for_fields'] = form
     context['page'] = page
     return context
+
+
+@register.inclusion_tag("article/includes/album_carousel.html")
+def album_carousel(albums):
+    return {'albums': albums}
