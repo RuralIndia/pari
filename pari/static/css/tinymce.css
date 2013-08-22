@@ -28,3 +28,8 @@ img {
 .dropcaps {
     font-size: 150%;
 }
+
+ul {
+    padding: 12px;
+    margin: 12px;
+}
