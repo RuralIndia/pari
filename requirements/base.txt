@@ -14,7 +14,7 @@ django-dajaxice==0.5.5
 django-filter==0.5.4
 django-haystack==2.0.0
 django-recaptcha==0.0.6
--e git://github.com/manojlds/django-geoposition.git@298cd7cdf4b7bcf071385984a053e2105e805067#egg=django_geoposition-dev
+-e git://github.com/manojlds/django-geoposition.git@547b064f65fa1be41b67635863679917b9ca87e5#egg=django_geoposition-dev
 django-smart-load-tag==0.3.2
 djangorestframework==2.2.0
 -e git://github.com/manojlds/fabtools.git@28cb375d93f035e5118008f20e8c6cefe60a0e49#egg=fabtools-dev
