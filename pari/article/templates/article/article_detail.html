@@ -36,25 +36,28 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
 {% endblock %}
 
+{% block featured_content %}
+<div class="article-head">
+    {% block title %}
+        <div class="page-header">
+            {% editable blog_post.title %}<h1 class="article-title">{{ blog_post.title }}</h1>{% endeditable %}
+        </div>
+        <p class="article-meta">
+            {% with blog_post.author as author %}
+                <a href="{% url "author-detail" author.slug %}"><i class="icon-user"></i>  {{author.title}}</a>
+            {% endwith %}
+            | <a href="{{ blog_post.publish_date|archive_url }}"><i class="icon-calendar"></i> {{ blog_post.publish_date|date }}</a>
+        </p>
+        {% include "article/includes/social.html" with item=blog_post %}
+    {% endblock %}
+
+    {% featured_content_for blog_post %}
+</div>
+
+{% endblock %}
+
 {% block maincontent %}
 
-{% block title %}
-    {% editable blog_post.title %}<h2>{{ blog_post.title }}</h2>{% endeditable %}
-    <p>
-        {% with blog_post.author as author %}
-            <a href="{% url "author-detail" author.slug %}"><i class="icon-user"></i>  {{author.title}}</a>
-        {% endwith %}
-        | <a href="{{ blog_post.publish_date|archive_url }}"><i class="icon-calendar"></i> {{ blog_post.publish_date|date }}</a>
-    </p>
-    {% include "article/includes/social.html" with item=blog_post %}
-{% endblock %}
-
-
-{% block blog_post_detail_commentlink %}
-
-{% endblock %}
-
-{% featured_content_for blog_post %}
 
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% include "generic/includes/disqus_counts.html" %} 
@@ -94,24 +97,28 @@
             {% endfor %}
         {% endif %}
     </div>
-    <div class="related-articles well">
-        <h3><i class="icon-exchange"></i>  Related Articles</h3>
-        {% for article in related_articles %}
-            <div class="article">
-                <a href="{{ article|get_absolute_url }}">
-                    <div class="article-image">
-                        <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 100 78 %}" alt="">
-                    </div>
-                    <div class="caption">
-                        <h4>{{ article.title|truncatechars:45 }}</h4>
-                        <p>{{ article.get_location_titles }}</p>
-                        <p>by {{ article.user.username }}</p>
-                    </div>
-                </a>
+    {% for article in related_articles %}
+        {% if forloop.first %}
+            <div class="related-articles well">
+                <h3><i class="icon-exchange"></i>  Related Articles</h3>
+        {% endif %}
+        <div class="article">
+            <a href="{{ article|get_absolute_url }}">
+                <div class="article-image">
+                    <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 100 78 %}" alt="">
+                </div>
+                <div class="caption">
+                    <h4>{{ article.title|truncatechars:45 }}</h4>
+                    <p>{{ article.get_location_titles }}</p>
+                    <p>by {{ article.user.username }}</p>
+                </div>
+            </a>
+        </div>
+        {% if not forloop.last %}
+            <div class="horizontal-line"></div>
+        {% endif %}
+        {% if forloop.last %}
             </div>
-            {% if not forloop.last %}
-                <div class="horizontal-line"></div>
-            {% endif %}
-        {% endfor %}
-    </div>
+        {% endif %}
+    {% endfor %}
 {% endblock %}

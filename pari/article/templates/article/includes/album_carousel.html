@@ -1,6 +1,6 @@
 {% load i18n verbatim_tag static mezzanine_tags article_tags article_filters keyword_tags %}
 {% for album in albums.all %}
-  <div id="homeCarousel" class="carousel slide">
+  <div id="homeCarousel" class="carousel slide carousel-bottom-caption">
     <ol class="carousel-indicators">
       {% for count in album.images.all|length|get_range %}
         <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
@@ -10,7 +10,7 @@
     <div class="carousel-inner">
       {% for image in album.images.all %}
         <div class="{% if forloop.first %}active{% endif %} item">
-          <img src="{% get_media_prefix %}{% thumbnail image.file 770 600 %}" alt="">
+          <img src="{% get_media_prefix %}{% thumbnail image.file 1170 720 %}" alt="">
           <a href="{{ image.get_absolute_url }}">
             <div class="carousel-caption">
               <p>{{ image.description|truncatewords:20 }}</p>

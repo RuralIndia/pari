@@ -27,7 +27,7 @@
   </div>
 
   {% if article_list %}
-    <div id="homeCarousel" class="carousel slide container">
+    <div id="homeCarousel" class="carousel carousel-inner-caption slide container">
       <ol class="carousel-indicators">
         {% for count in article_list|length|get_range %}
           <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>

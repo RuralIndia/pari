@@ -1,8 +1,25 @@
 @import "common.less";
 
-.featured-content{
-    img {
-        margin: 0;
+
+.article-head {
+    margin: 0 auto;
+    text-align: center;
+    .article-title {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .article-meta {
+        a {
+            color: @headingsColor;
+        }
+
+    }
+
+    .featured-content{
+        margin: 18px 0;
+        img {
+            margin: 0;
+        }
     }
 }
 
@@ -23,6 +40,7 @@
         .transition (0.3s);
         min-width: 80px;
         max-width: 160px;
+        margin: 2px;
 
         &.facebook {
             .badge-effect (#3B5998);

@@ -38,6 +38,10 @@ ul {
     margin: 0;
 }
 
+a.pari-link {
+    color: @headingsColor;
+}
+
 .navbar-inner .brand,
 .navbar-inner li.dropdown a,
 .navbar-inner li.dropdown.active a,
@@ -511,6 +515,12 @@ ul {
         line-height: 12px;
 }
 
+.carousel {
+    a {
+        color: @headingsColor;
+    }
+}
+
 .carousel-control {
     border-radius: 0;
     border: none;
@@ -531,16 +541,23 @@ ul {
 }
 
 @media (min-width: 979px) {
-    .carousel-caption {
-        background-color: rgba(255, 255, 255, 0.74902);
-        bottom: 5%;
-        left: 50%;
-        right: 10%;
-        min-height: 25%;
-        max-height: 25%;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
+
+    .carousel {
+        .carousel-caption {
+            background-color: rgba(255, 255, 255, 0.74902);
+        }
+        &.carousel-inner-caption {
+            .carousel-caption {
+                bottom: 5%;
+                left: 50%;
+                right: 10%;
+                min-height: 25%;
+                max-height: 25%;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }
+        }
     }
 
     .carousel-control {

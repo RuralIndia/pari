@@ -29,7 +29,7 @@ img {
     font-size: 150%;
 }
 
-ul {
+.content-container ul{
     padding: 12px;
     margin: 12px;
 }
