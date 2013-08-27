@@ -18,4 +18,4 @@ def article_content_filter(content):
                 image_thumbnail_source = os.path.join(settings.MEDIA_URL, article_tags.thumbnail(image_source, image_width, image_height))
                 image.attrib['src'] = image_thumbnail_source
 
-    return tostring(html_content)
+    return tostring(html_content, encoding='UTF-8')
