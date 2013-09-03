@@ -33,7 +33,7 @@ if (typeof tinyMCE != 'undefined') {
         ],
         content_css: "/static/css/tinymce.css",
 
-        toolbar1: "insertfile undo redo | styleselect | bold italic lineheight dropcaps | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image caption",
+        toolbar1: "insertfile undo redo | styleselect | bold italic lineheight dropcaps blockquote | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image caption",
         toolbar2: "fullscreen print preview media | forecolor backcolor",
         image_advtab: true,
         templates: [
@@ -42,7 +42,8 @@ if (typeof tinyMCE != 'undefined') {
         ],
         formats : {
             dropcaps: {inline: 'span', classes: "dropcaps"},
-            lineheight: {block: 'p', styles: {'lineHeight': '%value'}}
+            lineheight: {block: 'p', styles: {'lineHeight': '%value'}},
+            blockquote: {block: 'blockquote', classes: "blockquote"}
         },
 
         setup: function(ed) {
@@ -51,6 +52,13 @@ if (typeof tinyMCE != 'undefined') {
                 icon: false,
                 onclick: function() {
                     ed.formatter.apply('dropcaps');
+                }
+            });
+            ed.addButton('blockquote', {
+                text: 'Blockquote',
+                icon: false,
+                onclick: function() {
+                    ed.formatter.apply('blockquote');
                 }
             });
             ed.addButton('lineheight', {

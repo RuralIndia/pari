@@ -4,11 +4,13 @@ img {
 
 .image-container {
     position: relative;
-    margin: auto;
+    display: inline-block;
+    margin: 10px;
     width: auto;
 }
 
 .image-container img {
+    margin: 0;
 }
 
 .image-container:after {
@@ -22,7 +24,9 @@ img {
     bottom: 0;
     left: 0;
     right: 0;
-    margin: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .dropcaps {
