@@ -10,6 +10,9 @@ class ArticleDetail(DetailView):
     context_object_name = "blog_post"
     model = Article
 
+    def get_queryset(self):
+        return Article.articles.prefetch_related('locations', 'carousel_images')
+
     def get_context_data(self, **kwargs):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
         article = context['blog_post']
