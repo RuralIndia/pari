@@ -1,11 +1,15 @@
+from string import punctuation
+from urllib import unquote
+
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.template.defaultfilters import truncatewords
 
 from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.fields import FileField
-from mezzanine.core.models import Displayable, Ownable, RichText
+from mezzanine.core.models import Displayable, Ownable, RichText, Orderable
 from mezzanine.generic.fields import CommentsField
+from mezzanine.utils.models import upload_to
 
 from pari.article.managers import ArticleManager, TopicManager
 from pari.article.mixins import AdminThumbMixin
@@ -74,6 +78,39 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     @property
     def short_description(self):
         return truncatewords(self.description, 20)
+
+
+class ArticleCarouselImage(Orderable, Displayable):
+    article = models.ForeignKey("article", related_name="carousel_images")
+    file = FileField(_("File"), max_length=200, format="Image",
+                     upload_to=upload_to("article.ArticleCarouselImage.file", "carousel"))
+
+    class Meta:
+        verbose_name = _("CarouselImage")
+        verbose_name_plural = _("CarouselImages")
+        app_label = "article"
+
+    def __unicode__(self):
+        return self.description
+
+    @models.permalink
+    def get_absolute_url(self):
+        name = "article-image-detail"
+        return (name, (), {"slug": self.article.slug, "order": self._order + 1})
+
+    @property
+    def get_thumbnail(self):
+        return self.file
+
+    def save(self, *args, **kwargs):
+        if not self.id and not self.description:
+            name = unquote(self.file.url).split("/")[-1].rsplit(".", 1)[0]
+            name = name.replace("'", "")
+            name = "".join([c if c not in punctuation else " " for c in name])
+            name = "".join([s.upper() if i == 0 or name[i - 1] == " " else s
+                            for i, s in enumerate(name)])
+            self.description = name
+        super(ArticleCarouselImage, self).save(*args, **kwargs)
 
 
 def get_all_articles():

@@ -3,9 +3,9 @@ from django.contrib import admin
 
 from mezzanine.blog.models import BlogPost
 from mezzanine.blog.admin import BlogPostAdmin
-from mezzanine.core.admin import DisplayableAdmin
+from mezzanine.core.admin import DisplayableAdmin, TabularDynamicInlineAdmin
 
-from .models import Article, Location, Category, Type, Author
+from .models import Article, ArticleCarouselImage, Location, Category, Type, Author
 from .forms import LocationForm, CategoryForm, TypeForm, AuthorForm
 
 blog_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
@@ -23,11 +23,20 @@ blog_list_display = deepcopy(BlogPostAdmin.list_display)
 blog_list_display.insert(-1, "is_topic")
 
 
+class ArticleCarouselImageInline(TabularDynamicInlineAdmin):
+    model = ArticleCarouselImage
+    extra = 15
+    fieldsets = (None, {
+        "fields": ["file", "title", "description"],
+    }),
+
+
 class ArticleAdmin(BlogPostAdmin):
     fieldsets = blog_fieldsets
+    inlines = [ArticleCarouselImageInline, ]
     list_display = blog_list_display
     list_filter = ()
-    filter_horizontal = ("category_list", "related_posts", "locations",)
+    filter_horizontal = ("category_list", "related_posts", "locations")
 
 
 class TypeAdmin(admin.ModelAdmin):

@@ -10,6 +10,6 @@
     {% elif article.featured_image %}
         <p><img src="{% get_media_prefix %}{% thumbnail article.featured_image 1170 720 %}"></p>
     {% else %}
-        {% album_carousel article.album_set %}
+        {% article_carousel article.carousel_images %}
     {% endif %}
 </div>

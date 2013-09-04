@@ -91,6 +91,6 @@ def fields_for(context, form, page):
     return context
 
 
-@register.inclusion_tag("article/includes/album_carousel.html")
-def album_carousel(albums):
-    return {'albums': albums}
+@register.inclusion_tag("article/includes/article_carousel.html")
+def article_carousel(images):
+    return {'images': images}
