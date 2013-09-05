@@ -14,9 +14,9 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pari',
-        'USER': 'postgres',
-        'PASSWORD': '!abcd1234',
+        'NAME': os.environ["DJANGO_DB_NAME"],
+        'USER': os.environ["DJANGO_DB_USER"],
+        'PASSWORD': os.environ["DJANGO_DB_PASSWORD"],
         'HOST': 'localhost'
     }
 }
@@ -39,6 +39,6 @@ INSTALLED_APPS += (
 )
 
 #Email Settings
-MANDRILL_API_KEY = "Xo7IEp88tI2JPB1toVZ5gg"
+MANDRILL_API_KEY = os.environ["DJANGO_MANDRILL_API_KEY"]
 DEFAULT_FROM_EMAIL = "do-no-reply@ruralindiaonline.org"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
