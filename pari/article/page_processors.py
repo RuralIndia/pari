@@ -6,9 +6,9 @@ from .models import Article, Category
 
 @processor_for("/")
 def homepage_context(request, page):
-    article_list = Article.articles.exclude(featured_image__isnull=True).exclude(featured_image='')[:5]
+    article_list = Article.articles.prefetch_related('locations').exclude(featured_image__isnull=True).exclude(featured_image='')[:5]
     categories = Category.objects.all()[:8]
-    recent_articles = Article.articles.order_by('-publish_date')[:6]
+    recent_articles = Article.articles.prefetch_related('locations').order_by('-publish_date')[:6]
     start_time, end_time = get_archive_range()
     return {
         "article_list": article_list,
