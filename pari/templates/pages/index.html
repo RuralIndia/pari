@@ -27,7 +27,7 @@
   </div>
 
   {% if article_list %}
-    <div id="homeCarousel" class="carousel carousel-inner-caption slide container">
+    <div id="homeCarousel" class="carousel carousel-inner-caption carousel-thin-controls slide container">
       <ol class="carousel-indicators">
         {% for count in article_list|length|get_range %}
           <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
@@ -38,11 +38,11 @@
         {% for article in article_list %}
           <div class="{% if forloop.first %}active{% endif %} item">
             <div data-picture data-alt="">
-              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 600 400 %}"></div>
-              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 800 600 %}" data-media="(min-width: 481px)"></div>
-              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1170 400 %}" data-media="(min-width: 980px)"></div>
+              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 725 400 %}"></div>
+              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 846 520 %}" data-media="(min-width: 768px)"></div>
+              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 %}" data-media="(min-width: 1200px)"></div>
               <noscript>
-                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 800 400 %}" alt="">
+                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 %}" alt="">
               </noscript>
             </div>
             <a href="{{ article.get_absolute_url }}">
