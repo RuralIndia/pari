@@ -147,6 +147,8 @@ class AlbumImage(Orderable, Displayable):
         If no description is given when created, create one from the
         file name.
         """
+        self.gen_description = False
+
         if not self.id and not self.description:
             name = unquote(self.file.url).split("/")[-1].rsplit(".", 1)[0]
             name = name.replace("'", "")
