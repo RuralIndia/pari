@@ -9,6 +9,12 @@ People's Archive Of Rural India
 
 Clone the repo.
 
+Init the Tiny MCE submodule:
+
+```bash
+git submodule update --init
+```
+
 ### Python and packages management
 
 Use [pythonbrew](https://github.com/utahta/pythonbrew) for python runtime and packages management
@@ -53,6 +59,12 @@ python manage.py loaddata pari/fixtures/initial_data_1.json
 ```bash
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+```
+
+### Start the Server
+
+```bash
+python manage.py runserver
 ```
 
 ### Functional tests
