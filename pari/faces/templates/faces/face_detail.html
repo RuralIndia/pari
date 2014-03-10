@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n verbatim_tag article_filters article_tags %}
+
+{% block meta_title %}{% trans "Faces" %}{% endblock %}
+{% block title %}{% trans "Faces" %}{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less" charset="utf-8">
+{% endblock %}
+
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Faces" %}</li>
+{% endblock %}
+
+{% block main %}
+    {% for face_group in faces|group_by:3 %}
+    <div class="categories row">
+        {% for face in face_group %}
+            <a href="#">
+                <div class="span4 grid-column">
+                    <img src="{{ MEDIA_URL }}{% thumbnail face.image 370 300 %}" width="370" height="300" alt="">
+                    <div class="caption">
+                           <h4>{{ face.title }}</h4>
+                            <p class="description">{{ face.description }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n verbatim_tag article_filters article_tags %}
+
+{% block meta_title %}{% trans "Faces" %}{% endblock %}
+{% block title %}{% trans "Faces" %}{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less" charset="utf-8">
+{% endblock %}
+
+
+{% block breadcrumb_menu %}
+    <li class="active">{% trans "Faces" %}</li>
+{% endblock %}
+
+{% block main %}
+    {% regroup faces by first_letter as first_letter_faces_list %}
+    {% for first_letter_faces_group in first_letter_faces_list|group_by:3 %}
+    <div class="categories row">
+        {% for first_letter_face in first_letter_faces_group %}
+            <a href="{{ first_letter_face.grouper }}">
+                <div class="span4 grid-column">
+                    <img src="{{ MEDIA_URL }}{% thumbnail first_letter_face.list.0.image 370 300 %}" width="370" height="300" alt="">
+                    <div class="caption">
+                           <h4>
+                                    {{ first_letter_face.grouper | upper }}
+                           </h4>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+{% endblock %}

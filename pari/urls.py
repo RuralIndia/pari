@@ -22,10 +22,14 @@ urlpatterns = patterns("",
     url(r'^albums/', include('pari.album.urls')),
     url(r'^contribute/', include('pari.contribution.urls')),
     url(r'^resources/', include('pari.resources.urls')),
+    url(r'^categories/faces/', include('pari.faces.urls')),
     url(r'^search/', include('pari.search.urls')),
+
 
     url(r'^', include(articles_root_patterns)),
     url(r'^article/', include('pari.article.urls')),
+
+
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
