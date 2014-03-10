@@ -13,3 +13,12 @@ class FaceDetail(ListView):
     def get_queryset(self):
         alphabet = self.kwargs['alphabet']
         return get_faces_by_first_letter(alphabet)
+
+class FaceImageDetail(ListView):
+    context_object_name = "faces"
+    model = Face
+
+    # def get_object(self, queryset=None):
+    # return Face.objects.get(album__slug=self.kwargs['slug'],
+    #                               _order=int(self.kwargs['order']) - 1)
+    #

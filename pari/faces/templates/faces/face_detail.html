@@ -1,15 +1,18 @@
 {% extends "base.html" %}
-{% load i18n verbatim_tag article_filters article_tags %}
+{% load i18n verbatim_tag article_filters article_tags faces_filters %}
 
 {% block meta_title %}{% trans "Faces" %}{% endblock %}
 {% block title %}{% trans "Faces" %}{% endblock %}
 
 {% block extra_js %}
-
+    <script type='text/javascript' src="{{ STATIC_URL }}js/magnific-popup.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}faces/js/lightbox.js"></script>
 {% endblock %}
 
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/magnific-popup.css" charset="utf-8">
+      <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/faces.less" charset="utf-8">
 {% endblock %}
 
 
@@ -18,10 +21,11 @@
 {% endblock %}
 
 {% block main %}
+    <div class="popup-gallery">
     {% for face_group in faces|group_by:3 %}
     <div class="categories row">
         {% for face in face_group %}
-            <a href="#">
+            <a href="{{ MEDIA_URL }}{{ face.image}}" data-title="{{ face.title }}" data-district="{{ face.district }}" data-description="{{ face.description }}"  class="image-tag mfp-image">
                 <div class="span4 grid-column">
                     <img src="{{ MEDIA_URL }}{% thumbnail face.image 370 300 %}" width="370" height="300" alt="">
                     <div class="caption">
@@ -33,5 +37,6 @@
         {% endfor %}
     </div>
     {% endfor %}
+    </div>
 
 {% endblock %}
