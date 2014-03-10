@@ -66,7 +66,7 @@ def is_file_exists(path, url):
     return os.path.exists(path)
 
 
-def create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, quality=95):
+def create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, quality=95, mode='fit'):
     try:
         thumb_exists = is_file_exists(thumb_path, thumb_url)
     except UnicodeEncodeError:
@@ -109,7 +109,11 @@ def create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, 
     ImageFile.MAXBLOCK = image.size[0] * image.size[1]
 
     try:
-        image = ImageOps.fit(image, (width, height), Image.ANTIALIAS)
+        if mode == 'fit':
+            image = ImageOps.fit(image, (width, height), Image.ANTIALIAS)
+        else:
+            image.thumbnail((width, height), Image.ANTIALIAS)
+
         if is_s3_storage():
             thumb_f = StringIO.StringIO()
             image.save(thumb_f, filetype, quality=quality, **image_info)

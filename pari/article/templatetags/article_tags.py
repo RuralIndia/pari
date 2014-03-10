@@ -59,7 +59,7 @@ def render_slideshare_embed(id):
 
 
 @register.simple_tag
-def thumbnail(image_url, width, height, quality=95):
+def thumbnail(image_url, width, height, mode='fit'):
     if not image_url:
         image_url = "no_image.png"
 
@@ -81,7 +81,12 @@ def thumbnail(image_url, width, height, quality=95):
     if image_url_path:
         thumb_url = "%s/%s" % (image_url_path, thumb_url)
 
-    return create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype)
+    return create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, mode=mode)
+
+
+@register.simple_tag
+def thumbnail_no_fit(image_url, width, height):
+    return thumbnail(image_url, width, height, mode='thumbnail')
 
 
 @register.inclusion_tag("contribution/includes/form_fields.html", takes_context=True)
