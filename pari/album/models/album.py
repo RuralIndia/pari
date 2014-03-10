@@ -1,35 +1,34 @@
 from StringIO import StringIO
 import os
-from string import punctuation
-from urllib import unquote
+from zipfile import ZipFile
+
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
-from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable, Orderable
 from mezzanine.utils.models import upload_to
 
-from zipfile import ZipFile
-
+from pari.album.models import ImageCollection, ImageCollectionImage
 from pari.article.models import Article, Location
+
 
 ALBUMS_UPLOAD_DIR = "uploads/albums/"
 
 
 class Album(Displayable):
     zip_import = models.FileField(verbose_name=_("Zip import"), blank=True,
-        upload_to=upload_to("album.Album.zip_import", "albums"),
-        help_text=_("Upload a zip file containing images, and "
-                    "they'll be imported into this gallery."))
+                                  upload_to=upload_to("album.Album.zip_import", "albums"),
+                                  help_text=_("Upload a zip file containing images, and "
+                                              "they'll be imported into this gallery."))
 
     articles = models.ManyToManyField(Article, blank=True)
     location = models.ForeignKey(Location, related_name='albums', blank=True, null=True)
     photographer = models.ForeignKey("article.Author", related_name='albums', blank=True, null=True)
 
     meta_data = models.CharField(verbose_name=_("About the album"), max_length=200, blank=True)
+
+    image_collection = models.ForeignKey(ImageCollection)
 
     TONE_CHOICES = (
         ('grey', 'Greyscale'),
@@ -48,7 +47,6 @@ class Album(Displayable):
         verbose_name = _("Album")
         verbose_name_plural = _("Albums")
         app_label = "album"
-
 
     @models.permalink
     def get_absolute_url(self):
@@ -77,6 +75,11 @@ class Album(Displayable):
         them to the gallery, before removing the zip file.
         """
 
+        if not hasattr(self, 'image_collection'):
+            new_image_collection = ImageCollection(title=self.title)
+            new_image_collection.save()
+            self.image_collection = new_image_collection
+
         super(Album, self).save(*args, **kwargs)
         if self.zip_import:
             zip_file = ZipFile(self.zip_import)
@@ -102,6 +105,7 @@ class Album(Displayable):
                     saved_path = default_storage.save(path, ContentFile(data))
                 except UnicodeEncodeError:
                     from warnings import warn
+
                     warn("A file was saved that contains unicode "
                          "characters in its path, but somehow the current "
                          "locale does not support utf-8. You may need to set "
@@ -109,7 +113,12 @@ class Album(Displayable):
                     path = os.path.join(ALBUMS_UPLOAD_DIR, self.slug,
                                         unicode(name, errors="ignore"))
                     saved_path = default_storage.save(path, ContentFile(data))
-                album_image = AlbumImage(file=saved_path, location=self.location, photographer=self.photographer)
+                image_collection_image = ImageCollectionImage(file=saved_path)
+                self.image_collection.images.add(image_collection_image)
+
+                album_image = AlbumImage(location=self.location,
+                                         photographer=self.photographer,
+                                         image_collection_image=image_collection_image)
                 if first and not self.has_cover:
                     album_image.is_cover = True
                     first = False
@@ -121,8 +130,7 @@ class Album(Displayable):
 
 class AlbumImage(Orderable, Displayable):
     album = models.ForeignKey("Album", related_name="images")
-    file = FileField(_("File"), max_length=200, format="Image",
-                     upload_to=upload_to("album.Album.file", "albums"))
+    image_collection_image = models.ForeignKey("ImageCollectionImage")
     audio = models.CharField(max_length=30, null=True, blank=True)
     is_cover = models.BooleanField(verbose_name="Album cover", default=False)
     photographer = models.ForeignKey("article.Author", related_name='photographs')
@@ -144,21 +152,3 @@ class AlbumImage(Orderable, Displayable):
     @property
     def get_thumbnail(self):
         return self.file
-
-    def save(self, *args, **kwargs):
-        """
-        If no description is given when created, create one from the
-        file name.
-        """
-        self.gen_description = False
-
-        if not self.id and not self.description:
-            name = unquote(self.file.url).split("/")[-1].rsplit(".", 1)[0]
-            name = name.replace("'", "")
-            name = "".join([c if c not in punctuation else " " for c in name])
-            # str.title() doesn't deal with unicode very well.
-            # http://bugs.python.org/issue6412
-            name = "".join([s.upper() if i == 0 or name[i - 1] == " " else s
-                            for i, s in enumerate(name)])
-            self.description = name
-        super(AlbumImage, self).save(*args, **kwargs)
