@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n album_filters article_tags article_filters %}
+
+{% block meta_title %}{% blocktrans with image_collection.title as title%}{{ title }}{% endblocktrans %}{% endblock %}
+
+
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}js/magnific-popup.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/lightbox.js"></script>
+{% endblock %}
+
+{% block extra_uncompressed_js %}
+    <script src="//connect.soundcloud.com/sdk.js"></script>
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/magnific-popup.css" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/album.less" charset="utf-8">
+{% endblock %}
+
+{% block main %}
+<div class="popup-gallery">
+
+    {% for image_collection_image_group in image_collection.all|group_by:3 %}
+        <div class="album-images row">
+            {% for image_collection_image in image_collection_image_group %}
+                <a href="{{ MEDIA_URL }}{{ image_collection_image|get_image_collection_image_path }}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" data-photographer="{{ image.photographer.title }}" data-location="{{ image.location.title }}" data-location-description="{{ image.location.description }}" data-date="{{ image.publish_date|date:"F Y" }}" data-url="{{ image.get_absolute_url }}" class="image-tag mfp-image">
+                    <div class="span4 grid-column">
+                        <img src="{{ MEDIA_URL }}{% thumbnail image_collection_image|get_image_collection_image_path 370 300 %}"/>
+                        <div class="caption">
+                            <p>{{ image_collection_image.description|truncatechars:50 }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

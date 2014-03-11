@@ -27,7 +27,7 @@
         <div class="row">
             <div class="span3">
             {% with album.get_cover as cover %}
-                <a class="mfp-image cover image-tag" href="{{ MEDIA_URL }}{{ cover.file.path }}" title="{{ cover.description }}" data-audio="{{ cover.audio|default_if_none:"" }}" data-photographer="{{ cover.photographer.title }}" data-location="{{ cover.location.title }}" data-location-description="{{ cover.location.description }}" data-url="{{ cover.get_absolute_url }}" data-date="{{ cover.publish_date|date:"F Y" }}">
+                <a class="mfp-image cover image-tag" href="{{ MEDIA_URL }}{{ cover.image_collection_image.file.path }}" title="{{ cover.description }}" data-audio="{{ cover.audio|default_if_none:"" }}" data-photographer="{{ cover.photographer.title }}" data-location="{{ cover.location.title }}" data-location-description="{{ cover.location.description }}" data-url="{{ cover.get_absolute_url }}" data-date="{{ cover.publish_date|date:"F Y" }}">
                     <img src="{{ MEDIA_URL }}{% thumbnail album.cover 270 270 %}" alt="">
                 </a>
             {% endwith %}
@@ -73,5 +73,8 @@
             {% endfor %}
         </div>
     {% endfor %}
+    <div class="text-center">
+        <a href="{{ album.get_absolute_url}}all"> Show all images</a>
+    </div>
 </div>
 {% endblock %}
