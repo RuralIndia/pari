@@ -1,5 +1,6 @@
 from django.contrib import admin
 from mezzanine.core.admin import TabularDynamicInlineAdmin
+
 from pari.album.models import Album, AlbumImage, ImageCollection, ImageCollectionImage
 from pari.album.forms import AlbumImageInlineFormset, AlbumForm
 
@@ -9,7 +10,7 @@ class AlbumImageInline(TabularDynamicInlineAdmin):
     extra = 15
     formset = AlbumImageInlineFormset
     fieldsets = (None, {
-        "fields": ["description", "audio", "photographer", "location", "publish_date", "is_cover", "_order"],
+        "fields": ["image_file", "description", "audio", "photographer", "location", "publish_date", "is_cover", "_order"],
     }),
 
 

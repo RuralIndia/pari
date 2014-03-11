@@ -6,6 +6,7 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable, Orderable
 from mezzanine.utils.models import upload_to
 
@@ -113,12 +114,10 @@ class Album(Displayable):
                     path = os.path.join(ALBUMS_UPLOAD_DIR, self.slug,
                                         unicode(name, errors="ignore"))
                     saved_path = default_storage.save(path, ContentFile(data))
-                image_collection_image = ImageCollectionImage(file=saved_path)
-                self.image_collection.images.add(image_collection_image)
-
-                album_image = AlbumImage(location=self.location,
-                                         photographer=self.photographer,
-                                         image_collection_image=image_collection_image)
+                # image_collection_image = ImageCollectionImage(file=saved_path)
+                # self.image_collection.images.add(image_collection_image)
+                album_image = AlbumImage(image_file=saved_path, location=self.location,
+                                         photographer=self.photographer)
                 if first and not self.has_cover:
                     album_image.is_cover = True
                     first = False
@@ -135,6 +134,8 @@ class AlbumImage(Orderable, Displayable):
     is_cover = models.BooleanField(verbose_name="Album cover", default=False)
     photographer = models.ForeignKey("article.Author", related_name='photographs')
     location = models.ForeignKey(Location, verbose_name=_("Location"))
+    image_file = FileField(_("File"), max_length=200, format="Image", null=True,
+                           upload_to=upload_to("album.ImageCollection.file", "albums"))
 
     class Meta:
         verbose_name = _("AlbumImage")
@@ -152,3 +153,14 @@ class AlbumImage(Orderable, Displayable):
     @property
     def get_thumbnail(self):
         return self.file
+
+    def save(self, *args, **kwargs):
+        if not hasattr(self, 'image_collection_image'):
+            image_collection_image = ImageCollectionImage(file=self.image_file)
+            self.album.image_collection.images.add(image_collection_image)
+            self.image_collection_image = image_collection_image
+        super(AlbumImage, self).save(*args, **kwargs)
+
+
+
+
