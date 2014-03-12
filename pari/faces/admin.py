@@ -3,6 +3,7 @@ from mezzanine.core.admin import DisplayableAdmin
 from pari.faces.forms import FaceForm
 from pari.faces.models import Face
 
+
 class FaceAdmin(DisplayableAdmin):
     form = FaceForm
     fieldsets = (None, {

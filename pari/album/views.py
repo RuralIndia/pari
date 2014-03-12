@@ -1,5 +1,5 @@
 from django.views.generic import DetailView, ListView
-from pari.album.models import Album, AlbumImage, ImageCollection, ImageCollectionImage
+from pari.album.models import Album, AlbumImage, ImageCollectionImage
 
 
 class AlbumList(ListView):
@@ -19,6 +19,7 @@ class AlbumImageDetail(DetailView):
     def get_object(self, queryset=None):
         return AlbumImage.objects.get(album__slug=self.kwargs['slug'],
                                       _order=int(self.kwargs['order']) - 1)
+
 
 class ImageCollectionImageList(DetailView):
     context_object_name= "image_collection"

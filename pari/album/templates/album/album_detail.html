@@ -27,7 +27,7 @@
         <div class="row">
             <div class="span3">
             {% with album.get_cover as cover %}
-                <a class="mfp-image cover image-tag" href="{{ MEDIA_URL }}{{ cover.image_collection_image.file.path }}" title="{{ cover.description }}" data-audio="{{ cover.audio|default_if_none:"" }}" data-photographer="{{ cover.photographer.title }}" data-location="{{ cover.location.title }}" data-location-description="{{ cover.location.description }}" data-url="{{ cover.get_absolute_url }}" data-date="{{ cover.publish_date|date:"F Y" }}">
+                <a class="mfp-image cover image-tag" href="{{ MEDIA_URL }}{%  thumbnail_no_fit cover.image_collection_image.file.path 1152 864 %}" title="{{ cover.description }}" data-audio="{{ cover.audio|default_if_none:"" }}" data-photographer="{{ cover.photographer.title }}" data-location="{{ cover.location.title }}" data-location-description="{{ cover.location.description }}" data-url="{{ cover.get_absolute_url }}" data-date="{{ cover.publish_date|date:"F Y" }}">
                     <img src="{{ MEDIA_URL }}{% thumbnail album.cover 270 270 %}" alt="">
                 </a>
             {% endwith %}
@@ -59,7 +59,7 @@
     {% for image_group in album|all_images|group_by:3 %}
         <div class="album-images row">
             {% for image in image_group %}
-                <a href="{{ MEDIA_URL }}{{ image|get_file_path }}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" data-photographer="{{ image.photographer.title }}" data-location="{{ image.location.title }}" data-location-description="{{ image.location.description }}" data-date="{{ image.publish_date|date:"F Y" }}" data-url="{{ image.get_absolute_url }}" class="image-tag mfp-image">
+                <a href="{{ MEDIA_URL }}{% thumbnail_no_fit image|get_file_path 1152 864 %}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" data-photographer="{{ image.photographer.title }}" data-location="{{ image.location.title }}" data-location-description="{{ image.location.description }}" data-date="{{ image.publish_date|date:"F Y" }}" data-url="{{ image.get_absolute_url }}" class="image-tag mfp-image">
                     <div class="span4 grid-column">
                         <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
                         <div class="caption">

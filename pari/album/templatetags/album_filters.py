@@ -7,6 +7,7 @@ register = Library()
 def get_file_path(album_image):
     return album_image.image_collection_image.file.path
 
+
 @register.filter
 def get_image_collection_image_path(image):
     return image.file.path

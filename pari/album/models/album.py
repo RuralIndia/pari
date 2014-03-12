@@ -160,7 +160,3 @@ class AlbumImage(Orderable, Displayable):
             self.album.image_collection.images.add(image_collection_image)
             self.image_collection_image = image_collection_image
         super(AlbumImage, self).save(*args, **kwargs)
-
-
-
-
