@@ -152,7 +152,7 @@ class AlbumImage(Orderable, Displayable):
 
     @property
     def get_thumbnail(self):
-        return self.file
+        return self.image_collection_image.get_thumbnail()
 
     def save(self, *args, **kwargs):
         if not hasattr(self, 'image_collection_image'):

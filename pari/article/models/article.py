@@ -28,7 +28,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
                                          default=True)
     comments = CommentsField(verbose_name=_("Comments"))
     featured_image = FileField(verbose_name=_("Featured Image"),
-        format="Image", max_length=255, null=True, blank=True)
+                               format="Image", max_length=255, null=True, blank=True)
 
     author = models.ForeignKey("Author", related_name='articles')
 
@@ -39,7 +39,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     featured_audio = models.CharField(max_length=100, null=True, blank=True)
 
     related_posts = models.ManyToManyField("self",
-                                 verbose_name=_("Related Articles"), blank=True)
+                                           verbose_name=_("Related Articles"), blank=True)
     types = models.ManyToManyField(Type, related_name="articles", verbose_name="Article Type")
 
     admin_thumb_field = "featured_image"
@@ -61,7 +61,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
         name = "article-detail"
         if self.is_topic:
             name = "topic-detail"
-        return (name, (), {"slug": self.slug})
+        return name, (), {"slug": self.slug}
 
     @property
     def get_location_titles(self):
@@ -96,7 +96,7 @@ class ArticleCarouselImage(Orderable, Displayable):
     @models.permalink
     def get_absolute_url(self):
         name = "article-image-detail"
-        return (name, (), {"slug": self.article.slug, "order": self._order + 1})
+        return name, (), {"slug": self.article.slug, "order": self._order + 1}
 
     @property
     def get_thumbnail(self):
