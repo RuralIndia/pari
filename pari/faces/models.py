@@ -19,7 +19,6 @@ class Face(Orderable, Displayable, AdminThumbMixin):
     admin_thumb_field = "image"
     objects = DisplayableManager()
 
-
     @models.permalink
     def get_absolute_url(self):
         return "face-detail", (), {"slug": self.slug}
@@ -35,5 +34,7 @@ class Face(Orderable, Displayable, AdminThumbMixin):
     def first_letter(self):
         return self.district[0]
 
+
 def get_faces_by_first_letter(alphabet):
-    return Face.objects.filter(district__startswith=alphabet).extra( select={'upper_district': 'upper(district)'}).order_by('upper_district')
+    return Face.objects.filter(district__startswith=alphabet).extra(
+        select={'upper_district': 'upper(district)'}).order_by('upper_district')

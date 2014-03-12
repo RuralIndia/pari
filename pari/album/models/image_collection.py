@@ -14,7 +14,7 @@ class ImageCollection(Displayable):
                                   help_text=_("Upload a zip file containing images, and "
                                               "they'll be imported into this collection."))
 
-    type_filter_order = 3
+    is_searchable = False
 
     class Meta:
         verbose_name = _("Image Collection")
@@ -31,6 +31,8 @@ class ImageCollectionImage(Orderable, Displayable):
     image_collection = models.ForeignKey("ImageCollection", related_name="images")
     file = FileField(_("File"), max_length=200, format="Image",
                      upload_to=upload_to("album.ImageCollection.file", "albums"))
+
+    is_searchable = False
 
     class Meta:
         verbose_name = _("ImageCollectionImage")

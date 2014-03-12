@@ -26,10 +26,14 @@ def get_article_list(article_queryset, page, filter):
     return get_paginated_list(article_queryset, page)
 
 
+def is_searchable(subclass):
+    return getattr(subclass, 'is_searchable', True)
+
+
 def get_result_types(filter, display_count=4):
     return [subclass.__name__ for subclass in
             sorted([subclass for subclass in Displayable.__subclasses__()
-                    if "pari" in subclass.__module__],
+                    if "pari" in subclass.__module__ and is_searchable(subclass)],
             key=lambda x: type_sort_order(x, filter, display_count), reverse=True)]
 
 

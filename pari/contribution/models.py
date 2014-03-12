@@ -19,7 +19,7 @@ class Contribution(Displayable, AdminThumbMixin):
     @models.permalink
     def get_absolute_url(self):
         name = "contribution-detail"
-        return (name, (), {"slug": self.slug})
+        return name, (), {"slug": self.slug}
 
     @property
     def get_thumbnail(self):

@@ -85,6 +85,8 @@ class ArticleCarouselImage(Orderable, Displayable):
     file = FileField(_("File"), max_length=200, format="Image",
                      upload_to=upload_to("article.ArticleCarouselImage.file", "carousel"))
 
+    is_searchable = False
+
     class Meta:
         verbose_name = _("CarouselImage")
         verbose_name_plural = _("CarouselImages")
