@@ -6,6 +6,7 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from filebrowser_safe.functions import convert_filename
 from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable, Orderable
 from mezzanine.utils.models import upload_to
@@ -99,7 +100,7 @@ class Album(Displayable):
                     image.verify()
                 except:
                     continue
-                name = os.path.split(name)[1]
+                name = convert_filename(os.path.split(name)[1])
                 path = os.path.join(ALBUMS_UPLOAD_DIR, self.slug,
                                     name.decode("utf-8"))
                 try:
