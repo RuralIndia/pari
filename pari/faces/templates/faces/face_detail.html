@@ -12,7 +12,7 @@
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less" charset="utf-8">
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/magnific-popup.css" charset="utf-8">
-      <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/faces.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/faces.less" charset="utf-8">
 {% endblock %}
 
 
@@ -27,11 +27,21 @@
         {% for face in face_group %}
             <a href="{{ MEDIA_URL }}{{ face.image}}" data-title="{{ face.title }}" data-district="{{ face.district }}" data-description="{{ face.description }}"  class="image-tag mfp-image">
                 <div class="span4 grid-column">
-                    <img src="{{ MEDIA_URL }}{% thumbnail face.image 370 300 %}" width="370" height="300" alt="">
-                    <div class="caption">
-                           <h4>{{ face.district }} - {{ face.title }}</h4>
-                            <p class="description">{{ face.description }}</p>
+                    <div class="flip-container">
+                        <div class="flipper">
+                            <div class="front">
+                                <img src="{{ MEDIA_URL }}{% thumbnail face.image 370 300 %}" width="370" height="300" alt="">
+                            </div>
+                            <div class="back">
+                                <div class="back-content">
+                                    <h2>{{ face.district }}</h2>
+                                    <h3>{{ face.title }}</h3>
+                                    <p>{{ face.description }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </a>
         {% endfor %}

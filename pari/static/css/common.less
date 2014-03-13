@@ -157,3 +157,34 @@
     background-color: darken(@endColor, 10%) e("\9");
   }
 }
+
+.perspective (@value: 1000) {
+	-webkit-perspective: 	@value;
+	-moz-perspective: 	@value;
+	-ms-perspective: 	@value;
+	perspective: 		@value;
+}
+
+.backface-visibility(@visibility: hidden){
+    -webkit-backface-visibility: @visibility;
+    -moz-backface-visibility: @visibility;
+    backface-visibility: @visibility;
+}
+
+#transform {
+    .style(@style) {
+        -webkit-transform-style: @style;
+        -moz-transform-style: @style;
+        -ms-transform-style: @style;
+        -o-transform-style: @style;
+        transform-style: @style;
+    }
+
+    .origin(@origin) {
+        -webkit-transform-origin: @origin;
+        -moz-transform-origin: @origin;
+        -o-transform-origin: @origin;
+        transform-origin: @origin;
+    }
+
+}
