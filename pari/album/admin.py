@@ -10,7 +10,8 @@ class AlbumImageInline(TabularDynamicInlineAdmin):
     extra = 15
     formset = AlbumImageInlineFormset
     fieldsets = (None, {
-        "fields": ["image_file", "description", "audio", "photographer", "location", "publish_date", "is_cover", "_order"],
+        "fields": ["image_file", "description", "audio", "photographer", "location", "publish_date", "is_cover",
+                   "_order"],
     }),
 
 
@@ -49,6 +50,7 @@ class ImageCollectionAdmin(admin.ModelAdmin):
     class Media:
         css = {"all": ("mezzanine/css/admin/gallery.css",)}
         js = ("/static/album/js/admin.js",)
+
 
 admin.site.register(Album, AlbumAdmin)
 admin.site.register(ImageCollection, ImageCollectionAdmin)
