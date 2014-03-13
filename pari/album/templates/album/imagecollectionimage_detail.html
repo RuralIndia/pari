@@ -6,21 +6,17 @@
 
 {% block extra_js %}
     <script type='text/javascript' src="{{ STATIC_URL }}js/magnific-popup.js"></script>
-    <script type='text/javascript' src="{{ STATIC_URL }}album/js/lightbox.js"></script>
-{% endblock %}
-
-{% block extra_uncompressed_js %}
-    <script src="//connect.soundcloud.com/sdk.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}album/js/imagecollectionimage_detail.js"></script>
 {% endblock %}
 
 {% block extra_css %}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/magnific-popup.css" charset="utf-8">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/album.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}album/css/imagecollectionimage_detail.less" charset="utf-8">
 {% endblock %}
 
 {% block main %}
-<div class="popup-gallery">
-
+<div class="popup-gallery image-collection">
     {% for image_collection_image_group in image_collection.all|group_by:3 %}
         <div class="album-images row">
             {% for image_collection_image in image_collection_image_group %}

@@ -52,7 +52,7 @@ var Album = {
                             '<div class="mfp-img-holder">'+
                                 '<div class="mfp-img"></div>'+
                                 '<div class="mfp-controls">'+
-                                    '<i class="icon-play audio"></i><i class="icon-pause audio" style="display:none"></i>'+
+                                    '<i class="icon-volume-off"></i><i class="icon-play audio"></i><i class="icon-pause audio" style="display:none"></i>'+
                                 '</div>'+
                             '</div>'+
                             '<div class="mfp-bottom-bar">'+
@@ -154,13 +154,20 @@ var Album = {
         $('.btn-slideshow').on('click', $.proxy(function() {
             var slideshow = this._popup.data("slideshow");
             if(slideshow) {
-                this._popup.removeData('slideshow');
+               this._popup.removeData('slideshow');
             } else {
                 this._popup.data('slideshow', 'true');
             }
+            slideshow = this._popup.data("slideshow");
 
             this._updateSlideshowButtonIcon();
-            this._initAudio();
+            if(this._sound.playState === 0) {
+                this._initAudio();
+            }
+
+            if(slideshow && this._sound.paused) {
+                this._toggleWidget();
+            }
 
             return false;
         }, this));
