@@ -48,6 +48,17 @@ npm install -g less
 
 ### Setup the database
 
+We use Postgres for development and production.
+
+For development purposes, create a Postgres database with name pari. The user needs to be pari, with password pari.
+
+```bash
+createdb pari
+createuser -srP pari
+```
+
+To setup data, run the following:
+
 ```bash
 python manage.py syncdb 
 python manage.py migrate

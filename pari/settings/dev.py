@@ -11,13 +11,12 @@ ALLOWED_HOSTS.append("dev.ruralindiaonline.org")
 COMMENTS_DISQUS_SHORTNAME = "twpari"
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": PROJECT_ROOT.child("dev.db"),
-        "USER": "",
-        "PASSWORD": "",
-        "HOST": "",
-        "PORT": "",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pari',
+        'USER': 'pari',
+        'PASSWORD': 'pari',
+        'HOST': 'localhost'
     }
 }
 
