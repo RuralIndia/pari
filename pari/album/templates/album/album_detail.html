@@ -51,6 +51,7 @@
                         </div>
                     {% endif %}
                 {% endwith %}
+                <a class= "all-images-link" href="{{ album.get_absolute_url}}all">View all images in this collection >></a>
             </div>
             </div>
             
@@ -73,8 +74,5 @@
             {% endfor %}
         </div>
     {% endfor %}
-    <div class="text-center">
-        <a href="{{ album.get_absolute_url}}all"> Show all images</a>
-    </div>
 </div>
 {% endblock %}
