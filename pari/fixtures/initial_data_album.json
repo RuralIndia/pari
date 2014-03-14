@@ -52,7 +52,7 @@
     "_meta_title": null, 
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:06:10.622Z", 
-    "file": "uploads/albums/the-koilawallahs-of-godda/godda_koilawallah__9009.jpg", 
+    "file": "uploads/albums/the-koilawallahs-of-godda/godda_koilawallah__9009.jpg",
     "image_collection": 3, 
     "slug": "-20", 
     "gen_description": false
@@ -346,7 +346,7 @@
     "_meta_title": null, 
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:36:56.356Z", 
-    "file": "uploads/albums/the-green-army/GA_Thrissur_01.jpg", 
+    "file": "uploads/albums/the-green-army/ga_thrissur_01.jpg",
     "image_collection": 4, 
     "slug": "-34", 
     "gen_description": false
@@ -577,7 +577,7 @@
     "_meta_title": null, 
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:37:01.379Z", 
-    "file": "uploads/albums/the-green-army/GA_Thrissur_12.jpg", 
+    "file": "uploads/albums/the-green-army/ga_thrissur_12.jpg",
     "image_collection": 4, 
     "slug": "-45", 
     "gen_description": false
@@ -598,7 +598,7 @@
     "_meta_title": null, 
     "expiry_date": null, 
     "publish_date": "2014-03-12T11:01:48.189Z", 
-    "file": "uploads/albums/the-green-army/GA_Thrissur_01.jpg", 
+    "file": "uploads/albums/the-green-army/ga_thrissur_01.jpg",
     "image_collection": 4, 
     "slug": "-46", 
     "gen_description": false
@@ -645,9 +645,9 @@
     "predominant_tone": "colour", 
     "expiry_date": null, 
     "publish_date": "2013-08-19T01:33:53Z", 
-    "location": 2, 
+    "location":5, 
     "meta_data": "", 
-    "photographer": 2, 
+    "photographer": 4, 
     "image_collection": 4, 
     "slug": "the-green-army", 
     "gen_description": false, 
@@ -1035,13 +1035,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:36:56Z", 
     "image_collection_image": 35, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": true, 
     "image_file": "uploads/albums/the-green-army/GA_Thrissur_01.jpg", 
     "audio": "109687682", 
     "slug": "-14", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1061,13 +1061,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:36:56Z", 
     "image_collection_image": 36, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_02.jpg", 
     "audio": "109687697", 
     "slug": "-15", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1087,13 +1087,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:36:57Z", 
     "image_collection_image": 37, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_03.jpg", 
     "audio": "109687709", 
     "slug": "-16", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1113,13 +1113,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:36:57Z", 
     "image_collection_image": 38, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_04.jpg", 
     "audio": "109687713", 
     "slug": "-17", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1139,13 +1139,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:36:58Z", 
     "image_collection_image": 39, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_05.jpg", 
     "audio": "109687717", 
     "slug": "-18", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1165,13 +1165,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:36:58Z", 
     "image_collection_image": 40, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_06.jpg", 
     "audio": "109687730", 
     "slug": "-19", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1191,13 +1191,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:36:59Z", 
     "image_collection_image": 41, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_07.jpg", 
     "audio": "109687739", 
     "slug": "-20", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1217,13 +1217,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:36:59Z", 
     "image_collection_image": 42, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_08.jpg", 
     "audio": "109687744", 
     "slug": "-21", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1243,13 +1243,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:37:00Z", 
     "image_collection_image": 43, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_09.jpg", 
     "audio": "109687749", 
     "slug": "-22", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1269,13 +1269,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:37:00Z", 
     "image_collection_image": 44, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_10.jpg", 
     "audio": "109687757", 
     "slug": "-23", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1295,13 +1295,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:37:01Z", 
     "image_collection_image": 45, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/ga_thrissur_11.jpg", 
     "audio": "109687765", 
     "slug": "-24", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1321,13 +1321,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T10:37:01Z", 
     "image_collection_image": 46, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/GA_Thrissur_12.jpg", 
     "audio": "109687772", 
     "slug": "-25", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 },
 {
@@ -1347,13 +1347,13 @@
     "expiry_date": null, 
     "publish_date": "2014-03-12T11:01:48Z", 
     "image_collection_image": 47, 
-    "photographer": 2, 
+    "photographer": 4, 
     "is_cover": false, 
     "image_file": "uploads/albums/the-green-army/GA_Thrissur_01.jpg", 
     "audio": "", 
     "slug": "-26", 
     "gen_description": true, 
-    "location": 2
+    "location":5
   }
 }
 ]
