@@ -10,7 +10,8 @@ class MezzanineSearch(object):
     @staticmethod
     def get_search_results(query, filter=None):
         if filter is not None:
-            search_model = next(model for model in get_models() if issubclass(model, Displayable) and model.__name__==filter)
+            search_model = next(
+                model for model in get_models() if issubclass(model, Displayable) and model.__name__ == filter)
             results = search_model.objects.search(query)
         else:
             results = Displayable.objects.search(query)
@@ -33,7 +34,8 @@ if 'haystack' in settings.INSTALLED_APPS:
         def get_search_results(query, filter=None):
             queried_set = HaystackSearch.queryset.filter(content=query)
             if filter is not None:
-                search_model = next(model for model in get_models() if issubclass(model, Displayable) and model.__name__==filter)
+                search_model = next(
+                    model for model in get_models() if issubclass(model, Displayable) and model.__name__ == filter)
                 return queried_set.models(search_model)
             return queried_set
 
