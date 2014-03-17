@@ -25,7 +25,7 @@
     {% for face_group in faces|group_by:3 %}
     <div class="categories row">
         {% for face in face_group %}
-            <a href="{{ MEDIA_URL }}{{ face.image}}" data-title="{{ face.title }}" data-district="{{ face.district }}" data-description="{{ face.description }}"  class="image-tag mfp-image">
+            <a href="{{ MEDIA_URL }}{% thumbnail_no_fit face.image 1152 864 %}" data-title="{{ face.title }}" data-district="{{ face.district }}" data-description="{{ face.description }}"  class="image-tag mfp-image">
                 <div class="span4 grid-column">
                     <div class="flip-container">
                         <div class="flipper">
