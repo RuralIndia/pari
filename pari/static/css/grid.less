@@ -19,6 +19,25 @@
                     }
                 }
             }
+
+            .down-caption{
+              min-height: @captionHeight;
+              max-height: @captionHeight;
+            }
+        }
+
+        .label {
+          position: absolute;
+          background-color: rgba(0, 0 ,0 , 0.74902);
+          top: 0 ;
+          left: 0;
+          font-size: 20px;
+          padding: 10px;
+          margin: 0px;
+
+          p{
+            margin: 0;
+          }
         }
 
         .caption {
@@ -48,6 +67,13 @@
                 font-size: 22px;
             }
         }
+
+
+        .down-caption {
+          position: relative;
+          .dark-caption;
+        }
+
 
         @media (min-width: 481px) and (max-width: 979px) {
             float: none;

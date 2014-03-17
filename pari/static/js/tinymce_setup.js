@@ -1,6 +1,8 @@
 if (typeof tinyMCE != 'undefined') {
     tinymce.init({
         selector: ".mceEditor",
+        remove_script_host : false,
+        convert_urls : false,
         relative_urls: false,
         height : 400,
         file_browser_callback: function (field_name, url, type, win) {

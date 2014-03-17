@@ -34,14 +34,14 @@
                             </div>
                             <div class="back">
                                 <div class="back-content">
-                                    <h2>{{ face.district }}</h2>
-                                    <h3>{{ face.title }}</h3>
-                                    <p>{{ face.description }}</p>
+                                        <p>{{ face.description|removetags:"a"|safe }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="caption down-caption dark-caption">
+                        <p>{{ face.title }}, {{ face.district }} District</p>
+                    </div>
                 </div>
             </a>
         {% endfor %}

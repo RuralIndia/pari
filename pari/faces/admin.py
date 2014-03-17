@@ -9,7 +9,7 @@ class FaceAdmin(DisplayableAdmin):
     fieldsets = (None, {
         "fields": ["title", "description", "gen_description", "image", "district"],
     }),
-    list_display = ("admin_thumb", "title", "description", "district")
+    list_display = ("admin_thumb", "title", "district")
     list_editable = ()
     list_filter = ()
 
