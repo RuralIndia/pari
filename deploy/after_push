@@ -13,6 +13,5 @@ umask 002
 
 git submodule sync && git submodule update --init --recursive
 
-#run deploy/before_restart
-#run deploy/restart && run deploy/after_restart
-run deploy/deploy
+run deploy/before_restart
+run deploy/restart && run deploy/after_restart
