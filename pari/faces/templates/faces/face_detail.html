@@ -27,18 +27,7 @@
         {% for face in face_group %}
             <a href="{{ MEDIA_URL }}{% thumbnail_no_fit face.image 1152 864 %}" data-title="{{ face.title }}" data-district="{{ face.district }}" data-description="{{ face.description }}"  class="image-tag mfp-image">
                 <div class="span4 grid-column">
-                    <div class="flip-container">
-                        <div class="flipper">
-                            <div class="front">
-                                <img src="{{ MEDIA_URL }}{% thumbnail face.image 370 300 %}" width="370" height="300" alt="">
-                            </div>
-                            <div class="back">
-                                <div class="back-content">
-                                        <p>{{ face.description|removetags:"a"|safe }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="{{ MEDIA_URL }}{% thumbnail face.image 370 300 %}" width="370" height="300" alt="">
                     <div class="caption down-caption dark-caption">
                         <p>{{ face.title }}, {{ face.district }} District</p>
                     </div>

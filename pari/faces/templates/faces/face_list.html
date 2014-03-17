@@ -22,7 +22,7 @@
     {% for first_letter_faces_group in first_letter_faces_list|group_by:3 %}
     <div class="categories row">
         {% for first_letter_face in first_letter_faces_group %}
-            <a href="{{ first_letter_face.grouper }}">
+            <a href="{{ first_letter_face.grouper | lower }}">
                 <div class="span4 grid-column">
                     <img src="{{ MEDIA_URL }}{% thumbnail first_letter_face.list.0.image 370 300 %}" width="370" height="300" alt="">
                     <div class="label">

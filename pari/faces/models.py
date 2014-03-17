@@ -36,5 +36,5 @@ class Face(Orderable, Displayable, AdminThumbMixin):
 
 
 def get_faces_by_first_letter(alphabet):
-    return Face.objects.filter(district__startswith=alphabet).extra(
+    return Face.objects.filter(district__istartswith=alphabet).extra(
         select={'upper_district': 'upper(district)'}).order_by('upper_district')
