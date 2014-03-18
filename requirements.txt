@@ -1,2 +1,1 @@
-soundcloud
 -r requirements/heroku.txt
