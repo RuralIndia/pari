@@ -169,5 +169,3 @@ class AlbumImage(Orderable, Displayable):
             self.audio = audio_file_id
             if delete_audio_file:
                 self.audio_file.delete(save=True)
-
-

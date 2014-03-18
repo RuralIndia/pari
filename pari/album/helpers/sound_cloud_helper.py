@@ -39,21 +39,3 @@ class SoundCloudHelper:
         self.add_track_to_playlist(track.id, self.client, playlist_title)
 
         return track.id
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
