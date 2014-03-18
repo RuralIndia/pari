@@ -30,3 +30,4 @@ pycrypto==2.6
 pytz==2012j
 six==1.2.0
 wsgiref==0.1.2
+soundcloud==0.4.1
