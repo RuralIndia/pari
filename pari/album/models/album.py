@@ -10,6 +10,7 @@ from filebrowser_safe.functions import convert_filename
 from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable, Orderable
 from mezzanine.utils.models import upload_to
+from pari.album.helpers.sound_cloud_helper import SoundCloudHelper
 
 from pari.album.models import ImageCollection, ImageCollectionImage
 from pari.article.models import Article, Location
@@ -81,7 +82,8 @@ class Album(Displayable):
             new_image_collection = ImageCollection(title=self.title)
             new_image_collection.save()
             self.image_collection = new_image_collection
-
+            soundcloud_helper = SoundCloudHelper()
+            soundcloud_helper.create_playlist(self.title)
         super(Album, self).save(*args, **kwargs)
         if self.zip_import:
             zip_file = ZipFile(self.zip_import)
@@ -115,8 +117,6 @@ class Album(Displayable):
                     path = os.path.join(ALBUMS_UPLOAD_DIR, self.slug,
                                         unicode(name, errors="ignore"))
                     saved_path = default_storage.save(path, ContentFile(data))
-                # image_collection_image = ImageCollectionImage(file=saved_path)
-                # self.image_collection.images.add(image_collection_image)
                 album_image = AlbumImage(image_file=saved_path, location=self.location,
                                          photographer=self.photographer)
                 if first and not self.has_cover:
@@ -130,8 +130,10 @@ class Album(Displayable):
 
 class AlbumImage(Orderable, Displayable):
     album = models.ForeignKey("Album", related_name="images")
-    image_collection_image = models.ForeignKey("ImageCollectionImage")
+    image_collection_image = models.ForeignKey("ImageCollectionImage", related_name="album_image")
     audio = models.CharField(max_length=30, null=True, blank=True)
+    audio_file = models.FileField(_("File"), max_length=200, null=True, blank=True,
+                                  upload_to=upload_to("album.AlbumImage.audio_file", "albums"))
     is_cover = models.BooleanField(verbose_name="Album cover", default=False)
     photographer = models.ForeignKey("article.Author", related_name='photographs')
     location = models.ForeignKey(Location, verbose_name=_("Location"))
@@ -155,9 +157,17 @@ class AlbumImage(Orderable, Displayable):
     def get_thumbnail(self):
         return self.image_collection_image.get_thumbnail()
 
-    def save(self, *args, **kwargs):
+    def save(self, delete_audio_file=True, *args, **kwargs):
         if not hasattr(self, 'image_collection_image'):
             image_collection_image = ImageCollectionImage(file=self.image_file)
             self.album.image_collection.images.add(image_collection_image)
             self.image_collection_image = image_collection_image
         super(AlbumImage, self).save(*args, **kwargs)
+        if self.audio_file:
+            soundcloud_helper = SoundCloudHelper()
+            audio_file_id = soundcloud_helper.upload(self.audio_file, self.album.title)
+            self.audio = audio_file_id
+            if delete_audio_file:
+                self.audio_file.delete(save=True)
+
+
