@@ -1,3 +1,4 @@
+from django.conf import settings
 import soundcloud
 
 
@@ -7,9 +8,9 @@ class SoundCloudHelper:
     client = soundcloud.Client
 
     def authenticate(self):
-        self.client = soundcloud.Client(client_id='d129911dd3c35ec537c30a06990bd902',
-                                        client_secret='74aa815b1fcdf29b02a2d177daea1181',
-                                        username='ruralindiaonline@gmail.com', password='RuralIndia123')
+        self.client = soundcloud.Client(client_id=settings.SOUND_CLOUD_CLIENT_ID,
+                                        client_secret=settings.SOUND_CLOUD_CLIENT_SECRET,
+                                        username=settings.SOUND_CLOUD_USERNAME, password=settings.SOUND_CLOUD_PASSWORD)
 
         print self.client.get('/me').username
 
