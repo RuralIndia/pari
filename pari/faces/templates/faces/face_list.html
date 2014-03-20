@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n verbatim_tag article_filters article_tags %}
+{% load i18n verbatim_tag article_filters article_tags faces_filters %}
 
 {% block meta_title %}{% trans "Faces" %}{% endblock %}
 {% block title %}{% trans "Faces" %}{% endblock %}
@@ -18,16 +18,16 @@
 {% endblock %}
 
 {% block main %}
-    {% regroup faces by first_letter as first_letter_faces_list %}
-    {% for first_letter_faces_group in first_letter_faces_list|group_by:3 %}
+    {% regroup faces by first_letter_of_district as grouped_faces_lists %}
+    {% for grouped_faces_list in grouped_faces_lists|group_by:3 %}
     <div class="categories row">
-        {% for first_letter_face in first_letter_faces_group %}
-            <a href="{{ first_letter_face.grouper | lower }}">
+        {% for faces_list in grouped_faces_list %}
+            <a href="{{ faces_list.grouper | lower }}">
                 <div class="span4 grid-column">
-                    <img src="{{ MEDIA_URL }}{% thumbnail first_letter_face.list.0.image 370 300 %}" width="370" height="300" alt="">
+                    <img src="{{ MEDIA_URL }}{% thumbnail faces_list|get_thumbnail_of_the_week|get_file_path  370 300 %}" width="370" height="300" alt="">
                     <div class="label">
                        <p>
-                        {{ first_letter_face.grouper | upper }}
+                        {{ faces_list.grouper | upper }}
                        </p>
                     </div>
                 </div>
