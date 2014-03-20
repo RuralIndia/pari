@@ -9,7 +9,7 @@ class FaceImageInline(TabularDynamicInlineAdmin):
     extra = 15
     formset = FaceImageInlineFormset
     fieldsets = (None, {
-        "fields": ["image_file", "description", "is_cover", "_order"],
+        "fields": ["image_file", "description", "is_pinned", "_order"],
     }),
 
 
@@ -17,9 +17,9 @@ class FaceAdmin(DisplayableAdmin):
     form = FaceForm
     inlines = [FaceImageInline, ]
     fieldsets = (None, {
-        "fields": ["title", "description", "gen_description", "district", "zip_import", ],
+        "fields": ["title", "description", "gen_description", "district", "is_pinned", "zip_import", ],
     }),
-    list_display = ("admin_thumb", "title", "district")
+    list_display = ("admin_thumb", "title", "district", "is_pinned")
     list_editable = ()
     list_filter = ()
 

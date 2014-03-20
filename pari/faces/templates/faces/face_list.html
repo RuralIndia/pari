@@ -21,13 +21,13 @@
     {% regroup faces by first_letter_of_district as grouped_faces_lists %}
     {% for grouped_faces_list in grouped_faces_lists|group_by:3 %}
     <div class="categories row">
-        {% for faces_list in grouped_faces_list %}
-            <a href="{{ faces_list.grouper | lower }}">
+        {% for grouped_faces in grouped_faces_list %}
+            <a href="{{ grouped_faces.grouper | lower }}">
                 <div class="span4 grid-column">
-                    <img src="{{ MEDIA_URL }}{% thumbnail faces_list|get_thumbnail_of_the_week|get_file_path  370 300 %}" width="370" height="300" alt="">
+                    <img src="{{ MEDIA_URL }}{% thumbnail grouped_faces|get_group_image|get_file_path  370 300 %}" width="370" height="300" alt="">
                     <div class="label">
                        <p>
-                        {{ faces_list.grouper | upper }}
+                        {{ grouped_faces.grouper | upper }}
                        </p>
                     </div>
                 </div>

@@ -23,6 +23,7 @@ class Face(Orderable, Displayable, AdminThumbMixin):
                                               "they'll be imported into this gallery."))
     image_collection = models.ForeignKey(ImageCollection)
     district = models.CharField(_("District"), max_length=255)
+    is_pinned = models.BooleanField(verbose_name="Pin To Top", default=False)
     admin_thumb_field = "image"
     objects = DisplayableManager()
 
@@ -31,24 +32,12 @@ class Face(Orderable, Displayable, AdminThumbMixin):
         return "face-detail", (), {"slug": self.slug}
 
     @property
-    def cover(self):
-        return self.images.get(is_cover=True).image_collection_image.file.path
-
-    @property
-    def has_cover(self):
-        return self.images.filter(is_cover=True).exists()
-
-    @property
-    def get_cover(self):
-        return self.images.get(is_cover=True)
+    def pinned_image(self):
+        return self.images.get(is_pinned=True).image_collection_image.file.path
 
     class Meta:
         verbose_name = _("Face")
         verbose_name_plural = _("Faces")
-
-    @property
-    def get_thumbnail(self):
-        return self.cover
 
     def first_letter_of_district(self):
         return self.district[0]
@@ -97,9 +86,6 @@ class Face(Orderable, Displayable, AdminThumbMixin):
                                         unicode(name, errors="ignore"))
                     saved_path = default_storage.save(path, ContentFile(data))
                 face_image = FaceImage(image_file=saved_path)
-                if first and not self.has_cover:
-                    face_image.is_cover = True
-                    first = False
                 self.images.add(face_image)
             if delete_zip_import:
                 zip_file.close()
@@ -111,10 +97,18 @@ def get_faces_by_first_letter(alphabet):
         select={'upper_district': 'upper(district)'}).order_by('upper_district')
 
 
+def get_pinned_face(alphabet):
+    return Face.objects.filter(district__istartswith=alphabet).filter(is_pinned=True)
+
+
+def get_pinned_face_image(face):
+    return face.images.filter(is_pinned=True)
+
+
 class FaceImage(Orderable, Displayable):
     face = models.ForeignKey("Face", related_name="images")
     image_collection_image = models.ForeignKey("album.ImageCollectionImage", related_name="face_image")
-    is_cover = models.BooleanField(verbose_name="Album cover", default=False)
+    is_pinned = models.BooleanField(verbose_name="Pin To Top", default=False)
     image_file = FileField(_("File"), max_length=200, format="Image", null=True,
                            upload_to=upload_to("album.ImageCollection.file", "faces"))
 
