@@ -21,3 +21,4 @@ INSTALLED_APPS += (
 )
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+SOUND_CLOUD_CLIENT_ID = 'd129911dd3c35ec537c30a06990bd902'
