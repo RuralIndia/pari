@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block main %}
-    {% regroup faces by first_letter_of_district as grouped_faces_lists %}
+    {% regroup faces by first_letter_of_district|upper as grouped_faces_lists %}
     {% for grouped_faces_list in grouped_faces_lists|group_by:3 %}
     <div class="categories row">
         {% for grouped_faces in grouped_faces_list %}
