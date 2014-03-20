@@ -381,6 +381,7 @@ MIDDLEWARE_CLASSES = (
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 
+SOUND_CLOUD_CLIENT_ID = 'd129911dd3c35ec537c30a06990bd902'
 #########################
 # OPTIONAL APPLICATIONS #
 #########################
