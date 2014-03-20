@@ -10,6 +10,7 @@ register = Library()
 def get_file_path(image):
     return image.image_collection_image.file.path
 
+
 @register.filter
 def get_group_image(grouped_faces):
     pinned_face = get_pinned_face(grouped_faces["list"][0].first_letter_of_district)
@@ -17,6 +18,7 @@ def get_group_image(grouped_faces):
         return get_face_image(pinned_face[0])
     else:
         return get_group_image_of_the_week(grouped_faces)
+
 
 @register.filter
 def get_face_image(face):
@@ -28,6 +30,7 @@ def get_face_image(face):
         return list(face.images.all())[image_index]
     else:
         return face_image[0]
+
 
 @register.filter
 def get_description(face_image):
@@ -47,6 +50,4 @@ def get_district_of_the_week(faces):
 
 
 def get_week_of_the_year():
-    return date.today().isocalendar()[1];
-
-
+    return date.today().isocalendar()[1]

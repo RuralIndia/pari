@@ -60,7 +60,6 @@ class Face(Orderable, Displayable, AdminThumbMixin):
                 from PIL import Image
             except ImportError:
                 import Image
-            first = True
             for name in zip_file.namelist():
                 data = zip_file.read(name)
                 try:
