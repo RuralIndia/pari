@@ -381,6 +381,10 @@ MIDDLEWARE_CLASSES = (
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 
+#SoundCloud credentials
+SOUND_CLOUD_CLIENT_SECRET = '74aa815b1fcdf29b02a2d177daea1181'
+SOUND_CLOUD_USERNAME = 'ruralindiaonline@gmail.com'
+SOUND_CLOUD_PASSWORD = 'RuralIndia123'
 SOUND_CLOUD_CLIENT_ID = 'd129911dd3c35ec537c30a06990bd902'
 #########################
 # OPTIONAL APPLICATIONS #

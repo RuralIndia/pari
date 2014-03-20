@@ -46,8 +46,3 @@ INSTALLED_APPS += (
 MANDRILL_API_KEY = os.environ["DJANGO_MANDRILL_API_KEY"]
 DEFAULT_FROM_EMAIL = "do-no-reply@ruralindiaonline.org"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
-
-#SoundCloud credentials
-SOUND_CLOUD_CLIENT_SECRET = '74aa815b1fcdf29b02a2d177daea1181'
-SOUND_CLOUD_USERNAME = 'ruralindiaonline@gmail.com'
-SOUND_CLOUD_PASSWORD = 'RuralIndia123'

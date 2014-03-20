@@ -36,9 +36,6 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 DEFAULT_FILE_STORAGE = 'pari.article.storage.ParallelS3Storage'
 
-SOUND_CLOUD_CLIENT_SECRET = '74aa815b1fcdf29b02a2d177daea1181'
-SOUND_CLOUD_USERNAME = 'ruralindiaonline@gmail.com'
-SOUND_CLOUD_PASSWORD = 'RuralIndia123'
 
 # INSTALLED_APPS += (
 #     "haystack",
