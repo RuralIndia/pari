@@ -36,6 +36,7 @@ def get_face_image(face):
 def get_description(face_image):
     return face_image.description
 
+
 @register.filter
 def get_title(face_image):
     return face_image.title

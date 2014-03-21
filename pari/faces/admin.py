@@ -14,7 +14,6 @@ class FaceImageInline(TabularDynamicInlineAdmin):
     }),
 
 
-
 class FaceAdmin(DisplayableAdmin):
     form = FaceForm
     inlines = [FaceImageInline, ]
