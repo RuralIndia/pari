@@ -28,8 +28,11 @@
             <a href="{{ MEDIA_URL }}{% thumbnail_no_fit face|get_face_image|get_file_path 1152 864 %}" data-title="{{ face|get_face_image|get_title }}" data-district="{{ face.district }}" data-description="{{ face|get_face_image|get_description }}"  class="image-tag mfp-image">
                 <div class="span4 grid-column">
                     <img src="{{ MEDIA_URL }}{% thumbnail face|get_face_image|get_file_path 370 300 %}" width="370" height="300" alt="">
-                    <div class="caption down-caption dark-caption">
-                        <p>{{ face|get_face_image|get_title }}, {{ face.district }} District</p>
+                    <div class="caption down-caption dark-caption text-padding">
+                        <div class="image-footer">{{face|get_face_image|get_title }}, {{ face.district }} District</div>
+                            <span class="pull-right text-red">Know more
+                            <i class="icon icon-circle-arrow-right arrow-font"></i>
+                            </span>
                     </div>
                 </div>
             </a>
