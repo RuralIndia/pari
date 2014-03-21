@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
 
-#set env variables
-export DJANGO_SECRET_KEY=blah
-export DJANGO_SETTINGS_MODULE=pari.settings.prod
-export DJANGO_DB_NAME=pari
-export DJANGO_DB_USER=postgres
-export DJANGO_DB_PASSWORD='!abcd1234'
-export DJANGO_RECAPTCHA_PUBLIC_KEY=1
-export DJANGO_RECAPTCHA_PRIVATE_KEY=1
-export DJANGO_MANDRILL_API_KEY=1
+when read line
+do
+	commnad $line
+done < env_variables.txt
 
 #use pari virtualenv
 source /.venv/pari/bin/activate
