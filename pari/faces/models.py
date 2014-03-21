@@ -49,7 +49,7 @@ class Face(Orderable, Displayable, AdminThumbMixin):
         """
 
         if not hasattr(self, 'image_collection'):
-            new_image_collection = ImageCollection(title=self.title)
+            new_image_collection = ImageCollection(title=self.district)
             new_image_collection.save()
             self.image_collection = new_image_collection
         super(Face, self).save(*args, **kwargs)
@@ -129,6 +129,9 @@ class FaceImage(Orderable, Displayable):
         return self.image_collection_image.get_thumbnail()
 
     def save(self, delete_audio_file=True, *args, **kwargs):
+
+        self.gen_description = False
+
         if not hasattr(self, 'image_collection_image'):
             image_collection_image = ImageCollectionImage(file=self.image_file)
             self.face.image_collection.images.add(image_collection_image)

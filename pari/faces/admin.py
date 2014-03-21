@@ -6,20 +6,23 @@ from pari.faces.models import Face, FaceImage
 
 class FaceImageInline(TabularDynamicInlineAdmin):
     model = FaceImage
-    extra = 15
     formset = FaceImageInlineFormset
+    extra = 1
+
     fieldsets = (None, {
-        "fields": ["image_file", "description", "is_pinned", "_order"],
+        "fields": ["image_file", "title", "is_pinned", "description", "_order"],
     }),
+
 
 
 class FaceAdmin(DisplayableAdmin):
     form = FaceForm
     inlines = [FaceImageInline, ]
     fieldsets = (None, {
-        "fields": ["title", "description", "gen_description", "district", "is_pinned", "zip_import", ],
+        "fields": ["district", "is_pinned", "zip_import", ],
     }),
-    list_display = ("admin_thumb", "title", "district", "is_pinned")
+    list_display = ("admin_thumb", "district", "is_pinned")
+    list_display_links = ("district", )
     list_editable = ()
     list_filter = ()
 

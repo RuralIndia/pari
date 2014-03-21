@@ -36,6 +36,10 @@ def get_face_image(face):
 def get_description(face_image):
     return face_image.description
 
+@register.filter
+def get_title(face_image):
+    return face_image.title
+
 
 def get_group_image_of_the_week(faces):
     district_of_the_week = get_district_of_the_week(faces)

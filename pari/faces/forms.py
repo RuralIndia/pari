@@ -1,21 +1,20 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from pari.article.forms import DisplayableForm, TinyMceWidget
+from pari.article.forms import TinyMceWidget
 from pari.faces.models import Face
 
 
-class FaceForm(DisplayableForm):
-    description = forms.CharField(max_length=2000, required=True, widget=forms.Textarea(attrs={'rows': 1, 'cols': 40}))
-
-    def __init__(self, *args, **kwargs):
-        super(FaceForm, self).__init__(*args, **kwargs)
-        self.fields['description'].widget = TinyMceWidget(attrs={'rows': 10, 'cols': 20})
-
+class FaceForm(forms.ModelForm):
     class Meta:
         model = Face
 
 
 class FaceImageInlineFormset(forms.models.BaseInlineFormSet):
+
+    def add_fields(self, form, index):
+        super(FaceImageInlineFormset, self).add_fields(form, index)
+        form.fields['description'] = forms.CharField(max_length=1000, required=True, widget=TinyMceWidget(attrs={'rows': 15, 'cols': 20}))
+
     def clean(self):
         if self.instance.zip_import:
             del self.errors[:]
