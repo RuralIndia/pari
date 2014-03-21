@@ -3,7 +3,7 @@
 when read line
 do
 	commnad $line
-done < env_variables.txt
+done < /pari/env_variables.txt
 
 #use pari virtualenv
 source /.venv/pari/bin/activate
