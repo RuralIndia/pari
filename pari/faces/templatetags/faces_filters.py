@@ -25,7 +25,7 @@ def get_face_image(face):
     face_image = get_pinned_face_image(face)
     if len(face_image) == 0:
         week_of_the_year = get_week_of_the_year()
-        image_count = face.images.count()
+        image_count = face.images.all().count()
         image_index = week_of_the_year % image_count
         return list(face.images.all())[image_index]
     else:
@@ -49,7 +49,7 @@ def get_group_image_of_the_week(faces):
 
 def get_district_of_the_week(faces):
     week_of_the_year = get_week_of_the_year()
-    district_count = len(faces)
+    district_count = len(faces["list"])
     district_index = week_of_the_year % district_count
     return faces["list"][district_index]
 

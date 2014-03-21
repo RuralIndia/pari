@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
-when read line
+#export env variables
+while read line
 do
-	commnad $line
+	command $line
 done < /pari/env_variables.txt
 
 #use pari virtualenv
 source /.venv/pari/bin/activate
+
 
 #install required python modules
 pip install -r requirements.txt
