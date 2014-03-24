@@ -121,20 +121,20 @@ class AlbumAdminTests(TestCase):
         self.assertIn("image_file", keys)
 
     def test_image1_is_chosen_as_cover_image_if_a_zip_file_and_image1_are_attached_at_the_same_time(self):
-        album_with_zip_file = AlbumFactory()
-        album_with_zip_file.zip_import = mock.Mock(return_value="file.zip")
         data = {
             'form-TOTAL_FORMS': u'1',
             'form-INITIAL_FORMS': u'0',
             'form-MAX_NUM_FORMS': u'',
             'form-0-image_file': u'file.png',
             'form-0-is_cover': u'True',
-            'form-0-photographer': u'1',
-            'form-0-_order': u'1',
-            'form-0-location': u'1',
+            'form-0-location': self.albumImage.location.id,
+            'form-0-photographer': self.albumImage.photographer.id,
             'form-0-title': u'1',
             'form-0-status': u'1',
+            'form-0-_order': u'1',
         }
-        formset = self.setup_formset(data, album_with_zip_file)
+        self.album.zip_import = mock.Mock(return_value="file.zip")
+        formset = self.setup_formset(data, self.album)
+        self.assertTrue(formset.is_valid())
         formset.save()
         self.assertEqual(formset.instance.cover, 'file.png')
