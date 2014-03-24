@@ -37,7 +37,7 @@
                 <p>{{ album.description }}</p>
                 <div class="mfp-img-holder">
                 <div class="album-controls">
-                    <button class="btn btn-large btn-{{ album.predominant_tone }}">Start slideshow <i class="icon-play album-audio"></i></button>
+                    <button class="btn btn-large btn-{{ album.predominant_tone }}">Start slideshow <i class="fa fa-play album-audio"></i></button>
                 </div>
                 {% with album.articles.all as articles %}
                     {% if articles %}
@@ -66,7 +66,7 @@
                         <div class="caption">
                             <p>{{ image.description|truncatechars:50 }}</p>
                             {% if image.audio %}
-                                <div class="audio-icon"><i class="icon-microphone"></i></div>
+                                <div class="audio-icon"><i class="fa fa-microphone"></i></div>
                             {% endif %}
                         </div>
                     </div>

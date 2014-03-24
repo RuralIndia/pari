@@ -65,11 +65,11 @@ var Face = {
         var slideshow = this._popup.data('slideshow');
         var slideshowButton = $('.btn-slideshow i');
         if(slideshow) { 
-            slideshowButton.addClass('icon-pause');
-            slideshowButton.removeClass('icon-play');
+            slideshowButton.addClass('fa fa-pause');
+            slideshowButton.removeClass('fa fa-play');
         } else {
-            slideshowButton.addClass('icon-play');
-            slideshowButton.removeClass('icon-pause');
+            slideshowButton.addClass('fa fa-play');
+            slideshowButton.removeClass('fa fa-pause');
 
         }
 

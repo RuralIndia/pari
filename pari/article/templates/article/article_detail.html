@@ -44,9 +44,9 @@
         </div>
         <p class="article-meta">
             {% with blog_post.author as author %}
-                <a href="{% url "author-detail" author.slug %}"><i class="icon-user"></i>  {{author.title}}</a>
+                <a href="{% url "author-detail" author.slug %}"><i class="fa fa-user"></i>  {{author.title}}</a>
             {% endwith %}
-            | <a href="{{ blog_post.publish_date|archive_url }}"><i class="icon-calendar"></i> {{ blog_post.publish_date|date }}</a>
+            | <a href="{{ blog_post.publish_date|archive_url }}"><i class="fa fa-calendar"></i> {{ blog_post.publish_date|date }}</a>
         </p>
         {% include "article/includes/social.html" with item=blog_post %}
     {% endblock %}
@@ -79,7 +79,7 @@
 
 {% block sidebar %}
     <div class="well"> 
-        <h4><i class="icon-road"></i> Locations </h4>
+        <h4><i class="fa fa-road"></i> Locations </h4>
         <p>{{ blog_post.get_location_titles }}</p>
 
         <div id="map" class="map-view" data-lat="{{ blog_post|get_latitudes }}" data-long="{{ blog_post|get_longitudes }}"></div>
@@ -87,7 +87,7 @@
     <div class="keywords">
         {% keywords_for blog_post as keywords %}
         {% if keywords %}
-            <h3><i class="icon-tags"></i>  Keywords</h3>
+            <h3><i class="fa fa-tags"></i>  Keywords</h3>
             <div class="full-horizontal-line"></div>
 
             {% for keyword in keywords %}
@@ -100,7 +100,7 @@
     {% for article in related_articles %}
         {% if forloop.first %}
             <div class="related-articles well">
-                <h3><i class="icon-exchange"></i>  Related Articles</h3>
+                <h3><i class="fa fa-exchange"></i>  Related Articles</h3>
         {% endif %}
         <div class="article">
             <a href="{{ article|get_absolute_url }}">

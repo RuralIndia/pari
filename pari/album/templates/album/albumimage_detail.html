@@ -30,7 +30,7 @@
         {% with image|get_request_url:request as url %}
             {% render_share_widgets image.album.title url %}
         {% endwith %}
-        <a class="pari-link" href="{{ image.album.get_absolute_url }}">View Album <i class="icon-double-angle-right"></i></a>
+        <a class="pari-link" href="{{ image.album.get_absolute_url }}">View Album <i class="fa fa-angle-double-right"></i></a>
     </div>
 {% endblock %}
 

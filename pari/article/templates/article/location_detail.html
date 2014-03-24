@@ -39,12 +39,12 @@
 
 {% block sidebar %}
     <div class="well">
-        <h4><i class="icon-road"></i> {{ location.title }}</h4>
+        <h4><i class="fa fa-road"></i> {{ location.title }}</h4>
         <p>{{ location.description }}</p>
         <div id="map" class="map-view" data-lat="{{ location.location.latitude }}" data-long="{{ location.location.longitude }}"></div>
     </div>
     <div class="well" >
-        <h4><i class="icon-edit"></i> Topics</h4>
+        <h4><i class="fa fa-edit"></i> Topics</h4>
         {% for topic in topics_in_location %}
             <div class="topic">
                 <a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a>

@@ -20,16 +20,16 @@ var Album = {
 
             getToolbar: function () {
                 return '<div class="ps-toolbar-close  ps-toolbar-item">' +
-                            '<i class="icon-remove-circle"></i>' +
+                            '<i class="fa fa-times-circle-o"></i>' +
                         '</div>' +
                         '<div class="ps-toolbar-audio ps-toolbar-item">' +
-                            '<i class="icon-play"></i>' +
+                            '<i class="fa fa-play"></i>' +
                         '</div>' +
                         '<div class="ps-toolbar-previous ps-toolbar-item">' +
-                            '<i class="icon-step-backward"></i>' +
+                            '<i class="fa fa-step-backward"></i>' +
                         '</div>' +
                         '<div class="ps-toolbar-next ps-toolbar-item">' +
-                            '<i class="icon-step-forward"></i>' +
+                            '<i class="fa fa-step-forward"></i>' +
                         '</div>';
             }
         });
@@ -98,7 +98,7 @@ var Album = {
 
     _toggleAudioButton: function () {
         var audioButton = $('.ps-toolbar-audio i');
-        if (audioButton.hasClass('icon-play')) {
+        if (audioButton.hasClass('fa-play')) {
             this._initPauseAudioButton(audioButton);
         } else {
             this._initPlayAudioButton(audioButton);
@@ -107,14 +107,14 @@ var Album = {
 
     _initPlayAudioButton: function (audioButton) {
         audioButton = audioButton || $('.ps-toolbar-audio i');
-        audioButton.removeClass('icon-pause');
-        audioButton.addClass('icon-play');
+        audioButton.removeClass('fa-pause');
+        audioButton.addClass('fa-play');
     },
 
     _initPauseAudioButton: function (audioButton) {
         audioButton = audioButton || $('.ps-toolbar-audio i');
-        audioButton.removeClass('icon-play');
-        audioButton.addClass('icon-pause');
+        audioButton.removeClass('fa-play');
+        audioButton.addClass('fa-pause');
     }
 };
 

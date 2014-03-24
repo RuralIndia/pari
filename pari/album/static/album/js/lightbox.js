@@ -38,10 +38,10 @@ var Album = {
                                 '<p class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.attr('title') + '</p>' +
                                 '<div class="btn-toolbar">'+
                                     '<div class="btn-group">'+
-                                        '<a class="btn btn-slideshow" href="#">Slideshow <i class="icon-' + icon + '"></i></a>'+
-                                        '<a class="btn" href="' + item.el.attr('data-url') +'"><i class="icon-share"></i></a>'+
-                                        '<a class="btn" href="' + item.el.attr('data-url') +'#comments"><i class="icon-comment-alt"></i></a>'+
-                                        '<a class="btn btn-fullscreen" href="#"><i class="icon-fullscreen"></i></a>'+
+                                        '<a class="btn btn-slideshow" href="#">Slideshow <i class="fa fa-' + icon + '"></i></a>'+
+                                        '<a class="btn" href="' + item.el.attr('data-url') +'"><i class="fa fa-share-square-o"></i></a>'+
+                                        '<a class="btn" href="' + item.el.attr('data-url') +'#comments"><i class="fa fa-comment-o"></i></a>'+
+                                        '<a class="btn btn-fullscreen" href="#"><i class="fa fa-arrows-alt"></i></a>'+
                                     '</div>'+
                                 '</div>'+
                             '</div>'
@@ -52,7 +52,7 @@ var Album = {
                             '<div class="mfp-img-holder">'+
                                 '<div class="mfp-img"></div>'+
                                 '<div class="mfp-controls">'+
-                                    '<i class="icon-volume-off"></i><i class="icon-play audio"></i><i class="icon-pause audio" style="display:none"></i>'+
+                                    '<i class="fa fa-volume-off"></i><i class="fa fa-play audio"></i><i class="fa fa-pause audio" style="display:none"></i>'+
                                 '</div>'+
                             '</div>'+
                             '<div class="mfp-bottom-bar">'+
@@ -112,11 +112,11 @@ var Album = {
         var slideshow = this._popup.data('slideshow');
         var slideshowButton = $('.btn-slideshow i');
         if(slideshow) { 
-            slideshowButton.addClass('icon-pause');
-            slideshowButton.removeClass('icon-play');
+            slideshowButton.addClass('fa-pause');
+            slideshowButton.removeClass('fa-play');
         } else {
-            slideshowButton.addClass('icon-play');
-            slideshowButton.removeClass('icon-pause');
+            slideshowButton.addClass('fa-play');
+            slideshowButton.removeClass('fa-pause');
 
         }
 
@@ -200,13 +200,13 @@ var Album = {
     },
 
     _initPlayButton: function(){
-        $('.icon-play', '.mfp-controls').show();
-        $('.icon-pause', '.mfp-controls').hide();
+        $('.fa-play', '.mfp-controls').show();
+        $('.fa-pause', '.mfp-controls').hide();
     },
 
     _initPauseButton: function(){
-        $('.icon-play', '.mfp-controls').hide();
-        $('.icon-pause', '.mfp-controls').show();
+        $('.fa-play', '.mfp-controls').hide();
+        $('.fa-pause', '.mfp-controls').show();
     }
 }
 

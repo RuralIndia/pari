@@ -26,7 +26,7 @@
 
 {% block sidebar %}
 <div class="well">
-    <h4><i class="icon-edit"></i> Topics</h4>
+    <h4><i class="fa fa-edit"></i> Topics</h4>
     {% for topic in topics %}
         <div class="topic">
             <a href="{{ topic.get_absolute_url }}">{{ topic.title }}</a>
@@ -34,7 +34,7 @@
     {% endfor %}
 </div>
 <div class="well">
-    <h4><i class="icon-tags"></i> Related Keywords</h4>
+    <h4><i class="fa fa-tags"></i> Related Keywords</h4>
     {% for related_keyword in related_keywords %}
         <span class="tag">
             <a href="{% url 'keyword-detail' related_keyword.slug %}">{{ related_keyword }}</a>
