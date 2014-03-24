@@ -4,7 +4,7 @@
         <div class="span12 type-filters-container">
             <ul class="type-filters">
                 {% for type in result_types %}
-                <li class="type-filter {% if type == filter %} active{% endif %}" data-filter="{{type}}" data-toggle="tooltip" title="" data-original-title="{{type}}" data-placement="bottom"><i class="icon-{{type|lower}}"></i></li>
+                <li class="type-filter {% if type == filter %} active{% endif %}" data-filter="{{type}}" data-toggle="tooltip" title="" data-original-title="{{type}}" data-placement="bottom"><i class="fa fa-{{type|lower}}"></i></li>
                 {% endfor %}
             </ul>
             <div class="view-all" data-toggle="tooltip" title="" data-original-title="View all filters" data-placement="bottom"><i class="icon-plus"></i></div>
