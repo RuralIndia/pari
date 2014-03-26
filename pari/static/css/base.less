@@ -42,9 +42,9 @@ a.pari-link {
     color: @headingsColor;
 }
 
-.navbar-inner .brand,
-.navbar-inner li.dropdown a,
-.navbar-inner li.dropdown.active a,
+.navbar-inverse .navbar-brand,
+.navbar-inverse li.dropdown a,
+.navbar-inverse li.dropdown.active a,
 .carousel-control,
 .carousel-caption h4,
 .carousel-caption p a,
@@ -64,7 +64,7 @@ a.pari-link {
     overflow-x: hidden;
     min-height: 100%;
     height: auto;
-    margin: 0 auto -@footerHeight;
+//    margin: 0 auto -@footerHeight;
 
     .navbar {
         @navBottomBorder: #808080;
@@ -72,8 +72,8 @@ a.pari-link {
         border:0px;
         border-bottom: 2px solid @navBottomBorder;
         min-height: 60px;
-        
-        .brand {
+
+        .navbar-brand {
             position: relative;
             font-size: 31px;
             text-shadow: none;
@@ -106,82 +106,78 @@ a.pari-link {
                 }
             }
         }
-
-        .navbar-inner {
-            background: @navColor;
-            border:0px;
-            box-shadow: none;
-            margin:0px auto;
-
-            .container {
-                margin-top: 10px;
-                color: @headingsColor;
-                .user{
-                    width: 80px;
-                    padding: 3px 20px 2px 20px;
-                    border-radius: 0px 0px 25px 25px;
-                    margin-top: -5px;
-
-                    background-color: @navColor;
-                    a {
-                        text-decoration: none;
-                        color: @headingsColor;
-                    }
-                    @media (min-width: 979px) {
-                        position: absolute;
-                        right: 150px;
-                        top: 60px;
-                        text-align: center;
-                        border-bottom: 2px solid @navBottomBorder;
-                    }
-                    @media (max-width: 978px) {
-                        position: relative;
-                        left: 2%;
-                    }
-                    .dropdown-menu {
-                        @media (min-width: 979px) {
-                            background-color: @navColor;
-                        }
-                    }
-                    .caret {
-                        border-top-color: @headingsColor !important;
-                        border-bottom-color: @headingsColor !important;
-                    }
-                    .login-form {
-                        width: 220px;
-                        text-align: left;
-                        @media (min-width: 979px) {
-                            position: absolute;
-                            left: -80px;
-                            padding-left: 10px;
-                            padding-right: 10px;
-                            background-color: @navColor !important;
-                        }
-                        .submit_button {
-                            text-align: center;
-                        }
-                    }
-                }
-            }
+        navbar-collapse{
+         margin-top: 10px;
         }
+                .login-form {
+            width: 220px;
+            text-align: left;
+            @media (min-width: 979px) {
+              position: absolute;
+              left: -80px;
+              padding-left: 10px;
+              padding-right: 10px;
+              background-color: @navColor !important;
+            }
+            .submit_button {
+              text-align: center;
+            }
+          }
+        .container {
+//            margin-top: 10px;
+//            color: @headingsColor;
+            .user{
+                width: 120px;
+                padding: 3px 20px 2px 20px;
+                border-radius: 0px 0px 25px 25px;
+                margin-top: -5px;
 
-        @media (min-width: 979px) {
-
-            .navbar-search {
-                position: relative;
-                .search-query {
-                    width: 289px;
-                    padding-right: 29px !important;
-                }
-                .fa-search {
-                    position: absolute;
-                    top: 7px;
-                    right: 10px;
+                background-color: @navColor;
+                a {
+                    text-decoration: none;
                     color: @headingsColor;
                 }
+                @media (min-width: 979px) {
+                    position: absolute;
+                    right: 150px;
+                    top: 60px;
+                    text-align: center;
+                    border-bottom: 2px solid @navBottomBorder;
+                }
+                @media (max-width: 978px) {
+                    position: relative;
+                    left: 2%;
+                }
+                .dropdown-menu {
+                    @media (min-width: 979px) {
+                        background-color: @navColor;
+                    }
+                }
+                .caret {
+                    border-top-color: @headingsColor !important;
+                    border-bottom-color: @headingsColor !important;
+                }
+          }
+          @media (min-width: 979px) {
+            .navbar-form {
+              position: relative;
+              margin-top: 15px;
+              .form-control {
+                padding: 4px 14px;
+                padding-right: 29px !important;
+                width: 320px;
+                height: 30px;
+                line-height: 1;
+              }
+              .fa-search {
+                position: absolute;
+                top: 7px;
+                right: 23px;
+                color: @headingsColor;
+              }
             }
+          }
         }
-
     }
     #main_content {
         margin-top: 45px;
@@ -205,7 +201,7 @@ a.pari-link {
                 font-size: 17.5px;
                 padding: 11px 19px;
                 border: 1px solid #dddddd;
-                margin: 4px;
+//                margin: 4px;
                 text-decoration: none;
 
             }

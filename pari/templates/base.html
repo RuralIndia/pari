@@ -21,8 +21,7 @@
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 {% block extra_uncompressed_css %}{% endblock %}
 {% compress css %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}css/mezzanine.css">
 <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less" charset="utf-8">
@@ -48,16 +47,15 @@
   <![endif]-->
   <div id="holder">
     <div id="header">
-      <div id="mainnav" class="navbar navbar-static-top">
-        <div class="navbar-inner">
+      <div id="mainnav" class="navbar navbar-inverse navbar-static-top">
           <div class="container">
-              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <a class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </a>
-              {% if settings.SITE_TITLE %}<a class="brand {% if page.title = 'Home' %}active{% endif %}" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-              <div class="nav-collapse">
+              {% if settings.SITE_TITLE %}<a class="navbar-brand {% if page.title = 'Home' %}active{% endif %}" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+              <div class="collapse navbar-collapse">
                 {% if user.is_authenticated %}
                     <div class="user dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -71,18 +69,17 @@
                     </div>
                 {% else %}
                     <div class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<b class="caret"></b></a>
-                    <ul class="login-form dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <li>
-                            {% include "includes/login_form.html" %}
-                        </li>
-                    </ul>
+                        <ul class="login-form dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li>
+                                {% include "includes/login_form.html" %}
+                            </li>
+                        </ul>
                     </div>
                 {% endif %}
-                  {% search_form "all" %}
+                {% search_form "all" %}
                 {% page_menu "pages/menus/dropdown.html" %}
               </div>
           </div>
-        </div>
       </div>
       <div class="container messages">
         {% nevercache %}
@@ -113,7 +110,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   {% block extra_uncompressed_js %}{% endblock %}
   {% compress js %}
-    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap-3.1.1/js/bootstrap.min.js"></script>
     {% dajaxice_js_import %}
     <script src="{{ STATIC_URL }}dajax/jquery.dajax.core.js"></script>
     <script>
@@ -140,7 +137,7 @@
       <!-- End Piwik Code -->
     {% endif %}
     {% block extra_js %}{% endblock %}
-    
+
   {% endcompress %}
   {% include "includes/footer_scripts.html" %}
 </body>
