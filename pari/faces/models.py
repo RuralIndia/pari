@@ -91,8 +91,6 @@ class Face(Orderable, Displayable, AdminThumbMixin):
                 self.zip_import.delete(save=True)
 
 
-
-
 def get_pinned_face(alphabet):
     return Face.objects.filter(district__istartswith=alphabet).filter(is_pinned=True)
 
