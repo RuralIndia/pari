@@ -23,6 +23,14 @@ def get_absolute_url(obj):
 
 
 @register.filter
+def get_featured_image(article):
+    if article.featured_image:
+        return article.featured_image
+    else:
+        return article.carousel_images.all()[0].file.path
+
+
+@register.filter
 def group_by(l, n):
     if l is None:
         return None
