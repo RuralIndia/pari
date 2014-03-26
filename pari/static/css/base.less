@@ -11,6 +11,9 @@ body {
     height: 100%;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
+ul{
+  list-style-type: none;
+}
 
 .browsehappy {
     margin: 0.2em 0;
@@ -65,7 +68,6 @@ a.pari-link {
     min-height: 100%;
     height: auto;
 //    margin: 0 auto -@footerHeight;
-
     .navbar {
         @navBottomBorder: #808080;
         background: @navColor;
@@ -83,34 +85,8 @@ a.pari-link {
                 }
             }
         }
-
-        .nav {
-            li {
-                a {
-                    text-shadow: none;
-                    @media (min-width: 979px) {
-                        &:hover {
-                            color: #fff;
-                        }
-                    }
-                }
-                &.dropdown.active {
-                    a {
-                        @media (min-width: 979px) {
-                            background-color: @navColor !important;
-                            -webkit-box-shadow: 0 0 0 @navColor !important;
-                            box-shadow: 0 0 0 @navColor !important;
-                            .menu-arrow (@navBottomBorder);
-                        }
-                    }
-                }
-            }
-        }
-        navbar-collapse{
-         margin-top: 10px;
-        }
-                .login-form {
-            width: 220px;
+        .login-form {
+            width: 240px;
             text-align: left;
             @media (min-width: 979px) {
               position: absolute;
@@ -122,10 +98,9 @@ a.pari-link {
             .submit_button {
               text-align: center;
             }
-          }
+        }
         .container {
-//            margin-top: 10px;
-//            color: @headingsColor;
+            color: @headingsColor;
             .user{
                 width: 120px;
                 padding: 3px 20px 2px 20px;
@@ -158,22 +133,31 @@ a.pari-link {
                     border-bottom-color: @headingsColor !important;
                 }
           }
-          @media (min-width: 979px) {
-            .navbar-form {
+          .navbar-form {
               position: relative;
-              margin-top: 15px;
+              margin-top: 12px;
               .form-control {
                 padding: 4px 14px;
                 padding-right: 29px !important;
                 width: 320px;
-                height: 30px;
-                line-height: 1;
               }
               .fa-search {
+                color: #ff0000;
                 position: absolute;
-                top: 7px;
-                right: 23px;
-                color: @headingsColor;
+                top: 10px;
+                right: 24px;
+              }
+          }
+          @media (max-width: 979px) {
+            .navbar-form {
+              margin-top: 0px;
+              .form-control {
+                width: 200px;
+              }
+              .fa-search {
+                top: 18px;
+                right: 112px;
+                font-size: 18px;
               }
             }
           }

@@ -38,6 +38,7 @@
 {% block extra_head %}{% endblock %}
 
 </head>
+
 <body id="{% block body_id %}body{% endblock %}" data-spy="scroll" data-target="#subnav">
   <!--[if lt IE 9]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -47,40 +48,45 @@
   <![endif]-->
   <div id="holder">
     <div id="header">
-      <div id="mainnav" class="navbar navbar-inverse navbar-static-top">
+      <nav id="mainnav" class="navbar navbar-inverse navbar-static-top" role="navigation">
           <div class="container">
-              <a class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </a>
-              {% if settings.SITE_TITLE %}<a class="navbar-brand {% if page.title = 'Home' %}active{% endif %}" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  {% if settings.SITE_TITLE %}<a class="navbar-brand {% if page.title = 'Home' %}active{% endif %}" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+              </div>
+
               <div class="collapse navbar-collapse">
-                {% if user.is_authenticated %}
-                    <div class="user dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            {{ user.username }}<b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li>
-                                <a href={% url "logout" %}> Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-                {% else %}
-                    <div class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<b class="caret"></b></a>
-                        <ul class="login-form dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li>
-                                {% include "includes/login_form.html" %}
-                            </li>
-                        </ul>
-                    </div>
-                {% endif %}
+                <ul class="nav navbar-nav">
+                    {% if user.is_authenticated %}
+                        <div class="user dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                {{ user.username }}<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li>
+                                    <a href={% url "logout" %}> Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<b class="caret"></b></a>
+                            <ul class="login-form dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li>
+                                    {% include "includes/login_form.html" %}
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </ul>
                 {% search_form "all" %}
-                {% page_menu "pages/menus/dropdown.html" %}
+                <ul class="nav navbar-nav">{% page_menu "pages/menus/dropdown.html" %}</li></ul>
               </div>
           </div>
-      </div>
+      </nav>
       <div class="container messages">
         {% nevercache %}
           {% for message in messages %}
