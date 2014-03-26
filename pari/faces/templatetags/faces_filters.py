@@ -33,6 +33,14 @@ def get_face_image(face):
 
 
 @register.filter
+def apply_pinning(face_images):
+    pinned_face_images = list(face_images.filter(is_pinned=True))
+    unpinned_face_images = list(face_images.filter(is_pinned=False))
+    pinned_face_images.extend(unpinned_face_images)
+    return pinned_face_images
+
+
+@register.filter
 def get_description(face_image):
     return face_image.description
 

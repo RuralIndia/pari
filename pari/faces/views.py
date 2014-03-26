@@ -1,6 +1,5 @@
 from django.views.generic import ListView
-from pari.faces.models import Face
-from pari.faces.models import get_faces_by_first_letter
+from pari.faces.models import Face, get_face_images_by_district_first_letter
 
 
 class FaceList(ListView):
@@ -9,12 +8,12 @@ class FaceList(ListView):
 
 
 class FaceDetail(ListView):
-    context_object_name = "faces"
+    context_object_name = "face_images"
     model = Face
 
     def get_queryset(self):
         alphabet = self.kwargs['alphabet']
-        return get_faces_by_first_letter(alphabet)
+        return get_face_images_by_district_first_letter(alphabet)
 
 
 class FaceImageDetail(ListView):

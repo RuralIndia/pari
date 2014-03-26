@@ -19,12 +19,12 @@
 
 {% block main %}
     {% regroup faces by first_letter_of_district|upper as grouped_faces_lists %}
-    {% for grouped_faces_list in grouped_faces_lists|group_by:3 %}
+    {% for grouped_faces_list in grouped_faces_lists|group_by:4 %}
     <div class="categories row">
         {% for grouped_faces in grouped_faces_list %}
             <a href="{{ grouped_faces.grouper | lower }}">
-                <div class="span4 grid-column">
-                    <img src="{{ MEDIA_URL }}{% thumbnail grouped_faces|get_group_image|get_file_path  370 300 %}" width="370" height="300" alt="">
+                <div class="span3 grid-column">
+                    <img src="{{ MEDIA_URL }}{% thumbnail grouped_faces|get_group_image|get_file_path  270 350 %}" width="270" height="350" alt="">
                     <div class="label">
                        <p>
                         {{ grouped_faces.grouper | upper }}

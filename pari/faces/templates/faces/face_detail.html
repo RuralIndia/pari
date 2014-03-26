@@ -22,14 +22,14 @@
 
 {% block main %}
     <div class="popup-gallery">
-    {% for face_group in faces|group_by:3 %}
+    {% for face_image_group in face_images|apply_pinning|group_by:4 %}
     <div class="categories row">
-        {% for face in face_group %}
-            <a href="{{ MEDIA_URL }}{% thumbnail_no_fit face|get_face_image|get_file_path 1152 864 %}" data-title="{{ face|get_face_image|get_title }}" data-district="{{ face.district }}" data-description="{{ face|get_face_image|get_description }}"  class="image-tag mfp-image">
-                <div class="span4 grid-column">
-                    <img src="{{ MEDIA_URL }}{% thumbnail face|get_face_image|get_file_path 370 300 %}" width="370" height="300" alt="">
+        {% for face_image in face_image_group %}
+            <a href="{{ MEDIA_URL }}{% thumbnail_no_fit face_image|get_file_path 1152 864 %}" data-title="{{ face_image|get_title }}" data-district="{{ face_image.face.district }} District" data-description="{{ face_image|get_description }}"  class="image-tag mfp-image">
+                <div class="span3 grid-column">
+                    <img src="{{ MEDIA_URL }}{% thumbnail face_image|get_file_path 270 350 %}" width="270" height="350" alt="">
                     <div class="caption down-caption dark-caption text-padding">
-                        <div class="image-footer">{{face|get_face_image|get_title }}, {{ face.district }} District</div>
+                        <div class="image-footer">{{face_image|get_title }}, {{ face_image.face.district }}</div>
                             <span class="pull-right text-red">know more
                             <i class="fa fa-arrow-circle-right arrow-font"></i>
                             </span>

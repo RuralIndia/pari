@@ -91,9 +91,6 @@ class Face(Orderable, Displayable, AdminThumbMixin):
                 self.zip_import.delete(save=True)
 
 
-def get_faces_by_first_letter(alphabet):
-    return Face.objects.filter(district__istartswith=alphabet).extra(
-        select={'upper_district': 'upper(district)'}).order_by('upper_district')
 
 
 def get_pinned_face(alphabet):
@@ -106,8 +103,11 @@ def get_pinned_face_image(face):
 
 class FaceImage(Orderable, Displayable):
     face = models.ForeignKey("Face", related_name="images")
+
     image_collection_image = models.ForeignKey("album.ImageCollectionImage", related_name="face_image")
+
     is_pinned = models.BooleanField(verbose_name="Pin To Top", default=False)
+
     image_file = FileField(_("File"), max_length=200, format="Image", null=True,
                            upload_to=upload_to("album.ImageCollection.file", "faces"))
 
@@ -137,3 +137,8 @@ class FaceImage(Orderable, Displayable):
             self.face.image_collection.images.add(image_collection_image)
             self.image_collection_image = image_collection_image
         super(FaceImage, self).save(*args, **kwargs)
+
+
+def get_face_images_by_district_first_letter(alphabet):
+    return FaceImage.objects.filter(face__district__istartswith=alphabet).extra(
+        select={'upper_district': 'upper(district)'}).order_by('upper_district')
