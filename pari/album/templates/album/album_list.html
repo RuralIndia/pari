@@ -24,20 +24,22 @@
     {% for album_group in albums|group_by:3 %}
         <div class="row">
             {% for album in album_group %}
-                <div class="album album-{{ album.predominant_tone }} span4">
-                    <a href="{{ album.get_absolute_url }}">
-                        <div class="stack {{"stack"|get_random:5 }}">
-                            <div class="ribbon-wrapper">
-                                <div class="ribbon">{{ album.images.count }}</div>
+                <div class="col-lg-4 col-sm-4">
+                    <div class="album album-{{ album.predominant_tone }}">
+                        <a href="{{ album.get_absolute_url }}">
+                            <div class="stack {{"stack"|get_random:5 }}">
+                                <div class="ribbon-wrapper">
+                                    <div class="ribbon">{{ album.images.count }}</div>
+                                </div>
+                                <img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 250 %}">
                             </div>
-                            <img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 250 %}">
-                        </div>
-                        <div class="caption">
-                            <p>{{ album.description }}</p>
-                            <h3>{{ album.title }}</h3>
-                            <p class="pull-right">{{ album.photographer }}</p>
-                        </div>
-                    </a>
+                            <div class="caption">
+                                <p>{{ album.description }}</p>
+                                <h3>{{ album.title }}</h3>
+                                <p class="pull-right">{{ album.photographer }}</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             {% endfor %}
         </div>

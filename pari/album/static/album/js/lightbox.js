@@ -38,10 +38,10 @@ var Album = {
                                 '<p class="image-caption" data-audio="' + item.el.attr('data-audio') + '">' + item.el.attr('title') + '</p>' +
                                 '<div class="btn-toolbar">'+
                                     '<div class="btn-group">'+
-                                        '<a class="btn btn-slideshow" href="#">Slideshow <i class="fa fa-' + icon + '"></i></a>'+
-                                        '<a class="btn" href="' + item.el.attr('data-url') +'"><i class="fa fa-share-square-o"></i></a>'+
-                                        '<a class="btn" href="' + item.el.attr('data-url') +'#comments"><i class="fa fa-comment-o"></i></a>'+
-                                        '<a class="btn btn-fullscreen" href="#"><i class="fa fa-arrows-alt"></i></a>'+
+                                        '<a class="btn btn-default btn-slideshow" href="#">Slideshow <i class="fa fa-' + icon + '"></i></a>'+
+                                        '<a class="btn btn-default" href="' + item.el.attr('data-url') +'"><i class="fa fa-share-square-o"></i></a>'+
+                                        '<a class="btn btn-default" href="' + item.el.attr('data-url') +'#comments"><i class="fa fa-comment-o"></i></a>'+
+                                        '<a class="btn btn-default btn-fullscreen" href="#"><i class="fa fa-arrows-alt"></i></a>'+
                                     '</div>'+
                                 '</div>'+
                             '</div>'
