@@ -54,9 +54,17 @@ a.pari-link {
 #subnav .nav>.active>a {
   color: @headingsColor;
 }
+
+@media (max-width: 768px) {
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .active > a:hover,
+    .navbar-inverse .navbar-nav > .active > a:focus {
+      border-radius: 5px;
+      background: white;
+    }
+}
 @media(max-width: 992px){
   .nav.navbar-nav{
-    width: 400px;
     font-size: 12px;
   }
   .navbar{
@@ -69,7 +77,6 @@ a.pari-link {
     }
   }
 }
-
 #holder {
 
     #header {
@@ -81,19 +88,25 @@ a.pari-link {
     overflow-x: hidden;
     min-height: 100%;
     height: auto;
-    margin: 0 auto -@footerHeight;
+//    margin: 0 auto -@footerHeight;
     .navbar {
         @navBottomBorder: #808080;
         background: @navColor;
         border:0px;
         border-bottom: 2px solid @navBottomBorder;
         min-height: 60px;
-
+        .dropdown{
+          @media (min-width: 768px) {
+            &.active {
+                .menu-arrow (@navBottomBorder);
+            }
+          }
+        }
         .navbar-brand {
             position: relative;
             font-size: 31px;
             text-shadow: none;
-            @media (min-width: 979px) {
+            @media (min-width: 992px) {
                 &.active {
                     .menu-arrow (@navBottomBorder);
                 }
@@ -102,7 +115,7 @@ a.pari-link {
         .login-form {
             width: 240px;
             text-align: left;
-            @media (min-width: 979px) {
+            @media (min-width: 768px) {
               position: absolute;
               left: -80px;
               padding-left: 10px;
@@ -120,16 +133,18 @@ a.pari-link {
                 padding: 3px 20px 2px 20px;
                 border-radius: 0px 0px 25px 25px;
                 margin-top: -5px;
-                position: absolute;
-                right: 150px;
-                border-bottom: 2px solid @navBottomBorder;
-                text-align: center;
-                top: 60px;
-                background-color: @navColor;
 
+                background-color: @navColor;
                 a {
                     text-decoration: none;
                     color: @headingsColor;
+                }
+                @media (min-width: 768px) {
+                    position: absolute;
+                    right: 150px;
+                    top: 60px;
+                    text-align: center;
+                    border-bottom: 2px solid @navBottomBorder;
                 }
                 .dropdown-menu {
                     @media (min-width: 979px) {
@@ -156,6 +171,19 @@ a.pari-link {
                 right: 24px;
               }
           }
+          @media (max-width: 768px) {
+            .navbar-form {
+              margin-top: 0px;
+              .form-control {
+                width: 63% !important;
+              }
+              .fa-search {
+                top: 18px;
+                left: 65%;
+                font-size: 18px;
+              }
+            }
+          }
         }
     }
     #main_content {
@@ -180,6 +208,7 @@ a.pari-link {
                 font-size: 17.5px;
                 padding: 11px 19px;
                 border: 1px solid #dddddd;
+//                margin: 4px;
                 text-decoration: none;
 
             }
