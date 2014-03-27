@@ -25,15 +25,14 @@
 <div class="popup-gallery">
     <div class="hero-unit album-header">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-3  col-md-3 col-sm-3">
                 {% with album.get_cover as cover %}
-                    <a class="mfp-image cover image-tag" href="{{ MEDIA_URL }}{%  thumbnail_no_fit cover.image_collection_image.file.path 1152 864 %}" title="{{ cover.description }}" data-audio="{{ cover.audio|default_if_none:"" }}" data-photographer="{{ cover.photographer.title }}" data-location="{{ cover.location.title }}" data-location-description="{{ cover.location.description }}" data-url="{{ cover.get_absolute_url }}" data-date="{{ cover.publish_date|date:"F Y" }}">
-                        <img src="{{ MEDIA_URL }}{% thumbnail album.cover 270 270 %}" alt="">
+                    <a href="{{ MEDIA_URL }}{%  thumbnail_no_fit cover.image_collection_image.file.path 1152 864 %}" title="{{ cover.description }}" data-audio="{{ cover.audio|default_if_none:"" }}" data-photographer="{{ cover.photographer.title }}" data-location="{{ cover.location.title }}" data-location-description="{{ cover.location.description }}" data-url="{{ cover.get_absolute_url }}" data-date="{{ cover.publish_date|date:"F Y" }}">
+                        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail album.cover 270 270 %}" alt="">
                     </a>
                 {% endwith %}
            </div>
-        <div class="row">
-            <div class="col-sm-6">
+            <div class="col-lg-9 col-md-9 col-sm-9">
                 <div class="caption">
                     <h2>{{ album.title }}</h2>
                     <p>{{ album.description }}</p>
@@ -53,20 +52,21 @@
                                 </div>
                             {% endif %}
                         {% endwith %}
-                        <a class= "all-images-link" href="{{ album.get_absolute_url}}all">View all images in this collection >></a>
                     </div>
+                <div class= "all-images-link">
+                    <a href="{{ album.get_absolute_url}}all">View all images in this collection <i class="fa fa-angle-double-right"></i></a>
+                </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
     {% for image_group in album|all_images|group_by:3 %}
         <div class="album-images row">
             {% for image in image_group %}
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4">
                 <a href="{{ MEDIA_URL }}{% thumbnail_no_fit image|get_file_path 1152 864 %}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" data-photographer="{{ image.photographer.title }}" data-location="{{ image.location.title }}" data-location-description="{{ image.location.description }}" data-date="{{ image.publish_date|date:"F Y" }}" data-url="{{ image.get_absolute_url }}" class="image-tag mfp-image">
                     <div class="grid-column">
-                        <img src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
+                        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
                         <div class="caption">
                             <p>{{ image.description|truncatechars:50 }}</p>
                             {% if image.audio %}

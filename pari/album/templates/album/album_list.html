@@ -31,7 +31,7 @@
                                 <div class="ribbon-wrapper">
                                     <div class="ribbon">{{ album.images.count }}</div>
                                 </div>
-                                <img src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 250 %}">
+                                <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail album.get_thumbnail 300 250 %}">
                             </div>
                             <div class="caption">
                                 <p>{{ album.description }}</p>
