@@ -54,7 +54,21 @@ a.pari-link {
 #subnav .nav>.active>a {
   color: @headingsColor;
 }
-
+@media(max-width: 992px){
+  .nav.navbar-nav{
+    width: 400px;
+    font-size: 12px;
+  }
+  .navbar{
+    .container{
+      .navbar-form{
+        .form-control {
+          width: 205px !important;
+        }
+      }
+    }
+  }
+}
 
 #holder {
 
@@ -67,7 +81,7 @@ a.pari-link {
     overflow-x: hidden;
     min-height: 100%;
     height: auto;
-//    margin: 0 auto -@footerHeight;
+    margin: 0 auto -@footerHeight;
     .navbar {
         @navBottomBorder: #808080;
         background: @navColor;
@@ -106,22 +120,16 @@ a.pari-link {
                 padding: 3px 20px 2px 20px;
                 border-radius: 0px 0px 25px 25px;
                 margin-top: -5px;
-
+                position: absolute;
+                right: 150px;
+                border-bottom: 2px solid @navBottomBorder;
+                text-align: center;
+                top: 60px;
                 background-color: @navColor;
+
                 a {
                     text-decoration: none;
                     color: @headingsColor;
-                }
-                @media (min-width: 979px) {
-                    position: absolute;
-                    right: 150px;
-                    top: 60px;
-                    text-align: center;
-                    border-bottom: 2px solid @navBottomBorder;
-                }
-                @media (max-width: 978px) {
-                    position: relative;
-                    left: 2%;
                 }
                 .dropdown-menu {
                     @media (min-width: 979px) {
@@ -148,19 +156,6 @@ a.pari-link {
                 right: 24px;
               }
           }
-          @media (max-width: 979px) {
-            .navbar-form {
-              margin-top: 0px;
-              .form-control {
-                width: 200px;
-              }
-              .fa-search {
-                top: 18px;
-                right: 112px;
-                font-size: 18px;
-              }
-            }
-          }
         }
     }
     #main_content {
@@ -185,7 +180,6 @@ a.pari-link {
                 font-size: 17.5px;
                 padding: 11px 19px;
                 border: 1px solid #dddddd;
-//                margin: 4px;
                 text-decoration: none;
 
             }
