@@ -7,8 +7,6 @@ HOSTNAME = "www.ruralindiaonline.org"
 ALLOWED_HOSTS.append(HOSTNAME)
 SSL_FORCE_HOST = HOSTNAME
 
-ANALYTICS_ENABLED = True
-
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 DATABASES = {
