@@ -38,7 +38,16 @@ CACHES = {
 
 INSTALLED_APPS += (
     "djrill",
+    "haystack",
 )
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://search-ruralindiaonline.rhcloud.com/',
+        'INDEX_NAME': 'haystack',
+    },
+}
 
 # Email Settings
 MANDRILL_API_KEY = os.environ["DJANGO_MANDRILL_API_KEY"]

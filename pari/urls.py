@@ -101,8 +101,11 @@ urlpatterns = patterns("",
     # of this file as well.
     # Note that for any of the various homepage patterns above, you'll
     # need to use the ``SITE_PREFIX`` setting as well.
-
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
+
+    # ELASTIC SEARCH USING HAYSTACK
+    #------------------------------
+    (r'^search/', include('haystack.urls')),
 )
 
 if settings.DEBUG:

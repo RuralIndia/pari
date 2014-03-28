@@ -24,6 +24,7 @@ INSTALLED_APPS += (
     "django_nose",
     "debug_toolbar",
     "django_extensions",
+    "haystack",
 )
 
 MIDDLEWARE_CLASSES += (
@@ -36,19 +37,13 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 DEFAULT_FILE_STORAGE = 'pari.article.storage.ParallelS3Storage'
 
-SOUND_CLOUD_CLIENT_ID = 'd129911dd3c35ec537c30a06990bd902'
-SOUND_CLOUD_CLIENT_SECRET = '74aa815b1fcdf29b02a2d177daea1181'
-SOUND_CLOUD_USERNAME = 'ruralindiaonline@gmail.com'
-SOUND_CLOUD_PASSWORD = 'RuralIndia123'
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://localhost:9200',
+        'INDEX_NAME': 'haystack',
+    },
+}
 
-# INSTALLED_APPS += (
-#     "haystack",
-# )
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
-# HAYSTACK_CONNECTIONS = {
-#     'default': {
-#         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-#         'URL': 'http://search-ruralindiaonline.rhcloud.com/',
-#         'INDEX_NAME': 'haystack',
-#     },
-# }

@@ -1,4 +1,6 @@
 from mezzanine.conf import settings
+from mezzanine.core.models import MetaData, Displayable
+from pari.faces.models import Face, FaceImage
 
 if "haystack" in settings.INSTALLED_APPS:
     from haystack import indexes
@@ -10,13 +12,13 @@ if "haystack" in settings.INSTALLED_APPS:
 
     class DisplayableIndex(indexes.SearchIndex, indexes.Indexable):
         text = indexes.CharField(document=True, use_template=True)
-        title = indexes.CharField(model_attr='title')
-        description = indexes.CharField(model_attr='description')
+        title = indexes.CharField()
+        description = indexes.CharField()
         get_absolute_url = indexes.CharField()
         get_thumbnail = indexes.CharField()
 
-        model = None
-        haystack_use_for_indexing = False
+        model = Displayable
+        haystack_use_for_indexing = True
 
         def prepare_get_absolute_url(self, obj):
             return obj.get_absolute_url()
@@ -34,7 +36,7 @@ if "haystack" in settings.INSTALLED_APPS:
         get_location_titles = indexes.CharField()
         author = indexes.CharField(model_attr='author')
         short_description = indexes.CharField()
-
+        title = indexes.CharField(model_attr='title')
         model = Article
         haystack_use_for_indexing = True
 
@@ -46,20 +48,32 @@ if "haystack" in settings.INSTALLED_APPS:
 
     class LocationIndex(DisplayableIndex):
         location = indexes.CharField(model_attr='location')
-
+        title = indexes.CharField(model_attr='title')
+        description = indexes.CharField(model_attr='description')
         model = Location
         haystack_use_for_indexing = True
 
     class AlbumIndex(DisplayableIndex):
         photographer = indexes.CharField(model_attr='photographer')
-        image = indexes.CharField(model_attr='cover')
-
+        description = indexes.CharField(model_attr='description')
+        title = indexes.CharField(model_attr='title')
         model = Album
         haystack_use_for_indexing = True
+
+    class FaceImageIndex(DisplayableIndex):
+        description = indexes.CharField(model_attr='description')
+        district = indexes.CharField()
+        title = indexes.CharField(model_attr='title')
+        model = FaceImage
+        haystack_use_for_indexing = True
+
+        def prepare_district(self, obj):
+            return obj.face.district
 
     class AlbumImageIndex(DisplayableIndex):
         photographer = indexes.CharField(model_attr='photographer')
         album = indexes.CharField()
+        description = indexes.CharField(model_attr='description')
 
         def prepare_album(self, obj):
             return obj.album.title
@@ -68,21 +82,14 @@ if "haystack" in settings.INSTALLED_APPS:
         haystack_use_for_indexing = True
 
     class AuthorIndex(DisplayableIndex):
+        title = indexes.CharField(model_attr='title')
+        description = indexes.CharField(model_attr='description')
         model = Author
         haystack_use_for_indexing = True
 
     class CategoryIndex(DisplayableIndex):
+        title = indexes.CharField(model_attr='title')
+        description = indexes.CharField(model_attr='description')
         model = Category
         haystack_use_for_indexing = True
 
-    class ContributionIndex(DisplayableIndex):
-        model = Contribution
-        haystack_use_for_indexing = True
-
-    class ResourceIndex(DisplayableIndex):
-        model = Resource
-        haystack_use_for_indexing = True
-
-    class FactoidIndex(DisplayableIndex):
-        model = Factoid
-        haystack_use_for_indexing = True
