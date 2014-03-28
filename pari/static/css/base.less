@@ -78,18 +78,12 @@ a.pari-link {
   }
 }
 #holder {
-
-    #header {
-        .messages {
-            margin-top: 8px;
-        }
-    }
-
     overflow-x: hidden;
     min-height: 100%;
     height: auto;
 //    margin: 0 auto -@footerHeight;
     .navbar {
+        margin-bottom: 5px;
         @navBottomBorder: #808080;
         background: @navColor;
         border:0px;
@@ -539,6 +533,9 @@ a.pari-link {
         }
     }
 
+      .carousel-control.left, .carousel-control.right {
+          background-image: none
+      }
     .carousel-control {
         top: 45%;
         border-radius: 0;
@@ -566,11 +563,11 @@ a.pari-link {
         }
         &.carousel-inner-caption {
             .carousel-caption {
-                bottom: 5%;
+                bottom: 10%;
                 left: 50%;
                 right: 10%;
-                min-height: 25%;
-                max-height: 25%;
+                min-height: 30%;
+                max-height: 30%;
                 .rounded (5px);
             }
         }
