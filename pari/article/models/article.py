@@ -79,6 +79,10 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     def short_description(self):
         return truncatewords(self.description, 20)
 
+    def save(self, *args, **kwargs):
+        self.gen_description = False
+        super(Article, self).save(*args, **kwargs)
+
 
 class ArticleCarouselImage(Orderable, Displayable):
     article = models.ForeignKey("article", related_name="carousel_images")

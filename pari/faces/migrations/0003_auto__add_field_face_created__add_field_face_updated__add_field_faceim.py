@@ -8,66 +8,46 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Face'
-        db.create_table(u'faces_face', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('keywords_string', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
-            ('site', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sites.Site'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=500)),
-            ('slug', self.gf('django.db.models.fields.CharField')(max_length=2000, null=True, blank=True)),
-            ('_meta_title', self.gf('django.db.models.fields.CharField')(max_length=500, null=True, blank=True)),
-            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('gen_description', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('status', self.gf('django.db.models.fields.IntegerField')(default=2)),
-            ('publish_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('expiry_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('short_url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
-            ('in_sitemap', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('_order', self.gf('django.db.models.fields.IntegerField')(null=True)),
-            ('zip_import', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
-            ('image_collection', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['album.ImageCollection'])),
-            ('district', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            #('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
-        ))
-        db.send_create_signal(u'faces', ['Face'])
+        # Adding field 'Face.created'
+        db.add_column(u'faces_face', 'created',
+                      self.gf('django.db.models.fields.DateTimeField')(null=True),
+                      keep_default=False)
 
-        # Adding model 'FaceImage'
-        db.create_table(u'faces_faceimage', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('keywords_string', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
-            ('site', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['sites.Site'])),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=500)),
-            ('slug', self.gf('django.db.models.fields.CharField')(max_length=2000, null=True, blank=True)),
-            ('_meta_title', self.gf('django.db.models.fields.CharField')(max_length=500, null=True, blank=True)),
-            ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('gen_description', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('status', self.gf('django.db.models.fields.IntegerField')(default=2)),
-            ('publish_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('expiry_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('short_url', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
-            ('in_sitemap', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('_order', self.gf('django.db.models.fields.IntegerField')(null=True)),
-            ('face', self.gf('django.db.models.fields.related.ForeignKey')(related_name='images', to=orm['faces.Face'])),
-            ('image_collection_image', self.gf('django.db.models.fields.related.ForeignKey')(related_name='face_image', to=orm['album.ImageCollectionImage'])),
-            ('is_cover', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('image_file', self.gf('mezzanine.core.fields.FileField')(max_length=200, null=True)),
-            # ('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
-        ))
-        db.send_create_signal('faces', ['FaceImage'])
+        # Adding field 'Face.updated'
+        db.add_column(u'faces_face', 'updated',
+                      self.gf('django.db.models.fields.DateTimeField')(null=True),
+                      keep_default=False)
+
+        # Adding field 'FaceImage.created'
+        db.add_column(u'faces_faceimage', 'created',
+                      self.gf('django.db.models.fields.DateTimeField')(null=True),
+                      keep_default=False)
+
+        # Adding field 'FaceImage.updated'
+        db.add_column(u'faces_faceimage', 'updated',
+                      self.gf('django.db.models.fields.DateTimeField')(null=True),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'Face'
-        db.delete_table(u'faces_face')
+        # Deleting field 'Face.created'
+        db.delete_column(u'faces_face', 'created')
 
-        # Deleting model 'FaceImage'
-        db.delete_table(u'faces_faceimage')
+        # Deleting field 'Face.updated'
+        db.delete_column(u'faces_face', 'updated')
+
+        # Deleting field 'FaceImage.created'
+        db.delete_column(u'faces_faceimage', 'created')
+
+        # Deleting field 'FaceImage.updated'
+        db.delete_column(u'faces_faceimage', 'updated')
 
 
     models = {
         'album.imagecollection': {
             'Meta': {'object_name': 'ImageCollection'},
             '_meta_title': ('django.db.models.fields.CharField', [], {'max_length': '500', 'null': 'True', 'blank': 'True'}),
+            'created': ('django.db.models.fields.DateTimeField', [], {'null': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'expiry_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'gen_description': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
@@ -81,12 +61,14 @@ class Migration(SchemaMigration):
             'slug': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'null': 'True', 'blank': 'True'}),
             'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '500'}),
+            'updated': ('django.db.models.fields.DateTimeField', [], {'null': 'True'}),
             'zip_import': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'})
         },
         'album.imagecollectionimage': {
             'Meta': {'ordering': "('_order',)", 'object_name': 'ImageCollectionImage'},
             '_meta_title': ('django.db.models.fields.CharField', [], {'max_length': '500', 'null': 'True', 'blank': 'True'}),
             '_order': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'created': ('django.db.models.fields.DateTimeField', [], {'null': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'expiry_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'file': ('mezzanine.core.fields.FileField', [], {'max_length': '200'}),
@@ -101,7 +83,8 @@ class Migration(SchemaMigration):
             'site': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['sites.Site']"}),
             'slug': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'null': 'True', 'blank': 'True'}),
             'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'})
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'}),
+            'updated': ('django.db.models.fields.DateTimeField', [], {'null': 'True'})
         },
         u'contenttypes.contenttype': {
             'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
@@ -114,6 +97,7 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "('_order',)", 'object_name': 'Face'},
             '_meta_title': ('django.db.models.fields.CharField', [], {'max_length': '500', 'null': 'True', 'blank': 'True'}),
             '_order': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'created': ('django.db.models.fields.DateTimeField', [], {'null': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'district': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'expiry_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
@@ -121,6 +105,7 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image_collection': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['album.ImageCollection']"}),
             'in_sitemap': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'is_pinned': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             # 'keywords': ('mezzanine.generic.fields.KeywordsField', [], {'object_id_field': "'object_pk'", 'to': u"orm['generic.AssignedKeyword']", 'frozen_by_south': 'True'}),
             'keywords_string': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'publish_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
@@ -129,12 +114,14 @@ class Migration(SchemaMigration):
             'slug': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'null': 'True', 'blank': 'True'}),
             'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '500'}),
+            'updated': ('django.db.models.fields.DateTimeField', [], {'null': 'True'}),
             'zip_import': ('django.db.models.fields.files.FileField', [], {'max_length': '100', 'blank': 'True'})
         },
         'faces.faceimage': {
             'Meta': {'ordering': "('_order',)", 'object_name': 'FaceImage'},
             '_meta_title': ('django.db.models.fields.CharField', [], {'max_length': '500', 'null': 'True', 'blank': 'True'}),
             '_order': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'created': ('django.db.models.fields.DateTimeField', [], {'null': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'expiry_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
             'face': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'images'", 'to': u"orm['faces.Face']"}),
@@ -143,7 +130,7 @@ class Migration(SchemaMigration):
             'image_collection_image': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'face_image'", 'to': "orm['album.ImageCollectionImage']"}),
             'image_file': ('mezzanine.core.fields.FileField', [], {'max_length': '200', 'null': 'True'}),
             'in_sitemap': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_cover': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'is_pinned': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             # 'keywords': ('mezzanine.generic.fields.KeywordsField', [], {'object_id_field': "'object_pk'", 'to': u"orm['generic.AssignedKeyword']", 'frozen_by_south': 'True'}),
             'keywords_string': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'publish_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
@@ -151,7 +138,8 @@ class Migration(SchemaMigration):
             'site': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['sites.Site']"}),
             'slug': ('django.db.models.fields.CharField', [], {'max_length': '2000', 'null': 'True', 'blank': 'True'}),
             'status': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'})
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '500'}),
+            'updated': ('django.db.models.fields.DateTimeField', [], {'null': 'True'})
         },
         u'generic.assignedkeyword': {
             'Meta': {'ordering': "('_order',)", 'object_name': 'AssignedKeyword'},
