@@ -13,23 +13,29 @@
     {% csrf_token %}
 {% endnevercache %}
 <div class="input">
-    {% for field in form_for_fields %}
-        {% if field.is_hidden %}
-            {{ field }}
-        {% else %}
-            <div class="form-field span4 input_{{ field.id_for_label }} {{ field.field.type }}{% if field.errors %} error{% endif %}">
-                {{ field }}
-                {% if field.errors %}
-                    <span class="help-inline">
-                        {% for e in field.errors %}
-                            {% if not forloop.first %} / {% endif %}{{ e }}
-                        {% endfor %}
-                    </span>
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            {% for field in form_for_fields %}
+                {% if field.is_hidden %}
+                    {{ field }}
+                {% else %}
+                    <div class="form-field col-lg-6 col-md-6 col-sm-6 input_{{ field.id_for_label }} {{ field.field.type }}{% if field.errors %} error{% endif %}">
+                        {{ field }}
+                        {% if field.errors %}
+                            <span class="help-inline">
+                                {% for e in field.errors %}
+                                    {% if not forloop.first %} / {% endif %}{{ e }}
+                                {% endfor %}
+                            </span>
+                        {% endif %}
+                    </div>
                 {% endif %}
-            </div>
-        {% endif %}
-    {% endfor %}
-    <button class="btn btn-primary btn-colour" type="submit">{{ page.form.button_text }}</button>
+            {% endfor %}
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <button class="btn btn-primary btn-colour" type="submit">{{ page.form.button_text }}</button>
+        </div>
+    </div>
 </div>
 
 

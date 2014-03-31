@@ -2,6 +2,9 @@
 
 
 .contactform {
+    #recaptcha_image{
+      height: 63px !important;
+    }
     h3 {
         color: #333;
         margin-bottom: 24px;
@@ -12,30 +15,40 @@
     margin: 10px 0;
     position: relative;
 
-    height: 91px;
+    height: 111px;
     overflow: hidden;
     .transition (0.4s, @property: height);
 
     &.expanded {
         height: 310px;
     }
+    .input{
+      input[type="text"],input[type="email"],select,textarea,{
+        width: 97%;
+        margin-bottom: 10px;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #808080;
+      }
+      #recaptcha_response_field{
+        width: 55%;
+        height: 31px !important;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        line-height: 1.9;
 
+      }
+      .btn-default{
+        border-radius: 0px;
+        margin: -4px;
+      }
+    }
     textarea {
-        height: 60px;
+        height: 60px !important;
     }
 
-    .form-field {
-        & > * {
-            width: 90%;
-        }
-
-        & > select {
-            width: 94%;
-        }
-    }
-
-    @media (max-width: 767px) {
-        height: 110px;
+    @media (max-width: 992px) {
+        height: 130px;
         .input {
             position: relative;
             button[type="submit"] {
@@ -52,9 +65,7 @@
         &.expanded {
             height: 455px;
             .input {
-                .span4 
-
-                .span4 > select {
+                .col-sm-6 > select {
                     width: 98%;
                 }
 
