@@ -1,7 +1,7 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from pari.article.models import Article, get_archive_articles, get_all_articles
+from pari.article.models import Article, get_archive_articles, get_all_articles, ArticleCarouselImage
 from pari.article.mixins import ArticleListMixin
 from pari.article.templatetags.article_filters import month_name
 
@@ -50,3 +50,11 @@ class ArticleList(ArticleListMixin, ListView):
         context = super(ArticleList, self).get_context_data(**kwargs)
         context['title'] = "All articles"
         return context
+
+
+class ArticleCarouselImageDetail(DetailView):
+    context_object_name = "image"
+    model = ArticleCarouselImage
+
+    def get_object(self, queryset=None):
+        return ArticleCarouselImage.objects.get(article__slug=self.kwargs['slug'], _order=int(self.kwargs['order']) - 1)
