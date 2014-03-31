@@ -75,11 +75,13 @@
     border-width: 10px;
     top: 71%;
     left: 50%;
+    z-index: 11;
     margin-left: -10px;
 }
 
 .menu-arrow-before (@border) {
     content: '';
+    z-index: 10;
     display: block;
     position: absolute;
     width: 0;
@@ -87,7 +89,7 @@
     border-color: transparent transparent @border transparent;
     border-style: solid;
     border-width: 12px;
-    top: 64%;
+    top: 61%;
     left: 50%;
     margin-left: -12px;
 }
