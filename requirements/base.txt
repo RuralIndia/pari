@@ -19,7 +19,7 @@ django-recaptcha==0.0.6
 django-smart-load-tag==0.3.2
 djangorestframework==2.2.0
 -e git://github.com/manojlds/fabtools.git@28cb375d93f035e5118008f20e8c6cefe60a0e49#egg=fabtools-dev
--e git://github.com/dvrajan/filebrowser-safe.git@3c6b3622e0c23b95e3f59526ee817130c0096aca#egg=filebrowser_safe-dev
+-e git://github.com/dvrajan/filebrowser-safe.git@2f7e8cde15019bbb87eec70a89260ff495a4a7a5#egg=filebrowser_safe-dev
 futures==2.1.3
 grappelli-safe==0.2.21
 gunicorn==0.17.2
