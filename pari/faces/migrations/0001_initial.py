@@ -27,7 +27,7 @@ class Migration(SchemaMigration):
             ('zip_import', self.gf('django.db.models.fields.files.FileField')(max_length=100, blank=True)),
             ('image_collection', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['album.ImageCollection'])),
             ('district', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
+            #('keywords', self.gf('mezzanine.generic.fields.KeywordsField')(object_id_field='object_pk', to=orm['generic.AssignedKeyword'], frozen_by_south=True)),
         ))
         db.send_create_signal(u'faces', ['Face'])
 

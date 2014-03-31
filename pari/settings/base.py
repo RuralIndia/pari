@@ -75,6 +75,7 @@ DASHBOARD_TAGS = (
 #         {"blank": True, "default": 1},
 #     ),
 # )
+
 FORMS_EXTRA_FIELDS = (
     (99,
      "pari.contribution.fields.CaptchaField",
@@ -153,7 +154,7 @@ MANAGERS = ADMINS
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = None
+TIME_ZONE = "Asia/Calcutta"
 
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
@@ -312,8 +313,8 @@ INSTALLED_APPS = (
     "mezzanine.conf",
     "mezzanine.core",
     "mezzanine.generic",
-    "mezzanine.blog",
     "mezzanine.forms",
+    "mezzanine.blog",
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",

@@ -4,8 +4,8 @@ from selenium import webdriver
 
 class Test(unittest.TestCase):
 
-    def setup_method(self, method):
+    def setUp(self):
         self.driver = webdriver.Firefox()  # TODO: Should be from conf/cmd line
 
-    def teardown_method(self, method):
+    def tearDown(self):
         self.driver.quit()
