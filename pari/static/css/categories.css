@@ -1,0 +1,132 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+.menu-arrow-after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent #fff transparent;
+  border-style: solid;
+  border-width: 10px;
+  top: 80%;
+  left: 50%;
+  margin-left: -10px;
+}
+/* Take from Bootstrap */
+.categories .grid-column {
+  position: relative;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.categories .grid-column:hover .caption {
+  background-color: rgba(0, 0, 0, 0.74902);
+}
+.categories .grid-column:hover .caption p {
+  color: #fff;
+}
+.categories .grid-column:hover .caption i {
+  color: #ee4303;
+}
+@media (min-width: 980px) {
+  .categories .grid-column:hover .caption {
+    min-height: 108px;
+    max-height: 108px;
+  }
+  .categories .grid-column:hover .caption .description {
+    display: block;
+  }
+}
+.categories .grid-column:hover .down-caption {
+  min-height: 50px;
+  max-height: 50px;
+}
+.categories .grid-column .label {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.74902);
+  top: 0 ;
+  left: 0;
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 0px;
+  margin-left: 15px;
+}
+.categories .grid-column .label p {
+  margin: 0;
+}
+.categories .grid-column .caption {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.74902);
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  word-wrap: break-word;
+  min-height: 50px;
+  max-height: 50px;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.categories .grid-column .caption h4 {
+  color: #ee4303;
+  margin: 7px 0 10px 0;
+}
+.categories .grid-column .caption p {
+  color: black;
+}
+.categories .grid-column .caption i {
+  color: black;
+  font-size: 22px;
+}
+.categories .grid-column .down-caption {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.74902);
+}
+.categories .grid-column .down-caption p {
+  color: #fff;
+}
+.categories .grid-column .down-caption i {
+  color: #ee4303;
+}
+@media (min-width: 481px) and (max-width: 979px) {
+  .categories .grid-column {
+    float: none;
+    width: 100%;
+  }
+  .categories .grid-column img {
+    max-width: none;
+    width: 50%;
+  }
+  .categories .grid-column .caption {
+    padding: 32px;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    max-width: 50%;
+    max-height: 100%;
+    min-height: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.74902);
+  }
+  .categories .grid-column .caption p {
+    color: #fff;
+  }
+  .categories .grid-column .caption i {
+    color: #ee4303;
+  }
+}
+@media (max-width: 480px) {
+  .categories .grid-column img {
+    width: 100%;
+  }
+}

@@ -447,7 +447,7 @@
     "pk": 1,
     "model": "article.type",
     "fields": {
-      "icon_class": "icon-camera",
+      "icon_class": "fa fa-camera",
       "title": "Photo"
     }
   },
@@ -455,7 +455,7 @@
     "pk": 2,
     "model": "article.type",
     "fields": {
-      "icon_class": "icon-facetime-video",
+      "icon_class": "fa fa-video-camera",
       "title": "Video"
     }
   },
@@ -463,7 +463,7 @@
     "pk": 3,
     "model": "article.type",
     "fields": {
-      "icon_class": "icon-volume-up",
+      "icon_class": "fa fa-volume-up",
       "title": "Audio"
     }
   },
@@ -471,7 +471,7 @@
     "pk": 4,
     "model": "article.type",
     "fields": {
-      "icon_class": "icon-file-text-alt",
+      "icon_class": "fa fa-file-text-alt",
       "title": "Text"
     }
   },

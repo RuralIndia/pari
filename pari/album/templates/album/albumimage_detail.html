@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block maincontent %}
-    <img src="{{MEDIA_URL}}{% thumbnail image|get_file_path 0 0 %}"></img>
+    <img class="img-responsive" src="{{MEDIA_URL}}{% thumbnail image|get_file_path 0 0 %}">
 {% endblock %}
 
 {% block sidebar %}

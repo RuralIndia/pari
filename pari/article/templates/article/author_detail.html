@@ -18,10 +18,10 @@
 {% block main %}
 	<div class="hero-unit author-header">
         <div class="row">
-            <div class="span3">
-                <img src="{{ MEDIA_URL }}{% thumbnail author.image 270 270 %}" alt="">
+            <div class="col-lg-3 col-md-3">
+                <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail author.image 270 270 %}" alt="">
             </div>
-            <div class="caption span8">
+            <div class="caption col-lg-8 col-md-8">
                 <h1>{{ author.title }}</h1>
                 <p>{{ author.description }}</p>
             </div>

@@ -19,18 +19,22 @@
 
 {% block main %}
     {% for category_group in categories|group_by:3 %}
-        <div class="categories row">
+    <div class="row">
+        <div class="categories">
             {% for category in category_group %}
                 <a href="{{ category|get_absolute_url}}">
-                    <div class="span4 grid-column">
+                <div class="col-lg-4 col-md-4">
+                    <div class="grid-column">
                         <img src="{{ MEDIA_URL }}{% thumbnail category.image 370 300 %}" width="370" height="300" alt="">
                         <div class="caption">
                             <h4>{{ category.title }}</h4>
                             <p class="description">{{ category.description }}</p>
                         </div>
                     </div>
+                </div>
                 </a>
             {% endfor %}
         </div>
+     </div>
     {% endfor %}
 {% endblock %}

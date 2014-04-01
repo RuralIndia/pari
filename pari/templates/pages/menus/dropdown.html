@@ -3,7 +3,6 @@
 {% if page_branch_in_menu %}
 
 {% if branch_level == 0 %}
-<ul class="nav pull-left">
     {% for page in page_branch %}
     {% if page.in_menu %}
     <li class="dropdown{% if page.is_current_or_ascendant %} active{% endif %}"
@@ -16,7 +15,6 @@
     </li>
     {% endif %}
     {% endfor %}
-</ul>
 {% endif %}
 
 {% if branch_level == 1 %}

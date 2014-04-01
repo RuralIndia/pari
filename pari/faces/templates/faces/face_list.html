@@ -20,19 +20,23 @@
 {% block main %}
     {% regroup faces by first_letter_of_district|upper as grouped_faces_lists %}
     {% for grouped_faces_list in grouped_faces_lists|group_by:3 %}
-    <div class="categories row">
-        {% for grouped_faces in grouped_faces_list %}
-            <a href="{{ grouped_faces.grouper | lower }}">
-                <div class="span4 grid-column">
-                    <img src="{{ MEDIA_URL }}{% thumbnail grouped_faces|get_group_image|get_file_path  370 470 %}" width="370" height="470" alt="">
-                    <div class="label">
-                       <p>
-                        {{ grouped_faces.grouper | upper }}
-                       </p>
-                    </div>
+    <div class="row">
+        <div class="categories">
+            {% for grouped_faces in grouped_faces_list %}
+                <div class="col-lg-4">
+                    <a href="{{ grouped_faces.grouper | lower }}">
+                        <div class="grid-column">
+                            <img src="{{ MEDIA_URL }}{% thumbnail grouped_faces|get_group_image|get_file_path  370 300 %}" width="370" height="300" alt="">
+                            <div class="label">
+                               <p>
+                                {{ grouped_faces.grouper | upper }}
+                               </p>
+                            </div>
+                        </div>
+                        </a>
                 </div>
-            </a>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
     {% endfor %}
 

@@ -19,7 +19,7 @@
 <h3>{% trans "Archive" %}</h3>
 {% for month in months %}
     {% ifchanged month.date.year %}
-        {% if not forloop.first %}</ul>{% endif %}
+        {% if not forloop.first %}{% endif %}
         <h6>{{ month.date.year }}</h6><ul class="unstyled">
     {% endifchanged %}
     <li><a href="{% url "blog_post_list_month" year=month.date.year month=month.date.month %}"

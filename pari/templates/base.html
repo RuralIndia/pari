@@ -21,9 +21,8 @@
 <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 {% block extra_uncompressed_css %}{% endblock %}
 {% compress css %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
-<link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}bootstrap-3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ STATIC_URL }}css/mezzanine.css">
 <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/base.less" charset="utf-8">
 
@@ -39,6 +38,7 @@
 {% block extra_head %}{% endblock %}
 
 </head>
+
 <body id="{% block body_id %}body{% endblock %}" data-spy="scroll" data-target="#subnav">
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWGFMJ"
@@ -58,42 +58,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <![endif]-->
   <div id="holder">
     <div id="header">
-      <div id="mainnav" class="navbar navbar-static-top">
-        <div class="navbar-inner">
+      <nav id="mainnav" class="navbar navbar-inverse navbar-static-top" role="navigation">
           <div class="container">
-              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </a>
-              {% if settings.SITE_TITLE %}<a class="brand {% if page.title = 'Home' %}active{% endif %}" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-              <div class="nav-collapse">
-                {% if user.is_authenticated %}
-                    <div class="user dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            {{ user.username }}<b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li>
-                                <a href={% url "logout" %}> Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-                {% else %}
-                    <div class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<b class="caret"></b></a>
-                    <ul class="login-form dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <li>
-                            {% include "includes/login_form.html" %}
-                        </li>
-                    </ul>
-                    </div>
-                {% endif %}
-                  {% search_form "all" %}
-                {% page_menu "pages/menus/dropdown.html" %}
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  {% if settings.SITE_TITLE %}<a class="navbar-brand {% if page.title = 'Home' %}active{% endif %}" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+              </div>
+
+              <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    {% if user.is_authenticated %}
+                        <div class="user dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                {{ user.username }}<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li>
+                                    <a href={% url "logout" %}> Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<b class="caret"></b></a>
+                            <ul class="login-form dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li>
+                                    {% include "includes/login_form.html" %}
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </ul>
+                {% search_form "all" %}
+                <ul class="nav navbar-nav">{% page_menu "pages/menus/dropdown.html" %}</ul>
               </div>
           </div>
-        </div>
-      </div>
+      </nav>
       <div class="container messages">
         {% nevercache %}
           {% for message in messages %}
@@ -110,7 +113,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           {% block main %}{% endblock %}
       </div>
     {%endblock %}
-    <div id="push"></div>
   </div>
 
   <div id="footer">
@@ -123,7 +125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   {% block extra_uncompressed_js %}{% endblock %}
   {% compress js %}
-    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap-3.1.1/js/bootstrap.min.js"></script>
     {% dajaxice_js_import %}
     <script src="{{ STATIC_URL }}dajax/jquery.dajax.core.js"></script>
     <script>
@@ -134,7 +136,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 
     {% block extra_js %}{% endblock %}
-    
+
   {% endcompress %}
   {% include "includes/footer_scripts.html" %}
 </body>

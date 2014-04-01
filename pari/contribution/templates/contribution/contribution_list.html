@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block main %}
-    <div class="contactform clearfix">
+    <div class="contactform row">
         <h3>{{ contribute_form_page.form.content|richtext_filter|safe }}</h3>
         <form action="/contribute-form/" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
             {% fields_for contribute_form contribute_form_page %}
@@ -29,12 +29,17 @@
     </div>
     <div class="list">
         {% for contribution in contributions %}
-            <div class="contribution clearfix">
-                <div class="span3 icon"><i class="fa fa-{{ contribution.icon }}"></i>
+        <div class="contribution">
+           <div class="row">
+               <div class="col-sm-3">
+                    <div class="icon"><i class="fa fa-{{ contribution.icon }}"></i></div>
                 </div>
-                <div class="title span8">{{ contribution.title }}</div>
-                <div class="description span8">{{ contribution.description }}</div>
-            </div>
+               <div class="col-sm-9">
+                    <div class="title">{{ contribution.title }}</div>
+                    <div class="description">{{ contribution.description }}</div>
+               </div>
+           </div>
+        </div>
         {% endfor %}
     </div>
 {% endblock %}

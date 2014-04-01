@@ -2,49 +2,70 @@
 
 
 .contactform {
+    .form-group{
+      @media(max-width: 768px){
+        input[type="text"],input[type="email"],select,textarea{
+          max-width: 100% !important;
+        }
+      }
+    }
+    #recaptcha_widget{
+      @media(max-width:768px){
+        margin-top: 20px;
+      }
+    }
+    #recaptcha_image{
+      @media(max-width:768px){
+        width: 100% !important;
+      }
+      height: 63px !important;
+    }
     h3 {
         color: #333;
         margin-bottom: 24px;
     }
     background-color: @contactFormBgColor;
-    padding: 5px 5px;
+    padding: 0px 5px;
     border-radius: 5px;
     margin: 10px 0;
     position: relative;
 
-    height: 91px;
+    height: 111px;
     overflow: hidden;
     .transition (0.4s, @property: height);
 
     &.expanded {
         height: 310px;
     }
-
     textarea {
-        height: 60px;
-    }
-
-    .form-field {
-        & > * {
-            width: 90%;
+        @media(max-width:768px){
+          height: 60px !important;
+          width: 100%;
         }
-
-        & > select {
-            width: 94%;
-        }
+        height: 60px !important;
     }
-
-    @media (max-width: 767px) {
-        height: 110px;
+    @media (min-width: 768px)and(max-width: 992px){
+      &.expanded {
+            height: 343px !important;
+      }
+    }
+    @media (max-width: 992px) {
+        padding: 0px 5px;
+        height: 130px;
+        .input-group{
+          z-index: 999;
+        }
         .input {
             position: relative;
             button[type="submit"] {
                 display: inline;
                 position: absolute;
                 top: 0;
-                width: 100%;
+                width: 80%;
+                margin-left: 8%;
+
             }
-            .form-field {
+            .form-container {
                 display: none;
             }
         }
@@ -52,18 +73,16 @@
         &.expanded {
             height: 455px;
             .input {
-                .span4 
-
-                .span4 > select {
+                .col-sm-6 > select {
                     width: 98%;
                 }
 
                 button[type="submit"] {
-                    margin-top: 15px;
+                    margin-top: 98px;
                     position: relative;
                 }
-                .form-field {
-                    display: inline;
+                .form-container {
+                    display: block;
 
                     & > * {
                         width: 96%;
@@ -76,7 +95,7 @@
 
             }
         }
-    }    
+    }
 }
 
 .list {
@@ -95,8 +114,7 @@
         .icon {
             @media (max-width: 767px) {
                 display: inline;
-                left: 10px;
-                top: 10px;
+              float: left;
             }
 
             @media (min-width: 768px) and (max-width: 979px) {
@@ -116,8 +134,8 @@
 
         .title {
             @media (max-width: 767px) {
-                display: inline;
-                margin-left: 20px;
+                margin-left: 25px;
+                margin-top: 40px;
             }
 
             font-size: 20px;
@@ -130,7 +148,6 @@
         .description {
             @media (min-width: 768px) and (max-width: 979px) {
                 float: left;
-                margin-left: 20px
             }
 
             @media (max-width: 767px) {

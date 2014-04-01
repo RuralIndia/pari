@@ -113,8 +113,11 @@
 }
 
 .album-grid {
-
     .album {
+        @media(max-width:767px){
+          width: 323px;
+          margin-left: 0px;
+        }
         background-color: @alternateBgColor;
         padding: 10px;
         .box-sizing (border-box);
