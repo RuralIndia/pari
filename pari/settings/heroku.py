@@ -31,5 +31,5 @@ MEDIA_URL = S3_URL + "media/"
 # MEDIA_ROOT = ''
 
 # STATICFILES_FINDERS += (
-    # "django.contrib.staticfiles.finders.DefaultStorageFinder",
+# "django.contrib.staticfiles.finders.DefaultStorageFinder",
 # )

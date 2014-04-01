@@ -9,5 +9,5 @@ run_functional_tests() {
 
 run_functional_tests $1
 
-flake8 --exclude=migrations --ignore=E501,E225,E128,E126 .
+flake8 --exclude=migrations --ignore=E501,E225,E128,E126,E265 .
 python manage.py test pari
