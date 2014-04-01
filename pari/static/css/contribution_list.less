@@ -2,7 +2,22 @@
 
 
 .contactform {
+    .form-group{
+      @media(max-width: 768px){
+        input[type="text"],input[type="email"],select,textarea{
+          max-width: 100% !important;
+        }
+      }
+    }
+    #recaptcha_widget{
+      @media(max-width:768px){
+        margin-top: 20px;
+      }
+    }
     #recaptcha_image{
+      @media(max-width:768px){
+        width: 100% !important;
+      }
       height: 63px !important;
     }
     h3 {
@@ -10,7 +25,7 @@
         margin-bottom: 24px;
     }
     background-color: @contactFormBgColor;
-    padding: 5px 5px;
+    padding: 0px 5px;
     border-radius: 5px;
     margin: 10px 0;
     position: relative;
@@ -22,42 +37,35 @@
     &.expanded {
         height: 310px;
     }
-    .input{
-      input[type="text"],input[type="email"],select,textarea,{
-        width: 97%;
-        margin-bottom: 10px;
-        height: 30px;
-        border-radius: 5px;
-        border: 1px solid #808080;
-      }
-      #recaptcha_response_field{
-        width: 55%;
-        height: 31px !important;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-        line-height: 1.9;
-
-      }
-      .btn-default{
-        border-radius: 0px;
-        margin: -4px;
-      }
-    }
     textarea {
+        @media(max-width:768px){
+          height: 60px !important;
+          width: 100%;
+        }
         height: 60px !important;
     }
-
+    @media (min-width: 768px)and(max-width: 992px){
+      &.expanded {
+            height: 343px !important;
+      }
+    }
     @media (max-width: 992px) {
+        padding: 0px 5px;
         height: 130px;
+        .input-group{
+          z-index: 999;
+        }
         .input {
             position: relative;
             button[type="submit"] {
                 display: inline;
                 position: absolute;
                 top: 0;
-                width: 100%;
+                width: 80%;
+                margin-left: 8%;
+
             }
-            .form-field {
+            .form-container {
                 display: none;
             }
         }
@@ -70,11 +78,11 @@
                 }
 
                 button[type="submit"] {
-                    margin-top: 15px;
+                    margin-top: 98px;
                     position: relative;
                 }
-                .form-field {
-                    display: inline;
+                .form-container {
+                    display: block;
 
                     & > * {
                         width: 96%;
@@ -87,7 +95,7 @@
 
             }
         }
-    }    
+    }
 }
 
 .list {
@@ -106,8 +114,7 @@
         .icon {
             @media (max-width: 767px) {
                 display: inline;
-                left: 10px;
-                top: 10px;
+              float: left;
             }
 
             @media (min-width: 768px) and (max-width: 979px) {
@@ -127,8 +134,8 @@
 
         .title {
             @media (max-width: 767px) {
-                display: inline;
-                margin-left: 20px;
+                margin-left: 25px;
+                margin-top: 40px;
             }
 
             font-size: 20px;
@@ -141,7 +148,6 @@
         .description {
             @media (min-width: 768px) and (max-width: 979px) {
                 float: left;
-                margin-left: 20px
             }
 
             @media (max-width: 767px) {

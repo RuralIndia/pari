@@ -9,26 +9,20 @@
     }
 </script>
 <div id="recaptcha_widget" style="display:none">
-
-    <div class="control-group">
-        <div class="controls">
-            <a id="recaptcha_image" href="#" class="thumbnail"></a>
-            <div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect please try again</div>
-        </div>
+    <div class="form-group">
+        <a id="recaptcha_image" href="#" class="thumbnail"></a>
+        <div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect please try again</div>
     </div>
 
-       <div class="control-group">
-          <div class="controls">
-              <div class="input-append">
-                  <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="input-recaptcha" placeholder="reCAPTCHA" required/>
-                  <a class="btn btn-default btn-sm" href="javascript:Recaptcha.reload()"><i class="fa fa-refresh"></i></a>
-                  <a class="btn btn-default btn-sm recaptcha_only_if_image" href="javascript:Recaptcha.switch_type('audio')"><i title="Get an audio CAPTCHA" class="fa fa-headphones"></i></a>
-                  <a class="btn btn-default btn-sm recaptcha_only_if_audio" href="javascript:Recaptcha.switch_type('image')"><i title="Get an image CAPTCHA" class="fa fa-picture-o"></i></a>
-                <a class="btn btn-default btn-sm" href="javascript:Recaptcha.showhelp()"><i class="fa fa-question-circle"></i></a>
-              </div>
-          </div>
+    <div class="input-group">
+        <input type="text" id="recaptcha_response_field" name="recaptcha_response_field" class="form-control" placeholder="reCAPTCHA" required/>
+        <span class="input-group-btn">
+          <a class="btn btn-default" href="javascript:Recaptcha.reload()"><i class="fa fa-refresh"></i></a>
+          <a class="btn btn-default recaptcha_only_if_image" href="javascript:Recaptcha.switch_type('audio')"><i title="Get an audio CAPTCHA" class="fa fa-headphones"></i></a>
+          <a class="btn btn-default recaptcha_only_if_audio" href="javascript:Recaptcha.switch_type('image')"><i title="Get an image CAPTCHA" class="fa fa-picture-o"></i></a>
+          <a class="btn btn-default" href="javascript:Recaptcha.showhelp()"><i class="fa fa-question-circle"></i></a>
+        </span>
     </div>
-
 </div>
 <script type="text/javascript" src="{{api_server}}/challenge?k={{public_key}}&hl={{lang}}{{error_param}}"></script>
 <noscript>
