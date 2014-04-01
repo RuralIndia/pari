@@ -157,7 +157,7 @@ class AlbumImage(Orderable, Displayable):
 
     @property
     def get_thumbnail(self):
-        return self.image_collection_image.get_thumbnail()
+        return self.image_collection_image.get_thumbnail
 
     def save(self, delete_audio_file=True, *args, **kwargs):
         if not hasattr(self, 'image_collection_image'):

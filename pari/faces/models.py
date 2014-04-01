@@ -29,7 +29,7 @@ class Face(Orderable, Displayable, AdminThumbMixin):
 
     @models.permalink
     def get_absolute_url(self):
-        return "face-detail", (), {"slug": self.slug}
+        return "face-detail", (), {"alphabet": self.first_letter_of_district()}
 
     @property
     def pinned_image(self):
@@ -40,7 +40,7 @@ class Face(Orderable, Displayable, AdminThumbMixin):
         verbose_name_plural = _("Faces")
 
     def first_letter_of_district(self):
-        return self.district[0]
+        return self.district[0].lower()
 
     def save(self, delete_zip_import=True, *args, **kwargs):
         """
@@ -119,12 +119,12 @@ class FaceImage(Orderable, Displayable):
 
     @models.permalink
     def get_absolute_url(self):
-        name = "face-image-detail"
-        return name, (), {"slug": self.face.slug, "order": self._order + 1}
+        name = "face-detail"
+        return name, (), {"alphabet": self.face.first_letter_of_district()}
 
     @property
     def get_thumbnail(self):
-        return self.image_collection_image.get_thumbnail()
+        return self.image_collection_image.get_thumbnail
 
     def save(self, delete_audio_file=True, *args, **kwargs):
 
