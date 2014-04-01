@@ -202,7 +202,7 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     "dajaxice.finders.DajaxiceFinder",
     "compressor.finders.CompressorFinder",
-    #"django.contrib.staticfiles.finders.DefaultStorageFinder",
+    # "django.contrib.staticfiles.finders.DefaultStorageFinder",
 )
 
 COMPRESS_PRECOMPILERS = (
@@ -307,7 +307,7 @@ INSTALLED_APPS = (
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
 
-    #Mezzanine CMS
+    # Mezzanine CMS
     "mezzanine.boot",
     "mezzanine.conf",
     "mezzanine.core",
@@ -318,7 +318,7 @@ INSTALLED_APPS = (
     "mezzanine.galleries",
     "mezzanine.twitter",
     "mezzanine.accounts",
-    #"mezzanine.mobile",
+    # "mezzanine.mobile",
 
     "south",
     "geoposition",
@@ -328,7 +328,7 @@ INSTALLED_APPS = (
     'dajax',
     "captcha",
 
-    #Custom
+    # Custom
     "pari.article",
     "pari.map",
     "pari.album",
@@ -382,7 +382,7 @@ MIDDLEWARE_CLASSES = (
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 
-#SoundCloud credentials
+# SoundCloud credentials
 SOUND_CLOUD_CLIENT_SECRET = os.environ.get('SOUND_CLOUD_CLIENT_SECRET', 'true')
 SOUND_CLOUD_CLIENT_ID = os.environ.get('SOUND_CLOUD_CLIENT_ID', 'true')
 SOUND_CLOUD_USERNAME = os.environ.get('SOUND_CLOUD_USERNAME', 'true')

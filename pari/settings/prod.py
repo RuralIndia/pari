@@ -42,7 +42,7 @@ INSTALLED_APPS += (
     "djrill",
 )
 
-#Email Settings
+# Email Settings
 MANDRILL_API_KEY = os.environ["DJANGO_MANDRILL_API_KEY"]
 DEFAULT_FROM_EMAIL = "do-no-reply@ruralindiaonline.org"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
