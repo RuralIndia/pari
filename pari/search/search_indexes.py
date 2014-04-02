@@ -1,14 +1,12 @@
 from mezzanine.conf import settings
-from mezzanine.core.models import MetaData, Displayable
-from pari.faces.models import Face, FaceImage
+from mezzanine.core.models import Displayable
+from pari.faces.models import FaceImage
 
 if "haystack" in settings.INSTALLED_APPS:
     from haystack import indexes
 
     from pari.album.models import Album, AlbumImage
     from pari.article.models import Article, Location, Author, Category
-    from pari.contribution.models import Contribution
-    from pari.resources.models import Resource, Factoid
 
     class DisplayableIndex(indexes.SearchIndex, indexes.Indexable):
         text = indexes.CharField(document=True, use_template=True)
@@ -92,4 +90,3 @@ if "haystack" in settings.INSTALLED_APPS:
         description = indexes.CharField(model_attr='description')
         model = Category
         haystack_use_for_indexing = True
-
