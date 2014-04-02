@@ -24,12 +24,12 @@
 {% block main %}
     <div class="hero-unit category-header">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="col-lg-3 col-md-3 col-sm-3">
                 <a class="image-popup-fit-width" href="{{ MEDIA_URL }}{{ category.image }}" title="{{ category.description }}">
                     <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail category.image 270 270 %}" width="270" height="270" alt="">
                 </a>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="col-lg-9 col-md-9 col-sm-9">
                 <div class="caption">
                     <h1>{{ category.title }}</h1>
                     <p>{{ category.description }}</p>
