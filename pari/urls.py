@@ -104,7 +104,7 @@ urlpatterns = patterns("",
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
 
     # ELASTIC SEARCH USING HAYSTACK
-    #------------------------------
+    # ------------------------------
     (r'^search/', include('haystack.urls')),
 )
 
