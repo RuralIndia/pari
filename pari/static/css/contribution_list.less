@@ -1,59 +1,61 @@
 @import "common.less";
-
+@maxWidth: 100%;
+@mediaWidth:767px;
 
 .contactform {
-    .form-group{
-      @media(max-width: 768px){
-        input[type="text"],input[type="email"],select,textarea{
-          max-width: 100% !important;
-        }
-      }
-    }
-    #recaptcha_widget{
-      @media(max-width:768px){
-        margin-top: 20px;
-      }
-    }
-    #recaptcha_image{
-      @media(max-width:768px){
-        width: 100% !important;
-      }
-      height: 63px !important;
-    }
-    h3 {
-        color: #333;
-        margin-bottom: 24px;
-    }
     background-color: @contactFormBgColor;
     padding: 0px 5px;
     border-radius: 5px;
     margin: 10px 0;
     position: relative;
-
     height: 111px;
     overflow: hidden;
+
+    .form-group > input[type="text"],.form-group > input[type="email"],.form-group > select, .form-group > textarea{
+      max-width: 350px;
+      height: 31px;
+    }
+
+    textarea {
+        height: 60px !important;
+    }
+
+    h3 {
+        color: #333;
+        margin-bottom: 24px;
+    }
+
     .transition (0.4s, @property: height);
 
     &.expanded {
         height: 310px;
     }
-    textarea {
-        @media(max-width:768px){
-          height: 60px !important;
-          width: 100%;
-        }
-        height: 60px !important;
+
+    #recaptcha_image{
+          @media(max-width:@mediaWidth){
+            width: @maxWidth !important;
+          }
+          height: 63px !important;
+      }
+
+    #recaptcha_widget{
+          @media(max-width:@mediaWidth){
+            margin-top: 30px;
+         }
     }
-    @media (min-width: 768px)and(max-width: 992px){
+
+    @media (min-width: @mediaWidth)and(max-width: 992px){
       &.expanded {
             height: 343px !important;
       }
     }
+
     @media (max-width: 992px) {
         padding: 0px 5px;
         height: 130px;
         .input-group{
           z-index: 999;
+          margin-top: -7px;
         }
         .input {
             position: relative;
@@ -62,11 +64,12 @@
                 position: absolute;
                 top: 0;
                 width: 80%;
-                margin-left: 8%;
+                margin-left: 5%;
 
             }
             .form-container {
                 display: none;
+                width: 105%;
             }
         }
 
@@ -78,8 +81,7 @@
                 }
 
                 button[type="submit"] {
-                    margin-top: 98px;
-                    position: relative;
+                    margin-top: 104px;
                 }
                 .form-container {
                     display: block;
@@ -112,12 +114,12 @@
         }
 
         .icon {
-            @media (max-width: 767px) {
+            @media (max-width: @mediaWidth) {
                 display: inline;
               float: left;
             }
 
-            @media (min-width: 768px) and (max-width: 979px) {
+            @media (min-width: @mediaWidth) and (max-width: 979px) {
                 float: left;
                 left: 30px
             }
@@ -133,7 +135,7 @@
         }
 
         .title {
-            @media (max-width: 767px) {
+            @media (max-width: @mediaWidth) {
                 margin-left: 25px;
                 margin-top: 40px;
             }
@@ -146,11 +148,11 @@
         }
 
         .description {
-            @media (min-width: 768px) and (max-width: 979px) {
+            @media (min-width: @mediaWidth) and (max-width: 979px) {
                 float: left;
             }
 
-            @media (max-width: 767px) {
+            @media (max-width: @mediaWidth) {
                 margin-top: 10px;
             }
         }

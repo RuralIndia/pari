@@ -19,7 +19,8 @@
                 {% if field.is_hidden %}
                     {{ field }}
                 {% else %}
-                    <div class="form-container col-lg-6 col-md-6 col-sm-6 input_{{ field.id_for_label }} {{ field.field.type }}{% if field.errors %} error{% endif %}">
+                    <div class=" col-lg-6 col-md-6 col-sm-6 ">
+                    <div class="form-container input_{{ field.id_for_label }} {{ field.field.type }}{% if field.errors %} error{% endif %}">
                       <div class="form-group input-sm">
                         {{ field }}
                        </div>
@@ -31,6 +32,7 @@
                             </span>
                         {% endif %}
                     </div>
+                  </div>
                 {% endif %}
             {% endfor %}
         </div>
