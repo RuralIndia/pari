@@ -57,20 +57,30 @@
     background-color: #fff;
     border: 1px solid;
     border-color: #eee;
-    padding: 10px;
+    padding: 10px !important;
     h1 {
         margin-bottom: 10px;
     }
+  p{
+    font-size: 18px;
+  }
     margin-bottom: 40px;
     position: relative;
 
     .all-images-link {
-        color: @headingsColor;
+      a{
+        color: @headingsColor !important;
+      }
+        position: relative;
         font-size: 13px;
         text-decoration: underline;
+        margin-top: 5%;
         &:hover {
           color: black;
         }
+      @media (max-width: 992px){
+        margin-top: 13px;
+      }
     }
 
     .related-articles {
