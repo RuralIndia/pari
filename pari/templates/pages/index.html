@@ -37,13 +37,8 @@
       <div class="carousel-inner">
         {% for article in article_list %}
           <div class="{% if forloop.first %}active{% endif %} item">
-            <div data-picture data-alt="">
-              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 725 400 %}"></div>
-              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 846 520 %}" data-media="(min-width: 768px)"></div>
-              <div data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 %}" data-media="(min-width: 1200px)"></div>
-              <noscript>
-                  <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 %}" alt="">
-              </noscript>
+            <div data-alt="">
+                  <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1052 520 %}" alt="">
             </div>
             <a href="{{ article.get_absolute_url }}">
               <div class="carousel-caption">
@@ -68,13 +63,13 @@
     <div class="main-section">
       <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8">
+            <div class="col-lg-8 col-md-8 col-sm-8">
                 <div class="recent-articles">
                     <h4><i class="fa fa-clock-o"></i> Recent articles <a href="/articles"><small>Browse all articles <i class="fa fa-angle-double-right"></i></small></a></h4>
                     <div class="row">
                         {% for article_chunk in recent_articles|group_by:2 %}
                             {% for article in article_chunk %}
-                                <div class="col-lg-6 col-md-6">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="article{% if forloop.parentloop.last and forloop.last %} last{% endif %}">
                                         <a href="{{ article|get_absolute_url}}">
                                         <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 360 320 %}" alt="">
@@ -91,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-4 col-md-4 col-sm-4">
                 <div class="categories">
                     <h4><i class="fa fa-bars"></i> Categories <a href="/categories"><small>View all categories <i class="fa fa-angle-double-right"></i></small></a></h4>
                     <div class="list">
