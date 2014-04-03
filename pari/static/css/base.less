@@ -533,15 +533,27 @@ a.pari-link {
       margin: 0;
       list-style: none;
     }
+    .carousel-inner{
+      img{
+        margin: 0 auto;
+      }
+    }
     .carousel-control.left, .carousel-control.right {
        background-image: none
     }
     .carousel-caption{
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      right: 10%;
+      min-height: 25%;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
       text-align: left;
       padding: 15px;
       background-color: rgba(255, 255, 255, 0.74902);
       text-shadow: none;
-      position: relative;
       .rounded (5px);
       p {
         color: #333;
@@ -579,14 +591,6 @@ a.pari-link {
 }
 @media (max-width: @screen-xs-max) {
   .carousel{
-      .carousel-indicators{
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        z-index: 5;
-        margin: 0;
-        list-style: none;
-      }
       .carousel-control{
         height: 35px;
         top: 40%;
@@ -596,23 +600,12 @@ a.pari-link {
       .carousel-caption {
           background: #333 !important;
           background: rgba(0,0,0,0.75) !important;
-          position: relative;
-          text-shadow: none;
           left: 0px;
           right: 0px;
           bottom: 0px;
-          padding: 15px;
-          text-align: left;
           border-radius: 0px !important;
           p{
-            line-height: 20px;
             color: #fff;
-            margin-bottom: 0px;
-          }
-          h4{
-            margin-top: 0px;
-            margin-bottom: 5px;
-            line-height: 20px;
           }
       }
   }
@@ -623,16 +616,16 @@ a.pari-link {
       .carousel-control {
           height: 60px;
           width: 60px;
-          top: 28%;
+          top: 34%;
           font-size: 90px;
           line-height: 46px;
       }
       .carousel-caption {
           position: relative;
           text-shadow: none;
-          left: 0px;
-          right: 0px;
-          bottom: 121px;
+          left: 0;
+          right: 0;
+          bottom: 80px;
           border-radius: 0px !important;
           text-shadow: none;
       }
@@ -640,125 +633,30 @@ a.pari-link {
 }
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
   .carousel{
-    .carousel-control.left, .carousel-control.right {
-       background-image: none
-    }
-    .carousel-caption {
-      background-color: rgba(255, 255, 255, 0.74902);
-      .rounded (5px);
-    }
-    .carousel-caption h4 small {
-        color: #333;
-    }
-    .carousel-caption p {
-        color: #333;
-    }
     &.carousel-thin-controls {
       .carousel-control {
-          height: 70px;
-          top: 45%;
-          width: 50px;
-          font-size: 90px;
-          line-height: 46px;
-          background-color: rgba(255,255,255,0.74902);
-      }
-      .carousel-caption {
-         background-color: rgba(255, 255, 255, 0.74902);
-      }
-      &.carousel-inner-caption {
-          .carousel-caption {
-              bottom: 5%;
-              left: 50%;
-              right: 10%;
-              min-height: 30%;
-              max-height: 30%;
-              .rounded (5px);
-          }
+        height: 70px;
+        top: 34%;
+        width: 50px;
+        font-size: 90px;
+        line-height: 46px;
       }
     }
   }
 }
 @media (min-width: @screen-lg-min) {
   .carousel{
-    .carousel-control.left, .carousel-control.right {
-       background-image: none
-    }
-    .carousel-caption {
-      background-color: rgba(255, 255, 255, 0.74902);
-      .rounded (5px);
-    }
-    .carousel-caption h4 small {
-        color: #333;
-    }
-    .carousel-caption p {
-        color: #333;
-    }
-    .carousel-control {
-        top: 45%;
-        border-radius: 0;
-        border: none;
-        background-color: rgba(255, 255, 255, 0.74902);
-        opacity: 0.9;
-        &:hover{
-            color: #333;
-        }
-        &.right {
-            right: 0;
-            .border-radius(0, 0, 8px, 8px);
-
-        }
-        &.left {
-            left: 0;
-            .border-radius(8px, 8px, 0, 0);
-        }
-    }
-
     &.carousel-thin-controls {
-      .carousel-inner {
-          width: 90%;
-          margin: 0 auto;
-      }
       .carousel-control {
+          top: 42%;
+          opacity: 0.9;
           height: 70px;
           width: 50px;
           font-size: 90px;
           line-height: 46px;
           background-color: rgba(255, 255, 255, 0);
       }
-      .carousel-caption {
-         background-color: rgba(255, 255, 255, 0.74902);
-      }
-      &.carousel-inner-caption {
-          .carousel-caption {
-              bottom: 5%;
-              left: 50%;
-              right: 10%;
-              min-height: 30%;
-              max-height: 30%;
-              .rounded (5px);
-          }
-      }
     }
-  }
-  .carousel-inner {
-      width: 90%;
-      margin: 0 auto;
-  }
-  .carousel-control {
-      background-color: rgba(255, 255, 255, 0);
-  }
-  .carousel-caption {
-     background-color: rgba(255, 255, 255, 0.74902);
-  }
-  &.carousel-inner-caption {
-      .carousel-caption {
-          bottom: 5%;
-          left: 50%;
-          right: 10%;
-          min-height: 30%;
-          max-height: 30%;
-          .rounded (5px);
-      }
   }
 }
 
