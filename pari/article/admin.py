@@ -72,7 +72,6 @@ class AuthorAdmin(DisplayableAdmin):
         "fields": ["title", "image", "description"],
     }),
 
-admin.site.unregister(BlogPost)
 admin.site.register(Type, TypeAdmin)
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Category, CategoryAdmin)
