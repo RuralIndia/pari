@@ -1,7 +1,6 @@
 from copy import deepcopy
 from django.contrib import admin
 
-from mezzanine.blog.models import BlogPost
 from mezzanine.blog.admin import BlogPostAdmin
 from mezzanine.core.admin import DisplayableAdmin, TabularDynamicInlineAdmin
 
