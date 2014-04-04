@@ -78,7 +78,7 @@ a.pari-link {
         border-bottom: 2px solid @navBottomBorder;
         min-height: 60px;
         .dropdown{
-          @media (min-width: 768px) {
+          @media (min-width: @screen-xs-max) {
             &.active {
                 .menu-arrow (@navBottomBorder);
             }
@@ -106,7 +106,7 @@ a.pari-link {
                 height: 30px;
               }
             }
-            @media (min-width: 768px) {
+            @media (min-width: @screen-xs-max) {
               position: absolute;
               left: -80px;
               padding-left: 10px;
@@ -130,7 +130,7 @@ a.pari-link {
                     text-decoration: none;
                     color: @headingsColor;
                 }
-                @media (min-width: 768px) {
+                @media (min-width: @screen-xs-max) {
                     position: absolute;
                     right: 150px;
                     top: 57px;
@@ -166,19 +166,6 @@ a.pari-link {
                 top: 7px;
                 right: 13px;
               }
-          }
-          @media (max-width: 768px) {
-            .navbar-form {
-              margin-top: 0px;
-              .form-control {
-                width: 63% !important;
-              }
-              .fa-search {
-                top: 18px;
-                left: 65%;
-                font-size: 18px;
-              }
-            }
           }
         }
     }
@@ -452,7 +439,7 @@ a.pari-link {
                 float: left;
             }
 
-            @media (max-width: 768px) {
+            @media (max-width: @screen-xs-max) {
                 .media-thumbnail, .image-thumbnail {
                     img {
                         max-width: 100%;
@@ -584,34 +571,53 @@ a.pari-link {
 }
 
 @media (max-width: @screen-xs-max) {
-    .navbar-inverse .navbar-nav > .active > a,
-    .navbar-inverse .navbar-nav > .active > a:hover,
-     ul.nav li.dropdown a:hover,
-    .navbar-inverse .navbar-nav > .active > a:focus {
-      border-radius: 5px;
-      margin-bottom: 2px;
-      color: #333 !important;
-      background: #e5e5e5 !important;
+  .navbar-inverse .navbar-nav > .active > a,
+  .navbar-inverse .navbar-nav > .active > a:hover,
+   ul.nav li.dropdown a:hover,
+  .navbar-inverse .navbar-nav > .active > a:focus {
+    border-radius: 5px;
+    margin-bottom: 2px;
+    color: #333 !important;
+    background: #e5e5e5 !important;
+  }
+  ul.nav li.dropdown a{
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .navbar-form {
+    .form-group{
+      margin-bottom: 0px;
     }
+    margin-top: 0px;
+    .form-control {
+      width: 250px !important;
+    }
+    .fa-search {
+      top: 18px !important;
+      left: 240px;
+      font-size: 13px;
+    }
+  }
+
   .carousel{
-      .carousel-control{
-        height: 35px;
-        top: 40%;
-        width: 45px;
-        font-size: 50px;
-      }
-      .carousel-caption {
-          position: relative;
-          background: #333;
-          background: rgba(0,0,0,0.75);
-          left: 0px;
-          right: 0px;
-          bottom: 0px;
-          border-radius: 0px;
-          p{
-            color: #fff;
-          }
-      }
+    .carousel-control{
+      height: 35px;
+      top: 40%;
+      width: 45px;
+      font-size: 50px;
+    }
+    .carousel-caption {
+        position: relative;
+        background: #333;
+        background: rgba(0,0,0,0.75);
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        border-radius: 0px;
+        p{
+          color: #fff;
+        }
+    }
   }
 }
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
