@@ -100,6 +100,12 @@ a.pari-link {
             }
             width: 240px;
             text-align: left;
+            .form-group{
+              margin-bottom: 10px;
+              > input{
+                height: 30px;
+              }
+            }
             @media (min-width: 768px) {
               position: absolute;
               left: -80px;
@@ -580,7 +586,7 @@ a.pari-link {
 @media (max-width: @screen-xs-max) {
     .navbar-inverse .navbar-nav > .active > a,
     .navbar-inverse .navbar-nav > .active > a:hover,
-    ul.nav a:hover,
+     ul.nav li.dropdown a:hover,
     .navbar-inverse .navbar-nav > .active > a:focus {
       border-radius: 5px;
       margin-bottom: 2px;
