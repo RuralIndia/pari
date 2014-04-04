@@ -58,7 +58,8 @@ class Album(Displayable):
 
     @property
     def cover(self):
-        return self.images.get(is_cover=True).image_collection_image.file.path
+        if self.images.all().count() > 0:
+            return self.images.get(is_cover=True).image_collection_image.file.path
 
     @property
     def get_thumbnail(self):

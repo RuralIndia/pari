@@ -15,6 +15,7 @@ class AlbumFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Album
 
     title = 'Album 1'
+    photographer = factory.SubFactory(AuthorFactory)
 
 
 class ImageCollectionFactory(factory.DjangoModelFactory):
