@@ -1,3 +1,4 @@
+import os
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.contrib import admin
@@ -105,8 +106,12 @@ urlpatterns = patterns("",
 
     # ELASTIC SEARCH USING HAYSTACK
     # ------------------------------
-    (r'^search/', include('haystack.urls')),
 )
+
+if os.environ['DJANGO_SETTINGS_MODULE'] != 'pari.settings.ci':
+    urlpatterns += patterns('',
+        (r'^search/', include('haystack.urls')),
+    )
 
 if settings.DEBUG:
     urlpatterns += patterns('',
