@@ -59,28 +59,6 @@ a.pari-link {
   color: @headingsColor;
 }
 
-@media (max-width: 768px) {
-    .navbar-inverse .navbar-nav > .active > a,
-    .navbar-inverse .navbar-nav > .active > a:hover,
-    .navbar-inverse .navbar-nav > .active > a:focus {
-      border-radius: 5px;
-      background: white;
-    }
-}
-@media(max-width: 992px){
-  .nav.navbar-nav{
-    font-size: 12px;
-  }
-  .navbar{
-    .container{
-      .navbar-form{
-        .form-control {
-          width: 205px !important;
-        }
-      }
-    }
-  }
-}
 #homepage{
   width: 101%;
 }
@@ -89,6 +67,9 @@ a.pari-link {
     min-height: 100%;
     height: auto;
     margin: 0 auto -@footerHeight;
+    .navbar-inverse .navbar-nav>.active>a{
+      background-color: #333333;
+    }
     .navbar {
         margin-bottom: -10px;
         @navBottomBorder: #808080;
@@ -114,6 +95,9 @@ a.pari-link {
             }
         }
         .login-form {
+            label{
+              font-weight:100;
+            }
             width: 240px;
             text-align: left;
             @media (min-width: 768px) {
@@ -592,7 +576,17 @@ a.pari-link {
         }
     }
 }
+
 @media (max-width: @screen-xs-max) {
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .active > a:hover,
+    ul.nav a:hover,
+    .navbar-inverse .navbar-nav > .active > a:focus {
+      border-radius: 5px;
+      margin-bottom: 2px;
+      color: #333 !important;
+      background: #e5e5e5 !important;
+    }
   .carousel{
       .carousel-control{
         height: 35px;
@@ -615,6 +609,19 @@ a.pari-link {
   }
 }
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .nav.navbar-nav{
+      font-size: 12px;
+    }
+    .navbar{
+      .container{
+        .navbar-form{
+          .form-control {
+            width: 205px !important;
+          }
+        }
+      }
+    }
+
    .carousel{
       height: 400px;
       .carousel-control {
