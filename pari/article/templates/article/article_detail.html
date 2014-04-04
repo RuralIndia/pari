@@ -105,7 +105,7 @@
         <div class="article">
             <a href="{{ article|get_absolute_url }}">
                 <div class="article-image">
-                    <img src="{{ MEDIA_URL }}{% thumbnail article.featured_image 100 78 %}" alt="">
+                    <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 100 78 %}" alt="">
                 </div>
                 <div class="caption">
                     <h4>{{ article.title|truncatechars:45 }}</h4>
