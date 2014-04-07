@@ -508,12 +508,14 @@ a.pari-link {
     .carousel-indicators{
       position: absolute;
       top: 15px;
-      left: 60%;
+      left: 55%;
       z-index: 1;
       margin: 0;
       list-style: none;
     }
     .carousel-inner{
+      width: 90%;
+      margin: 0 auto;
       img{
         margin: 0 auto;
       }
@@ -600,7 +602,18 @@ a.pari-link {
   }
 
   .carousel{
+    .carousel-inner{
+      img{
+        width: 100%;
+      }
+    }
     .carousel-control{
+      &.right {
+        right: 6%;
+      }
+      &.left {
+        left: 6%;
+      }
       height: 35px;
       top: 40%;
       width: 45px;
@@ -637,9 +650,15 @@ a.pari-link {
    .carousel{
       height: 400px;
       .carousel-control {
+          &.right {
+            right: 40px;
+          }
+          &.left {
+            left: 40px;
+          }
           height: 60px;
           width: 60px;
-          top: 34%;
+          top: 40%;
           font-size: 90px;
           line-height: 46px;
       }
@@ -659,7 +678,7 @@ a.pari-link {
     &.carousel-thin-controls {
       .carousel-control {
         height: 70px;
-        top: 34%;
+        top: 40%;
         width: 50px;
         font-size: 90px;
         line-height: 46px;

@@ -33,13 +33,17 @@
           <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
         {% endfor %}
       </ol>
-
       <div class="carousel-inner">
         {% for article in article_list %}
           <div class="{% if forloop.first %}active{% endif %} item">
-            <div data-alt="">
-                  <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1052 520 %}" alt="">
-            </div>
+            <span data-picture data-alt="">
+              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 725 400 %}"></span>
+              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 846 520 %}" data-media="(min-width: 992px)"></span>
+              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 %}" data-media="(min-width: 1200px)"></span>
+              <noscript>
+                <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1052 520 %}" alt="">
+              </noscript>
+            </span>
             <a href="{{ article.get_absolute_url }}">
               <div class="carousel-caption">
                 <h4>{{ article.title}}</h4>
