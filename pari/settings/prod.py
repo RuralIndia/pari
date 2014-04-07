@@ -48,6 +48,7 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'haystack',
     },
 }
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # Email Settings
 MANDRILL_API_KEY = os.environ["DJANGO_MANDRILL_API_KEY"]

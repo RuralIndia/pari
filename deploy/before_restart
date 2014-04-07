@@ -16,5 +16,8 @@ pip install -r requirements.txt
 #run migrations
 python manage.py migrate
 
+#build elasticsearch indexes
+cat <(echo "y") | python manage.py rebuild_index
+
 #Gather static files
 cat <(echo "yes") | python manage.py collectstatic
