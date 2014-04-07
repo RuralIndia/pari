@@ -12,7 +12,7 @@
     overflow: hidden;
 
     .form-group > input[type="text"],.form-group > input[type="email"],.form-group > select, .form-group > textarea{
-      max-width: 350px;
+      max-width: 100%;
       height: 31px;
     }
 
@@ -44,13 +44,13 @@
          }
     }
 
-    @media (min-width: @mediaWidth)and(max-width: 992px){
+    @media (min-width: @mediaWidth)and(max-width: @screen-md-min){
       &.expanded {
             height: 343px !important;
       }
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: @screen-md-min) {
         padding: 0px 5px;
         height: 130px;
         .input-group{
@@ -60,12 +60,9 @@
         .input {
             position: relative;
             button[type="submit"] {
-                display: inline;
-                position: absolute;
-                top: 0;
+                display: block;
                 width: 80%;
-                margin-left: 5%;
-
+                margin: 0 auto;
             }
             .form-container {
                 display: none;
@@ -81,7 +78,13 @@
                 }
 
                 button[type="submit"] {
-                    margin-top: 104px;
+                  @media (max-width: @screen-xs-max) {
+                    margin-top: 118px;
+                  }
+                  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+                    margin-top: 86px;
+                  }
+                  margin-top: 128px;
                 }
                 .form-container {
                     display: block;
