@@ -36,7 +36,7 @@ if (typeof tinyMCE != 'undefined') {
         content_css: "/static/css/tinymce.css",
 
         toolbar1: "insertfile undo redo | styleselect | bold italic lineheight dropcaps blockquote | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image caption",
-        toolbar2: "fullscreen print preview media | fontselect fontsizeselect forecolor backcolor",
+        toolbar2: "fullscreen print preview media | fontsizeselect forecolor backcolor",
         image_advtab: true,
         templates: [
             {title: 'Test template 1', content: 'Test 1'},
