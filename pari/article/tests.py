@@ -1,8 +1,6 @@
 from django.test import TestCase
 from django.test.client import Client
 from django.core.urlresolvers import reverse
-from haystack.fields import SearchField
-from haystack.models import SearchResult
 
 from mezzanine.accounts.models import User
 
