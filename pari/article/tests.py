@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.test.client import Client
 from django.core.urlresolvers import reverse
+from haystack.fields import SearchField
+from haystack.models import SearchResult
 
 from mezzanine.accounts.models import User
 
@@ -172,7 +174,10 @@ class ArticleViewsTests(TestCase):
     def test_should_contain_category_with_title_test_when_searched_for_test_and_filtered_by_category(self):
         category_with_title_test = CategoryFactory(title="test")
         response = self.client.get(reverse('search-detail'), {'query': 'test', 'filter': 'Category', 'page': 1})
-        self.assertIn(category_with_title_test, response.context['results'])
+        categories = response.context['results'].object_list
+        self.assertEquals(category_with_title_test.title, categories[0].title)
+        self.assertEquals(category_with_title_test.description, categories[0].description)
+        self.assertEquals(category_with_title_test.get_thumbnail, categories[0].get_thumbnail)
 
     def test_should_not_contain_article_with_title_test_when_searched_for_test_and_filtered_by_category(self):
         article_with_title_test = ArticleFactory(title="test")
