@@ -1,6 +1,6 @@
 from django.template import Library
 from datetime import date
-from pari.faces.models import get_pinned_face, get_pinned_face_image
+from pari.faces.models import get_pinned_faces, get_pinned_face_images
 
 
 register = Library()
@@ -13,23 +13,23 @@ def get_file_path(image):
 
 @register.filter
 def get_group_image(grouped_faces):
-    pinned_face = get_pinned_face(grouped_faces["list"][0].first_letter_of_district)
-    if len(pinned_face) != 0:
-        return get_face_image(pinned_face[0])
+    pinned_faces = get_pinned_faces(grouped_faces["list"][0].first_letter_of_district)
+    if len(pinned_faces) != 0:
+        return get_face_image(pinned_faces[0])
     else:
         return get_group_image_of_the_week(grouped_faces)
 
 
 @register.filter
 def get_face_image(face):
-    face_image = get_pinned_face_image(face)
-    if len(face_image) == 0:
+    face_images = get_pinned_face_images(face)
+    if len(face_images) == 0:
         week_of_the_year = get_week_of_the_year()
         image_count = face.images.all().count()
         image_index = week_of_the_year % image_count
         return list(face.images.all())[image_index]
     else:
-        return face_image[0]
+        return face_images[0]
 
 
 @register.filter
