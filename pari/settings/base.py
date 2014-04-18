@@ -328,7 +328,6 @@ INSTALLED_APPS = (
     'dajaxice',
     'dajax',
     "captcha",
-    
     # Custom
     "pari.article",
     "pari.map",
