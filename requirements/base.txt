@@ -13,7 +13,7 @@ django-dajax==0.9.2
 django-dajaxice==0.6
 django-extensions==1.1.1
 django-filter==0.5.4
-django-haystack==2.0.0
+django-haystack==2.1.0
 django-recaptcha==0.0.6
 -e git://github.com/manojlds/django-geoposition.git@547b064f65fa1be41b67635863679917b9ca87e5#egg=django_geoposition-dev
 django-smart-load-tag==0.3.2

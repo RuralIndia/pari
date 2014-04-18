@@ -98,8 +98,8 @@ class FaceTest(TestCase):
 
     def test_first_letter_of_face(self):
         face = FaceFactory.create()
-        face.district = "District"
-        self.assertEquals("D", face.first_letter_of_district())
+        face.district = "district"
+        self.assertEquals("d", face.first_letter_of_district())
 
     def create_face(self, is_pinned=False):
         face = FaceFactory()
