@@ -32,9 +32,11 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
 
     author = models.ForeignKey("Author", related_name='articles')
 
-    capsule_video = models.CharField(max_length=100, null=True, blank=True)
+    capsule_video = FileField(verbose_name=_("Capsule Video"),
+                               format="Video-field", max_length=255, null=True, blank=True)
 
-    featured_video = models.CharField(max_length=100, null=True, blank=True)
+    featured_video = FileField(verbose_name=_("Featured Video"),
+                               format="Video-field", max_length=255, null=True, blank=True)
 
     featured_audio = models.CharField(max_length=100, null=True, blank=True)
 

@@ -14,13 +14,24 @@ import os
 # http://mezzanine.jupo.org/docs/configuration.html#default-settings
 
 # Controls the ordering and grouping of the admin menu.
+YOUTUBE={
+    "developer_key": 'AI39si6KKAEUy9GVPXYLsx3EW1Rp8QZM-AU8Yyf-_NeUMP3NtAMGASKj6H54LTsw6BC0Dcs_trJhRfY1mBervYYVQGeNI4y1yw',
+    "client_id" : '906138919826.apps.googleusercontent.com',
+    "email" : 'gmi3024@gmail.com',
+    "password": 'Amplify#1993',
+    "source" : 'youtube',
+    "redirect_url":"http://localhost:8000/admin/media-library/browse_videos/",
+    "ssl": False,
+}
+YOUTUBE_DEFAULT_LIST_PER_PAGE = 3
 
 ADMIN_MENU_ORDER = (
     (_("Content"),
      ("pages.Page", "article.Article", "article.Author", "article.Location", "article.Category", "article.Type",
       "album.Album", "album.ImageCollection", "faces.Face", "resources.Resource", "resources.Factoid",
       "contribution.Contribution",
-      (_("Media Library"), "fb_browse"),)),
+      (_("Media Library"), "fb_browse"),
+     )),
     (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
     (_("Users"), ("auth.User", "auth.Group",)),
 )
