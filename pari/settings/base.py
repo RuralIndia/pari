@@ -23,7 +23,22 @@ YOUTUBE={
     "redirect_url":"http://localhost:8000/admin/media-library/browse_videos/",
     "ssl": False,
 }
-YOUTUBE_DEFAULT_LIST_PER_PAGE = 3
+YOUTUBE_DEFAULT_LIST_PER_PAGE = 4
+FILEBROWSER_SELECT_FORMATS = {
+    'File': ['Folder', 'Document'],
+    'Image': ['Image'],
+    'Document': ['Document'],
+    # for TinyMCE we can also define lower-case items
+    'image': ['Image'],
+    'file': ['Folder', 'Image', 'Document'],
+}
+
+FILEBROWSER_EXTENSIONS = {
+    'Folder': [''],
+    'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
+    'Document': ['.pdf', '.doc', '.rtf', '.txt', '.xls', '.csv'],
+    'Code': ['.html', '.py', '.js', '.css']
+}
 
 ADMIN_MENU_ORDER = (
     (_("Content"),
