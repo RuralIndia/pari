@@ -15,15 +15,17 @@ import os
 
 # Controls the ordering and grouping of the admin menu.
 YOUTUBE={
-    "developer_key": 'AI39si6KKAEUy9GVPXYLsx3EW1Rp8QZM-AU8Yyf-_NeUMP3NtAMGASKj6H54LTsw6BC0Dcs_trJhRfY1mBervYYVQGeNI4y1yw',
-    "client_id" : '906138919826.apps.googleusercontent.com',
-    "email" : 'gmi3024@gmail.com',
-    "password": 'Amplify#1993',
+    "developer_key": 'AI39si4zVQbWAFz9KltgimNrjBS8IBP5aiTrpR7Xzl0EwEuQD1cdZ66_48t21vY0ChxvlrlU-vqCB8vKdg1x3_SffYAA3cdcyw',
+    "client_id" : '465550897047-33el7qv2auk5mrmlqvvm4935aivh4pgg.apps.googleusercontent.com',
+    "email" : 'RuralIndiaOnline@gmail.com',
+    "password": 'RuralIndia123',
+    "username": '5D8dOG0WsHQgn2zGbUH2ZQ',
     "source" : 'youtube',
     "redirect_url":"http://localhost:8000/admin/media-library/browse_videos/",
     "ssl": False,
 }
 YOUTUBE_DEFAULT_LIST_PER_PAGE = 4
+YOUTUBE_MAX_UPLOAD_SIZE = 2147000000
 FILEBROWSER_SELECT_FORMATS = {
     'File': ['Folder', 'Document'],
     'Image': ['Image'],
