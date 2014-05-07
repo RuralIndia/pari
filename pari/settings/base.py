@@ -14,17 +14,9 @@ import os
 # http://mezzanine.jupo.org/docs/configuration.html#default-settings
 
 # Controls the ordering and grouping of the admin menu.
-YOUTUBE={
-    "developer_key": 'AI39si4zVQbWAFz9KltgimNrjBS8IBP5aiTrpR7Xzl0EwEuQD1cdZ66_48t21vY0ChxvlrlU-vqCB8vKdg1x3_SffYAA3cdcyw',
-    "client_id" : '465550897047-33el7qv2auk5mrmlqvvm4935aivh4pgg.apps.googleusercontent.com',
-    "email" : 'RuralIndiaOnline@gmail.com',
-    "password": 'RuralIndia123',
-    "username": '5D8dOG0WsHQgn2zGbUH2ZQ',
-    "source" : 'youtube',
-    "redirect_url":"http://localhost:8000/admin/media-library/browse_videos/",
-    "ssl": False,
-}
-YOUTUBE_DEFAULT_LIST_PER_PAGE = 4
+
+YOUTUBE = os.environ.get('YOUTUBE', 'true')
+YOUTUBE_DEFAULT_LIST_PER_PAGE = 10
 YOUTUBE_MAX_UPLOAD_SIZE = 2147000000
 FILEBROWSER_SELECT_FORMATS = {
     'File': ['Folder', 'Document'],
@@ -47,8 +39,7 @@ ADMIN_MENU_ORDER = (
      ("pages.Page", "article.Article", "article.Author", "article.Location", "article.Category", "article.Type",
       "album.Album", "album.ImageCollection", "faces.Face", "resources.Resource", "resources.Factoid",
       "contribution.Contribution",
-      (_("Media Library"), "fb_browse"),
-     )),
+      (_("Media Library"), "fb_browse"),)),
     (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
     (_("Users"), ("auth.User", "auth.Group",)),
 )
