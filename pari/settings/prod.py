@@ -55,7 +55,7 @@ MANDRILL_API_KEY = os.environ["DJANGO_MANDRILL_API_KEY"]
 DEFAULT_FROM_EMAIL = "do-no-reply@ruralindiaonline.org"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 
-#youtube settings
+# youtube settings
 YOUTUBE={
     "developer_key": os.environ['YT_DEVELOPER_KEY'],
     "client_id": os.environ['YT_CLIENT_ID'],
