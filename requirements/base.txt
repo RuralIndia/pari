@@ -35,3 +35,4 @@ wsgiref==0.1.2
 soundcloud==0.4.1
 pyelasticsearch==0.6.1
 haystack==0.15
+gdata
