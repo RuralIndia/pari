@@ -47,7 +47,7 @@ HAYSTACK_CONNECTIONS = {
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
-# add youtube settings here
+# youtube settings here
 YOUTUBE={
     "developer_key": '',
     "client_id": '',
