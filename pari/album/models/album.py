@@ -1,4 +1,5 @@
 from StringIO import StringIO
+import inspect
 import os
 from zipfile import ZipFile
 
@@ -161,10 +162,13 @@ class AlbumImage(Orderable, Displayable):
         return self.image_collection_image.get_thumbnail
 
     def save(self, delete_audio_file=True, *args, **kwargs):
-        if not hasattr(self, 'image_collection_image'):
-            image_collection_image = ImageCollectionImage(file=self.image_file)
-            self.album.image_collection.images.add(image_collection_image)
+
+        image_collection_image = ImageCollectionImage.objects.filter(file=self.image_file, image_collection_id=self.album.image_collection.id).first()
+        if not image_collection_image:
+            self.add_to_image_collection()
+        else:
             self.image_collection_image = image_collection_image
+
         super(AlbumImage, self).save(*args, **kwargs)
         if self.audio_file:
             soundcloud_helper = SoundCloudHelper()
@@ -172,3 +176,8 @@ class AlbumImage(Orderable, Displayable):
             self.audio = audio_file_id
             if delete_audio_file:
                 self.audio_file.delete(save=True)
+
+    def add_to_image_collection(self):
+        image_collection_image = ImageCollectionImage(file=self.image_file)
+        self.album.image_collection.images.add(image_collection_image)
+        self.image_collection_image = image_collection_image
