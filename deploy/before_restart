@@ -13,8 +13,8 @@ source /.venv/pari/bin/activate
 #install required python modules
 pip install -r requirements/prod.txt
 
-#run migrations
-python manage.py migrate
+#run syncdb
+python manage.py syncdb
 
 #build elasticsearch indexes
 cat <(echo "y") | python manage.py rebuild_index

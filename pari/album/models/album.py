@@ -83,10 +83,10 @@ class Album(Displayable):
             new_image_collection = ImageCollection(title=self.title)
             new_image_collection.save()
             self.image_collection = new_image_collection
-            audio = [album_image.audio_file for album_image in self.images.all() if album_image.audio_file]
-            if(any(audio)):
-                soundcloud_helper = SoundCloudHelper()
-                soundcloud_helper.create_playlist(self.title)
+            # audio = [album_image.audio_file for album_image in self.images.all() if album_image.audio_file]
+            # if(any(audio)):
+            #     soundcloud_helper = SoundCloudHelper()
+            #     soundcloud_helper.create_playlist(self.title)
         super(Album, self).save(*args, **kwargs)
         if self.zip_import:
             zip_file = ZipFile(self.zip_import)

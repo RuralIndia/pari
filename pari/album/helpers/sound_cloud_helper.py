@@ -37,6 +37,6 @@ class SoundCloudHelper:
         self.authenticate()
         track = self.client.post('/tracks', track={'title': audio_file.name, 'asset_data': open(audio_file.path, 'rb'),
                                                    'sharing': 'public'})
-        self.add_track_to_playlist(track.id, self.client, playlist_title)
+        # self.add_track_to_playlist(track.id, self.client, playlist_title)
 
         return track.id
