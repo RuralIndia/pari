@@ -46,15 +46,3 @@ HAYSTACK_CONNECTIONS = {
 }
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
-
-# youtube settings here
-YOUTUBE={
-    "developer_key": '',
-    "client_id": '',
-    "email": '',
-    "password": '',
-    "username": '',
-    "source": 'youtube',
-    "redirect_url": "http://localhost:8000/admin/media-library/browse_videos/",
-    "ssl": False,
-}

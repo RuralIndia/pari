@@ -15,25 +15,6 @@ import os
 
 # Controls the ordering and grouping of the admin menu.
 
-YOUTUBE = os.environ.get('YOUTUBE', 'true')
-YOUTUBE_DEFAULT_LIST_PER_PAGE = 10
-YOUTUBE_MAX_UPLOAD_SIZE = 2147000000
-FILEBROWSER_SELECT_FORMATS = {
-    'File': ['Folder', 'Document'],
-    'Image': ['Image'],
-    'Document': ['Document'],
-    # for TinyMCE we can also define lower-case items
-    'image': ['Image'],
-    'file': ['Folder', 'Image', 'Document'],
-}
-
-FILEBROWSER_EXTENSIONS = {
-    'Folder': [''],
-    'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff'],
-    'Document': ['.pdf', '.doc', '.rtf', '.txt', '.xls', '.csv'],
-    'Code': ['.html', '.py', '.js', '.css']
-}
-
 ADMIN_MENU_ORDER = (
     (_("Content"),
      ("pages.Page", "article.Article", "article.Author", "article.Location", "article.Category", "article.Type",

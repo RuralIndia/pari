@@ -54,15 +54,3 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 MANDRILL_API_KEY = os.environ["DJANGO_MANDRILL_API_KEY"]
 DEFAULT_FROM_EMAIL = "do-no-reply@ruralindiaonline.org"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
-
-# youtube settings
-YOUTUBE={
-    "developer_key": os.environ['YT_DEVELOPER_KEY'],
-    "client_id": os.environ['YT_CLIENT_ID'],
-    "email": os.environ['YT_EMAIL'],
-    "password": os.environ['YT_PASSWORD'],
-    "username": os.environ['YT_USERNAME'],
-    "source": 'youtube',
-    "redirect_url": "http://www.ruralindiaonline.org/admin/media-library/browse_videos/",
-    "ssl": False,
-}
