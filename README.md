@@ -17,13 +17,12 @@ git submodule update --init
 
 ### Python and packages management
 
-Use [pythonbrew](https://github.com/utahta/pythonbrew) for python runtime and packages management
+Use [pyenv](https://github.com/yyuu/pyenv) for python runtime and packages management. Also install the [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv) plugin to handle virtualenv as well.
 
 ```bash
-pythonbrew install 2.7.3
-pythonbrew use 2.7.3
-pythonbrew venv create pari
-pythonbrew venv use pari
+cd pari
+pyenv install 2.7.6
+pyenv virtualenv pari
 ```
 
 ### Install the dependencies
@@ -31,7 +30,7 @@ pythonbrew venv use pari
 ```bash
 pip install -r requirements/dev.txt
 ```
-**Note:**Use [autoenv](https://github.com/kennethreitz/autoenv) to simplify the above process. Just install `pythonbrew` and `cd` into the project to get started. The checked-in `.env` file will install python-2.7.3 and install dependencies in virtual environment `pari`. It also sets the `DJANGO_SETTINGS_MODULE` environment variable to `pari.settings.dev` for local development.
+**Note:**Use [autoenv](https://github.com/kennethreitz/autoenv) to simplify environment management. The checked-in `.env` file will install sets the `DJANGO_SETTINGS_MODULE` environment variable to `pari.settings.dev` for local development.
 
 Also, we need LESS compiler to be in PATH to get LESS files compiled into CSS.
 If you don't have `node.js` and `npm` installed already then do,
