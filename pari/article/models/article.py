@@ -27,6 +27,10 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     allow_comments = models.BooleanField(verbose_name=_("Allow comments"),
                                          default=True)
     comments = CommentsField(verbose_name=_("Comments"))
+
+    allow_featured_image = models.BooleanField(verbose_name=_("Show Featured Image for the Article"),
+                                                     default=False)
+
     featured_image = FileField(verbose_name=_("Featured Image"),
                                format="Image", max_length=255, null=True, blank=True)
 
@@ -88,6 +92,7 @@ class ArticleCarouselImage(Orderable, Displayable):
     article = models.ForeignKey("article", related_name="carousel_images")
     file = FileField(_("File"), max_length=200, format="Image",
                      upload_to=upload_to("article.ArticleCarouselImage.file", "carousel"))
+
 
     is_searchable = False
 
