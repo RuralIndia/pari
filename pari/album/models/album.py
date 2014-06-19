@@ -1,5 +1,4 @@
 from StringIO import StringIO
-import inspect
 import os
 from zipfile import ZipFile
 
