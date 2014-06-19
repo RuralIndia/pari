@@ -2,7 +2,7 @@
 
 People's Archive Of Rural India
 
-[![Build Status](https://travis-ci.org/RuralIndia/pari.png)](https://travis-ci.org//RuralIndia/pari)
+[![Build Status](https://travis-ci.org/RuralIndia/pari.png)](https://travis-ci.org/RuralIndia/pari)
 
 
 ## Dev Setup
