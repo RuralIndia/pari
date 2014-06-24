@@ -1,7 +1,12 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from pari.article.forms import TinyMceWidget
-from pari.faces.models import Face
+from pari.faces.models import District, Face
+
+
+class DistrictForm(forms.ModelForm):
+    class Meta:
+        model = District
 
 
 class FaceForm(forms.ModelForm):

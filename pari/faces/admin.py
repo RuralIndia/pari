@@ -1,7 +1,17 @@
 from django.contrib import admin
 from mezzanine.core.admin import DisplayableAdmin, TabularDynamicInlineAdmin
-from pari.faces.forms import FaceForm, FaceImageInlineFormset
-from pari.faces.models import Face, FaceImage
+from pari.faces.forms import DistrictForm, FaceForm, FaceImageInlineFormset
+from pari.faces.models import District, Face, FaceImage
+
+
+class DistrictAdmin(DisplayableAdmin):
+    form = DistrictForm
+    fieldsets = (None, {
+        "fields": ["district", "district_description"],
+    }),
+    list_display = ("district", "district_description")
+    list_display_links = ("district", )
+    list_editable = ()
 
 
 class FaceImageInline(TabularDynamicInlineAdmin):
@@ -26,3 +36,4 @@ class FaceAdmin(DisplayableAdmin):
     list_filter = ()
 
 admin.site.register(Face, FaceAdmin)
+admin.site.register(District, DistrictAdmin)

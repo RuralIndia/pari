@@ -16,6 +16,17 @@ from pari.article.mixins import AdminThumbMixin
 FACES_UPLOAD_DIR = "uploads/faces/"
 
 
+class District(Displayable):
+    district = models.CharField(_("District"), max_length=100, unique=True)
+    district_description = models.CharField(_("Description(Optional)"), max_length=255, null=True, blank=True)
+    objects = DisplayableManager()
+
+    class Meta:
+        verbose_name = _("District")
+        verbose_name_plural = _("Districts")
+        app_label = "faces"
+
+
 class Face(Orderable, Displayable, AdminThumbMixin):
     zip_import = models.FileField(verbose_name=_("Zip import"), blank=True,
                                   upload_to=upload_to("faces.Face.zip_import", "faces"),
