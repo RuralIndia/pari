@@ -1,3 +1,6 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Merriweather);
+
 img {
     margin: 10px;
 }
@@ -18,9 +21,9 @@ img {
     height: auto;
     width: auto;
     display: block;
-    padding:2%;
-    background:rgba(242, 242, 242, 0.80);
-    content:attr(data-label);
+    padding: 2%;
+    background: rgba(242, 242, 242, 0.80);
+    content: attr(data-label);
     bottom: 0;
     left: 0;
     right: 0;
@@ -33,7 +36,7 @@ img {
     font-size: 150%;
 }
 
-.content-container ul{
+.content-container ul {
     padding: 12px;
     margin: 12px;
 }
