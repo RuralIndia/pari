@@ -26,6 +26,9 @@ class District(Displayable):
         verbose_name_plural = _("Districts")
         app_label = "faces"
 
+    def __unicode__(self):
+        return self.district
+
 
 class Face(Orderable, Displayable, AdminThumbMixin):
     zip_import = models.FileField(verbose_name=_("Zip import"), blank=True,
@@ -33,7 +36,7 @@ class Face(Orderable, Displayable, AdminThumbMixin):
                                   help_text=_("Upload a zip file containing images, and "
                                               "they'll be imported into this gallery."))
     image_collection = models.ForeignKey(ImageCollection)
-    district = models.CharField(_("District"), max_length=255)
+    district = models.ForeignKey(District, null=True)
     is_pinned = models.BooleanField(verbose_name="Pin To Top", default=False)
     admin_thumb_field = "image"
     objects = DisplayableManager()
@@ -51,7 +54,7 @@ class Face(Orderable, Displayable, AdminThumbMixin):
         verbose_name_plural = _("Faces")
 
     def first_letter_of_district(self):
-        return self.district[0].lower()
+        return self.district.district[0].lower()
 
     def save(self, delete_zip_import=True, *args, **kwargs):
         """
@@ -59,8 +62,17 @@ class Face(Orderable, Displayable, AdminThumbMixin):
         them to the gallery, before removing the zip file.
         """
 
+        # Update if a entry for district already exists
+        face_exist = Face.objects.filter(district=self.district)
+        face_exist = face_exist and face_exist[0]
+        if not self.pk and face_exist:
+            self.image_collection = face_exist.image_collection
+            self.image_collection_id = face_exist.image_collection_id
+            self.pk = face_exist.pk
+            self.site_id = face_exist.site_id
+
         if not hasattr(self, 'image_collection'):
-            new_image_collection = ImageCollection(title=self.district)
+            new_image_collection = ImageCollection(title=self.district.district)
             new_image_collection.save()
             self.image_collection = new_image_collection
         super(Face, self).save(*args, **kwargs)
@@ -103,7 +115,7 @@ class Face(Orderable, Displayable, AdminThumbMixin):
 
 
 def get_pinned_faces(alphabet):
-    return Face.objects.filter(district__istartswith=alphabet).filter(is_pinned=True)
+    return Face.objects.filter(district__district__istartswith=alphabet).filter(is_pinned=True)
 
 
 def get_pinned_face_images(face):
@@ -149,5 +161,5 @@ class FaceImage(Orderable, Displayable):
 
 
 def get_face_images_by_district_first_letter(alphabet):
-    return FaceImage.objects.filter(face__district__istartswith=alphabet).extra(
+    return FaceImage.objects.filter(face__district__district__istartswith=alphabet).extra(
         select={'upper_district': 'upper(district)'}).order_by('upper_district')
