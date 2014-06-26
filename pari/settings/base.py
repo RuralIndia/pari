@@ -18,7 +18,7 @@ import os
 ADMIN_MENU_ORDER = (
     (_("Content"),
      ("pages.Page", "article.Article", "article.Author", "article.Location", "article.Category", "article.Type",
-      "album.Album", "album.ImageCollection", "faces.Face", "resources.Resource", "resources.Factoid",
+      "album.Album", "album.ImageCollection", "faces.District", "faces.Face", "resources.Resource", "resources.Factoid",
       "contribution.Contribution",
       (_("Media Library"), "fb_browse"),)),
     (_("Site"), ("sites.Site", "redirects.Redirect", "conf.Setting")),
