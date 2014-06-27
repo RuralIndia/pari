@@ -1,16 +1,21 @@
 from django.forms.models import inlineformset_factory
 from django.test import TestCase
-from factory import DjangoModelFactory, SubFactory
+from factory import DjangoModelFactory, SubFactory, Sequence
 from pari.faces.admin import FaceAdmin, FaceImageInline
 from pari.faces.forms import FaceImageInlineFormset, FaceForm
-from pari.faces.models import FaceImage, Face, get_pinned_faces, get_pinned_face_images, \
+from pari.faces.models import FaceImage, Face, District, get_pinned_faces, get_pinned_face_images, \
     get_face_images_by_district_first_letter
 from test.factories.image_collection import ImageCollectionImageFactory
 
 
+class DistrictFactory(DjangoModelFactory):
+    FACTORY_FOR = District
+    district = Sequence(lambda n: 'A-{0}'.format(n))
+
+
 class FaceFactory(DjangoModelFactory):
     FACTORY_FOR = Face
-    district = 'district'
+    district = SubFactory(DistrictFactory)
 
 
 class FaceImageFactory(DjangoModelFactory):
@@ -73,7 +78,7 @@ class FaceAdminTest(TestCase):
         self.assertIn('description', keys)
 
     def test_face_is_invalid_if_district_is_not_specified(self):
-        self.face.district = ''
+        self.face.district = DistrictFactory(district='')
         face_form = FaceForm(instance=self.face)
         self.assertFalse(face_form.is_valid())
 
@@ -97,8 +102,7 @@ class FaceTest(TestCase):
         self.face = self.face_image.face
 
     def test_first_letter_of_face(self):
-        face = FaceFactory.create()
-        face.district = "district"
+        face = FaceFactory(district=DistrictFactory(district="district"))
         self.assertEquals("d", face.first_letter_of_district())
 
     def create_face(self, is_pinned=False):
@@ -135,7 +139,7 @@ class FaceTest(TestCase):
         face_image2 = self.create_face_image()
 
         face = face_image1.face
-        face.district = 'Test District'
+        face.district = DistrictFactory(district='Test District')
         face.images.add(face_image2)
         face.save()
 

@@ -165,9 +165,9 @@ class ArticleViewsTests(TestCase):
         response = self.client.get(reverse('search-detail'), {'query': 'location'})
         self.assertContains(response, location, status_code=200)
 
-    def test_search_page_contains_eleven_result_types(self):
+    def test_search_page_contains_twelve_result_types(self):
         response = self.client.get(reverse('search-detail'), {'query': 'article'})
-        self.assertEqual(11, len(response.context['result_types']))
+        self.assertEqual(12, len(response.context['result_types']))
 
     def test_should_contain_category_with_title_test_when_searched_for_test_and_filtered_by_category(self):
         category_with_title_test = CategoryFactory(title="test")
