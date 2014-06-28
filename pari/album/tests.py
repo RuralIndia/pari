@@ -7,9 +7,8 @@ import mock
 
 from pari.album.admin import AlbumAdmin, AlbumImageInline
 from pari.album.forms import AlbumImageInlineFormset
-from pari.album.models import Album, AlbumImage
+from pari.album.models import Album, AlbumImage, ImageCollection, ImageCollectionImage
 from pari.article.tests import LocationFactory, AuthorFactory
-from test.factories.image_collection import ImageCollectionImageFactory
 
 
 class AlbumFactory(factory.DjangoModelFactory):
@@ -17,6 +16,20 @@ class AlbumFactory(factory.DjangoModelFactory):
 
     title = 'Album 1'
     photographer = factory.SubFactory(AuthorFactory)
+
+
+class ImageCollectionFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = ImageCollection
+
+    title = 'Image Collection'
+
+
+class ImageCollectionImageFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = ImageCollectionImage
+
+    title = 'Image 1'
+    description = 'Image Collection Image'
+    image_collection = factory.SubFactory(ImageCollectionFactory)
 
 
 class AlbumImageFactory(factory.DjangoModelFactory):

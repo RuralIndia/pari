@@ -5,7 +5,7 @@ from pari.faces.admin import FaceAdmin, FaceImageInline
 from pari.faces.forms import FaceImageInlineFormset, FaceForm
 from pari.faces.models import FaceImage, Face, District, get_pinned_faces, get_pinned_face_images, \
     get_face_images_by_district_first_letter
-from test.factories.image_collection import ImageCollectionImageFactory
+from pari.album.tests import ImageCollectionImageFactory
 
 
 class DistrictFactory(DjangoModelFactory):
