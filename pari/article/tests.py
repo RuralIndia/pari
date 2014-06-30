@@ -212,6 +212,12 @@ class RichTextFilterTests(TestCase):
         new_content = article_content_filter(content)
         self.assertEqual(content, new_content)
 
+    def test_should_return_content_with_html_entities(self):
+        content = "<div><p style=\"text-align: left;\">&nbsp;</p><p style=\"text-align: left;\">&nbsp;</p><p style=\"text-align: left;\">&nbsp;</p></div>"
+        expected = content.replace('nbsp', '#160')
+        new_content = article_content_filter(content)
+        self.assertEqual(expected, new_content)
+
     def test_should_not_change_external_images(self):
         content = "<div><p>Test</p><div>image: <img src=\"http://example.com/a.jpg\" width=\"300\" height=\"300\"/></div></div>"
         new_content = article_content_filter(content)
