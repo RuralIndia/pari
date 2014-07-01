@@ -7,7 +7,7 @@ img {
 
 .image-container {
     position: relative;
-    display: inline-block;
+    display: table;
     margin: 10px;
     width: auto;
 }
@@ -17,10 +17,9 @@ img {
 }
 
 .image-container:after {
-    position: absolute;
     height: auto;
     width: auto;
-    display: block;
+    display: table-caption;
     padding: 2%;
     background: rgba(242, 242, 242, 0.80);
     content: attr(data-label);
@@ -30,6 +29,7 @@ img {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    caption-side: bottom;
 }
 
 .dropcaps {
