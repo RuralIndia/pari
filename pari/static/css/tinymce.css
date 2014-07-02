@@ -30,6 +30,20 @@ img {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     caption-side: bottom;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+}
+
+.article-title {
+    font-family: Merriweather, sans-serif;
+    font-size: 48px;
+    line-height: 120%;
+}
+
+.mce-content-body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    line-height: 28px;
 }
 
 .dropcaps {
