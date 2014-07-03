@@ -20,7 +20,7 @@ var Album = {
             gallery: {
                 enabled: true,
                 navigateByImgClick: true,
-                preload: [0, 2],
+                preload: [0, 2]
             },
                     
             image: {
@@ -28,9 +28,10 @@ var Album = {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
 
                 titleSrc: $.proxy(function (item) {
+                    isCommentsAllowed=item.el.attr('data-allowcomments')
                     var slideshow = this._popup.data('slideshow');
                     var icon = slideshow ? "pause" : "play";
-                    return '<div>'+
+                    var returnedHTMLElement='<div>'+
                                 '<h4 class="image-heading">'+ item.el.attr('data-photographer') + '</h4>' +
                                 '<p class="image-date">' + item.el.attr('data-date') + '</p>' +
                                 '<p class="image-location">' + item.el.attr('data-location') + '</p>' +
@@ -39,12 +40,18 @@ var Album = {
                                 '<div class="btn-toolbar">'+
                                     '<div class="btn-group">'+
                                         '<a class="btn btn-default btn-slideshow" href="#">Slideshow <i class="fa fa-' + icon + '"></i></a>'+
-                                        '<a class="btn btn-default" href="' + item.el.attr('data-url') +'"><i class="fa fa-share-square-o"></i></a>'+
-                                        '<a class="btn btn-default" href="' + item.el.attr('data-url') +'#comments"><i class="fa fa-comment-o"></i></a>'+
-                                        '<a class="btn btn-default btn-fullscreen" href="#"><i class="fa fa-arrows-alt"></i></a>'+
-                                    '</div>'+
-                                '</div>'+
-                            '</div>'
+                                        '<a class="btn btn-default btn-fullscreen" href="#"><i class="fa fa-arrows-alt"></i></a>';
+
+                                        if( isCommentsAllowed == "true"){
+                                                    returnedHTMLElement+='<a class="btn btn-default" id="disqus-comments-for-talking-albums" href="' + item.el.attr('data-url') +'"><i class="fa fa-share-square-o"></i></a>'+
+                                                      '<a class="btn btn-default" href="' + item.el.attr('data-url') +'#comments"><i class="fa fa-comment-o"></i></a>';
+                                        }
+
+                                        returnedHTMLElement+= '</div>'+
+                                            '</div>'+
+                                '</div>';
+
+                    return returnedHTMLElement
                 }, this),
 
                 markup: '<div class="mfp-figure">'+
@@ -77,7 +84,7 @@ var Album = {
 
     _initSoundCloudWidget: function() {
         SC.initialize({
-            client_id: "d129911dd3c35ec537c30a06990bd902",
+            client_id: "d129911dd3c35ec537c30a06990bd902"
         });
     },
 

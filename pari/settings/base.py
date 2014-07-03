@@ -186,6 +186,8 @@ SECRET_KEY = "ddd8bef6-495d-4925-ae37-1f13f9fe679404584f84-f4db-4f15-a096-72f545
 INTERNAL_IPS = ("127.0.0.1",)
 
 ALLOWED_HOSTS = ["localhost"]
+ALLOW_COMMENTS_IN_TALKING_ALBUM = False
+
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -352,7 +354,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
-    "pari.article.context_processors.types"
+    "pari.article.context_processors.types",
+    "pari.album.context_processors.get_context_data"
 )
 
 # List of middleware classes to use. Order is important; in the request phase,

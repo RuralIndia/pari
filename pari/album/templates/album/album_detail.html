@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load i18n album_filters article_tags article_filters %}
-
 {% block meta_title %}{% blocktrans with album.title as title%}{{ title }}{% endblocktrans %}{% endblock %}
 
 {% block breadcrumb_menu %}
@@ -38,7 +37,7 @@
                     <p>{{ album.description }}</p>
                     <div class="mfp-img-holder">
                         <div class="album-controls">
-                            <button class="btn btn-large btn-{{ album.predominant_tone }}">Start slideshow <i class="fa fa-play album-audio"></i></button>
+                            <button class="btn btn-large btn-{{ album.predominant_tone }}" id="start-slideshow-button">Start slideshow <i class="fa fa-play album-audio"></i></button>
                         </div>
                         {% with album.articles.all as articles %}
                             {% if articles %}
@@ -64,7 +63,7 @@
         <div class="album-images row">
             {% for image in image_group %}
                 <div class="col-lg-4 col-md-4">
-                <a href="{{ MEDIA_URL }}{% thumbnail_no_fit image|get_file_path 1152 864 %}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" data-photographer="{{ image.photographer.title }}" data-location="{{ image.location.title }}" data-location-description="{{ image.location.description }}" data-date="{{ image.publish_date|date:"F Y" }}" data-url="{{ image.get_absolute_url }}" class="image-tag mfp-image">
+                <a href="{{ MEDIA_URL }}{% thumbnail_no_fit image|get_file_path 1152 864 %}" title="{{ image.description }}" data-audio="{{ image.audio|default_if_none:"" }}" data-photographer="{{ image.photographer.title }}" data-location="{{ image.location.title }}" data-location-description="{{ image.location.description }}" data-date="{{ image.publish_date|date:"F Y" }}" data-url="{{ image.get_absolute_url }}" data-allowcomments="{{ALLOW_COMMENTS_IN_TALKING_ALBUM}}" class="image-tag mfp-image">
                     <div class="grid-column">
                         <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
                         <div class="caption">
