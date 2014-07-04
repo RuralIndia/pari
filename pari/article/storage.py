@@ -1,19 +1,19 @@
 import os
 import StringIO
-
-from django.core.files.storage import FileSystemStorage, default_storage
-
-from mezzanine.conf import settings
-
-from filebrowser_safe.storage import FileSystemStorageMixin
 import boto
+from django.core.files.storage import FileSystemStorage, default_storage
+from mezzanine.conf import settings
+from filebrowser_safe.storage import FileSystemStorageMixin
 from boto.s3.key import Key
+from urllib import quote
+
 try:
-    from PIL import Image, ImageFile, ImageOps
+    from PIL import Image, ImageFile, ImageOps, ImageDraw, ImageFont
 except ImportError:
     import Image
     import ImageFile
     import ImageOps
+    import ImageFont
 
 
 class ParallelS3Storage(FileSystemStorageMixin, FileSystemStorage):
@@ -66,11 +66,61 @@ def is_file_exists(path, url):
     return os.path.exists(path)
 
 
-def create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, quality=95, mode='fit'):
+def wrap_and_draw_centered_text(image_text, text_color, custom_font, image):
+    image_width = image.size[0]
+    image_height = image.size[1]
+
+    def get_coordinates_for_centered_text(height, width):
+        return (image_width - width) / 2, (image_height - height) / 2
+
+    draw = ImageDraw.Draw(image)
+    width, height = draw.textsize(image_text, font=custom_font)
+    initial_x, initial_y = get_coordinates_for_centered_text(height, width)
+    if width + initial_x > image_width:
+        y_offset = 0
+        words_in_text = image_text.split(' ')
+        space_between_lines = 2
+        total_lines = len(words_in_text)
+        total_words_height = (total_lines * height) + (space_between_lines * (total_lines - 2))
+        for word in words_in_text:
+            word_width, word_height = draw.textsize(word, font=custom_font)
+            x, y = get_coordinates_for_centered_text(total_words_height, word_width)
+            draw.text((x, y + y_offset), word, font=custom_font, fill=text_color)
+            y_offset += word_height + space_between_lines
+    else:
+        draw.text((initial_x, initial_y), image_text, font=custom_font, fill=text_color)
+    del draw
+
+
+def create_new_image_with_text(image_path, image_text, quality=95, file_type='JPEG'):
+    image_name = image_text.lower().replace(' ', '_') + "_alternate_image.jpg"
+    image_path = os.path.join(image_path, image_name)
+    s3_destination_url = "%s/%s" % (settings.THUMBNAILS_DIR_NAME, quote(image_name.encode("utf-8")))
+    if not is_file_exists(image_path, s3_destination_url):
+        image_width, image_height = (300, 300)
+        image = Image.new('RGB', (image_width, image_height), (250, 250, 250))
+        arial_font = ImageFont.truetype(os.path.join(settings.STATIC_ROOT, 'open-sans', 'OpenSans-Light.ttf'), 30)
+        text_color = (0, 0, 0)
+        wrap_and_draw_centered_text(image_text.upper(), text_color, arial_font, image)
+        save_image(file_type, image, image.info, quality, image_path, s3_destination_url)
+    return os.path.join(settings.MEDIA_URL, image_name)
+
+
+def save_image(file_type, image, image_info, quality, destination_path, s3_destination_url):
+    if is_s3_storage():
+        output_stream = StringIO.StringIO()
+        image.save(output_stream, file_type, quality=quality, **image_info)
+        upload_to_s3(s3_destination_url, string_io=output_stream)
+    else:
+        image.save(destination_path, file_type, quality=quality, **image_info)
+
+
+def create_thumbnail(image_url, thumb_path, thumb_url, width, height, file_type, quality=95, mode='fit'):
     try:
         thumb_exists = is_file_exists(thumb_path, thumb_url)
     except UnicodeEncodeError:
         from mezzanine.core.exceptions import FileSystemEncodingChanged
+
         raise FileSystemEncodingChanged()
 
     if thumb_exists:
@@ -114,12 +164,7 @@ def create_thumbnail(image_url, thumb_path, thumb_url, width, height, filetype, 
         else:
             image.thumbnail((width, height), Image.ANTIALIAS)
 
-        if is_s3_storage():
-            thumb_f = StringIO.StringIO()
-            image.save(thumb_f, filetype, quality=quality, **image_info)
-            upload_to_s3(thumb_url, string_io=thumb_f)
-        else:
-            image = image.save(thumb_path, filetype, quality=quality, **image_info)
+        save_image(file_type, image, image_info, quality, thumb_path, thumb_url)
     except Exception:
         try:
             os.remove(thumb_path)

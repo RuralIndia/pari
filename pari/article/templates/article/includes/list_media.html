@@ -31,6 +31,6 @@
 </div>
 {% else %}
 <div class="image-thumbnail">
-    <img src="{% get_media_prefix %}{% thumbnail article.get_thumbnail width height %}" alt="">
+    <img src="{% get_media_prefix %}{% thumbnail article.get_thumbnail width height article.thumbnail_image_text %}" alt="">
 </div>
 {% endif %}

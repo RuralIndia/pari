@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <a class="image-popup-fit-width" href="{{ MEDIA_URL }}{{ category.image }}" title="{{ category.description }}">
-                    <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail category.image 270 270 %}" width="270" height="270" alt="">
+                    <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail category.image 270 270 category.title %}" width="270" height="270" alt="">
                 </a>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">

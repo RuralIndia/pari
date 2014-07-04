@@ -30,7 +30,7 @@
         </div>
         {% for resource in resources %}
             <a href="{{ resource|get_absolute_url }}">
-            <div class="item item-{{ resource|get_type }} {{ "item"|get_random:2 }}" {% if resource.image %} style="background-image:url({{ MEDIA_URL}}{% thumbnail resource.image 400 400 %})"{% endif %}>
+            <div class="item item-{{ resource|get_type }} {{ "item"|get_random:2 }}" {% if resource.image %} style="background-image:url({{ MEDIA_URL}}{% thumbnail resource.image 400 400 resource.title %})"{% endif %}>
                 <div class="content"><p>{{ resource.title }}</p></div>
             </div>
             </a>

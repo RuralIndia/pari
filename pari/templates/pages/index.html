@@ -37,9 +37,9 @@
         {% for article in article_list %}
           <div class="{% if forloop.first %}active{% endif %} item">
             <span data-picture data-alt="">
-              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 725 400 %}"></span>
-              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 846 520 %}" data-media="(min-width: 992px)"></span>
-              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 %}" data-media="(min-width: 1200px)"></span>
+              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 725 400 article.title %}"></span>
+              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 846 520 article.title %}" data-media="(min-width: 992px)"></span>
+              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 article.title %}" data-media="(min-width: 1200px)"></span>
               <noscript>
                 <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1052 520 %}" alt="">
               </noscript>
@@ -76,7 +76,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="article{% if forloop.parentloop.last and forloop.last %} last{% endif %}">
                                         <a href="{{ article|get_absolute_url}}">
-                                        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 360 320 %}" alt="">
+                                        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 360 320 article.thumbnail_image_text %}" alt="">
                                         <div class="caption">
                                           <h4>{{ article.title }}</h4>
                                           <p>{{ article.get_location_titles }}</p>

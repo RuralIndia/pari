@@ -75,6 +75,13 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
         return self.types.filter(title__iexact='Video').exists()
 
     @property
+    def thumbnail_image_text(self):
+        if self.types.filter(title__iexact='Text').exists():
+            return "TEXT ARTICLE"
+        category_list = self.category_list.filter()
+        return category_list[0].title if category_list else "ARTICLE"
+
+    @property
     def get_thumbnail(self):
         return self.featured_image
 

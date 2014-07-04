@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 from mezzanine.conf import settings
 from mezzanine import template
 
-from pari.article.storage import create_thumbnail
+from pari.article.storage import create_thumbnail, create_new_image_with_text
 
 from .article_filters import get_type
 
@@ -59,10 +59,9 @@ def render_slideshare_embed(id):
 
 
 @register.simple_tag
-def thumbnail(image_url, width, height, mode='fit'):
+def thumbnail(image_url, width, height, image_text='IMAGE NOT AVAILABLE', mode='fit'):
     if not image_url:
-        image_url = "no_image.png"
-
+        image_url = create_new_image_with_text(settings.MEDIA_ROOT, image_text)
     image_url = unquote(unicode(image_url))
     if image_url.startswith(settings.MEDIA_URL):
         image_url = image_url.replace(settings.MEDIA_URL, "", 1)
