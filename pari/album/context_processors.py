@@ -1,4 +1,4 @@
-from django.conf import settings
+from mezzanine.conf import settings
 
 
 def get_context_data(request):

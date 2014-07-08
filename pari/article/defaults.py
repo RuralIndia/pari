@@ -47,3 +47,10 @@ register_setting(
     ),
     append=True,
 )
+register_setting(
+    name="ALLOW_COMMENTS_IN_TALKING_ALBUM",
+    label=_("Allow comments in talking albums"),
+    description="Check to enable comments section for talking albums",
+    editable=True,
+    default=False
+)
