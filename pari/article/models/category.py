@@ -12,7 +12,7 @@ from pari.article.mixins import AdminThumbMixin
 class Category(Orderable, Displayable, AdminThumbMixin):
     image = FileField(verbose_name=_("Image"),
                       upload_to=upload_to("article.Category.image", "category"),
-                      format="Image", max_length=255, null=False, blank=False)
+                      format="Image", max_length=255, null=False, blank=True)
 
     admin_thumb_field = "image"
 
