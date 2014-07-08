@@ -112,6 +112,8 @@ def save_image(file_type, image, image_info, quality, destination_path, s3_desti
         image.save(output_stream, file_type, quality=quality, **image_info)
         upload_to_s3(s3_destination_url, string_io=output_stream)
     else:
+        if not os.path.exists(os.path.dirname(destination_path)):
+            os.makedirs(os.path.dirname(destination_path))
         image.save(destination_path, file_type, quality=quality, **image_info)
 
 
