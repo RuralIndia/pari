@@ -25,13 +25,13 @@
 <ul class="dropdown-menu">
     {% for page in page_branch %}
     {% if page.in_menu %}
-    <li{% if page.is_current_or_ascendant %} class="active"{% endif %}
+    <li {% if page.is_current_or_ascendant %} class="active"{% endif %}
         id="dropdown-menu-{{ page.html_id }}">
         <a href="{{ page.get_absolute_url }}">
             {%if page.title == 'Albums' %}
                 <span class="glyphicon glyphicon glyphicon-bullhorn"></span> Talking Albums
             {%elif page.title == 'Faces' %}
-                <span class="glyphicon glyphicon glyphicon-bullhorn"></span> Talking Albums
+                <span class="glyphicon glyphicon glyphicon-user"></span> Faces
             {% else %}
                 {{ page.title }}
             {% endif %}
