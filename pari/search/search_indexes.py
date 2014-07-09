@@ -66,7 +66,7 @@ if "haystack" in settings.INSTALLED_APPS:
         haystack_use_for_indexing = True
 
         def prepare_district(self, obj):
-            return obj.face.district
+            return obj.face.district.district
 
     class AlbumImageIndex(DisplayableIndex):
         photographer = indexes.CharField(model_attr='photographer')
