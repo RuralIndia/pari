@@ -53,5 +53,5 @@ class Factoid(Displayable, AdminThumbMixin):
     class Meta:
         verbose_name = _("Factoid")
         verbose_name_plural = _("Factoids")
-        ordering = ("title",)
+        ordering = ("publish_date",)
         app_label = "resources"
