@@ -15,7 +15,7 @@ from .templatetags.article_filters import month_name
 
 
 @dajaxice_register
-def all_article_filter(request, category, filter=None, page=1):
+def all_article_filter(request, filter=None, page=1):
     article_queryset = get_all_articles()
 
     return article_filter(article_queryset, None, filter, page, request)
