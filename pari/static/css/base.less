@@ -1,7 +1,7 @@
 @import "common.less";
 
 @footerHeight: 60px;
-
+@anchorHeadingsColor:#E6E6E6;
 
 html {
     height: 100%
@@ -55,7 +55,7 @@ ul {
 }
 
 a.pari-link {
-    color: @headingsColor;
+    color: @anchorHeadingsColor;
 }
 
 .navbar-inverse .navbar-brand,
@@ -65,7 +65,18 @@ a.pari-link {
 .carousel-caption h4,
 .carousel-caption p a,
 #subnav .nav>.active>a {
-  color: @headingsColor;
+  color: @anchorHeadingsColor;
+}
+#subnav .nav>.active>a {
+  color: @anchorHeadingsColor;
+}
+
+.dropdown-menu{
+  background-color: #222
+}
+
+.dropdown-menu >li > a:hover{
+  background-color: #660000;
 }
 
 #homepage{
@@ -73,7 +84,6 @@ a.pari-link {
 }
 #holder {
     overflow-x: hidden;
-    min-height: 100%;
     height: auto;
     margin: 0 auto -@footerHeight;
     .navbar-inverse .navbar-nav>.active>a{
@@ -200,7 +210,6 @@ a.pari-link {
                 font-size: 17.5px;
                 padding: 11px 19px;
                 border: 1px solid #dddddd;
-//                margin: 4px;
                 text-decoration: none;
 
             }
@@ -513,14 +522,6 @@ a.pari-link {
 .carousel {
     a {
         color: @headingsColor;
-    }
-    .carousel-indicators{
-      position: absolute;
-      top: 15px;
-      left: 55%;
-      z-index: 1;
-      margin: 0;
-      list-style: none;
     }
     .carousel-inner{
       width: 90%;

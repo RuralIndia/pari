@@ -1,14 +1,14 @@
 @import "common.less";
 
-#header {
 
+#header {
+    background-color:#D5D5D8;
     @media (min-width: 980px){
-        .fixed-header;
     }
 
     .jumbotron {
         text-align: center;
-        background-color: #fff;
+        background-color: #D5D5D8;
         padding: 0;
 
         h1 {
@@ -24,18 +24,24 @@
         }
     }
 }
-
+.factoid-expand{
+    color: #ee4303
+  }
+.category-heading{
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
 #holder {
     #main_content {
         @media (min-width: 992px){
-            margin-top: 740px;
         }
     }
 }
 
 #homepage {
     .main-section {
-        @bg: #E8E8E8;
+        @bg: white;
         position: relative;
         background-color: @bg;
         .full-size-background (@bg);
@@ -99,6 +105,7 @@
 
         }
     }
+
 
     .categories {
         h4 {
@@ -178,6 +185,37 @@
             }
         }
     }
+}
+.btn-homepage{
+  display:inline;
+  float: right;
+  background-color: #ee4303;
+}
+.extra-header-container{
+  background-color:#F5F5F5;
+}
+.carousel-indicators {
+  position:static;
+  border: 0px;
+  width: inherit;
+  margin-left: inherit;
+  margin-top: 30px;
+}
+
+.carousel-indicators li {
+  border-color:#999;
+  background-color:#ccc;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+
+}
+.carousel-indicators .active {
+  background-color : @headingsColor;
+    width: 20px;
+  height: 20px;
+  margin: 5px;
+
 }
 
 #footer {

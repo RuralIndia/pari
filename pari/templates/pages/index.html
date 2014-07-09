@@ -11,7 +11,10 @@
 {% block extra_css %}
   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/datepicker.less" charset="utf-8">
   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/homepage.less" charset="utf-8">
+  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/categories.less" charset="utf-8">
 {% endblock %}
+
+
 
 {% block extra_js %}
     <script type='text/javascript' src="{{ STATIC_URL }}js/datepicker.js"></script>
@@ -19,100 +22,92 @@
     <script type='text/javascript' src="{{ STATIC_URL }}js/picturefill.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}js/pari.js"></script>
 {% endblock %}
-
 {% block extra_header %}
   <div class="jumbotron home-page">
     <h1>{{ settings.SITE_FULL_TITLE }}</h1>
     <p>{{ settings.SITE_TAGLINE }}</p>
   </div>
-
   {% if article_list %}
-    <div id="homeCarousel" class="carousel carousel-inner-caption carousel-thin-controls slide container">
-      <ol class="carousel-indicators">
-        {% for count in article_list|length|get_range %}
-          <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
-        {% endfor %}
-      </ol>
+    <div id="homeCarousel" class="carousel carousel-thin-controls slide container">
+
       <div class="carousel-inner">
         {% for article in article_list %}
           <div class="{% if forloop.first %}active{% endif %} item">
             <span data-picture data-alt="">
-              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 725 400 article.title %}"></span>
-              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 846 520 article.title %}" data-media="(min-width: 992px)"></span>
-              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 article.title %}" data-media="(min-width: 1200px)"></span>
+              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 725 400 %}"></span>
+              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 846 520 %}" data-media="(min-width: 992px)"></span>
+              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 %}" data-media="(min-width: 1200px)"></span>
               <noscript>
                 <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1052 520 %}" alt="">
               </noscript>
             </span>
-            <a href="{{ article.get_absolute_url }}">
-              <div class="carousel-caption">
-                <h4>{{ article.title}}</h4>
-                <p>{{ article.get_location_titles }}</p>
-                <p>{{ article.short_description }}</p>
-              </div>
-            </a>
           </div>
-        {% endfor%}
-      </div>
-      <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
-    </div>
-  {% endif %}
-{% endblock %}
+            {% endfor%}
+           <ol class="carousel-indicators">
+        {% for count in article_list|length|get_range %}
+          <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+        {% endfor %}
+    </ol>
 
-{% block main %}
-<div id="homepage">
-  {% if recent_articles %}
-  <section id="mainsection">
-    <div class="main-section">
-      <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-8">
-                <div class="recent-articles">
-                    <h4><i class="fa fa-clock-o"></i> Recent articles <a href="/articles"><small>Browse all articles <i class="fa fa-angle-double-right"></i></small></a></h4>
-                    <div class="row">
-                        {% for article_chunk in recent_articles|group_by:2 %}
-                            {% for article in article_chunk %}
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="article{% if forloop.parentloop.last and forloop.last %} last{% endif %}">
-                                        <a href="{{ article|get_absolute_url}}">
-                                        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 360 320 article.thumbnail_image_text %}" alt="">
-                                        <div class="caption">
-                                          <h4>{{ article.title }}</h4>
-                                          <p>{{ article.get_location_titles }}</p>
-                                          <p>{{ article.short_description }}</p>
-                                        </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <div class="categories">
-                    <h4><i class="fa fa-bars"></i> Categories <a href="/categories"><small>View all categories <i class="fa fa-angle-double-right"></i></small></a></h4>
-                    <div class="list">
-                        {% for category in categories %}
-                            <a href="{{category|get_absolute_url}}">
-                                <div class="category">
-                                    <h4>{{ category.title }}</h4>
-                                    <p>{{ category.description }}</p>
-                                    <i class="fa fa-angle-right"></i>
-                                </div>
-                            </a>
-                        {% endfor %}
-                    </div>
-                    <h4><i class="fa fa-calendar"></i> Archive</h4>
-                    <div class="datepicker" data-date-format="dd-mm-yyyy" data-url="/archive/" data-start="{{ start_time|date:"d-m-Y" }}" data-end="{{ end_time|date:"d-m-Y" }}"></div>
-                </div>
-            </div>
-        </div>
       </div>
+   {% endif %}
+ </div>
+{% endblock %}
+{% block main %}
+<div class="container">
+            <div class="row">
+              {%for factoid in factoids%}
+              <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="grid-column">
+                      <p>
+                         {{ factoid.description }}
+                      </p>
+                  </div>
+                  <a href="{{factoid.get_absolute_url}}" class="factoid-expand">
+                      more >
+                  </a>
+              </div>
+            {% endfor %}
+           </div>
+<br>
+<hr>
+<div id="homepage">
+    <section id="mainsection">
+    <div class="main-section">
+
+<div class="container">
+
+    <div class="category-heading">
+                CATEGORIES
     </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                    {% for category_group in categories|group_by:3 %}
+    <div class="row">
+        <div class="categories">
+            {% for category in category_group %}
+                <a href="{{ category|get_absolute_url}}">
+                <div class="col-lg-4 col-md-4">
+                    <div class="grid-column">
+                        <img src="{{ MEDIA_URL }}{% thumbnail category.image 370 300 %}" width="370" height="300" alt="">
+                        <div class="caption">
+                            <h4>{{ category.title }}</h4>
+                            <p class="description">{{ category.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            {% endfor %}
+        </div>
+     </div>
+    {% endfor %}
+     </div>
+     </div>
+                <a href="#" class="btn btn-lg btn-warning btn-homepage"><span class="glyphicon glyphicon-th-list"></span> VIEW ALL CATEGORIES</a>
+    </div>
+   </div>
+
   </section>
-  {% endif %}
   <div class="social-icons">
     <ul>
       <li><a href="{{"SOCIAL_FACEBOOK"|get_setting}}"><i class="fa fa-facebook"></i></a></li>
@@ -121,5 +116,5 @@
       <li><a href="{{"SOCIAL_GITHUB_REPO"|get_setting}}"><i class="fa fa-github"></i></a></li>
     </ul>
   </div>
-</div>
+ </div>
 {% endblock %}

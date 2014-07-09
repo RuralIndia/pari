@@ -8,7 +8,11 @@
     <li class="dropdown{% if page.is_current_or_ascendant %} active{% endif %}"
         id="dropdown-menu-{{ page.html_id }}">
         <a href="{{ page.get_absolute_url }}">
-            {{ page.title }}
+            {%if page.title == 'Albums' %}
+                <span class="glyphicon glyphicon glyphicon-bullhorn"></span> Talking Albums
+            {% else %}
+                {{ page.title }}
+            {% endif %}
             {% if page.has_children_in_menu %}<span class="caret"></span>{% endif %}
         </a>
         {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
@@ -23,7 +27,15 @@
     {% if page.in_menu %}
     <li{% if page.is_current_or_ascendant %} class="active"{% endif %}
         id="dropdown-menu-{{ page.html_id }}">
-        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+        <a href="{{ page.get_absolute_url }}">
+            {%if page.title == 'Albums' %}
+                <span class="glyphicon glyphicon glyphicon-bullhorn"></span> Talking Albums
+            {%elif page.title == 'Faces' %}
+                <span class="glyphicon glyphicon glyphicon-bullhorn"></span> Talking Albums
+            {% else %}
+                {{ page.title }}
+            {% endif %}
+        </a>
     </li>
     {% endif %}
     {% endfor %}
