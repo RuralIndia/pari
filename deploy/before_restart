@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 #export env variables
-while read line
-do
-	command $line
-done < /pari/env_variables.txt
+source /pari/env_variables.txt
 
 #use pari virtualenv
 source /.venv/pari/bin/activate
