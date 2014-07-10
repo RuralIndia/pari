@@ -1,0 +1,285 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+h4 small {
+  font-size: 14px;
+}
+.menu-arrow-after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent #fff transparent;
+  border-style: solid;
+  border-width: 10px;
+  top: 71%;
+  left: 50%;
+  z-index: 11;
+  margin-left: -10px;
+}
+/* Take from Bootstrap */
+#header {
+  background-color: #D5D5D8;
+}
+#header .jumbotron {
+  text-align: center;
+  background-color: #D5D5D8;
+  padding: 0;
+}
+#header .jumbotron h1 {
+  font-weight: 200;
+  font-size: 60px;
+  margin-top: 7px;
+}
+#header .jumbotron p {
+  margin-top: 0px;
+  line-height: 1.2;
+  color: #999;
+  font-size: 24.5px;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+#header .jumbotron p a {
+  text-decoration: none;
+}
+#header .jumbotron p a small {
+  color: #ee4303;
+}
+.factoid-expand {
+  color: #ee4303;
+}
+.category-heading {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+#homepage .main-section {
+  position: relative;
+  background-color: #ffffff;
+}
+#homepage .main-section:before,
+#homepage .main-section:after {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+  top: 0;
+  bottom: 0;
+  width: 9999px;
+}
+#homepage .main-section:before {
+  right: 100%;
+}
+#homepage .main-section:after {
+  left: 100%;
+}
+@media (min-width: 979px) {
+  #homepage .recent-articles {
+    position: relative;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 32px;
+  }
+  #homepage .recent-articles:after {
+    border: 0;
+    height: 100%;
+    width: 1px;
+    background-image: -webkit-linear-gradient(top, transparent, #cccccc 50%, transparent);
+    background-image: -moz-linear-gradient(to bottom, transparent, #cccccc 50%, transparent);
+    background-image: -ms-linear-gradient(to bottom, transparent, #cccccc 50%, transparent);
+    background-image: -o-linear-gradient(to bottom, transparent, #cccccc 50%, transparent);
+    background-image: linear-gradient(to bottom, transparent, #cccccc 50%, transparent);
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+}
+#homepage .recent-articles h4 {
+  color: #999;
+  font-size: 24.5px;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+#homepage .recent-articles h4 a {
+  text-decoration: none;
+}
+#homepage .recent-articles h4 a small {
+  color: #ee4303;
+}
+#homepage .recent-articles .article {
+  margin-bottom: 12px;
+}
+#homepage .recent-articles .article a {
+  text-decoration: none;
+}
+#homepage .recent-articles .article a .caption h4 {
+  color: #ee4303;
+  margin: 8px 0 0 0;
+}
+#homepage .recent-articles .article a .caption p {
+  color: black;
+}
+@media (max-width: 768px) {
+  #homepage .recent-articles .article {
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+  }
+  #homepage .recent-articles .article a {
+    text-align: center;
+  }
+  #homepage .recent-articles .article a img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    vertical-align: text-bottom;
+  }
+  #homepage .recent-articles .article:after {
+    content: '';
+    display: block;
+    border: 0;
+    width: 100%;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, transparent, #cccccc 50%, transparent);
+    background-image: -moz-linear-gradient(to right, transparent, #cccccc 50%, transparent);
+    background-image: -ms-linear-gradient(to right, transparent, #cccccc 50%, transparent);
+    background-image: -o-linear-gradient(to right, transparent, #cccccc 50%, transparent);
+    background-image: linear-gradient(to right, transparent, #cccccc 50%, transparent);
+  }
+}
+#homepage .categories h4 {
+  color: #999;
+  font-size: 24.5px;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+#homepage .categories h4 a {
+  text-decoration: none;
+}
+#homepage .categories h4 a small {
+  color: #ee4303;
+}
+#homepage .categories .list a {
+  text-decoration: none;
+  color: black;
+}
+#homepage .categories .list a .category {
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  min-height: 100px;
+  padding: 6px;
+  margin-bottom: 2px;
+  position: relative;
+}
+#homepage .categories .list a .category h4 {
+  color: #ee4303;
+}
+#homepage .categories .list a .category i {
+  color: #ee4303;
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  margin-top: -20px;
+  font-size: 40px;
+}
+#homepage .categories .list a .category:hover {
+  background-color: rgba(0, 0, 0, 0.74902);
+}
+#homepage .categories .list a .category:hover p {
+  color: #fff;
+}
+#homepage .categories .list a .category:hover i {
+  color: #ee4303;
+}
+#homepage .social-icons {
+  position: relative;
+  background-color: #fff;
+  text-align: center;
+}
+#homepage .social-icons ul {
+  display: inline-block;
+  list-style-type: none;
+}
+#homepage .social-icons ul li {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  text-align: center;
+  font-size: 30px;
+  line-height: 60px;
+  background-color: #e8e8e8;
+  margin: 10px;
+}
+#homepage .social-icons ul li a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #000;
+}
+#homepage .social-icons ul li:hover {
+  background-color: #b5b5b5;
+  -webkit-box-shadow: inset 0 0 10px #e8e8e8;
+  -moz-box-shadow: inset 0 0 10px #e8e8e8;
+  box-shadow: inset 0 0 10px #e8e8e8;
+}
+#homepage .social-icons ul li:hover a {
+  color: #ee4303;
+}
+.btn-homepage {
+  display: inline;
+  float: right;
+  background-color: #ee4303;
+}
+.extra-header-container {
+  background-color: #F5F5F5;
+}
+.carousel-indicators {
+  position: static;
+  border: 0px;
+  width: inherit;
+  margin-left: inherit;
+  margin-top: 30px;
+}
+.carousel-indicators li {
+  border-color: #999;
+  background-color: #ccc;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+.carousel-indicators .active {
+  background-color: #ee4303;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+.custom-carousel-caption {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 10px;
+  max-height: 5%;
+  display: block;
+}
+#footer {
+  position: relative;
+}
