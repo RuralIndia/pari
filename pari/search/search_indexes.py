@@ -35,6 +35,7 @@ if "haystack" in settings.INSTALLED_APPS:
         author = indexes.CharField(model_attr='author')
         short_description = indexes.CharField()
         title = indexes.CharField(model_attr='title')
+        thumbnail_image_text = indexes.CharField(model_attr='thumbnail_image_text')
         model = Article
         haystack_use_for_indexing = True
 
