@@ -1,6 +1,7 @@
 
 img {
     margin: 10px;
+    max-width: 850px;
 }
 
 .image-container {
