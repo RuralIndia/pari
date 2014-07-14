@@ -85,12 +85,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             </ul>
                         </div>
                     {% else %}
-                        <div class="user dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<b class="caret"></b></a>
-                            <ul class="login-form dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <li>
-                                    {% include "includes/login_form.html" %}
-                                </li>
-                            </ul>
+                        <div class="user dropdown">
+                            <a href={% url "login" %}>Login</a>
                         </div>
                     {% endif %}
                 </ul>
