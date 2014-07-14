@@ -78,10 +78,10 @@
 {% endblock %}
 
 {% block sidebar %}
+  {% if  blog_post.get_location_titles %}
     <div class="well"> 
         <h4><i class="fa fa-road"></i> Locations </h4>
         <p>{{ blog_post.get_location_titles }}</p>
-
         <div id="map" class="map-view" data-lat="{{ blog_post|get_latitudes }}" data-long="{{ blog_post|get_longitudes }}"></div>
     </div>
     <div class="keywords">
@@ -97,6 +97,7 @@
             {% endfor %}
         {% endif %}
     </div>
+  {%endif%}
     {% for article in related_articles %}
         {% if forloop.first %}
             <div class="related-articles well">
