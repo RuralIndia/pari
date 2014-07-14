@@ -23,11 +23,11 @@ h4 small {
 }
 /* Take from Bootstrap */
 #header {
-  background-color: #D5D5D8;
+  background-color: #F8F8FA;
 }
 #header .jumbotron {
   text-align: center;
-  background-color: #D5D5D8;
+  background-color: #F8F8FA;
   padding: 0;
 }
 #header .jumbotron h1 {
@@ -56,6 +56,13 @@ h4 small {
   text-align: center;
   font-size: 25px;
   margin-bottom: 20px;
+}
+.line-divider {
+  background-color: #000000;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  height: 5px;
 }
 #homepage .main-section {
   position: relative;
