@@ -84,7 +84,8 @@
         <p>{{ blog_post.get_location_titles }}</p>
         <div id="map" class="map-view" data-lat="{{ blog_post|get_latitudes }}" data-long="{{ blog_post|get_longitudes }}"></div>
     </div>
-    <div class="keywords">
+  {%endif%}
+   <div class="keywords">
         {% keywords_for blog_post as keywords %}
         {% if keywords %}
             <h3><i class="fa fa-tags"></i>  Keywords</h3>
@@ -97,7 +98,6 @@
             {% endfor %}
         {% endif %}
     </div>
-  {%endif%}
     {% for article in related_articles %}
         {% if forloop.first %}
             <div class="related-articles well">
