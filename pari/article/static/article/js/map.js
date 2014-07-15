@@ -1,6 +1,10 @@
 $(function () {
     try {
         var map = L.map('map');
+    }
+     catch(e){
+        return true;
+    }
         var CLOUD_MAP_API_KEY = '8ee2a50541944fb9bcedded5165f09d9';
         var lat = $('.map-view').data("lat").toString().split(",");
         var long = $('.map-view').data("long").toString().split(",");
@@ -12,8 +16,5 @@ $(function () {
             map.setView([lat[i], long[i]], 6);
             var marker = L.marker([lat[i], long[i]]).addTo(map);
         }
-    }
-    catch(e){
-        return true;
-    }
+    
 });
