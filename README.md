@@ -27,12 +27,7 @@ pyenv virtualenv pari
 
 ### Install the dependencies
 
-```bash
-pip install -r requirements/dev.txt
-```
-**Note:**Use [autoenv](https://github.com/kennethreitz/autoenv) to simplify environment management. The checked-in `.env` file will install sets the `DJANGO_SETTINGS_MODULE` environment variable to `pari.settings.dev` for local development.
-
-Also, we need LESS compiler to be in PATH to get LESS files compiled into CSS.
+We need LESS compiler to be in PATH to get LESS files compiled into CSS.
 If you don't have `node.js` and `npm` installed already then do,
 
 ```bash
@@ -44,6 +39,19 @@ and then,
 ```bash
 npm install -g less
 ```
+
+Also we need libjpeg and freetype for image processing
+```bash
+brew install libjpeg
+brew install freetype
+```
+
+CD into the repo and install the python dependencies(make sure you are on the 'pari' virtual-env)
+
+```bash
+pip install -r requirements/dev.txt
+```
+**Note:**Use [autoenv](https://github.com/kennethreitz/autoenv) to simplify environment management. The checked-in `.env` file will install sets the `DJANGO_SETTINGS_MODULE` environment variable to `pari.settings.dev` for local development.
 
 ### Setup the database
 
