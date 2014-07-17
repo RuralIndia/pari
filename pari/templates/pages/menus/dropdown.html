@@ -5,6 +5,7 @@
 {% if branch_level == 0 %}
     {% for page in page_branch %}
     {% if page.in_menu %}
+
     <li class="dropdown{% if page.is_current_or_ascendant %} active{% endif %}"
         id="dropdown-menu-{{ page.html_id }}">
         <a href="{{ page.get_absolute_url }}">
