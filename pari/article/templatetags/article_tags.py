@@ -59,7 +59,8 @@ def render_slideshare_embed(id):
 
 
 @register.simple_tag
-def thumbnail(image_url, width, height, image_text='IMAGE NOT AVAILABLE', mode='fit'):
+def thumbnail(image_url, width, height, image_text=None, mode='fit'):
+    image_text = image_text or 'IMAGE NOT AVAILABLE'
     if not image_url:
         image_url = create_new_image_with_text(settings.MEDIA_ROOT, image_text)
     image_url = unquote(unicode(image_url))
