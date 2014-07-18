@@ -25,7 +25,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     category_list = models.ManyToManyField(Category, verbose_name=_("Categories"),
                                            blank=False, null=False, related_name="articles")
     allow_comments = models.BooleanField(verbose_name=_("Allow comments"),
-                                         default=True)
+                                         default=False)
     comments = CommentsField(verbose_name=_("Comments"))
 
     allow_featured_image = models.BooleanField(verbose_name=_("Show Featured Image for the Article"), default=False)
