@@ -7,9 +7,9 @@ from .home_page import HomePage
 
 class AdminPage(Page):
 
-    URL = "%s/admin" % HomePage.URL  # TODO: Should be from conf
+    URL = "%s/admin" % HomePage.URL
 
-    user_name = (By.CSS_SELECTOR, "#id_username")  # TODO: Try wrapping it in a decorator and do action based on the element type
+    user_name = (By.CSS_SELECTOR, "#id_username")
 
     def __int__(self, driver):
         self.driver = driver

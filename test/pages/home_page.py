@@ -6,9 +6,9 @@ from test.base import Page
 
 class HomePage(Page):
 
-    URL = "http://127.0.0.1:8000"  # TODO: Should be from conf
+    URL = "http://localhost:8000"
 
-    search_box = (By.CSS_SELECTOR, "input.search-query")  # TODO: Try wrapping it in a decorator and do action based on the element type
+    search_box = (By.CSS_SELECTOR, "#homeCarousel")
 
     def __int__(self, driver):
         self.driver = driver
