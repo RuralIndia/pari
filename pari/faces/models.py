@@ -24,6 +24,7 @@ class District(Displayable):
     class Meta:
         verbose_name = _("District")
         verbose_name_plural = _("Districts")
+        ordering = ("district",)
         app_label = "faces"
 
     def __unicode__(self):
@@ -52,6 +53,7 @@ class Face(Orderable, Displayable, AdminThumbMixin):
     class Meta:
         verbose_name = _("Face")
         verbose_name_plural = _("Faces")
+        ordering = ("district",)
 
     def first_letter_of_district(self):
         return self.district.district[0].lower()
