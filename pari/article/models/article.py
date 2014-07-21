@@ -20,6 +20,7 @@ from .type import Type
 
 
 class Article(Displayable, Ownable, RichText, AdminThumbMixin):
+    strap = models.CharField(max_length=600, blank=True, null=True)
     locations = models.ManyToManyField(Location, verbose_name=_("Locations"), blank=True)
     is_topic = models.BooleanField(verbose_name=_("Is a topic?"), default=False)
     category_list = models.ManyToManyField(Category, verbose_name=_("Categories"),

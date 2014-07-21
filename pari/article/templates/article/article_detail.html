@@ -41,6 +41,7 @@
     {% block title %}
         <div class="page-header">
             {% editable blog_post.title %}<h1 class="article-title">{{ blog_post.title }}</h1>{% endeditable %}
+            {% editable blog_post.strap %}<div class="article-strap">{{ blog_post.strap }}</div>{% endeditable %}
         </div>
         <p class="article-meta">
             {% with blog_post.author as author %}
