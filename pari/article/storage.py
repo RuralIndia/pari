@@ -112,6 +112,8 @@ def save_image(file_type, image, image_info, quality, destination_path, s3_desti
         image.save(output_stream, file_type, quality=quality, **image_info)
         upload_to_s3(s3_destination_url, string_io=output_stream)
     else:
+        if not os.path.exists(os.path.dirname(destination_path)):
+            os.makedirs(os.path.dirname(destination_path))
         image.save(destination_path, file_type, quality=quality, **image_info)
 
 
@@ -137,19 +139,7 @@ def create_thumbnail(image_url, thumb_path, thumb_url, width, height, file_type,
             return image_url
 
     try:
-         image = Image.open(f)
-         if hasattr(image, '_getexif'):
-            orientation = 0x0112
-            exif = image._getexif()
-            if exif is not None:
-                orientation = exif[orientation]
-                rotations = {
-                3: Image.ROTATE_180,
-                6: Image.ROTATE_270,
-                8: Image.ROTATE_90
-                }
-                if orientation in rotations:
-                    image = image.transpose(rotations[orientation])
+        image = Image.open(f)
     except:
         return image_url
 
