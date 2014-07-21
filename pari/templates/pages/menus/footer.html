@@ -1,26 +1,11 @@
-{% load i18n future pages_tags %}
-
+{% load i18n mezzanine_tags article_filters article_tags %}
 {% spaceless %}
-{% if page_branch_in_menu %}
-
-{% for page in page_branch %}
-    {% if forloop.first %}
-        <ul class="footer-nav clearfix">
-    {% endif %}
-
-    {% if page.in_menu %}
-        <li id="footer-menu-{{ page.html_id }}">
-            <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
-        </li>
-
-        {% if not forloop.last %}<li>|</li>{% endif %}
-    {% endif %}
-
-    {% if forloop.last %}
-        </ul>
-    {% endif %}
-
-{% endfor %}
-
-{% endif %}
+<div class="social-icons">
+    <ul>
+      <li><a href="{{"SOCIAL_FACEBOOK"|get_setting}}"><i class="fa fa-facebook"></i></a></li>
+      <li><a href="{{"SOCIAL_TWITTER"|get_setting}}"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="{{"SOCIAL_GOOGLE_PLUS"|get_setting}}"><i class="fa fa-google-plus"></i></a></li>
+      <li><a href="{{"SOCIAL_GITHUB_REPO"|get_setting}}"><i class="fa fa-github"></i></a></li>
+    </ul>
+</div>
 {% endspaceless %}

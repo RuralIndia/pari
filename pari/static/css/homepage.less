@@ -2,13 +2,13 @@
 
 
 #header {
-    background-color:#F8F8FA;
+    background-color:#ffffff;
     @media (min-width: 980px){
     }
 
     .jumbotron {
         text-align: center;
-        background-color:#F8F8FA;
+        background-color:#ffffff;
         padding: 0;
 
         h1 {
@@ -31,13 +31,16 @@
   text-align: center;
   font-size: 25px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 .line-divider {
   background-color:#000000;
   width:50%;
   margin-left: 25%;
   margin-right: 25%;
-  height: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 0.7px;
 
 }
 #holder {
@@ -153,53 +156,8 @@
             }
         }
     }
-
-    .social-icons {
-        position: relative;
-        background-color: #fff;
-        text-align: center;
-        ul {
-            @radius: 30px;
-            display: inline-block;
-            list-style-type: none;
-            li {
-                display: inline-block;
-                width: @radius * 2;
-                height: @radius * 2;
-                .rounded (@radius);
-                .transition (0.3s);
-
-                text-align: center;
-                font-size: @radius;
-                line-height: @radius * 2;
-                background-color: @alternateBgColor;
-                margin: 10px;
-
-                a {
-                    text-decoration: none;
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                    color: #000;
-                }
-
-                &:hover {
-                    background-color: darken(@alternateBgColor,20%);
-                    a {
-                        color: @headingsColor;
-                    }
-                    .box-shadow (inset 0 0 10px @alternateBgColor);
-                    .box-shadow (inset 0 0 10px @alternateBgColor);
-                }
-            }
-        }
-    }
 }
-.btn-homepage{
-  display:inline;
-  float: right;
-  background-color: #ee4303;
-}
+
 .extra-header-container{
   background-color:#F5F5F5;
 }
@@ -208,22 +166,22 @@
   border: 0px;
   width: inherit;
   margin-left: inherit;
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .carousel-indicators li {
   border-color:#999;
   background-color:#ccc;
-  width: 20px;
-  height: 20px;
-  margin: 5px;
+  width: 12px;
+  height: 12px;
+  margin: 3px;
 
 }
 .carousel-indicators .active {
-  background-color : @headingsColor;
-    width: 20px;
-  height: 20px;
-  margin: 5px;
+  background-color : darkred;
+  width: 12px;
+  height: 12px;
+  margin: 3px;
 
 }
 .custom-carousel-caption{
@@ -233,6 +191,6 @@
   max-height: 5%;
   display:block;
 }
-#footer {
-    position: relative;
+.row{
+  margin-top:25px;
 }

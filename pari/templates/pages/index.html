@@ -32,95 +32,101 @@
       <div class="carousel-inner">
         {% for article in article_list %}
           <div class="{% if forloop.first %}active{% endif %} item">
-            <span data-picture data-alt="">
-              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 725 400 %}"></span>
-              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 846 520 %}" data-media="(min-width: 992px)"></span>
-              <span data-src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1053 520 %}" data-media="(min-width: 1200px)"></span>
-              <noscript>
-                <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 1052 520 %}" alt="">
-              </noscript>
-            </span>
-                <a href="{{ article.get_absolute_url }}">
+            <a href="{{ article.get_absolute_url }}">
+                <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail_no_fit article.featured_image 1053 648%}" alt="">
               <div class="custom-carousel-caption">
-               <p> <h4>{{ article.title}}</h4>
-               {{ article.get_location_titles }}
-               {{ article.short_description }}</p>
-
+                  <p>
+                      <h4>{{ article.title}}</h4>
+                      <h5>{%if article.get_location_titles%} {{article.get_location_titles}}{%else%}&nbsp;{%endif%}</h5>
+                      <h5>{%if article.short_description%} {{article.short_description}}{%else%}&nbsp;{%endif%}</h5>
+                  </p>
               </div>
             </a>
           </div>
             {% endfor%}
       </div>
+         <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
+         <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+
                <ol class="carousel-indicators">
         {% for count in article_list|length|get_range %}
           <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
         {% endfor %}
     </ol>
-   {% endif %}
  </div>
+{% endif %}
 {% endblock %}
 {% block main %}
+ <hr class="line-divider">
 <div class="container">
             <div class="row">
-              {%for factoid in factoids%}
               <div class="col-lg-4 col-md-4 col-sm-4">
                   <div class="grid-column">
                       <p>
-                         {{ factoid.description }}
+                         <h4>RURAL  BYTES:</h4>
+                         With 833 million people, close to 800 languages and   immeasurable occupational diversity, rural India is a continent within a subcontinent.
                       </p>
                   </div>
-                  <a href="{{factoid.get_absolute_url}}" class="factoid-expand">
+                  <a href="http://www.ruralindiaonline.org/resources/" class="factoid-expand">
                       more >
                   </a>
               </div>
-            {% endfor %}
+              <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="grid-column">
+                      <p>
+                         <h4> SHOWCASE:</h4>
+                          Visible Work, Invisible Women: Women & Work in Rural India. Videos of ten panels.
+                      </p>
+                  </div>
+                  <a href="#" class="factoid-expand">
+                      more >
+                  </a>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="grid-column">
+                      <p>
+                         <h4>WE NEED:</h4>
+                           Photos, Videos, Text Articles, Audio clips (in multiple languages), and more to build this archive.
+                      </p>
+                  </div>
+                  <a href="http://www.ruralindiaonline.org/contribute/ " class="factoid-expand">
+                      more >
+                  </a>
+              </div>
            </div>
-<br>
-<hr class="line-divider">
+</div>
+    <hr class="line-divider">
 <div id="homepage">
     <section id="mainsection">
-    <div class="main-section">
-
-<div class="container">
-
-    <div class="category-heading">
-                CATEGORIES
-    </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                    {% for category_group in categories|group_by:3 %}
-    <div class="row">
-        <div class="categories">
-            {% for category in category_group %}
-                <a href="{{ category|get_absolute_url}}">
-                <div class="col-lg-4 col-md-4">
-                    <div class="grid-column">
-                        <img src="{{ MEDIA_URL }}{% thumbnail category.image 370 300 category.title%}" width="370" height="300" alt="">
-                        <div class="caption">
-                            <h4>{{ category.title }}</h4>
-                            <p class="description">{{ category.description }}</p>
-                        </div>
-                    </div>
+        <div class="main-section">
+            <div class="container-fluid">
+                <div class="category-heading">
+                    CATEGORIES
                 </div>
-                </a>
-            {% endfor %}
-        </div>
-     </div>
-    {% endfor %}
-     </div>
-     </div>
-                <a href="{% url 'category-list' %}" class="btn btn-lg btn-warning btn-homepage"><span class="glyphicon glyphicon-th-list"></span> VIEW ALL CATEGORIES</a>
-    </div>
-   </div>
+                {% for category_group in categories|group_by:3 %}
+                    <div class="row">
+                        <div class="categories">
+                            {% for category in category_group %}
+                                <a href="{{ category|get_absolute_url}}">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="grid-column">
 
-  </section>
-  <div class="social-icons">
-    <ul>
-      <li><a href="{{"SOCIAL_FACEBOOK"|get_setting}}"><i class="fa fa-facebook"></i></a></li>
-      <li><a href="{{"SOCIAL_TWITTER"|get_setting}}"><i class="fa fa-twitter"></i></a></li>
-      <li><a href="{{"SOCIAL_GOOGLE_PLUS"|get_setting}}"><i class="fa fa-google-plus"></i></a></li>
-      <li><a href="{{"SOCIAL_GITHUB_REPO"|get_setting}}"><i class="fa fa-github"></i></a></li>
-    </ul>
-  </div>
+                                        <img src="{{    MEDIA_URL }}{% thumbnail category.image 370 300 category.title %}" width="370" height="300" class="img-responsive">
+                                        <div class="caption">
+                                            <h4>{{ category.title }}</h4>
+                                            <p class="description">{{ category.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+                            {% endfor %}
+                            </div>
+                    </div>
+                {% endfor %}
+            </div>
+                <a href="{% url 'category-list' %}" class="btn btn-lg btn-warning btn-homepage"><span class="glyphicon glyphicon-th-list"></span> VIEW ALL CATEGORIES</a>
+         </div>
+    </section>
+
  </div>
 {% endblock %}

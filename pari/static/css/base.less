@@ -1,6 +1,6 @@
 @import "common.less";
 
-@footerHeight: 60px;
+@footerHeight: 70px;
 @anchorHeadingsColor:#E6E6E6;
 
 html {
@@ -10,7 +10,7 @@ html {
 body {
     padding-top: 0;
     height: 100%;
-    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Merriweather';
 }
 
 ul{
@@ -33,9 +33,9 @@ ul{
 }
 
 .logo {
-  margin-top: -15%;
-  width:75px;
-  height:50px;
+  margin-top: -20%;
+  width:90px;
+  height:60px;
 }
 
 #mainnav{
@@ -82,7 +82,7 @@ a.pari-link {
 }
 
 .dropdown-menu >li > a:hover{
-  background-color: #EE4303;
+  background-color: darkred;
 }
 ul.nav li.dropdown:hover ul.dropdown-menu{
     display: block;
@@ -95,6 +95,9 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
     overflow-x: hidden;
     height: auto;
     margin: 0 auto -@footerHeight;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
     .navbar-inverse .navbar-nav>.active>a{
       background-color: #333333;
     }
@@ -103,8 +106,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
         @navBottomBorder: #808080;
         background: @navColor;
         border:0px;
-        border-bottom: 2px solid @navBottomBorder;
-        min-height: 60px;
+        min-height: 57px;
         .dropdown{
           @media (min-width: @screen-xs-max) {
             &.active {
@@ -146,28 +148,24 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
             }
         }
         .container {
-            color: @headingsColor;
             .user{
-                width: 120px;
-                padding: 3px 20px 2px 20px;
-                border-radius: 0px 0px 25px 25px;
-                margin-top: -5px;
-
-                background-color: @navColor;
                 a {
                     text-decoration: none;
-                    color: @headingsColor;
                 }
                 @media (min-width: @screen-xs-max) {
                     position: absolute;
                     right: 150px;
                     top: 57px;
+                    margin-bottom: 10px;
                     text-align: center;
-                    border-bottom: 2px solid @navBottomBorder;
+//                    border-bottom: 2px solid @navBottomBorder;
                 }
                 .dropdown-menu {
                     @media (min-width: 979px) {
                         background-color: @navColor;
+                        .dropdown-menu >li > a:hover{
+                        background-color: darkred;
+                        }
                     }
                 }
                 .caret {
@@ -197,8 +195,9 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
           }
         }
     }
+
     #main_content {
-        margin-top: 45px;
+        margin-top: 20px;
     }
 }
 
@@ -250,10 +249,49 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 }
 
 #footer {
-    height: @footerHeight;
-    background-color: @navColor;
+    background-color: #333;
     .footer-row {
         text-align: center;
+
+        .social-icons {
+            position: relative;
+            text-align: center;
+            ul {
+                @radius: 30px;
+                display: inline-block;
+                list-style-type: none;
+                li {
+                    display: inline-block;
+                    width: @radius * 2;
+                    height: @radius * 2;
+                    .rounded (@radius);
+                    .transition (0.3s);
+
+                    text-align: center;
+                    font-size: @radius;
+                    line-height: @radius * 2;
+                    background-color: @alternateBgColor;
+                    margin: 10px;
+
+                    a {
+                        text-decoration: none;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        color: #000;
+                    }
+
+                    &:hover {
+                        background-color: darken(@alternateBgColor,20%);
+                        a {
+                            color: @headingsColor;
+                        }
+                        .box-shadow (inset 0 0 10px @alternateBgColor);
+                        .box-shadow (inset 0 0 10px @alternateBgColor);
+                    }
+                }
+              }
+        }
     }
     ul.footer-nav {
         display: inline-block;
@@ -540,7 +578,12 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
       }
     }
     .carousel-control.left, .carousel-control.right {
-       background-image: none
+      color:lightgrey;
+       background-image: none;
+      @media(max-width: 767px){
+        top:20%
+      }
+
     }
     .carousel-caption{
       position: relative;
@@ -570,6 +613,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
       }
     }
     .carousel-control {
+      color:lightgrey;
         top: 45%;
         border-radius: 0;
         z-index: 2;
@@ -598,8 +642,8 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
   .navbar-inverse .navbar-nav > .active > a:focus {
     border-radius: 5px;
     margin-bottom: 2px;
-    color: #333 !important;
-    background: #EE4303 !important;
+    color: #ffffff !important;
+    background: darkred !important;
   }
   ul.nav li.dropdown a{
     margin-left: 25px;
@@ -627,6 +671,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
       }
     }
     .carousel-control{
+      color:lightgrey;
       &.right {
         right: 6%;
       }
@@ -669,6 +714,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
    .carousel{
       height: 400px;
       .carousel-control {
+        color:lightgrey;
           &.right {
             right: 40px;
           }
@@ -701,6 +747,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
         width: 50px;
         font-size: 90px;
         line-height: 46px;
+
       }
     }
   }
@@ -719,6 +766,22 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
     }
   }
 }
+.navbar-brand{
+  padding :  10px;
+}
+  .btn-homepage {
+      float: right;
+      background-color:darkred;
+      color:#ffffff;
+      margin-bottom:15px;
+      border-radius:0px;
+      font-family:'Merriweather';
+      font-size:14px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+    }
 
 .fa-location:before             { content: "\f018"; }
 .fa-article:before              { content: "\f044"; }

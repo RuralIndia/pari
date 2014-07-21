@@ -1,15 +1,15 @@
 @import "common.less";
 
-.grid-row (@captionHeight: 50px, @maxCaptionHeight: 108px) {
+.grid-row (@captionHeight: 60px, @maxCaptionHeight: 108px) {
 
     .grid-column {
         position: relative;
         margin-bottom: 32px;
         overflow: hidden;
 
-
         &:hover {
             .caption {
+                position:relative;
                 .dark-caption;
                 @media (min-width: 980px) {
                     min-height: @maxCaptionHeight;
@@ -41,8 +41,9 @@
         }
 
         .caption {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.74902);
+            //positioning caption text below !
+            position: relative;
+            background-color: rgba(0, 0, 0, 1);
             bottom: 0;
             width: 100%;
             max-width: 100%;
@@ -54,16 +55,17 @@
             .transition(0.3s);
 
             h4 {
-                color: @headingsColor;
+                color: #ffffff;
                 margin: 7px 0 10px 0;
+                margin-bottom: 25px;
             }
 
             p {
-                color: black;
+                color: #ffffff;
             }
 
             i {
-                color: black;
+                color: #ffffff;
                 font-size: 22px;
             }
         }
@@ -86,6 +88,7 @@
 
             .caption {
                 padding: 32px;
+                position:absolute;
                 top:0;
                 left: 50%;
                 width: 50%;
