@@ -22,80 +22,84 @@
     <script type='text/javascript' src="{{ STATIC_URL }}js/picturefill.js"></script>
     <script type='text/javascript' src="{{ STATIC_URL }}js/pari.js"></script>
 {% endblock %}
+
 {% block extra_header %}
-  <div class="jumbotron home-page">
+    <div class="jumbotron home-page">
     <h1>{{ settings.SITE_FULL_TITLE }}</h1>
     <p>{{ settings.SITE_TAGLINE }}</p>
-  </div>
-  {% if article_list %}
-    <div id="homeCarousel" class="carousel carousel-thin-controls container" data-interval="8000" data-ride="carousel" data-carousel-mode="fade">
-      <div class="carousel-inner">
-        {% for article in article_list %}
-          <div class="{% if forloop.first %}active{% endif %} item">
-            <a href="{{ article.get_absolute_url }}">
-                <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail_no_fit article.featured_image 1053 648%}" alt="">
-              <div class="custom-carousel-caption">
-                  <p>
-                      <h4>{{ article.title}}</h4>
-                      <h5>{%if article.get_location_titles%} {{article.get_location_titles}}{%else%}&nbsp;{%endif%}</h5>
-                      <h5>{%if article.short_description%} {{article.short_description}}{%else%}&nbsp;{%endif%}</h5>
-                  </p>
-              </div>
-            </a>
-          </div>
-            {% endfor%}
-      </div>
-         <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
-         <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+    </div>
 
-               <ol class="carousel-indicators">
-        {% for count in article_list|length|get_range %}
-          <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
-        {% endfor %}
-    </ol>
- </div>
-{% endif %}
-{% endblock %}
-{% block main %}
- <hr class="line-divider">
-<div class="container">
-            <div class="row">
-              <div class="col-lg-4 col-md-4 col-sm-4">
-                  <div class="grid-column">
+    {% if article_list %}
+        <div id="homeCarousel" class="carousel carousel-thin-controls container" data-interval="8000" data-ride="carousel" data-carousel-mode="fade">
+            <div class="carousel-inner">
+                {% for article in article_list %}
+                    <div class="{% if forloop.first %}active{% endif %} item">
+                    <a href="{{ article.get_absolute_url }}">
+                    <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail_no_fit article.featured_image 1053 648%}" alt="">
+                    <div class="custom-carousel-caption">
                       <p>
+                          <h4>{{ article.title}}</h4>
+                          <h5>{% if article.get_location_titles %} {{article.get_location_titles}}{%else%}&nbsp;{%endif%}</h5>
+                          <h5>{% if article.strap %} {{article.strap}}{%else%}&nbsp;{%endif%}</h5>
+                      </p>
+                    </div>
+                    </a>
+                    </div>
+                {% endfor%}
+            </div>
+            <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+            <ol class="carousel-indicators">
+                {% for count in article_list|length|get_range %}
+                    <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+                {% endfor %}
+            </ol>
+        </div>
+    {% endif %}
+
+    <div class="horizontal-line"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="grid-column">
+                      <div>
                          <h4>RURAL  BYTES:</h4>
                          With 833 million people, close to 800 languages and   immeasurable occupational diversity, rural India is a continent within a subcontinent.
-                      </p>
+                      </div>
+                      <div>
+                          <a href="http://www.ruralindiaonline.org/resources/" class="factoid-expand"> more > </a>
+                      </div>
                   </div>
-                  <a href="http://www.ruralindiaonline.org/resources/" class="factoid-expand">
-                      more >
-                  </a>
-              </div>
-              <div class="col-lg-4 col-md-4 col-sm-4">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
                   <div class="grid-column">
-                      <p>
+                      <div>
                          <h4> SHOWCASE:</h4>
                           Visible Work, Invisible Women: Women & Work in Rural India. Videos of ten panels.
-                      </p>
+                      </div>
+                      <div>
+                          <a href="#" class="factoid-expand"> more > </a>
+                      </div>
                   </div>
-                  <a href="#" class="factoid-expand">
-                      more >
-                  </a>
-              </div>
-              <div class="col-lg-4 col-md-4 col-sm-4">
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
                   <div class="grid-column">
-                      <p>
+                      <div>
                          <h4>WE NEED:</h4>
                            Photos, Videos, Text Articles, Audio clips (in multiple languages), and more to build this archive.
-                      </p>
+                      </div>
+                      <div>
+                          <a href="http://www.ruralindiaonline.org/contribute/" class="factoid-expand"> more > </a>
+                      </div>
                   </div>
-                  <a href="http://www.ruralindiaonline.org/contribute/ " class="factoid-expand">
-                      more >
-                  </a>
-              </div>
-           </div>
-</div>
-    <hr class="line-divider">
+                </div>
+            </div>
+    </div>
+    <div class="horizontal-line"></div>
+{% endblock %}
+
+{% block main %}
 <div id="homepage">
     <section id="mainsection">
         <div class="main-section">

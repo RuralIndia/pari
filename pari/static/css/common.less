@@ -25,7 +25,7 @@ h4{
 }
 .section-header () {
    // color: #999;
-    font-size: 24.5px;
+    font-size: 25px;
     font-weight: 200;
     margin-bottom: 20px;
 
@@ -85,7 +85,7 @@ h4{
     height: 0;
     border-color: transparent transparent #fff transparent;
     border-style: solid;
-    border-width: 10px;
+    border-width: 12px;
     top: 71%;
     left: 50%;
     z-index: 11;
@@ -101,7 +101,22 @@ h4{
     height: 0;
     border-color: transparent transparent @border transparent;
     border-style: solid;
-    border-width: 12px;
+    border-width: 14px;
+    top: 61%;
+    left: 50%;
+    margin-left: -12px;
+}
+
+.menu-arrow-before-other(@border){
+  content: '';
+    z-index: 10;
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent transparent @border transparent;
+    border-style: solid;
+    border-width: 8px;
     top: 61%;
     left: 50%;
     margin-left: -12px;

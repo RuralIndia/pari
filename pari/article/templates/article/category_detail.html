@@ -30,13 +30,15 @@
                 </a>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
-                <div class="caption">
-                    <h1>{{ category.title }}</h1>
-                    <p>{{ category.description }}</p>
+                <div class="category-title">
+                    {{ category.title }}
+                 </div>
+                <div class="category-description">
+                    {{ category.description }}
+                </div>
                 </div>
             </div>
         </div>
-    </div>
     <div class="filter-list-container" data-title="{{ category.title }}" data-filter-endpoint="category_article_filter" data-filter-required-args-category="{{ category.id }}"{% if page %} data-filter-args-page="{{ page }}"{% endif %}{% if filter %} data-filter-args-filter="{{ filter }}"{% endif %}>
         {% article_list %}
     </div>

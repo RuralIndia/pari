@@ -4,7 +4,7 @@
 
     .grid-column {
         position: relative;
-        margin-bottom: 32px;
+        margin-bottom: 15px;
         overflow: hidden;
 
         &:hover {
@@ -50,18 +50,21 @@
             .box-sizing(border-box);
             padding: 10px;
             word-wrap: break-word;
-            min-height: @captionHeight;
-            max-height: @captionHeight;
+            min-height: 42px;
+            max-height: 42px;
             .transition(0.3s);
 
             h4 {
                 color: #ffffff;
                 margin: 7px 0 10px 0;
                 margin-bottom: 25px;
+                font-size:16px;
             }
 
             p {
                 color: #ffffff;
+                font-size: 12px;
+                line-height:1.2;
             }
 
             i {
@@ -80,6 +83,11 @@
         @media (min-width: 481px) and (max-width: 979px) {
             float: none;
             width: 100%;
+               &:hover {
+            .caption {
+              position: absolute;
+            }
+          }
 
             img {
                 max-width: none;
