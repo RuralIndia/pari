@@ -1,4 +1,5 @@
 {{ object.title }}
+{{ object.strap }}
 {{ object.description }}
 {{ object.get_location_titles }}
 {{ object.content }}
