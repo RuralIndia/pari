@@ -73,6 +73,9 @@ class ArticleFactory(factory.DjangoModelFactory):
 
 
 class ArticleAdminTests(TestCase):
+    def test_includes_strap_field(self):
+        self.assertIn("strap", ArticleAdmin.fieldsets[0][1]['fields'])
+
     def test_includes_location_field(self):
         self.assertIn("locations", ArticleAdmin.fieldsets[0][1]['fields'])
 
