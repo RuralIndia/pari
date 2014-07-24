@@ -5,6 +5,7 @@ if (typeof tinyMCE != 'undefined') {
         convert_urls: false,
         relative_urls: false,
         height: 400,
+        fontsize_formats: "8pt 9pt 10pt 11pt 12pt 12.5pt 14pt 16pt 18pt 24pt 36pt",
         file_browser_callback: function (field_name, url, type, win) {
             var frame = tinyMCE.activeEditor.windowManager.open({
                 file: window.__filebrowser_url + '?pop=2&type=' + type,
