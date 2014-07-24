@@ -16,12 +16,14 @@ blog_fieldsets[0][1]["fields"].insert(7, "capsule_video")
 blog_fieldsets[0][1]["fields"].insert(7, "featured_video")
 blog_fieldsets[0][1]["fields"].insert(7, "featured_audio")
 blog_fieldsets[0][1]["fields"].insert(11, "allow_featured_image")
+blog_fieldsets[0][1]["fields"].insert(13, "pin_to_home")
 blog_fieldsets[0][1]["fields"].remove("categories")
 blog_fieldsets[0][1]["fields"].insert(-1, "locations")
 blog_fieldsets[0][1]["fields"].insert(-1, "is_topic")
 
 blog_list_display = deepcopy(BlogPostAdmin.list_display)
 blog_list_display.insert(-1, "is_topic")
+blog_list_display.insert(-1, "pin_to_home")
 
 
 class ArticleCarouselImageInline(TabularDynamicInlineAdmin):
