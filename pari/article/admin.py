@@ -38,6 +38,7 @@ class ArticleAdmin(BlogPostAdmin):
     fieldsets = blog_fieldsets
     inlines = [ArticleCarouselImageInline, ]
     list_display = blog_list_display
+    list_editable = ('status', 'pin_to_home', )
     list_filter = ()
     filter_horizontal = ("category_list", "related_posts", "locations")
 
