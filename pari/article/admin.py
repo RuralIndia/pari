@@ -39,7 +39,7 @@ class ArticleAdmin(BlogPostAdmin):
     inlines = [ArticleCarouselImageInline, ]
     list_display = blog_list_display
     list_editable = ('status', 'pin_to_home', )
-    list_filter = ()
+    list_filter = ('status', 'author', 'pin_to_home', )
     filter_horizontal = ("category_list", "related_posts", "locations")
 
 

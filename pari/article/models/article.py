@@ -36,7 +36,7 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
 
     pin_to_home = models.BooleanField(verbose_name=_("Pin to home?"), default=False)
 
-    author = models.ForeignKey("Author", related_name='articles')
+    author = models.ForeignKey("Author", related_name='articles', verbose_name="Author")
 
     capsule_video = models.CharField(max_length=100, null=True, blank=True)
 
