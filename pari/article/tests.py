@@ -82,8 +82,8 @@ class ArticleAdminTests(TestCase):
     def test_includes_is_topic_field(self):
         self.assertIn("is_topic", ArticleAdmin.fieldsets[0][1]['fields'])
 
-    def test_includes_pin_to_home_field(self):
-        self.assertIn("pin_to_home", ArticleAdmin.fieldsets[0][1]['fields'])
+    def test_includes_featured_image_and_related_toggle_fields(self):
+        self.assertIn(("featured_image", "allow_featured_image", "pin_to_home", ), ArticleAdmin.fieldsets[0][1]['fields'])
 
     def test_include_pin_to_home_in_list_display(self):
         self.assertIn("pin_to_home", ArticleAdmin.list_display)
