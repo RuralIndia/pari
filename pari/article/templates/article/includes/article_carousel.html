@@ -1,5 +1,5 @@
 {% load i18n verbatim_tag static mezzanine_tags article_tags article_filters keyword_tags %}
-  <div id="homeCarousel" class="carousel slide carousel-bottom-caption carousel-thin-controls">
+  <div id="homeCarousel" class="carousel slide carousel-bottom-caption carousel-thin-controls" data-interval="10000" data-ride="carousel">
     <ol class="carousel-indicators">
       {% for count in images.all|length|get_range %}
         <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
