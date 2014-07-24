@@ -6,10 +6,11 @@
         position: relative;
         margin-bottom: 32px;
         overflow: hidden;
+        min-height: 327px;
 
         &:hover {
             .caption {
-                position:relative;
+                position:absolute;
                 .dark-caption;
                 @media (min-width: 980px) {
                     min-height: @maxCaptionHeight;
@@ -42,7 +43,7 @@
 
         .caption {
             //positioning caption text below !
-            position: relative;
+            position: absolute;
             background-color: rgba(0, 0, 0, 1);
             bottom: 0;
             width: 100%;
@@ -50,8 +51,8 @@
             .box-sizing(border-box);
             padding: 10px;
             word-wrap: break-word;
-            min-height: @captionHeight;
-            max-height: @captionHeight;
+            min-height:40px;
+            max-height: 40px;
             .transition(0.3s);
 
             h4 {
@@ -63,6 +64,8 @@
 
             p {
                 color: #ffffff;
+                font-size: 12px;
+                line-height:1.2;
             }
 
             i {
@@ -81,6 +84,7 @@
         @media (min-width: 481px) and (max-width: 979px) {
             float: none;
             width: 100%;
+            min-height: inherit;
 
             img {
                 max-width: none;
@@ -101,11 +105,16 @@
 
             }
         }
+        @media (max-width : 1024px){
+          min-height: inherit;
+        }
 
         @media (max-width: 480px) {
+            min-height: inherit;
             img {
                 width: 100%;
             }
+
         }
 
     }
