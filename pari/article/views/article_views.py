@@ -1,5 +1,6 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 
 from pari.article.models import Article, get_archive_articles, get_all_articles, ArticleCarouselImage
 from pari.article.mixins import ArticleListMixin
@@ -16,7 +17,7 @@ class ArticleDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
         article = context['blog_post']
-        context['related_articles'] = article.related_posts.all()[:5]
+        context['related_articles'] = article.related_posts.filter(status=CONTENT_STATUS_PUBLISHED)[:5]
         return context
 
 
