@@ -104,6 +104,10 @@ class ArticleCarouselImage(Orderable, Displayable):
 
     is_searchable = False
 
+    def __init__(self, *args, **kwargs):
+        super(ArticleCarouselImage, self).__init__(*args, **kwargs)
+        self._meta.get_field("title").blank = True
+
     class Meta:
         verbose_name = _("CarouselImage")
         verbose_name_plural = _("CarouselImages")
