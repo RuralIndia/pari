@@ -1,5 +1,5 @@
 $(function(){
-    $(".media-popup").on("show", function () {
+    $(".media-popup").on("shown.bs.modal", function () {
         if($(this).data('video')) {
             var youtube_url = "http://www.youtube.com/embed/" + $(this).data('video') + "?autoplay=1";
             $('.video-container', this).html('<iframe src="' + youtube_url + '" frameborder="0" allowfullscreen></iframe>');
