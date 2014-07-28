@@ -28,7 +28,7 @@
     <p>{{ settings.SITE_TAGLINE }}</p>
   </div>
   {% if article_list %}
-    <div id="homeCarousel" class="carousel carousel-thin-controls slide container" data-interval="10000" data-ride="carousel">
+    <div id="homeCarousel" class="carousel carousel-thin-controls container" data-interval="8000" data-ride="carousel" data-carousel-mode="fade">
       <div class="carousel-inner">
         {% for article in article_list %}
           <div class="{% if forloop.first %}active{% endif %} item">
