@@ -1,6 +1,3 @@
-from string import punctuation
-from urllib import unquote
-
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.template.defaultfilters import truncatewords
@@ -124,16 +121,6 @@ class ArticleCarouselImage(Orderable, Displayable):
     @property
     def get_thumbnail(self):
         return self.file
-
-    def save(self, *args, **kwargs):
-        if not self.id and not self.description:
-            name = unquote(self.file.url).split("/")[-1].rsplit(".", 1)[0]
-            name = name.replace("'", "")
-            name = "".join([c if c not in punctuation else " " for c in name])
-            name = "".join([s.upper() if i == 0 or name[i - 1] == " " else s
-                            for i, s in enumerate(name)])
-            self.description = name
-        super(ArticleCarouselImage, self).save(*args, **kwargs)
 
 
 def get_all_articles():
