@@ -31,6 +31,8 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
     featured_image = FileField(verbose_name=_("Featured Image"),
                                format="Image", max_length=255, null=True, blank=True)
 
+    featured_image_caption = models.CharField(max_length=1000, blank=True, null=True)
+
     pin_to_home = models.BooleanField(verbose_name=_("Pin to home?"), default=False)
 
     author = models.ForeignKey("Author", related_name='articles', verbose_name="Author")
