@@ -68,7 +68,9 @@
 
 {% block blog_post_detail_content %}
 {% editable blog_post.content %}
+<div class="article-content">
 {{ blog_post.content|richtext_filter|safe }}
+</div>
 {% endeditable %}
 {% endblock %}
 

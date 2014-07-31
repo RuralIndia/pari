@@ -10,6 +10,7 @@ html {
 body {
     padding-top: 0;
     height: 100%;
+    font-family: Merriweather;
 }
 
 ul{
@@ -35,6 +36,14 @@ ul{
   margin-top: -25%;
   width:90px;
   height:60px;
+  max-height:60px;
+  float:left;
+  padding-top: 18px;
+}
+@media (min-width: 768px) and (max-width : 1270px){
+  .logo{
+    margin-top: 19%;
+  }
 }
 
 #mainnav{
@@ -153,8 +162,8 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
                 }
                 @media (min-width: @screen-xs-max) {
                     position: absolute;
-                    right: 150px;
-                    top: 57px;
+                    right: 92px;
+                    top: 63px;
                     margin-bottom: 10px;
                     text-align: center;
 //                    border-bottom: 2px solid @navBottomBorder;
@@ -420,7 +429,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
         content: 'Filter by:';
         color:  #333;
         line-height: 32px;
-    };
+    }
 
     &.expanded {
         width: 100%;
@@ -771,6 +780,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
 }
 .navbar-brand{
   padding :  10px;
+  height: inherit;
 }
   .btn-homepage {
       float: right;
