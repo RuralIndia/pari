@@ -3,6 +3,7 @@ from django.test.client import Client
 from django.core.urlresolvers import reverse
 
 from mezzanine.accounts.models import User
+from mezzanine.core.models import CONTENT_STATUS_DRAFT
 
 import factory
 from mock import patch
@@ -139,6 +140,16 @@ class LocationTests(TestCase):
 
     def test_get_topics_for_location_with_topic_and_articles(self):
         location = LocationFactory(articles=(ArticleFactory(), ArticleFactory(), ArticleFactory(is_topic=True)))
+        self.assertEqual(1, len(location.get_topics()))
+
+    def test_get_articles_for_location_with_draft_articles(self):
+        location = LocationFactory(articles=(
+            ArticleFactory(), ArticleFactory(status=CONTENT_STATUS_DRAFT), ArticleFactory(status=CONTENT_STATUS_DRAFT)))
+        self.assertEqual(1, len(location.get_articles()))
+
+    def test_get_topics_for_location_with_topic_and_draft_articles(self):
+        location = LocationFactory(articles=(
+            ArticleFactory(), ArticleFactory(status=CONTENT_STATUS_DRAFT, is_topic=True), ArticleFactory(is_topic=True)))
         self.assertEqual(1, len(location.get_topics()))
 
 
