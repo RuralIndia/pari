@@ -5,9 +5,13 @@ from pari.article.models import Article
 
 
 class LatestArticle(models.Model):
-    new_current_articles = models.ManyToManyField(Article, verbose_name=_("New current articles"), blank=True,
+    new_current_articles = models.ManyToManyField(Article, limit_choices_to={'id__in': Article.articles.all()},
+                                                  blank=True,
+                                                  verbose_name=_("New current articles"),
                                                   related_name='new_current_articles')
-    new_archive_articles = models.ManyToManyField(Article, verbose_name=_("New archive articles"), blank=True,
+    new_archive_articles = models.ManyToManyField(Article, limit_choices_to={'id__in': Article.articles.all()},
+                                                  blank=True,
+                                                  verbose_name=_("New archive articles"),
                                                   related_name='new_archive_articles')
 
     class Meta:
