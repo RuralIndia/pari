@@ -20,6 +20,7 @@ class NewsPost(Displayable, Ownable, RichText):
         verbose_name = _("News post")
         verbose_name_plural = _("News posts")
         ordering = ("-publish_date",)
+        app_label = 'news'
 
     @models.permalink
     def get_absolute_url(self):
@@ -31,6 +32,7 @@ class NewsCategory(Slugged):
         verbose_name = _("News Category")
         verbose_name_plural = _("News Categories")
         ordering = ("title",)
+        app_label = 'news'
 
 
 class LatestArticle(models.Model):
