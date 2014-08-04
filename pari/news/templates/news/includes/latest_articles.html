@@ -1,0 +1,14 @@
+{% load article_filters %}
+
+<div> Latest Articles: </div>
+
+<div> New current Articles</div>
+{% for current in current_articles %}
+    <div><a href="{{ current|get_absolute_url }}" >{{ current.title }}</a></div>
+{% endfor %}
+
+<div> New Archive Articles</div>
+{% for archive in archive_articles %}
+    <div><a href="{{ archive|get_absolute_url }}" >{{ archive.title }}</a></div>
+{% endfor %}
+
