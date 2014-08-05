@@ -43,6 +43,8 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
 
     featured_audio = models.CharField(max_length=100, null=True, blank=True)
 
+    date_of_publication = models.DateField(verbose_name=_("Original date of publication"), null=True, blank=True)
+
     related_posts = models.ManyToManyField("self",
                                            verbose_name=_("Related Articles"), blank=True)
     types = models.ManyToManyField(Type, related_name="articles", verbose_name="Article Type")

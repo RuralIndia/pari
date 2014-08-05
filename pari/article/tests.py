@@ -80,6 +80,9 @@ class ArticleAdminTests(TestCase):
     def test_includes_location_field(self):
         self.assertIn("locations", ArticleAdmin.fieldsets[0][1]['fields'])
 
+    def test_includes_date_of_publication_field(self):
+        self.assertIn("date_of_publication", ArticleAdmin.fieldsets[0][1]['fields'])
+
     def test_includes_is_topic_field(self):
         self.assertIn("is_topic", ArticleAdmin.fieldsets[0][1]['fields'])
 
