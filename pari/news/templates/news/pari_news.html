@@ -1,36 +1,53 @@
-{% extends "article/article_detail.html" %}
-{% load mezzanine_tags comment_tags keyword_tags i18n future disqus_tags article_filters article_tags news_tags %}
+{% extends "sidebar_base.html" %}
+{% load mezzanine_tags keyword_tags i18n future article_filters article_tags news_tags %}
+
+{% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
+
+{% block meta_keywords %}
+    {% if blog_post %}
+        {% metablock %}
+            {% keywords_for blog_post as tags %}
+            {% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
+        {% endmetablock %}
+    {% endif %}
+{% endblock %}
+
+{% block meta_description %}
+    {% metablock %}
+        {{ blog_post.description }}
+    {% endmetablock %}
+{% endblock %}
 
 {% block extra_css %}
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/tinymce.css" charset="utf-8">
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/article.less" charset="utf-8">
 {% endblock %}
 
-{% block featured_content %}
-{% endblock %}
-
 {% block maincontent %}
-    <div class="article-head">
-        {% block title %}
-            <div class="page-header">
-                {% editable blog_post.title %}<h1 class="article-title">{{ blog_post.title }}</h1>{% endeditable %}
-            </div>
-            <p class="article-meta">
-                {% with blog_post.user as author %}
-                    <a href="{% url "blog_post_list_author" author %}"><i class="fa fa-user"></i>  {{author.get_full_name|default:author.username}}</a>
-                {% endwith %}
-                | <a href="{{ blog_post.publish_date|archive_url }}"><i class="fa fa-calendar"></i> {{ blog_post.publish_date|date }}</a>
-            </p>
-        {% endblock %}
-    </div>
+    {% if blog_post %}
+        <div class="article-head">
+            {% block title %}
+                <div class="page-header">
+                    {% editable blog_post.title %}<h1 class="article-title">{{ blog_post.title }}</h1>{% endeditable %}
+                </div>
+                <p class="article-meta">
+                    {% with blog_post.user as author %}
+                        <a href="#"><i class="fa fa-user"></i>{{author.get_full_name|default:author.username}}</a>
+                    {% endwith %}
+                    | <a href="#"><i class="fa fa-calendar"></i> {{ blog_post.publish_date|date }}</a>
+                </p>
+            {% endblock %}
+        </div>
 
-    {% block blog_post_detail_content %}
-        {% editable blog_post.content %}
-        {{ blog_post.content|richtext_filter|safe }}
-        {% endeditable %}
-    {% endblock %}
+        {% block blog_post_detail_content %}
+            {% editable blog_post.content %}
+            {{ blog_post.content|richtext_filter|safe }}
+            {% endeditable %}
+        {% endblock %}
+    {% endif%}
 {% endblock %}
 
 {% block maincontent_2 %}
+    <div class="horizontal-line"></div>
     {% list_latest_articles %}
 {% endblock %}
