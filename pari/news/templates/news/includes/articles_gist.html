@@ -1,0 +1,22 @@
+{% load static article_filters article_tags %}
+
+<div class="related-articles well">
+    {% for article in articles %}
+        <div class="article">
+            <a href="{{ article|get_absolute_url }}">
+                <div class="article-image">
+                    <img class="img-responsive" src="{% get_media_prefix %}{% thumbnail article.featured_image 100 78 %}" alt="">
+                </div>
+                <div class="caption">
+                    <h4>{{ article.title|truncatechars:70 }}</h4>
+                    <p>{{ article.get_location_titles }}</p>
+                    <p>by {{ article.author.title }}</p>
+                </div>
+            </a>
+            {% if not forloop.last %}
+                <div class="horizontal-line"></div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+

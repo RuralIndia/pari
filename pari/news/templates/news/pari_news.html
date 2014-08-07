@@ -49,5 +49,18 @@
 
 {% block maincontent_2 %}
     <div class="horizontal-line"></div>
-    {% list_latest_articles %}
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sd-6">
+            <div class="grid-column">
+                <h4> New current articles </h4>
+                {% articles_gist new_current_articles %}
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sd-6">
+            <div class="grid-column">
+                <h4> New archive articles </h4>
+                {% articles_gist new_archive_articles %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
