@@ -49,3 +49,17 @@ class LatestArticle(models.Model):
         verbose_name = _("Latest article")
         verbose_name_plural = _("Latest articles")
         app_label = 'news'
+
+
+def get_latest_news_post():
+    return NewsPost.objects.first()
+
+
+def get_chosen_archive_articles():
+    latest_article = LatestArticle.objects.first()
+    return latest_article and latest_article.new_archive_articles.all() or []
+
+
+def get_chosen_current_articles():
+    latest_article = LatestArticle.objects.first()
+    return latest_article and latest_article.new_current_articles.all() or []
