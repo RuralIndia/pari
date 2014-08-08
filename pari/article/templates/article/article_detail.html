@@ -114,9 +114,9 @@
                     <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail article.featured_image 100 78 %}" alt="">
                 </div>
                 <div class="caption">
-                    <h4>{{ article.title|truncatechars:45 }}</h4>
-                    <p>{{ article.get_location_titles }}</p>
-                    <p>by {{ article.author.title }}</p>
+                    <h4> {{ article.title|truncatechars:70 }} </h4>
+                     <p>Location:{{ article.get_location_titles | truncatechars:20 }}</p>
+                     <p>Author:  {{ article.author.title }}</p>
                 </div>
             </a>
         </div>
