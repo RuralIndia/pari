@@ -1,6 +1,17 @@
 {% load i18n mezzanine_tags article_filters article_tags %}
 {% spaceless %}
 <div class="social-icons">
+    <div class="footer-left">
+    <a href="/legal/terms-and-conditions">
+        <h6>Terms & Conditions</h6>
+    </a>
+    <a href="/legal/copyright">
+        <h6>Copyright</h6>
+    </a>
+</div>
+<div class="footer-right">
+    <a href="/contact-us"><h6>Contact Us</h6></a>
+</div>
     <ul>
       <li><a href="{{"SOCIAL_FACEBOOK"|get_setting}}"><i class="fa fa-facebook"></i></a></li>
       <li><a href="{{"SOCIAL_TWITTER"|get_setting}}"><i class="fa fa-twitter"></i></a></li>
