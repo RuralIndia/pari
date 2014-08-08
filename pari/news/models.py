@@ -16,6 +16,8 @@ class NewsPost(Displayable, Ownable, RichText):
 
     objects = DisplayableManager()
 
+    thumbnail_image_text = 'News'
+
     class Meta:
         verbose_name = _("News post")
         verbose_name_plural = _("News posts")

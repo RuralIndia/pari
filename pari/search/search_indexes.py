@@ -1,6 +1,7 @@
 from mezzanine.conf import settings
 from mezzanine.core.models import Displayable
 from pari.faces.models import FaceImage
+from pari.news.models import NewsPost
 
 if "haystack" in settings.INSTALLED_APPS:
     from haystack import indexes
@@ -22,7 +23,7 @@ if "haystack" in settings.INSTALLED_APPS:
             return obj.get_absolute_url()
 
         def prepare_get_thumbnail(self, obj):
-            return unicode(obj.get_thumbnail or '')
+            return unicode(getattr(obj, 'get_thumbnail', None) or '')
 
         def get_model(self):
             return self.model
@@ -90,4 +91,11 @@ if "haystack" in settings.INSTALLED_APPS:
         title = indexes.CharField(model_attr='title')
         description = indexes.CharField(model_attr='description')
         model = Category
+        haystack_use_for_indexing = True
+
+    class NewsPostIndex(DisplayableIndex):
+        title = indexes.CharField(model_attr='title')
+        description = indexes.CharField(model_attr='description')
+        thumbnail_image_text = indexes.CharField(model_attr='thumbnail_image_text')
+        model = NewsPost
         haystack_use_for_indexing = True
