@@ -1,4 +1,4 @@
-{% extends "sidebar_base.html" %}
+{% extends "resources_detail_layout.html" %}
 {% load i18n verbatim_tag mezzanine_tags article_tags %}
 
 {% block meta_title %}{% trans resource.title %}{% if filter%} - {{ filter }}{% endif %}{% endblock %}
@@ -16,24 +16,61 @@
 {% endblock %}
 
 {% block extra_css %}
-    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resource.less" charset="utf-8">
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resources.less" charset="utf-8">
 {% endblock %}
 
-{% block maincontent %}
+{% block resource_content %}
     {% render_slideshare_embed resource.embed_source %}
 {% endblock %}
 
-{% block sidebar %}
+{% block resource_sidebar %}
     <div class="well">
-        <h3 class="section-header">{{ resource.title }}</h1>
-        <p>{{ resource.description }}</p>
+        <table>
+         <colgroup>
+             <col style="width:20%;">
+             <col style="width:80%">
+         </colgroup>
+        <tr class="factoids-title">
+            <td>Title :</td>
+            <td>{{ resource.title }}</td>
+        </tr>
+        {% if resource.date %}
+         <tr>
+             <td>Date:</td>
+             <td>{{resource.date | date:"M , Y"}}</td>
+         </tr>
+         {% endif %}
+         {% if resource.authors %}
+            <tr>
+                <td>Author:</td>
+                <td> {{resource.authors|richtext_filter| safe}} </td>
+            </tr>
+         {% endif %}
+         {% if resource.copyright %}
+            <tr>
+                <td><b>Copyright:</b></td>
+                <td>{{resource.copyright| richtext_filter |safe}}</td><
+            </tr>
+         {% endif %}
+         </table>
+        <h4>Focus:</h4>
+        {% if resource.focus %}
+            {{resource.focus| richtext_filter |safe}}
+        {% endif %}
+          <a href="{{resource.get_absolute_url}}report">
+            Click to see more
+          </a>
     </div>
-    <div class="well">
-        <h3 class="section-header">Factoids</h3>
-        <ul>
-            {%for factoid in resource.factoids.all %}
-                <li>{{ factoid.title }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+{% endblock %}
+{% block factoids %}
+    {% if resource.factoids.count %}
+                <div class="factoids">
+                <h3 class="section-header">Factoids</h3>
+                <ol>
+                    {% for factoid in resource.factoids.all %}
+                        <li> {{ factoid.title }} </li>
+                    {% endfor %}
+                </ol>
+                </div>
+    {% endif %}
 {% endblock %}

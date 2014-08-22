@@ -1,0 +1,65 @@
+{% extends "sidebar_base.html" %}
+{% load i18n verbatim_tag mezzanine_tags article_tags %}
+
+{% block meta_title %}{% trans resource.title %}{% if filter%} - {{ filter }}{% endif %}{% endblock %}
+{% block title %}{% trans resource.title %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+    {{ resource.title }}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}
+    {{ resource.description }}
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block extra_css %}
+    <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resources.less" charset="utf-8">
+{% endblock %}
+
+
+{% block featured_content %}
+        <table>
+            <tr class="factoids-title">
+                <td>Title :</td>
+                <td>&nbsp;{{ resource.title }}</td>
+            </tr>
+        {% if resource.date %}
+            <tr>
+                <td>Date:</td>
+                <td>&nbsp;{{resource.date | date:"M , Y"}}</td>
+            </tr>
+        {% endif %}
+        {% if resource.authors %}
+            <tr>
+                <td>Author:</td>
+                <td>&nbsp;{{resource.authors|richtext_filter|safe}}</td>
+            </tr>
+        {% endif %}
+        {% if resource.copyright %}
+            <tr>
+                <td><b>Copyright:</b></td>
+                <td>&nbsp;{{resource.copyright|richtext_filter|safe }}</td>
+            </tr>
+        {% endif %}
+        </table>
+        <h3 class="factoids-title">Focus :</h3>
+        {% if resource.focus %}
+            {{resource.focus| richtext_filter| safe }}
+        {% endif %}
+{% endblock %}
+{% block factoids %}
+        {% if resource.factoids.count %}
+            <div class="factoids">
+            <h3 class="section-header">Factoids</h3>
+            <ol>
+                {% for factoid in resource.factoids.all %}
+                    <li>{{ factoid.title }}</li>
+                {% endfor %}
+            </ol>
+            </div>
+        {% endif %}
+{% endblock %}
+

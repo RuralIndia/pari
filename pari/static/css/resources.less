@@ -2,9 +2,12 @@
 
 @factoidColor: #f78b3e;
 
+.resourceheading{
+  text-align:center;
+}
+
 a {
     text-decoration: none;
-    color: #fff;
 }
 .jumbotron{
   padding: 10px !important;
@@ -17,67 +20,73 @@ a {
   }
 
   p{
-    font-size: 18px;
+    font-size: 16px;
   }
 }
+.factoids{
+    border: 1px;
+    border-width: 1px;
+    border-style: groove;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    text-align: center;
+}
+.factoids-title {
+    color:#ff0000;
+    font-family: Merriweather;
+    font-size: 18px;
+}
 
-.item {
-    height:  180px;
-    .bordered(#ccc);
-    .rounded(5px);
-    .box-sizing(border-box);
-    .transition(0.3s);
-    padding: 10px;
-    float: left;
-    margin: 5px 0;
-    background-color: darken(@alternateBgColor, 20%);
-    .box-shadow(1px 1px 2px 0 #d0d0d0);
+.grid-column{
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 18px;
+  position: relative;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  border: 1px solid #ccc;
   border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  background-color: whitesmoke;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-size: auto;
+  -webkit-box-shadow: rgb(180, 180, 180) 1px 1px 1px 0px;
+  @media only screen and (min-width: 1024px){
 
-    
-
-    &:hover {
-        .transform(scale(1.3));
-        z-index: 999;
-        background-color: darken(@alternateBgColor, 30%);
+     &:hover {
+        .transform(scale(1.05));
+        z-index: 500;
         text-decoration: none;
         color: #fff;
     }
+  }
 
-    &-factoid {
-        background-color: @factoidColor;
-        a {
-            color: #333;
-        }
 
-        &:hover {
-            background-color: darken(@factoidColor, 20%);
-        }
-    }
-
-    &-hero {
-        width:  490px;
-        &:hover {
-            .transform(scale(1.0));
-            z-index: 999;
-            background-color: #fff;
-            color: #333;
-        }
-        background-color: #fff;
-        a {
-            text-decoration: none;
-            color: @headingsColor;
-        }
-    }
+  .caption {
+    border-top: 1px solid #dadada;
+    padding: 10px;
+    text-overflow: ellipsis;
+    display: block;
+    color :#ee4303;
+    margin: 4px 0 4px 0;
+    font-weight: 500;
+    letter-spacing: .01em;
+    overflow: hidden;
+    font-size: 14px
+  }
+  .image-container {
+    text-align: center;
+  }
+}
+td,th{
+  vertical-align: baseline;
+}
+tr{
+  border-bottom: 5em;
+}
+@media (min-width: 320px) and (max-width: 979px) {
+  .grid-column{
+    height: inherit;
+  }
 }
 
-.item1 {
-    min-width:  120px;
-    max-width: 240px;
-    width: 120px;
-}
-.item2 {
-    min-width:  120px;
-    max-width: 240px;
-    width:  240px;
-}
+

@@ -5,16 +5,19 @@ from django.db import models
 from mezzanine.core.managers import DisplayableManager
 from mezzanine.core.models import Displayable
 from mezzanine.core.fields import FileField
-
 from pari.article.mixins import AdminThumbMixin
 
 
 class Resource(Displayable):
     embed_source = models.CharField(max_length=100)
-
+    date = models.DateField(max_length=100, blank=True, null=True)
+    authors = models.TextField(verbose_name=_("Author"), max_length=200, blank=True, null=True)
+    focus = models.TextField(verbose_name=_("Focus"), max_length=1000, blank=True, null=True)
+    copyright = models.TextField(verbose_name=_("Copyright"), max_length=200, blank=True, null=True)
     objects = DisplayableManager()
     search_fields = {"title": 10, "description": 5}
-
+    thumbnail_url = models.TextField(blank=True, null=True,
+                                     help_text="Non editable field which will be auto-populated based on embed source")
     type_filter_order = 2
 
     @models.permalink
@@ -23,7 +26,7 @@ class Resource(Displayable):
 
     @property
     def get_thumbnail(self):
-        return ""
+        return self.thumbnail_url
 
     class Meta:
         verbose_name = _("Resource")
