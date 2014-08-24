@@ -5,6 +5,7 @@ from django.test import TestCase
 import factory
 import mock
 
+from pari.album.models import get_all_albums, get_talking_albums, get_other_albums
 from pari.album.admin import AlbumAdmin, AlbumImageInline
 from pari.album.forms import AlbumImageInlineFormset
 from pari.album.models import Album, AlbumImage, ImageCollection, ImageCollectionImage
@@ -37,11 +38,41 @@ class AlbumImageFactory(factory.DjangoModelFactory):
 
     title = 'Image 1'
     image_file = 'gallery.png'
+    audio = 'audio id'
     _order = 1
     album = factory.SubFactory(AlbumFactory)
     image_collection_image = factory.SubFactory(ImageCollectionImageFactory)
     location = factory.SubFactory(LocationFactory)
     photographer = factory.SubFactory(AuthorFactory)
+
+
+class AlbumBuild:
+    def __init__(self):
+        self.album = AlbumFactory.create()
+
+    def add_album_image(self, **kwargs):
+        AlbumImageFactory(album=self.album, **kwargs)
+        return self
+
+
+class AlbumTests(TestCase):
+    def setUp(self):
+        AlbumBuild().add_album_image().add_album_image()
+        AlbumBuild().add_album_image().add_album_image(audio='')
+        AlbumBuild().add_album_image().add_album_image(audio=None)
+        AlbumBuild().add_album_image(audio='').add_album_image(audio='')
+        AlbumBuild().add_album_image(audio=None).add_album_image(audio=None)
+        AlbumBuild().add_album_image(audio=None).add_album_image(audio='')
+        AlbumBuild().add_album_image(audio=None).add_album_image(audio='   ')
+
+    def test_get_all_albums(self):
+        self.assertEqual(7, get_all_albums().count())
+
+    def test_get_talking_albums(self):
+        self.assertEqual(3, get_talking_albums().count())
+
+    def test_get_other_albums(self):
+        self.assertEqual(4, get_other_albums().count())
 
 
 class AlbumAdminTests(TestCase):
