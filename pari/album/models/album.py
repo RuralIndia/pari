@@ -7,13 +7,14 @@ from django.core.files.storage import default_storage
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from filebrowser_safe.functions import convert_filename
+
 from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable, Orderable
 from mezzanine.utils.models import upload_to
-from pari.album.helpers.sound_cloud_helper import SoundCloudHelper
 
-from pari.album.models import ImageCollection, ImageCollectionImage
 from pari.article.models import Article, Location
+from pari.album.models import ImageCollection, ImageCollectionImage
+from pari.album.helpers.sound_cloud_helper import SoundCloudHelper
 
 
 ALBUMS_UPLOAD_DIR = "uploads/albums/"
@@ -131,6 +132,26 @@ class Album(Displayable):
                 self.zip_import.delete(save=True)
 
 
+class TalkingAlbum(Album):
+    class Meta:
+        proxy = True
+
+    @models.permalink
+    def get_absolute_url(self):
+        name = "talking-album-detail"
+        return name, (), {"slug": self.slug}
+
+
+class OtherAlbum(Album):
+    class Meta:
+        proxy = True
+
+    @models.permalink
+    def get_absolute_url(self):
+        name = "other-album-detail"
+        return name, (), {"slug": self.slug}
+
+
 class AlbumImage(Orderable, Displayable):
     album = models.ForeignKey("Album", related_name="images")
     image_collection_image = models.ForeignKey("ImageCollectionImage", related_name="album_image")
@@ -168,6 +189,9 @@ class AlbumImage(Orderable, Displayable):
         else:
             self.image_collection_image = image_collection_image
 
+        if self.audio:
+            self.audio = self.audio.strip()
+
         super(AlbumImage, self).save(*args, **kwargs)
         if self.audio_file:
             soundcloud_helper = SoundCloudHelper()
@@ -180,3 +204,16 @@ class AlbumImage(Orderable, Displayable):
         image_collection_image = ImageCollectionImage(file=self.image_file)
         self.album.image_collection.images.add(image_collection_image)
         self.image_collection_image = image_collection_image
+
+
+def get_all_albums():
+    return Album.objects.all()
+
+
+def get_talking_albums():
+    album_images = AlbumImage.objects.exclude(audio__isnull=True).exclude(audio__exact='')
+    return TalkingAlbum.objects.filter(images__in=album_images).distinct()
+
+
+def get_other_albums():
+    return OtherAlbum.objects.filter(~models.Q(pk__in=get_talking_albums()))

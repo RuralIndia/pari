@@ -3,8 +3,12 @@ from pari.album.models import Album, AlbumImage, ImageCollectionImage
 
 
 class AlbumList(ListView):
-    context_object_name = "albums"
     model = Album
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(AlbumList, self).get_context_data(*args, **kwargs)
+        context['albums'] = self.kwargs['albums']()
+        return context
 
 
 class AlbumDetail(DetailView):
