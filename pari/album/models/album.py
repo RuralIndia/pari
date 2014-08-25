@@ -132,26 +132,6 @@ class Album(Displayable):
                 self.zip_import.delete(save=True)
 
 
-class TalkingAlbum(Album):
-    class Meta:
-        proxy = True
-
-    @models.permalink
-    def get_absolute_url(self):
-        name = "talking-album-detail"
-        return name, (), {"slug": self.slug}
-
-
-class OtherAlbum(Album):
-    class Meta:
-        proxy = True
-
-    @models.permalink
-    def get_absolute_url(self):
-        name = "other-album-detail"
-        return name, (), {"slug": self.slug}
-
-
 class AlbumImage(Orderable, Displayable):
     album = models.ForeignKey("Album", related_name="images")
     image_collection_image = models.ForeignKey("ImageCollectionImage", related_name="album_image")
@@ -212,8 +192,8 @@ def get_all_albums():
 
 def get_talking_albums():
     album_images = AlbumImage.objects.exclude(audio__isnull=True).exclude(audio__exact='')
-    return TalkingAlbum.objects.filter(images__in=album_images).distinct()
+    return Album.objects.filter(images__in=album_images).distinct()
 
 
 def get_other_albums():
-    return OtherAlbum.objects.filter(~models.Q(pk__in=get_talking_albums()))
+    return Album.objects.filter(~models.Q(pk__in=get_talking_albums()))
