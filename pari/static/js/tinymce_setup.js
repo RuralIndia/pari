@@ -29,12 +29,16 @@ if (typeof tinyMCE != 'undefined') {
         file_browser_callback: function (field_name, url, type, win) {
             var frame = tinyMCE.activeEditor.windowManager.open({
                 file: window.__filebrowser_url + '?pop=2&type=' + type,
-                width: 820,
+                width: 900,
                 height: 500,
                 resizable: "yes",
                 scrollbars: "yes",
                 inline: "yes",
-                close_previous: "no"
+                close_previous: "no",
+                buttons:[{
+                    text: 'Cancel',
+                    onclick: 'close'
+                }]
             }, {
                 window: win,
                 input: field_name,
