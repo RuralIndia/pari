@@ -12,9 +12,6 @@
     {{ resource.description }}
 {% endblock %}
 
-{% block extra_js %}
-{% endblock %}
-
 {% block extra_css %}
     <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/resources.less" charset="utf-8">
 {% endblock %}
@@ -24,42 +21,44 @@
 {% endblock %}
 
 {% block resource_sidebar %}
-    <div class="well">
+    <div class="well resources-side">
         <table>
-         <colgroup>
-             <col style="width:20%;">
-             <col style="width:80%">
-         </colgroup>
-        <tr class="factoids-title">
-            <td>Title :</td>
-            <td>{{ resource.title }}</td>
-        </tr>
-        {% if resource.date %}
-         <tr>
-             <td>Date:</td>
-             <td>{{resource.date | date:"M , Y"}}</td>
-         </tr>
-         {% endif %}
-         {% if resource.authors %}
-            <tr>
-                <td>Author:</td>
-                <td> {{resource.authors|richtext_filter| safe}} </td>
+             <colgroup>
+                 <col style="width:20%;">
+                 <col style="width:80%">
+             </colgroup>
+            <tr class="factoids-title">
+                <td>Title :</td>
+                <td>{{ resource.title }}</td>
             </tr>
-         {% endif %}
-         {% if resource.copyright %}
-            <tr>
-                <td><b>Copyright:</b></td>
-                <td>{{resource.copyright| richtext_filter |safe}}</td><
-            </tr>
-         {% endif %}
+            {% if resource.date %}
+                 <tr>
+                     <td>Date:</td>
+                     <td>{{resource.date | date:"M , Y"}}</td>
+                 </tr>
+            {% endif %}
+            {% if resource.authors %}
+                <tr>
+                    <td>Author:</td>
+                    <td> {{resource.authors|richtext_filter| safe}} </td>
+                </tr>
+             {% endif %}
+             {% if resource.copyright %}
+                <tr>
+                    <td><b>Copyright:</b></td>
+                    <td>{{resource.copyright| richtext_filter |safe}}</td><
+                </tr>
+             {% endif %}
          </table>
         <h4>Focus:</h4>
         {% if resource.focus %}
             {{resource.focus| richtext_filter |safe}}
         {% endif %}
+        <p text-align="center">
           <a href="{{resource.get_absolute_url}}report">
-            Click to see more
+            Click to open synopsis in  a separate page
           </a>
+        </p>
     </div>
 {% endblock %}
 {% block factoids %}
