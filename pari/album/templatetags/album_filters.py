@@ -15,4 +15,4 @@ def get_image_collection_image_path(image):
 
 @register.filter
 def all_images(album):
-    return album.images.filter(is_cover=False).prefetch_related('location', 'photographer')
+    return album.images.prefetch_related('location', 'photographer')
