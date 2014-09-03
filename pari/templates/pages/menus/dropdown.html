@@ -8,6 +8,9 @@
     <li class="dropdown{% if page.is_current_or_ascendant %} active{% endif %}"
         id="dropdown-menu-{{ page.html_id }}">
         <a href="{{ page.get_absolute_url }}">
+            {% if page.link.html_class %}
+                <span class="{{ page.link.html_class }}"></span>
+            {% endif %}
             {{ page.title }}
             {% if page.has_children_in_menu %}<span class="caret"></span>{% endif %}
         </a>
@@ -23,7 +26,12 @@
     {% if page.in_menu %}
     <li{% if page.is_current_or_ascendant %} class="active"{% endif %}
         id="dropdown-menu-{{ page.html_id }}">
-        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+        <a href="{{ page.get_absolute_url }}">
+            {% if page.link.html_class %}
+                <span class="{{ page.link.html_class }}"></span>
+            {% endif %}
+            {{ page.title }}
+        </a>
     </li>
     {% endif %}
     {% endfor %}

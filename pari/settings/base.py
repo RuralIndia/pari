@@ -56,25 +56,14 @@ DASHBOARD_TAGS = (
 # field instance. When specifying the field class, the path
 # ``django.models.db.`` can be omitted for regular Django model fields.
 #
-# EXTRA_MODEL_FIELDS = (
-#     (
-#         # Dotted path to field.
-#         "mezzanine.blog.models.BlogPost.image",
-#         # Dotted path to field class.
-#         "somelib.fields.ImageField",
-#         # Positional args for field class.
-#         ("Image",),
-#         # Keyword args for field class.
-#         {"blank": True, "upload_to": "blog"},
-#     ),
-#     # Example of adding a field to *all* of Mezzanine's content types:
-#     (
-#         "mezzanine.pages.models.Page.another_field",
-#         "IntegerField", # 'django.db.models.' is implied if path is omitted.
-#         ("Another name",),
-#         {"blank": True, "default": 1},
-#     ),
-# )
+EXTRA_MODEL_FIELDS = (
+    (
+        "mezzanine.pages.models.Link.html_class",
+        "CharField",
+        ("HTML Class",),
+        {"max_length": 100, "blank": True, "null": True, "default": ""},
+    ),
+)
 
 FORMS_EXTRA_FIELDS = (
     (99,
@@ -338,7 +327,8 @@ INSTALLED_APPS = (
     "pari.user",
     "pari.search",
     "pari.faces",
-    "pari.news"
+    "pari.news",
+    "pari.thirdparty"
 )
 
 # List of processors used by RequestContext to populate the context.
