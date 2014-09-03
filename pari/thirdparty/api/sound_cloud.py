@@ -2,7 +2,7 @@ from django.conf import settings
 import soundcloud
 
 
-class SoundCloudHelper:
+class SoundCloud:
     def __init__(self):
         pass
     client = soundcloud.Client

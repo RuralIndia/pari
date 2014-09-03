@@ -5,7 +5,7 @@ from mezzanine.core.admin import TabularDynamicInlineAdmin
 
 from .models import Resource, Factoid
 from pari.resources.forms import ResourceForm
-from pari.resources.helpers.slideshare import get_resource_thumb_url
+from pari.thirdparty.api.slideshare import get_resource_thumb_url
 
 
 class FactoidInline(TabularDynamicInlineAdmin):

@@ -14,7 +14,7 @@ from mezzanine.utils.models import upload_to
 
 from pari.article.models import Article, Location
 from pari.album.models import ImageCollection, ImageCollectionImage
-from pari.album.helpers.sound_cloud_helper import SoundCloudHelper
+from pari.thirdparty.api.sound_cloud import SoundCloud
 
 
 ALBUMS_UPLOAD_DIR = "uploads/albums/"
@@ -86,7 +86,7 @@ class Album(Displayable):
             self.image_collection = new_image_collection
             # audio = [album_image.audio_file for album_image in self.images.all() if album_image.audio_file]
             # if(any(audio)):
-            #     soundcloud_helper = SoundCloudHelper()
+            #     soundcloud_helper = SoundCloud()
             #     soundcloud_helper.create_playlist(self.title)
         super(Album, self).save(*args, **kwargs)
         if self.zip_import:
@@ -174,7 +174,7 @@ class AlbumImage(Orderable, Displayable):
 
         super(AlbumImage, self).save(*args, **kwargs)
         if self.audio_file:
-            soundcloud_helper = SoundCloudHelper()
+            soundcloud_helper = SoundCloud()
             audio_file_id = soundcloud_helper.upload(self.audio_file, self.album.title)
             self.audio = audio_file_id
             if delete_audio_file:
