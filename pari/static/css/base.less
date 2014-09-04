@@ -589,11 +589,36 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
     a {
         color: @headingsColor;
     }
-    .carousel-inner{
+    .carousel-inner {
       width: 90%;
       margin: 0 auto;
-      img{
+      img {
         margin: 0 auto;
+      }
+      .item {
+        opacity: 0;
+        -webkit-transform: translateZ(0);
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -o-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 3s;
+        -moz-transition-duration: 3s;
+        -o-transition-duration: 3s;
+        transition-duration: 3s;
+      }
+      .active {
+        opacity: 1;
+      }
+      .active.left,
+      .active.right {
+        left: 0;
+        opacity: 0;
+        z-index: 1;
+      }
+      .next.left,
+      .prev.right {
+        opacity: 1;
       }
     }
     .carousel-control.left, .carousel-control.right {
@@ -602,7 +627,6 @@ ul.nav li.dropdown:hover ul.dropdown-menu{
       @media(max-width: 767px){
         top:20%
       }
-
     }
     .carousel-caption{
       position: relative;

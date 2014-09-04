@@ -30,7 +30,7 @@
     </div>
 
     {% if article_list %}
-        <div id="homeCarousel" class="carousel carousel-thin-controls container" data-interval="8000" data-ride="carousel" data-carousel-mode="fade">
+        <div id="homeCarousel" class="carousel slide carousel-thin-controls container" data-interval="8000" data-ride="carousel">
             <div class="carousel-inner">
                 {% for article in article_list %}
                     <div class="{% if forloop.first %}active{% endif %} item">
