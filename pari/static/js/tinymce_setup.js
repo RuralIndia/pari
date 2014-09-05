@@ -69,8 +69,7 @@ if (typeof tinyMCE != 'undefined') {
         ],
         formats: {
             dropcaps: {inline: 'span', classes: "dropcaps"},
-            lineheight: {block: 'p', styles: {'lineHeight': '%value'}},
-            blockquote: {block: 'blockquote', classes: "blockquote"}
+            lineheight: {block: 'p', styles: {'lineHeight': '%value'}}
         },
 
         setup: function (ed) {
@@ -81,13 +80,7 @@ if (typeof tinyMCE != 'undefined') {
                     ed.formatter.apply('dropcaps');
                 }
             });
-            ed.addButton('blockquote', {
-                text: 'Blockquote',
-                icon: false,
-                onclick: function () {
-                    ed.formatter.apply('blockquote');
-                }
-            });
+
             ed.addButton('lineheight', {
                 text: 'Line height',
                 icon: false,

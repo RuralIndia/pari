@@ -52,3 +52,25 @@ img {
     font-size: 12.5pt;
     line-height: 1.6;
 }
+
+blockquote {
+margin: 0.25em 0;
+padding: 0.25em 40px;
+position: relative;
+color: #383838;
+border-left:none;
+display:inline;
+}
+
+blockquote:before {
+margin-left: -50px;
+content: "\201C";
+position: absolute;
+font-size: 70px;
+vertical-align: middle;
+font-family: Georgia, Myriad, Helvetica, Arial, sans-serif;
+}
+
+blockquote p{
+margin-left: 25px;
+}
