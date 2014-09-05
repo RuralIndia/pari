@@ -63,34 +63,33 @@
                 <div class="col-lg-4 col-md-4 col-sm-4">
                   <div class="grid-column">
                       <div>
-                         <h4>RURAL  BYTES:</h4>
-                         With 833 million people, close to 800 languages and   immeasurable occupational diversity, rural India is a continent within a subcontinent.
+                         <h4>{{"HOME PAGE_BLURB_SECTION_1_HEADING"|get_setting}}</h4>
+                         {{"HOME PAGE_BLURB_SECTION_1_CONTENT"|get_setting}}
                       </div>
                       <div>
-                          <a href="http://www.ruralindiaonline.org/resources/" class="factoid-expand"> more > </a>
+                          <a href="{{"HOME PAGE_BLURB_SECTION_1_URL"|get_setting}}" class="factoid-expand"> more > </a>
                       </div>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                   <div class="grid-column">
                       <div>
-                         <h4> SHOWCASE:</h4>
-                          Visible Work, Invisible Women: Women & Work in Rural India. Videos of ten panels.
+                         <h4>{{"HOME PAGE_BLURB_SECTION_2_HEADING"|get_setting}}</h4>
+                         {{"HOME PAGE_BLURB_SECTION_2_CONTENT"|get_setting}}
                       </div>
                       <div>
-                          <a href="#" class="factoid-expand"> more > </a>
+                          <a href="{{"HOME PAGE_BLURB_SECTION_2_URL"|get_setting}}" class="factoid-expand"> more > </a>
                       </div>
                   </div>
-
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                   <div class="grid-column">
                       <div>
-                         <h4>WE NEED:</h4>
-                           Photos, Videos, Text Articles, Audio clips (in multiple languages), and more to build this archive.
+                         <h4>{{"HOME PAGE_BLURB_SECTION_3_HEADING"|get_setting}}</h4>
+                        {{"HOME PAGE_BLURB_SECTION_3_CONTENT"|get_setting}}
                       </div>
                       <div>
-                          <a href="http://www.ruralindiaonline.org/contribute/" class="factoid-expand"> more > </a>
+                          <a href="{{"HOME PAGE_BLURB_SECTION_3_URL"|get_setting}}" class="factoid-expand"> more > </a>
                       </div>
                   </div>
                 </div>
@@ -115,7 +114,7 @@
                                 <div class="col-lg-4 col-md-4">
                                     <div class="grid-column">
 
-                                        <img src="{{    MEDIA_URL }}{% thumbnail category.image 370 300 category.title %}" width="370" height="300" class="img-responsive">
+                                        <img src="{{MEDIA_URL }}{% thumbnail category.image 370 300 category.title %}" width="370" height="300" class="img-responsive">
                                         <div class="caption">
                                             <h4>{{ category.title }}</h4>
                                             <p class="description">{{ category.description }}</p>
@@ -131,6 +130,5 @@
                 <a href="{% url 'category-list' %}" class="btn btn-lg btn-warning btn-homepage"><span class="glyphicon glyphicon-th-list"></span> VIEW ALL CATEGORIES</a>
          </div>
     </section>
-
  </div>
 {% endblock %}

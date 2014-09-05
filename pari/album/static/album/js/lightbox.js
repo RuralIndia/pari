@@ -28,7 +28,9 @@ var Album = {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
 
                 titleSrc: $.proxy(function (item) {
-                    isCommentsAllowed=item.el.attr('data-allowcomments')
+                    console.log(item.el.attr('data-allowcomments'))
+                    isCommentsAllowed=(item.el.attr('data-allowcomments')== "True") ? 1:0
+                    console.log(isCommentsAllowed)
                     var slideshow = this._popup.data('slideshow');
                     var icon = slideshow ? "pause" : "play";
                     var returnedHTMLElement='<div>'+
@@ -42,7 +44,7 @@ var Album = {
                                         '<a class="btn btn-default btn-slideshow" href="#">Slideshow <i class="fa fa-' + icon + '"></i></a>'+
                                         '<a class="btn btn-default btn-fullscreen" href="#"><i class="fa fa-arrows-alt"></i></a>';
 
-                                        if( isCommentsAllowed == "true"){
+                                        if( isCommentsAllowed){
                                                     returnedHTMLElement+='<a class="btn btn-default" id="disqus-comments-for-talking-albums" href="' + item.el.attr('data-url') +'"><i class="fa fa-share-square-o"></i></a>'+
                                                       '<a class="btn btn-default" href="' + item.el.attr('data-url') +'#comments"><i class="fa fa-comment-o"></i></a>';
                                         }

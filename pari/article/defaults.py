@@ -54,3 +54,60 @@ register_setting(
     editable=True,
     default=False
 )
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_1_HEADING",
+    label=_("Blurb section-1 heading"),
+    description="A blurb heading that will appear in the first portion of layout allocated for the blurb texts below the carousel",
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_1_CONTENT",
+    label=_("Blurb section-1 content"),
+    description="A blurb message corresponding to the blurb heading",
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_1_URL",
+    label=_("Blurb section-1 URL"),
+    description="A blurb URL corresponding to the blurb heading, the URL has to be relative, (e.g) /resources ",
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_2_HEADING",
+    label=_("Blurb section-2 heading"),
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_2_CONTENT",
+    label=_("Blurb section-2 content"),
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_2_URL",
+    label=_("Blurb section-2 URL"),
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_3_HEADING",
+    label=_("Blurb section-3 heading"),
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_3_CONTENT",
+    label=_("Blurb section-3 content"),
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_3_URL",
+    label=_("Blurb section-3 URL"),
+    editable=True,
+    default=""
+)
