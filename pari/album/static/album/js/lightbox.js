@@ -28,9 +28,7 @@ var Album = {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
 
                 titleSrc: $.proxy(function (item) {
-                    console.log(item.el.attr('data-allowcomments'))
-                    isCommentsAllowed=(item.el.attr('data-allowcomments')== "True") ? 1:0
-                    console.log(isCommentsAllowed)
+                    isCommentsAllowed = item.el.attr('data-allowcomments') == "True" ? true : false;
                     var slideshow = this._popup.data('slideshow');
                     var icon = slideshow ? "pause" : "play";
                     var returnedHTMLElement='<div>'+
