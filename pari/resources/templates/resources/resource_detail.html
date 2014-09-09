@@ -40,19 +40,19 @@
             {% if resource.authors %}
                 <tr>
                     <td>Author:</td>
-                    <td> {{resource.authors|richtext_filter| safe}} </td>
+                    <td> {{resource.authors|richtext_filters| safe}} </td>
                 </tr>
              {% endif %}
              {% if resource.copyright %}
                 <tr>
                     <td><b>Copyright:</b></td>
-                    <td>{{resource.copyright| richtext_filter |safe}}</td><
+                    <td>{{resource.copyright| richtext_filters |safe}}</td><
                 </tr>
              {% endif %}
          </table>
         <h4>Focus:</h4>
         {% if resource.focus %}
-            {{resource.focus| richtext_filter |safe}}
+            {{resource.focus| richtext_filters |safe}}
         {% endif %}
         <p text-align="center">
           <a href="{{resource.get_absolute_url}}report">

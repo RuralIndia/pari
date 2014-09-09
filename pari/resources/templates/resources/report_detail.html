@@ -35,19 +35,19 @@
         {% if resource.authors %}
             <tr>
                 <td>Author:</td>
-                <td>&nbsp;{{resource.authors|richtext_filter|safe}}</td>
+                <td>&nbsp;{{resource.authors|richtext_filters|safe}}</td>
             </tr>
         {% endif %}
         {% if resource.copyright %}
             <tr>
                 <td><b>Copyright:</b></td>
-                <td>&nbsp;{{resource.copyright|richtext_filter|safe }}</td>
+                <td>&nbsp;{{resource.copyright|richtext_filters|safe }}</td>
             </tr>
         {% endif %}
         </table>
         <h3 class="factoids-title">Focus :</h3>
         {% if resource.focus %}
-            {{resource.focus| richtext_filter| safe }}
+            {{resource.focus| richtext_filters| safe }}
         {% endif %}
 {% endblock %}
 {% block factoids %}
