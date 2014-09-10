@@ -13,8 +13,9 @@ var mapInterface = {
                     initial: {
                         fill: 'grey'
                     }
-                },
+             },
                 backgroundColor: '#ffffff',
+                hoverColor:'#000000',
                 markers: data,
                 markerStyle: {
                     initial: {
