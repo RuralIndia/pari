@@ -1,46 +1,6 @@
 @import url("//fonts.googleapis.com/css?family=Open+Sans");
 @import url("//fonts.googleapis.com/css?family=Merriweather");
 
-img {
-    margin: 10px;
-    display:block;
-    max-width:100%;
-    height:auto;
-}
-
-.image-container {
-    position: relative;
-    display: table;
-    margin: 10px;
-    width: auto;
-}
-
-.image-container img {
-    margin: 0;
-}
-
-.image-container:after {
-    height: auto;
-    width: auto;
-    display: table-caption;
-    padding: 2%;
-    background: rgba(242, 242, 242, 0.80);
-    content: attr(data-label);
-    bottom: 0;
-    left: 0;
-    right: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    caption-side: bottom;
-    font-family: "Open Sans", sans-serif;
-    font-size: 15px;
-    font-style: italic;
-}
-
-.dropcaps {
-    font-size: 150%;
-}
 
 .content-container ul {
     padding: 12px;
@@ -51,6 +11,60 @@ img {
     font-family: "Open Sans", sans-serif;
     font-size: 12.5pt;
     line-height: 1.6;
+}
+
+img {
+    margin: 10px;
+    display:block;
+    max-width:100%;
+    height:auto;
+}
+
+.image-container-wrapper {
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.image-container {
+    position: relative;
+    display: table;
+    margin: 10px;
+    width: auto;
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+}
+
+.image-container:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+.image-container > img {
+    margin: 0;
+    float: left;
+}
+
+.image-container:after {
+    height: auto;
+    width: auto;
+    display: table-caption;
+    padding-left: 0;
+    padding-top: 1%;
+    content: attr(data-label);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    caption-side: bottom;
+    text-align: left;
+}
+
+.dropcaps {
+    font-size: 150%;
 }
 
 blockquote {
