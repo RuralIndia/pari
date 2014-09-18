@@ -1,8 +1,8 @@
 $(function () {
-    var mapUrl = 'http://{s}.tile.cloudmade.com/ed59fdae04b74250b6cbf0bace768308/997/256/{z}/{x}/{y}.png',
+    var mapUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
         mapLayer = new L.TileLayer(mapUrl, {
             maxZoom: 7,
-            attribution: '&copy; 2013 <a href="http://cloudmade.com/">CloudMade</a> – Map data ODbL 2013 <a href="http://www.openstreetmap.org/">OpenStreetMap.org</a> contributors – <a href="http://cloudmade.com/website-terms-conditions">Terms of Use</a>'
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         });
     
     var map = new L.Map('location-map', {}).addLayer(mapLayer);
