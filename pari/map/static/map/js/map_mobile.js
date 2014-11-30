@@ -1,8 +1,11 @@
 $(function () {
-    var mapUrl = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+    var mapUrl = 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
         mapLayer = new L.TileLayer(mapUrl, {
+	    subdomains: '1234',
             maxZoom: 7,
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors.'
+	    + 'Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>'
+	    + '<img src="http://developer.mapquest.com/content/osm/mq_logo.png">'
         });
     
     var map = new L.Map('location-map', {}).addLayer(mapLayer);
