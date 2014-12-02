@@ -26,6 +26,7 @@ urlpatterns = patterns("",
     url(r'^categories/faces/', include('pari.faces.urls')),
     url(r'^search/', include('pari.search.urls')),
     url(r'^parinews/', include('pari.news.urls')),
+    url(r'^feeds/', include('pari.article.feed_urls')),
 
 
     url(r'^', include(articles_root_patterns)),
