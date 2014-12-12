@@ -22,7 +22,7 @@ djangorestframework==2.2.0
 -e git://github.com/dvrajan/filebrowser-safe.git@2f7e8cde15019bbb87eec70a89260ff495a4a7a5#egg=filebrowser_safe-dev
 futures==2.1.3
 grappelli-safe==0.2.21
-gunicorn==0.17.2
+gunicorn==19.1.1
 html5lib==0.95
 lxml==3.2.3
 paramiko==1.9.0
