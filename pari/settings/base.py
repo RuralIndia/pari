@@ -388,6 +388,15 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_GRAPPELLI,
 )
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
+    }
+}
+NEVERCACHE_KEY = ""
+
+TESTING = True
+
 ###################
 # DEPLOY SETTINGS #
 ###################
