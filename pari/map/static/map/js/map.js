@@ -5,7 +5,7 @@ var mapInterface = {
     },
 
     populateLocations: function() {
-        $.get('/article/api/locations/?format=json', $.proxy(function(data) {
+        $.getJSON('/article/api/locations/?format=json', $.proxy(function(data) {
             this.data = data;
             $('#map').vectorMap({
                 map: 'in_mill_en',
@@ -46,7 +46,7 @@ var mapInterface = {
     },
 
     _populateSideBar: function(id) {
-        $.get('/article/api/locations/' + id + '/article/?format=json', $.proxy(function(locationData) {
+        $.getJSON('/article/api/locations/' + id + '/article/?format=json', $.proxy(function(locationData) {
             var templateHtml= this.template(locationData);
             $("#side").html(templateHtml);
         }, this));

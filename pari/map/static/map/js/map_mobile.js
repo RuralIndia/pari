@@ -14,11 +14,11 @@ $(function () {
     var source = $("#map-popup-template").html();
     var template = Handlebars.compile(source);
 
-    $.get('/article/api/locations/?format=json', function(data) {
+    $.getJSON('/article/api/locations/?format=json', function(data) {
         $.each(data, function(i, location){
             var id = data[i].id;
             L.marker(location.latLng).addTo(map).on('click', function(e){
-                $.get('/article/api/locations/' + id + '/article/?format=json', function(locationData) {
+                $.getJSON('/article/api/locations/' + id + '/article/?format=json', function(locationData) {
                     var templateHtml= template(locationData);
                     var popup = L.popup({closeButton: false, offset: new L.Point(0, -20)})
                                 .setLatLng(e.target._latlng)
