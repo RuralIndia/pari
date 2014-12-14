@@ -15,10 +15,9 @@
 <meta property="og:site_name" content="{{ "SITE_FULL_TITLE"|get_setting }}">
 {% block opengraph_block %}{% endblock %}
 
-{% ifinstalled mezzanine.blog %}
-<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
-<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
-{% endifinstalled %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "all_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "all_feeds" %}">
+{% block feed_block %}{% endblock %}
 
 <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>

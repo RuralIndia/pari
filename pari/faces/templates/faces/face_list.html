@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load i18n verbatim_tag article_filters article_tags faces_filters %}
 
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "face_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "face_feeds" %}">
+{% endblock %}
+
 {% block meta_title %}{% trans "Faces" %}{% endblock %}
 {% block title %}{% trans "Faces" %}{% endblock %}
 

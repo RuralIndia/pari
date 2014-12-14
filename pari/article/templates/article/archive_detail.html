@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load i18n verbatim_tag article_filters mezzanine_tags article_tags keyword_tags %}
 
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "article_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "article_feeds" %}">
+{% endblock %}
+
 {% block meta_title %}{{ title }}{% endblock %}
 
 {% block extra_js %}

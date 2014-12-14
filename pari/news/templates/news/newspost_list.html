@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load i18n future mezzanine_tags blog_tags keyword_tags %}
 
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "newspost_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "newspost_feeds" %}">
+{% endblock %}
+
 {% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "News" %}{% endif %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}

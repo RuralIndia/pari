@@ -2,6 +2,11 @@
 {% load i18n album_filters article_tags article_filters %}
 {% block meta_title %}{% blocktrans with album.title as title%}{{ title }}{% endblocktrans %}{% endblock %}
 
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "album_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "album_feeds" %}">
+{% endblock %}
+
 {% block breadcrumb_menu %}
     <li class="active">{% trans "Album" %}</li>
 {% endblock %}

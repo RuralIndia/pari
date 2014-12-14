@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load i18n album_filters article_tags article_filters %}
 
+{% block feed_block %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "album_feeds" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "album_feeds" %}">
+{% endblock %}
+
 {% block meta_title %}{% trans "Albums" %}{% endblock %}
 {% block title %}{% trans "Albums" %}{% endblock %}
 
