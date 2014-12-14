@@ -1,9 +1,10 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from django.test.client import Client
 from django.core.urlresolvers import reverse
+from django.contrib.auth import get_user_model
 
-from mezzanine.accounts.models import User
 from mezzanine.core.models import CONTENT_STATUS_DRAFT
+from mezzanine.conf import settings
 
 import factory
 from mock import patch
@@ -14,6 +15,13 @@ from .models import Article, Location, Type, Category, Author
 from .common import get_result_types
 from .rich_text_filter import article_content_filter
 
+from ..news.models import NewsPost
+
+from .feeds import AllFeed, ArticleFeed
+import xml.etree.ElementTree as ET
+
+
+User = get_user_model()
 
 class LocationFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Location
@@ -268,3 +276,45 @@ class RichTextFilterTests(TestCase):
         new_content = article_content_filter(content)
         mock_thumbnail.assert_called_once_with("/static/media/a.jpg", '300', '300')
         self.assertEqual(expected_content, new_content)
+
+
+class FeedTests(TestCase):
+    def setUp(self):
+        self.request_factory = RequestFactory()
+        self.user = User.objects.create(username="test_user", email="test@example.com")
+        self.author = Author.objects.create(title="Author 1")
+
+    def test_feeds_all(self):
+        all_feed_request = self.request_factory.get('/feeds/all/')
+        article_feed_request = self.request_factory.get('/feeds/articles/')
+        news_feed_request = self.request_factory.get('/feeds/newsposts/')
+
+        feeds = AllFeed()
+        article_feeds = ArticleFeed()
+
+        response = feeds(all_feed_request)
+        self.assertEqual(response["Content-Type"], "application/rss+xml; charset=utf-8")
+        root = ET.fromstring(response.content)
+        self.assertEqual(root.tag, "rss")
+        self.assertEqual(root.find("channel").find("title").text, "PARI consolidated feed")
+        days_ago = settings.FEED_GENERATION_DAYS
+        self.assertEqual(root.find("channel").find("description").text,
+                         "Updates on the PARI site over the past {0} days".format(days_ago))
+        self.assertEqual(len(root.find("channel").findall("item")), 0)
+
+        article = Article.objects.create(title="Test Article 1", user=self.user, author=self.author)
+        response = feeds(all_feed_request)
+        root = ET.fromstring(response.content)
+        self.assertEqual(len(root.find("channel").findall("item")), 1)
+
+        response = article_feeds(article_feed_request)
+        root = ET.fromstring(response.content)
+        self.assertEqual(root.find("channel").find("title").text, "PARI article feed")
+        self.assertEqual(root.find("channel").find("description").text,
+                         "Article updates on the PARI site over the past {0} days".format(days_ago))
+        self.assertEqual(len(root.find("channel").findall("item")), 1)
+
+        news_post = NewsPost.objects.create(title="Test NP 1", user=self.user)
+        response = feeds(all_feed_request)
+        root = ET.fromstring(response.content)
+        self.assertEqual(len(root.find("channel").findall("item")), 2)

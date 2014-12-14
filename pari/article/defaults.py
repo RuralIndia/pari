@@ -118,3 +118,9 @@ register_setting(
     editable=True,
     default=""
 )
+register_setting(
+    name="FEED_GENERATION_DAYS",
+    label=_("Number of days since from when feeds are generated"),
+    editable=True,
+    default=30
+)
