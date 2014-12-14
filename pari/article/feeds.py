@@ -1,4 +1,5 @@
 from django.contrib.syndication.views import Feed
+from django.utils.feedgenerator import Atom1Feed, Rss201rev2Feed
 from django.utils import timezone
 from mezzanine.conf import settings
 
@@ -15,6 +16,14 @@ days_ago = int(settings.FEED_GENERATION_DAYS)
 
 
 class BaseFeed(Feed):
+    def __call__(self, request, *args, **kwargs):
+        accept_header = request.META.get("HTTP_ACCEPT", "")
+        if "application/atom+xml".find(accept_header) >= 0:
+            self.feed_type = Atom1Feed
+        else:
+            self.feed_type = Rss201rev2Feed
+        return super(BaseFeed, self).__call__(request, *args, **kwargs)
+
     def item_pubdate(self, item):
         return item.publish_date
 
@@ -22,7 +31,9 @@ class BaseFeed(Feed):
         author = getattr(item, 'author', None)
         if author:
             return author.title
-        return item.user.get_full_name() or item.user.username
+        user = getattr(item, 'user', None)
+        if user:
+            return item.user.get_full_name() or item.user.username
 
     def item_author_link(self, item):
         author = getattr(item, 'author', None)
