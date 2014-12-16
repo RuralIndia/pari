@@ -170,7 +170,7 @@ class AlbumImage(Orderable, Displayable):
             self.image_collection_image = image_collection_image
 
         if self.audio:
-            self.audio = self.audio.strip()
+            self.audio = str(self.audio).strip()
 
         super(AlbumImage, self).save(*args, **kwargs)
         if self.audio_file:
