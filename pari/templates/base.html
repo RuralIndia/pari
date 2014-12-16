@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n future dajaxice_templatetags %}
+{% load pages_tags mezzanine_tags i18n future dajaxice_templatetags article_filters %}
 {% load static from staticfiles %}
 <head>
 
@@ -11,6 +11,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>{% block meta_title %}{% endblock %}</title>
 <link rel="shortcut icon" href="/favicon.ico">
+
+<meta property="og:site_name" content="{{ "SITE_FULL_TITLE"|get_setting }}">
+{% block opengraph_block %}{% endblock %}
 
 {% ifinstalled mezzanine.blog %}
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">

@@ -345,6 +345,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
     "pari.article.context_processors.types",
+    "pari.article.context_processors.sites",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
