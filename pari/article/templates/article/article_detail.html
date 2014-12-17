@@ -11,12 +11,12 @@
 {% block opengraph_block %}
 <meta property="og:title" content="{{ blog_post.title }}">
 <meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ blog_post.get_absolute_url }}">
-<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ MEDIA_URL }}{{ blog_post.featured_image }}">
+<meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ MEDIA_URL }}{{ blog_post.featured_image|urlencode }}">
 <meta property="og:type" content="article">
 <meta property="og:published_time" content="{{ blog_post.publish_date|date:"c" }}">
 
 <meta name="twitter:title" content="{{ blog_post.title }}" >
-<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ MEDIA_URL }}{{ blog_post.featured_image }}" >
+<meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ MEDIA_URL }}{{ blog_post.featured_image|urlencode }}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ blog_post.get_absolute_url }}" >
 {% endblock %}
 
