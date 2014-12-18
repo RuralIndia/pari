@@ -1,0 +1,31 @@
+{% overextends "admin/index.html" %}{% load article_filters %}
+
+{% block extrahead %}
+{{ block.super }}
+<style>
+  .col {
+      width: 50%;
+      margin-bottom: 20px;
+  }
+  .left {
+      float: left;
+  }
+  .right {
+      float: right;
+  }
+</style>
+{% endblock %}
+
+{% block content_title %}
+{{ block.super }}
+<div class="social_block">
+  <div class="col left">
+    <h3>Twitter: <a href="{{ "SOCIAL_TWITTER"|get_setting }}" target="_blank">@PariNetwork</a></h3>
+    <p>Number of followers: {{ twitter_followers }}</p>
+  </div>
+  <div class="col right">
+    <h3>Facebook: <a href="{{ "SOCIAL_FACEBOOK"|get_setting }}/likes" target="_blank">PariNetwork</a></h3>
+    <p>Number of likes: {{ facebook_likes }}</p>
+  </div>
+</div>
+{% endblock %}

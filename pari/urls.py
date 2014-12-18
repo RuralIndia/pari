@@ -2,6 +2,7 @@ import os
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.contrib import admin
+from .sites import PariAdminSite
 
 from pari.article.urls import root_patterns as articles_root_patterns
 
@@ -10,6 +11,9 @@ admin.autodiscover()
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
 dajaxice_autodiscover()
+
+pari_site = PariAdminSite()
+pari_site._registry = admin.site._registry
 
 # Add the urlpatterns for any custom Django applications here.
 # You can also change the ``home`` view to add your own functionality
@@ -36,7 +40,7 @@ urlpatterns = patterns("",
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
-    ("^admin/", include(admin.site.urls)),
+    ("^admin/", include(pari_site.urls)),
 
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.

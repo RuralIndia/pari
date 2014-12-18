@@ -25,6 +25,13 @@ register_setting(
     default="http://facebook.com",
 )
 register_setting(
+    name="SOCIAL_FACEBOOK_ID",
+    label=_("Facebook Page/App Id"),
+    description="Facebook Page/App Id for PARI",
+    editable=True,
+    default="123456789",
+)
+register_setting(
     name="SOCIAL_TWITTER",
     label=_("Twitter Account"),
     description="Url to Twitter account",
