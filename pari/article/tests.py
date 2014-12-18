@@ -244,13 +244,18 @@ class RichTextFilterTests(TestCase):
         new_content = article_content_filter(content)
         self.assertEqual(expected, new_content)
 
+    def test_should_return_content_without_changing_iframes_as_self_closing_elements(self):
+        content = "<div><p style=\"text-align: left;\"><iframe src=\"http://example.com/\" width=\"425\" height=\"350\"></iframe></p></div>"
+        new_content = article_content_filter(content)
+        self.assertEqual(content, new_content)
+
     def test_should_not_change_external_images(self):
-        content = "<div><p>Test</p><div>image: <img src=\"http://example.com/a.jpg\" width=\"300\" height=\"300\"/></div></div>"
+        content = "<div><p>Test</p><div>image: <img src=\"http://example.com/a.jpg\" width=\"300\" height=\"300\"></div></div>"
         new_content = article_content_filter(content)
         self.assertEqual(content, new_content)
 
     def test_should_not_change_image_source_if_no_dimension_specified(self):
-        content = "<div><p>Test</p><div>image: <img src=\"http://example.com/a.jpg\"/></div></div>"
+        content = "<div><p>Test</p><div>image: <img src=\"http://example.com/a.jpg\"></div></div>"
         new_content = article_content_filter(content)
         self.assertEqual(content, new_content)
 
@@ -259,7 +264,7 @@ class RichTextFilterTests(TestCase):
         print mock_thumbnail
         mock_thumbnail.return_value="a-300x300.jpg"
         content = "<div><p>Test</p><div>image: <img src=\"/static/media/a.jpg\" width=\"300\" height=\"300\"/></div></div>"
-        expected_content = "<div><p>Test</p><div>image: <img src=\"/static/media/a-300x300.jpg\" width=\"300\" height=\"300\"/></div></div>"
+        expected_content = "<div><p>Test</p><div>image: <img src=\"/static/media/a-300x300.jpg\" width=\"300\" height=\"300\"></div></div>"
         new_content = article_content_filter(content)
         mock_thumbnail.assert_called_once_with("/static/media/a.jpg", '300', '300')
         self.assertEqual(expected_content, new_content)

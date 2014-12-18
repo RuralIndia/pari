@@ -1,9 +1,8 @@
 import os
 from lxml import html
-from lxml.etree import tostring
 
-from pari.article.templatetags import article_tags
 from mezzanine.conf import settings
+from pari.article.templatetags import article_tags
 
 
 def article_content_filter(content):
@@ -18,4 +17,4 @@ def article_content_filter(content):
                 image_thumbnail_source = os.path.join(settings.MEDIA_URL, article_tags.thumbnail(image_source, image_width, image_height))
                 image.attrib['src'] = image_thumbnail_source
 
-    return tostring(html_content).encode('utf8')
+    return html.tostring(html_content).encode('utf8')
