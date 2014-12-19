@@ -40,9 +40,10 @@ class BaseFeed(Feed):
         if author:
             return author.get_absolute_url()
 
+
 class AllFeed(BaseFeed):
     title = "PARI consolidated feed"
-    link  = "/feeds/all/"
+    link = "/feeds/all/"
     description = "Updates on the PARI site over the past {0} days".format(days_ago)
 
     def items(self):
@@ -59,7 +60,7 @@ class AllFeed(BaseFeed):
 
 class ArticleFeed(BaseFeed):
     title = "PARI article feed"
-    link  = "/feeds/articles/"
+    link = "/feeds/articles/"
     description = "Article updates on the PARI site over the past {0} days".format(days_ago)
 
     def items(self):
@@ -69,7 +70,7 @@ class ArticleFeed(BaseFeed):
 
 class AlbumFeed(BaseFeed):
     title = "PARI album feed"
-    link  = "/feeds/albums/"
+    link = "/feeds/albums/"
     description = "Album updates on the PARI site over the past {0} days".format(days_ago)
 
     def items(self):
@@ -79,7 +80,7 @@ class AlbumFeed(BaseFeed):
 
 class FaceFeed(BaseFeed):
     title = "PARI face feed"
-    link  = "/feeds/faces/"
+    link = "/feeds/faces/"
     description = "Face updates on the PARI site over the past {0} days".format(days_ago)
 
     def items(self):
@@ -89,7 +90,7 @@ class FaceFeed(BaseFeed):
 
 class ResourceFeed(BaseFeed):
     title = "PARI resource feed"
-    link  = "/feeds/resources/"
+    link = "/feeds/resources/"
     description = "Resource updates on the PARI site over the past {0} days".format(days_ago)
 
     def items(self):
@@ -99,7 +100,7 @@ class ResourceFeed(BaseFeed):
 
 class FactoidFeed(BaseFeed):
     title = "PARI factoid feed"
-    link  = "/feeds/factoids/"
+    link = "/feeds/factoids/"
     description = "Factoid updates on the PARI site over the past {0} days".format(days_ago)
 
     def items(self):
@@ -109,7 +110,7 @@ class FactoidFeed(BaseFeed):
 
 class NewsPostFeed(BaseFeed):
     title = "PARI news feed"
-    link  = "/feeds/newsposts/"
+    link = "/feeds/newsposts/"
     description = "News updates on the PARI site over the past {0} days".format(days_ago)
 
     def items(self):

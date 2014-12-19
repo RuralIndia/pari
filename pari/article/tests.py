@@ -23,6 +23,7 @@ import xml.etree.ElementTree as ET
 
 User = get_user_model()
 
+
 class LocationFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Location
 
@@ -287,7 +288,6 @@ class FeedTests(TestCase):
     def test_feeds_all(self):
         all_feed_request = self.request_factory.get('/feeds/all/')
         article_feed_request = self.request_factory.get('/feeds/articles/')
-        news_feed_request = self.request_factory.get('/feeds/newsposts/')
 
         feeds = AllFeed()
         article_feeds = ArticleFeed()
@@ -302,7 +302,7 @@ class FeedTests(TestCase):
                          "Updates on the PARI site over the past {0} days".format(days_ago))
         self.assertEqual(len(root.find("channel").findall("item")), 0)
 
-        article = Article.objects.create(title="Test Article 1", user=self.user, author=self.author)
+        Article.objects.create(title="Test Article 1", user=self.user, author=self.author)
         response = feeds(all_feed_request)
         root = ET.fromstring(response.content)
         self.assertEqual(len(root.find("channel").findall("item")), 1)
@@ -314,7 +314,7 @@ class FeedTests(TestCase):
                          "Article updates on the PARI site over the past {0} days".format(days_ago))
         self.assertEqual(len(root.find("channel").findall("item")), 1)
 
-        news_post = NewsPost.objects.create(title="Test NP 1", user=self.user)
+        NewsPost.objects.create(title="Test NP 1", user=self.user)
         response = feeds(all_feed_request)
         root = ET.fromstring(response.content)
         self.assertEqual(len(root.find("channel").findall("item")), 2)
