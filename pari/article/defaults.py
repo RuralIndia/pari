@@ -11,6 +11,13 @@ register_setting(
     default="People's Archive of Rural India",
 )
 register_setting(
+    name="SITE_ANNOUNCEMENT",
+    label=_("Site announcement"),
+    description="This will appear on top of all the pages in the site",
+    editable=True,
+    default="",
+)
+register_setting(
     name="SOCIAL_FACEBOOK",
     label=_("Facebook Page Url"),
     description="Facebook Page Url for PARI",

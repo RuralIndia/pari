@@ -95,9 +95,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           {% endfor %}
         {% endnevercache %}
       </div>
-      <p class="under-construction" >
-          Site launch on 20th Dec 2014.
-      </p>
+
+      {% with  "SITE_ANNOUNCEMENT"|get_setting as announcement %}
+          {% if announcement.strip %}
+              <p class="announcement" >
+                  {{ announcement|safe }}
+              </p>
+          {% endif %}
+      {% endwith %}
+
       {% block extra_header %}{% endblock %}
     </div>
     {% block main_wrapper %}
