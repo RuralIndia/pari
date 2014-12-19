@@ -119,6 +119,24 @@ register_setting(
     default=""
 )
 register_setting(
+    name="HOME PAGE_BLURB_SECTION_4_HEADING",
+    label=_("Blurb section-3 heading"),
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_4_CONTENT",
+    label=_("Blurb section-3 content"),
+    editable=True,
+    default="",
+)
+register_setting(
+    name="HOME PAGE_BLURB_SECTION_4_URL",
+    label=_("Blurb section-3 URL"),
+    editable=True,
+    default=""
+)
+register_setting(
     name="FEED_GENERATION_DAYS",
     label=_("Number of days since from when feeds are generated"),
     editable=True,
