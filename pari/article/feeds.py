@@ -18,7 +18,7 @@ days_ago = int(settings.FEED_GENERATION_DAYS)
 class BaseFeed(Feed):
     def __call__(self, request, *args, **kwargs):
         accept_header = request.META.get("HTTP_ACCEPT", "")
-        if "application/atom+xml".find(accept_header) >= 0:
+        if accept_header.find("application/atom+xml") >= 0:
             self.feed_type = Atom1Feed
         else:
             self.feed_type = Rss201rev2Feed
