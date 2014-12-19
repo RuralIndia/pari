@@ -1,11 +1,10 @@
 from django.contrib.admin.sites import AdminSite
-from django.contrib.admin import autodiscover
 from django.core.cache import cache
-from django.utils.importlib import import_module
 from mezzanine.conf import settings
 
 import requests
 import re
+
 
 class PariAdminSite(AdminSite):
     def twitter_followers(self):
@@ -29,7 +28,7 @@ class PariAdminSite(AdminSite):
         if not likes:
             likes = "- NA -"
             if settings.SOCIAL_FACEBOOK_ID:
-                response = requests.get("https://graph.facebook.com/" + \
+                response = requests.get("https://graph.facebook.com/" +
                                         settings.SOCIAL_FACEBOOK_ID)
             if response.ok:
                 likes = response.json()["likes"]
