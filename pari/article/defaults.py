@@ -120,19 +120,19 @@ register_setting(
 )
 register_setting(
     name="HOME PAGE_BLURB_SECTION_4_HEADING",
-    label=_("Blurb section-3 heading"),
+    label=_("Blurb section-4 heading"),
     editable=True,
     default="",
 )
 register_setting(
     name="HOME PAGE_BLURB_SECTION_4_CONTENT",
-    label=_("Blurb section-3 content"),
+    label=_("Blurb section-4 content"),
     editable=True,
     default="",
 )
 register_setting(
     name="HOME PAGE_BLURB_SECTION_4_URL",
-    label=_("Blurb section-3 URL"),
+    label=_("Blurb section-4 URL"),
     editable=True,
     default=""
 )
