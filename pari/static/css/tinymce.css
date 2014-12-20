@@ -13,7 +13,7 @@
     line-height: 1.6;
 }
 
-img {
+.mce-content-body img, .article-content img {
     margin: 10px;
     display:block;
     max-width:100%;
