@@ -42,3 +42,7 @@ class Location(Displayable):
     @property
     def get_thumbnail(self):
         return self.image
+
+
+def get_locations_with_published_articles():
+    return Location.objects.filter(article__status=CONTENT_STATUS_PUBLISHED).distinct()

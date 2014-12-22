@@ -4,7 +4,7 @@ from rest_framework.reverse import reverse
 from rest_framework.response import Response
 
 from pari.article.serializers import LocationSerializer, LocationArticleSerializer
-from pari.article.models import Location
+from pari.article.models import Location, get_locations_with_published_articles
 
 
 @api_view(['GET'])
@@ -15,7 +15,7 @@ def api_root(request, format=None):
 
 
 class LocationListApi(generics.ListAPIView):
-    model = Location
+    queryset = get_locations_with_published_articles()
     serializer_class = LocationSerializer
 
 

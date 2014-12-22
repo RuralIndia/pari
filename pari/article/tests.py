@@ -11,7 +11,7 @@ from mock import patch
 from geoposition import Geoposition
 
 from .admin import ArticleAdmin
-from .models import Article, Location, Type, Category, Author
+from .models import Article, Location, Type, Category, Author, get_locations_with_published_articles
 from .common import get_result_types
 from .rich_text_filter import article_content_filter
 
@@ -163,6 +163,14 @@ class LocationTests(TestCase):
         location = LocationFactory(articles=(
             ArticleFactory(), ArticleFactory(status=CONTENT_STATUS_DRAFT, is_topic=True), ArticleFactory(is_topic=True)))
         self.assertEqual(1, len(location.get_topics()))
+
+    def test_get_locations_with_published_articles(self):
+        LocationFactory(articles=(ArticleFactory(), ArticleFactory(status=CONTENT_STATUS_DRAFT), ArticleFactory()))
+        LocationFactory(articles=(ArticleFactory(), ArticleFactory(status=CONTENT_STATUS_DRAFT)))
+        LocationFactory(articles=(ArticleFactory(status=CONTENT_STATUS_DRAFT),
+                                  ArticleFactory(status=CONTENT_STATUS_DRAFT)))
+
+        self.assertEqual(2, get_locations_with_published_articles().count())
 
 
 class ArticleViewsTests(TestCase):
