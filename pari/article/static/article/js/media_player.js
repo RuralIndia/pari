@@ -10,7 +10,7 @@ $(function(){
         }
     });
 
-    $(".media-popup").on('hidden', function () {
+    $(".media-popup").on('hidden.bs.modal', function () {
         $('.video-container', this).html('');
         $('.audio-container', this).html('');
     });
