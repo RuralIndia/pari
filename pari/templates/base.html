@@ -130,6 +130,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     $(function() {
         $('.middleinput:text, textarea').addClass('xlarge');
         $('.control-group label').addClass('control-label');
+        if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+	    $('.dropdown').on('click', function(ev) {
+		if ($(this).children('.dropdown-menu').length > 0 && !$(this).hasClass('active')) {
+		    $('.dropdown').removeClass('active');
+		    $(this).addClass('active');
+		    ev.preventDefault();
+		}
+	    });
+	}
     });
     </script>
     {% block extra_js %}{% endblock %}
