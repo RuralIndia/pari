@@ -3,6 +3,7 @@ from django.test.client import Client
 from django.core.urlresolvers import reverse
 from django.contrib.auth import get_user_model
 
+from django.contrib.auth.models import User
 from mezzanine.core.models import CONTENT_STATUS_DRAFT
 from mezzanine.conf import settings
 
@@ -229,6 +230,27 @@ class ArticleViewsTests(TestCase):
         article_with_default_title = ArticleFactory()
         response = self.client.get(reverse('search-detail'), {'query': 'test', 'filter': 'Category', 'page': 1})
         self.assertNotIn(article_with_default_title, response.context['results'])
+
+    def test_user_preview_draft(self):
+        article = ArticleFactory(status=CONTENT_STATUS_DRAFT)
+        response = self.client.get(article.get_absolute_url())
+        self.assertEqual(response.status_code, 404)
+        User.objects.create_user(username="test", password="test123",
+                            email="test@example.com")
+        logged_in = self.client.login(username="test", password="test123")
+        self.assertTrue(logged_in)
+        response = self.client.get(article.get_absolute_url())
+        self.assertEqual(response.status_code, 404)
+        staff_user = User.objects.create_user(username="stest",
+                                              password="test123",
+                                              email="stest@example.com")
+        staff_user.is_staff = True
+        staff_user.save()
+        logged_in = self.client.login(username="stest", password="test123")
+        self.assertTrue(logged_in)
+        response = self.client.get(article.get_absolute_url())
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(article, response.context['object'])
 
 
 class CommonTests(TestCase):

@@ -12,7 +12,10 @@ class ArticleDetail(DetailView):
     model = Article
 
     def get_queryset(self):
-        return Article.articles.prefetch_related('locations', 'carousel_images')
+        if self.request.user.is_staff:
+            return Article.objects.prefetch_related('locations', 'carousel_images')
+        else:
+            return Article.articles.prefetch_related('locations', 'carousel_images')
 
     def get_context_data(self, **kwargs):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
