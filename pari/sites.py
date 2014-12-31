@@ -1,4 +1,4 @@
-from django.contrib.admin.sites import AdminSite
+from mezzanine.boot.lazy_admin import LazyAdminSite
 from django.core.cache import cache
 from mezzanine.conf import settings
 
@@ -6,7 +6,7 @@ import requests
 import re
 
 
-class PariAdminSite(AdminSite):
+class PariAdminSite(LazyAdminSite):
     def twitter_followers(self):
         followers = cache.get("twitter_followers")
         if not followers:
