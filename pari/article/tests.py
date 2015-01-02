@@ -1,9 +1,8 @@
 from django.test import TestCase, RequestFactory
 from django.test.client import Client
 from django.core.urlresolvers import reverse
-from django.contrib.auth import get_user_model
-
 from django.contrib.auth.models import User
+
 from mezzanine.core.models import CONTENT_STATUS_DRAFT
 from mezzanine.conf import settings
 
@@ -20,9 +19,6 @@ from ..news.models import NewsPost
 
 from .feeds import AllFeed, ArticleFeed
 import xml.etree.ElementTree as ET
-
-
-User = get_user_model()
 
 
 class LocationFactory(factory.DjangoModelFactory):
