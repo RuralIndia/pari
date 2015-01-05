@@ -344,6 +344,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
+    "mezzanine.pages.context_processors.page",
     "pari.article.context_processors.types",
     "pari.article.context_processors.sites",
 )
