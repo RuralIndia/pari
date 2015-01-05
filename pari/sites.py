@@ -17,9 +17,9 @@ class PariAdminSite(LazyAdminSite):
                 headers={"accept-language": "en-us, en; q=0.8"})
             if response.ok:
                 content = response.content
-                exists = re.search("(?P<number>\d+) Followers", content)
+                exists = re.search(r"followers_count(\S+?)(?P<number>\d+)", content)
                 if exists:
-                    followers = exists.groups()[0]
+                    followers = exists.group('number')
             expires_in_secs = settings.CACHE_MIDDLEWARE_SECONDS
             cache.set("twitter_followers", followers, expires_in_secs)
         return followers
