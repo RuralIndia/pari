@@ -1,4 +1,4 @@
-$(document).ready(function() {
+jQuery(document).ready(function($) {
 	$('input[id*="is_cover"]').click(function(){
         var currentValue = $(this)[0].checked;
 			if ($('input[id*="is_cover"]:checked').length > 1) {
