@@ -20,11 +20,11 @@
 {{ block.super }}
 <div class="social_block">
   <div class="col left">
-    <h3>Twitter: <a href="{{ "SOCIAL_TWITTER"|get_setting }}" target="_blank">@PariNetwork</a></h3>
+    <h3>Twitter: <a href="https://twitter.com/{{ "SOCIAL_TWITTER"|get_setting }}" target="_blank">@{{ "SOCIAL_TWITTER"|get_setting }}</a></h3>
     <p>Number of followers: {{ twitter_followers }}</p>
   </div>
   <div class="col right">
-    <h3>Facebook: <a href="{{ "SOCIAL_FACEBOOK"|get_setting }}/likes" target="_blank">PariNetwork</a></h3>
+    <h3>Facebook: <a href="https://facebook.com/{{ "SOCIAL_FACEBOOK"|get_setting }}/likes" target="_blank">{{ "SOCIAL_FACEBOOK"|get_setting }}</a></h3>
     <p>Number of likes: {{ facebook_likes }}</p>
   </div>
 </div>

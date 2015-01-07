@@ -15,7 +15,10 @@
 <meta property="og:type" content="article">
 <meta property="og:published_time" content="{{ blog_post.publish_date|date:"c" }}">
 
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@{{ "SOCIAL_TWITTER"|get_setting }}">
 <meta name="twitter:title" content="{{ blog_post.title }}" >
+<meta name="twitter:description" content="Read the article on People's archive of Rural India" >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ MEDIA_URL }}{{ blog_post.featured_image|urlencode }}" >
 <meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ blog_post.get_absolute_url }}" >
 {% endblock %}
