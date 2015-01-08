@@ -13,6 +13,7 @@ class PariAdminSite(LazyAdminSite):
             followers = "- NA -"
             settings.use_editable()
             response = requests.get(
+                "https://twitter.com/" +
                 settings.SOCIAL_TWITTER.decode('utf-8'),
                 headers={"accept-language": "en-us, en; q=0.8"})
             if response.ok:
