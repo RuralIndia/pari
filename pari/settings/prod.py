@@ -56,3 +56,46 @@ DEFAULT_FROM_EMAIL = "do-no-reply@ruralindiaonline.org"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 
 TESTING = False
+
+LOG_FILE = 'pari_error.log'
+
+# This overrides django loggers specified in django.utils.log.DEFAULT_LOGGING
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(levelname)s %(name)s %(process)d %(thread)d %(pathname)s:%(lineno)s %(message)s',
+            "datefmt": '[%Y-%m-%d %H:%M:%S %z]',
+        }
+    },
+    'handlers': {
+        'log_error': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': LOG_FILE
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['log_error'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        'django.security': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        }
+    }
+}
