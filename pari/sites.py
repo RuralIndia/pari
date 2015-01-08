@@ -33,10 +33,10 @@ class PariAdminSite(LazyAdminSite):
         if not likes:
             likes = "- NA -"
             settings.use_editable()
-            if settings.SOCIAL_FACEBOOK_ID:
+            if settings.SOCIAL_FACEBOOK:
                 try:
                     response = requests.get("https://graph.facebook.com/" +
-                                            settings.SOCIAL_FACEBOOK_ID.decode('utf-8'))
+                                            settings.SOCIAL_FACEBOOK.decode('utf-8'))
                 except requests.RequestException:
                     return likes
             if response.ok:

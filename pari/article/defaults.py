@@ -19,43 +19,36 @@ register_setting(
 )
 register_setting(
     name="SOCIAL_FACEBOOK",
-    label=_("Facebook Page Url"),
-    description="Facebook Page Url for PARI",
+    label=_("Facebook Page Username"),
+    description="Facebook Page Username",
     editable=True,
     default="http://facebook.com",
 )
 register_setting(
-    name="SOCIAL_FACEBOOK_ID",
-    label=_("Facebook Page/App Id"),
-    description="Facebook Page/App Id for PARI",
-    editable=True,
-    default="123456789",
-)
-register_setting(
     name="SOCIAL_TWITTER",
     label=_("Twitter Account"),
-    description="Url to Twitter account",
+    description="Twitter Username",
     editable=True,
     default="http://twitter.com",
 )
 register_setting(
     name="SOCIAL_GOOGLE_PLUS",
-    label=_("Google Plus Page Url"),
-    description="Google Page Url for PARI",
+    label=_("Google Plus Page Username"),
+    description="Google Page Username",
     editable=True,
     default="http://plus.google.com",
 )
 register_setting(
     name="SOCIAL_GITHUB_REPO",
-    label=_("Github Repo Url"),
-    description="Github Url for PARI",
+    label=_("Github Repo Username"),
+    description="Github Username",
     editable=True,
-    default="https://github.com/ruralindia/pari",
+    default="ruralindia/pari",
 )
 register_setting(
     name="SOCIAL_PINTEREST",
-    label=_("Pintereset Url"),
-    description="Pinterest Url",
+    label=_("Pinterest Username"),
+    description="Pinterest Username",
     editable=True,
     default="https://www.pinterest.com",
 )
