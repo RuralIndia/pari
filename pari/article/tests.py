@@ -101,6 +101,9 @@ class ArticleAdminTests(TestCase):
     def test_include_pin_to_home_in_list_display(self):
         self.assertIn("pin_to_home", ArticleAdmin.list_display)
 
+    def test_include_carousel_order_in_list_display(self):
+        self.assertIn("carousel_order", ArticleAdmin.list_display)
+
     def test_include_is_topic_in_list_display(self):
         self.assertIn("is_topic", ArticleAdmin.list_display)
 
@@ -247,6 +250,21 @@ class ArticleViewsTests(TestCase):
         response = self.client.get(article.get_absolute_url())
         self.assertEqual(response.status_code, 200)
         self.assertTrue(article, response.context['object'])
+
+    def test_should_get_ordered_articles_for_home_carousel(self):
+        article1 = ArticleFactory(featured_image='image', pin_to_home=True, carousel_order=1)
+        article2 = ArticleFactory(featured_image='image', pin_to_home=True, carousel_order=2)
+        article3 = ArticleFactory(featured_image='image', pin_to_home=True, carousel_order=3)
+        ArticleFactory()
+        ArticleFactory(featured_image='image')
+        ArticleFactory(pin_to_home=True)
+
+        # This is needed to get the template pages/index.html rendered. Mezzanine convention.
+        from mezzanine.pages.models import Link
+        Link.objects.create(title="HomePage", slug="/")
+
+        response = self.client.get(reverse("home"))
+        self.assertEqual(list(response.context['article_list']), [article1, article2, article3])
 
 
 class CommonTests(TestCase):

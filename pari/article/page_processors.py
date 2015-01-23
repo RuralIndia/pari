@@ -10,7 +10,7 @@ def homepage_context(request, page):
                         .filter(pin_to_home=True)\
                         .exclude(featured_image__isnull=True)\
                         .exclude(featured_image='')\
-                        .order_by('-updated')[:10]
+                        .order_by('carousel_order')[:15]
     categories = Category.objects.all()[:9]
     recent_articles = Article.articles.prefetch_related('locations').order_by('-publish_date')[:6]
     start_time, end_time = get_archive_range()

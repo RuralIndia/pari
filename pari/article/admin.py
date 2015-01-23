@@ -26,6 +26,7 @@ blog_fieldsets[0][1]["fields"].insert(-1, "is_topic")
 blog_list_display = deepcopy(BlogPostAdmin.list_display)
 blog_list_display.insert(-1, "is_topic")
 blog_list_display.insert(-1, "pin_to_home")
+blog_list_display.insert(-1, "carousel_order")
 
 
 class ArticleCarouselImageInline(TabularDynamicInlineAdmin):
@@ -40,7 +41,7 @@ class ArticleAdmin(BlogPostAdmin):
     fieldsets = blog_fieldsets
     inlines = [ArticleCarouselImageInline, ]
     list_display = blog_list_display
-    list_editable = ('status', 'pin_to_home', )
+    list_editable = ('status', 'pin_to_home', 'carousel_order')
     list_filter = ('status', 'author', 'pin_to_home', )
     filter_horizontal = ("category_list", "related_posts", "locations")
 

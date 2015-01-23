@@ -35,6 +35,8 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
 
     pin_to_home = models.BooleanField(verbose_name=_("Pin to home?"), default=False)
 
+    carousel_order = models.SmallIntegerField(verbose_name=_("Carousel order"), null=True, blank=True)
+
     author = models.ForeignKey("Author", related_name='articles', verbose_name="Author")
 
     capsule_video = models.CharField(max_length=100, null=True, blank=True)
