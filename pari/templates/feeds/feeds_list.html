@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="row">
+  <h3>Feeds</h3>
+  <ul>
+    <li>
+      <h4>Consolidated Feed (<a href="{% url "all_feeds" %}?format=atom">Atom</a> | <a href="{% url "all_feeds" %}?format=rss">RSS</a>)</h4>
+    </li>
+    <li>
+      <h4>Article Feed (<a href="{% url "article_feeds" %}?format=atom">Atom</a> | <a href="{% url "article_feeds" %}?format=rss">RSS</a>)</h4>
+    </li>
+    <li>
+      <h4>Album Feed (<a href="{% url "album_feeds" %}?format=atom">Atom</a> | <a href="{% url "album_feeds" %}?format=rss">RSS</a>)</h4>
+    </li>
+    <li>
+      <h4>Face Feed (<a href="{% url "face_feeds" %}?format=atom">Atom</a> | <a href="{% url "face_feeds" %}?format=rss">RSS</a>)</h4>
+    </li>
+    <li>
+      <h4>Resource Feed (<a href="{% url "resource_feeds" %}?format=atom">Atom</a> | <a href="{% url "resource_feeds" %}?format=rss">RSS</a>)</h4>
+    </li>
+    <li>
+      <h4>Factoid Feed (<a href="{% url "factoid_feeds" %}?format=atom">Atom</a> | <a href="{% url "factoid_feeds" %}?format=rss">RSS</a>)</h4>
+    </li>
+    <li>
+      <h4>News Feed (<a href="{% url "newspost_feeds" %}?format=atom">Atom</a> | <a href="{% url "newspost_feeds" %}?format=rss">RSS</a>)</h4>
+    </li>
+  </ul>
+</div>
+{% endblock %}

@@ -3,6 +3,7 @@ from .feeds import AllFeed, ArticleFeed, AlbumFeed, \
     FaceFeed, ResourceFeed, FactoidFeed, NewsPostFeed
 
 urlpatterns = patterns('',
+    url(r'^list/$', 'pari.article.feeds.feeds_list_page', name="feeds_list_page"),
     url(r'^all/$', AllFeed(), name="all_feeds"),
     url(r'^articles/$', ArticleFeed(), name="article_feeds"),
     url(r'^albums/$', AlbumFeed(), name="album_feeds"),
