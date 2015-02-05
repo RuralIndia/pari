@@ -45,6 +45,10 @@ class ArticleAdmin(BlogPostAdmin):
     list_filter = ('status', 'author', 'pin_to_home', )
     filter_horizontal = ("category_list", "related_posts", "locations")
 
+    def __init__(self, *args):
+        super(ArticleAdmin, self).__init__(*args)
+        self.opts.get_field("user").verbose_name = 'User'
+
 
 class TypeAdmin(admin.ModelAdmin):
     form = TypeForm
