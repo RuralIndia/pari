@@ -91,8 +91,8 @@ class ArticleAdminTests(TestCase):
     def test_includes_date_of_publication_field(self):
         self.assertIn("date_of_publication", ArticleAdmin.fieldsets[0][1]['fields'])
 
-    def test_includes_is_topic_field(self):
-        self.assertIn("is_topic", ArticleAdmin.fieldsets[0][1]['fields'])
+    def test_includes_author_field(self):
+        self.assertIn("author", ArticleAdmin.fieldsets[0][1]['fields'])
 
     def test_includes_featured_image_and_related_toggle_fields(self):
         self.assertIn(("featured_image", "allow_featured_image", "pin_to_home", ), ArticleAdmin.fieldsets[0][1]['fields'])
@@ -106,8 +106,8 @@ class ArticleAdminTests(TestCase):
     def test_include_carousel_order_in_list_display(self):
         self.assertIn("carousel_order", ArticleAdmin.list_display)
 
-    def test_include_is_topic_in_list_display(self):
-        self.assertIn("is_topic", ArticleAdmin.list_display)
+    def test_include_author_in_list_display(self):
+        self.assertIn("author", ArticleAdmin.list_display)
 
     def test_includes_category_list_field(self):
         self.assertIn("category_list", ArticleAdmin.fieldsets[0][1]['fields'])
