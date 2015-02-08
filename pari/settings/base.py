@@ -390,8 +390,14 @@ SOUND_CLOUD_PASSWORD = os.environ.get('SOUND_CLOUD_PASSWORD', 'true')
 gettext = lambda s: s
 LANGUAGES = (
     ("en", gettext("English")),
+    ("as", gettext("Assamese")),
+    ("bn", gettext("Bengali")),
     ("hi", gettext("Hindi")),
+    ("kn", gettext("Kannada")),
+    ("ml", gettext("Malayalam")),
     ("mr", gettext("Marathi")),
+    ("or", gettext("Odia")),
+    ("ta", gettext("Tamil")),
     ("te", gettext("Telugu")),
 )
 MODELTRANSLATION_DEFAULT_LANGUAGE = "en"
