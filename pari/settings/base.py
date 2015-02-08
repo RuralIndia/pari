@@ -164,7 +164,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
+USE_I18N = True
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = "ddd8bef6-495d-4925-ae37-1f13f9fe679404584f84-f4db-4f15-a096-72f545486dc6a72928ae-ef6b-486a-86a0-d511c82c5534"
@@ -279,7 +279,7 @@ ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
 # or "C:/www/django/templates".
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
-TEMPLATE_DIRS = PROJECT_ROOT.child("templates")
+TEMPLATE_DIRS = (PROJECT_ROOT.child("templates"), )
 
 FIXTURE_DIRS = PROJECT_ROOT.child("fixtures")
 
@@ -289,6 +289,8 @@ FIXTURE_DIRS = PROJECT_ROOT.child("fixtures")
 ################
 
 INSTALLED_APPS = (
+    "modeltranslation",
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -358,6 +360,7 @@ MIDDLEWARE_CLASSES = (
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -381,6 +384,17 @@ SOUND_CLOUD_CLIENT_SECRET = os.environ.get('SOUND_CLOUD_CLIENT_SECRET', 'true')
 SOUND_CLOUD_CLIENT_ID = os.environ.get('SOUND_CLOUD_CLIENT_ID', 'true')
 SOUND_CLOUD_USERNAME = os.environ.get('SOUND_CLOUD_USERNAME', 'true')
 SOUND_CLOUD_PASSWORD = os.environ.get('SOUND_CLOUD_PASSWORD', 'true')
+
+# Translation related settings
+# Language codes taken from https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+gettext = lambda s: s
+LANGUAGES = (
+    ("en", gettext("English")),
+    ("hi", gettext("Hindi")),
+    ("mr", gettext("Marathi")),
+    ("te", gettext("Telugu")),
+)
+MODELTRANSLATION_DEFAULT_LANGUAGE = "en"
 #########################
 # OPTIONAL APPLICATIONS #
 #########################

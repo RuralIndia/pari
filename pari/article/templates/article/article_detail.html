@@ -82,6 +82,22 @@
 {% endif %}
 
 {% block blog_post_detail_content %}
+<div class="col-md-12 pull-right">
+  {% if translations %}
+  <div class="dropdown translations">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      View article in
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="?hl=en">English</a></li>
+      {% for lang in translations %}
+      <li role="presentation"><a role="menuitem" tabindex="{{ forloop.counter0 }}" href="?hl={{ lang.0 }}">{{ lang.1 }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
 {% editable blog_post.content %}
 <div class="article-content">
 {{ blog_post.content|richtext_filters|safe }}

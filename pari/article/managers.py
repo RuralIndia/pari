@@ -6,18 +6,18 @@ from mezzanine.core.managers import DisplayableManager
 
 
 class PublishedMixin(object):
-    def get_query_set(self):
-        return super(PublishedMixin, self).get_query_set().filter(
+    def get_queryset(self):
+        return super(PublishedMixin, self).get_queryset().filter(
             Q(publish_date__lte=now()) | Q(publish_date__isnull=True),
             Q(expiry_date__gte=now()) | Q(expiry_date__isnull=True),
             Q(status=CONTENT_STATUS_PUBLISHED))
 
 
 class ArticleManager(PublishedMixin, DisplayableManager):
-    def get_query_set(self):
-        return super(ArticleManager, self).get_query_set().filter(is_topic=False)
+    def get_queryset(self):
+        return super(ArticleManager, self).get_queryset().filter(is_topic=False)
 
 
 class TopicManager(PublishedMixin, DisplayableManager):
-    def get_query_set(self):
-        return super(TopicManager, self).get_query_set().filter(is_topic=True)
+    def get_queryset(self):
+        return super(TopicManager, self).get_queryset().filter(is_topic=True)

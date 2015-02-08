@@ -1,9 +1,9 @@
-if (typeof tinyMCE != 'undefined') {
+function tinyMCEInit(selector) {
     var imgContainerClass = 'image-container',
         imgContainerImgSelector = '.' + imgContainerClass + '>img';
 
     tinymce.init({
-        selector: ".mceEditor",
+        selector: selector || ".mceEditor",
         remove_script_host: false,
         convert_urls: false,
         relative_urls: false,
@@ -172,5 +172,5 @@ if (typeof tinyMCE != 'undefined') {
 
         }
     });
-
 }
+tinyMCEInit();

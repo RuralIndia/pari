@@ -1,10 +1,16 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.utils import translation
+from django.conf import settings
+
 from mezzanine.core.models import CONTENT_STATUS_PUBLISHED
 
 from pari.article.models import Article, get_archive_articles, get_all_articles, ArticleCarouselImage
 from pari.article.mixins import ArticleListMixin
 from pari.article.templatetags.article_filters import month_name
+
+# TODO: Remove in django 1.7+
+LANGUAGE_SESSION_KEY = "django_language"
 
 
 class ArticleDetail(DetailView):
@@ -20,6 +26,16 @@ class ArticleDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
         article = context['blog_post']
+        translations = []
+        for language in settings.LANGUAGES[1:]:
+            content = getattr(article, "content_{0}".format(language[0]), None)
+            if content and content.strip():
+                translations.append(language)
+        language = self.request.GET.get("hl")
+        if language and language in [ii[0] for ii in settings.LANGUAGES]:
+            translation.activate(language)
+            self.request.session[LANGUAGE_SESSION_KEY] = language
+        context['translations'] = translations
         context['related_articles'] = article.related_posts.filter(status=CONTENT_STATUS_PUBLISHED)[:5]
         return context
 

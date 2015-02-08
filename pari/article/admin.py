@@ -1,6 +1,8 @@
 from copy import deepcopy
 from django.contrib import admin
 
+from modeltranslation.admin import TabbedTranslationAdmin
+
 from mezzanine.blog.admin import BlogPostAdmin
 from mezzanine.core.admin import DisplayableAdmin, TabularDynamicInlineAdmin
 
@@ -37,7 +39,7 @@ class ArticleCarouselImageInline(TabularDynamicInlineAdmin):
     }),
 
 
-class ArticleAdmin(BlogPostAdmin):
+class ArticleAdmin(BlogPostAdmin, TabbedTranslationAdmin):
     fieldsets = blog_fieldsets
     inlines = [ArticleCarouselImageInline, ]
     list_display = blog_list_display
