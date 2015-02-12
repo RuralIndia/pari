@@ -1,0 +1,15 @@
+{% extends "email/base.html" %}
+
+{% block main %}
+{% if message %}<p>{{ message|linebreaks }}</p>{% endif %}
+<table border="0">
+{% for field, value in fields %}
+{% if field.lower != "captcha" %}
+<tr>
+    <td><b>{{ field }}:</b></td>
+    <td>{{ value|linebreaks }}</td>
+</tr>
+{% endif %}
+{% endfor %}
+</table>
+{% endblock %}

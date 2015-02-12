@@ -1,0 +1,11 @@
+{% extends "email/base.txt" %}
+
+{% block main %}{% if message %}
+{{ message }}
+
+{% endif %}{% for field, value in fields %}
+{% if field.lower != "captcha" %}
+{{ field }}: {{ value|safe }}
+{% endif %}
+{% endfor %}
+{% endblock %}
