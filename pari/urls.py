@@ -1,14 +1,16 @@
 import os
+
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.contrib import admin
+
+from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+
 from .sites import PariAdminSite
 
 from pari.article.urls import root_patterns as articles_root_patterns
 
 admin.autodiscover()
-
-from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
 dajaxice_autodiscover()
 
