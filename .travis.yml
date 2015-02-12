@@ -5,6 +5,6 @@ install: "pip install -r requirements/ci.txt --use-mirrors"
 env:
   - DJANGO=1.6 DJANGO_SETTINGS_MODULE=pari.settings.ci
 before_script:
-  - "flake8 --exclude=migrations --ignore=E501,E225,E128,E126,E731 ."
+  - "flake8 --exclude=migrations --ignore=E501,E225,E128,E126,E731,E402 ."
 script:
   - python manage.py test pari
