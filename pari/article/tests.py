@@ -18,6 +18,7 @@ from .common import get_result_types
 from .rich_text_filter import article_content_filter
 
 from ..news.models import NewsPost
+from ..search.search_indexes import ArticleIndex
 
 from .feeds import AllFeed, ArticleFeed
 import xml.etree.ElementTree as ET
@@ -199,6 +200,18 @@ class ArticleViewsTests(TestCase):
         response = self.client.get(reverse('category-detail', args=(category.slug,)))
         self.assertEqual(1, len(response.context['articles']))
 
+    def test_search_results_not_contain_drafts(self):
+        user_1 = User.objects.create_user("admin", "admin", "admin@admin.com")
+        author_1 = Author.objects.create(title="Author 1")
+        draft_article = Article.objects.create(
+            title="#$*@&#*$SKASHFKSHCD&&%*",
+            user=user_1,
+            author=author_1,
+            status=1,
+        )
+        article_in_index = ArticleIndex.objects.filter(title=draft_article.title)
+        self.assertEqual(article_in_index.count(), 0)
+
     def test_search_results_contain_topics(self):
         topic = ArticleFactory()
         topic.is_topic = True
@@ -316,7 +329,6 @@ class RichTextFilterTests(TestCase):
 
     @patch('pari.article.templatetags.article_tags.thumbnail')
     def test_should_use_thumbnail(self, mock_thumbnail):
-        print mock_thumbnail
         mock_thumbnail.return_value="a-300x300.jpg"
         content = "<div><p>Test</p><div>image: <img src=\"/static/media/a.jpg\" width=\"300\" height=\"300\"/></div></div>"
         expected_content = "<div><p>Test</p><div>image: <img src=\"/static/media/a-300x300.jpg\" width=\"300\" height=\"300\"></div></div>"

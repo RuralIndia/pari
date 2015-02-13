@@ -29,7 +29,12 @@ if "haystack" in settings.INSTALLED_APPS:
             return self.model
 
         def index_queryset(self, using=None):
-            return self.get_model().objects.filter(status=2)
+            return self.get_model().objects.published()
+
+        def should_update(self, instance, **kwargs):
+            if instance.get_status_display() == "Published":
+                return True
+            return False
 
     class ArticleIndex(DisplayableIndex):
         get_location_titles = indexes.CharField()
