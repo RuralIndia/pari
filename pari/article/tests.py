@@ -455,3 +455,30 @@ class FeedTests(TestCase):
         response = feeds(all_feed_request)
         root = ET.fromstring(response.content)
         self.assertEqual(len(root.find("channel").findall("item")), 1)
+
+    def test_feed_show_draft_article(self):
+        user_1 = User.objects.create_user("admin", "admin", "admin@admin.com")
+        author_1 = Author.objects.create(title="Author 1")
+        published_article = Article.objects.create(
+            title='Article Published',
+            user=user_1,
+            author=author_1,
+            content="<div>Content</div>",
+            status=2
+        )
+        Article.objects.create(
+            title='Article Drafted',
+            user=user_1,
+            author=author_1,
+            content="<div>Content</div>",
+            status=1
+        )
+        all_feed_request = self.request_factory.get('/feeds/all/')
+
+        feeds = AllFeed()
+
+        response = feeds(all_feed_request)
+        root = ET.fromstring(response.content)
+        feed_items = root.find("channel").findall("item")
+        self.assertEqual(len(feed_items), 1)
+        self.assertEqual(feed_items[0].find("title").text, published_article.title)

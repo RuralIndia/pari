@@ -64,12 +64,12 @@ class AllFeed(BaseFeed):
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
         return itertools.chain(
-            Article.objects.filter(publish_date__gte=x_days_ago),
-            Album.objects.filter(publish_date__gte=x_days_ago),
-            Face.objects.filter(publish_date__gte=x_days_ago),
-            Resource.objects.filter(publish_date__gte=x_days_ago),
-            Factoid.objects.filter(publish_date__gte=x_days_ago),
-            NewsPost.objects.filter(publish_date__gte=x_days_ago)
+            Article.objects.published().filter(publish_date__gte=x_days_ago),
+            Album.objects.published().filter(publish_date__gte=x_days_ago),
+            Face.objects.published().filter(publish_date__gte=x_days_ago),
+            Resource.objects.published().filter(publish_date__gte=x_days_ago),
+            Factoid.objects.published().filter(publish_date__gte=x_days_ago),
+            NewsPost.objects.published().filter(publish_date__gte=x_days_ago)
         )
 
 
@@ -84,7 +84,7 @@ class ArticleFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Article.objects.filter(publish_date__gte=x_days_ago)
+        return Article.objects.published().filter(publish_date__gte=x_days_ago)
 
 
 class AlbumFeed(BaseFeed):
@@ -98,7 +98,7 @@ class AlbumFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Album.objects.filter(publish_date__gte=x_days_ago)
+        return Album.objects.published().filter(publish_date__gte=x_days_ago)
 
 
 class FaceFeed(BaseFeed):
@@ -112,7 +112,7 @@ class FaceFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Face.objects.filter(publish_date__gte=x_days_ago)
+        return Face.objects.published().filter(publish_date__gte=x_days_ago)
 
 
 class ResourceFeed(BaseFeed):
@@ -126,7 +126,7 @@ class ResourceFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Resource.objects.filter(publish_date__gte=x_days_ago)
+        return Resource.objects.published().filter(publish_date__gte=x_days_ago)
 
 
 class FactoidFeed(BaseFeed):
@@ -140,7 +140,7 @@ class FactoidFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return Factoid.objects.filter(publish_date__gte=x_days_ago)
+        return Factoid.objects.published().filter(publish_date__gte=x_days_ago)
 
 
 class NewsPostFeed(BaseFeed):
@@ -154,7 +154,7 @@ class NewsPostFeed(BaseFeed):
 
     def items(self):
         x_days_ago = timezone.now() - datetime.timedelta(days=self.days_ago)
-        return NewsPost.objects.filter(publish_date__gte=x_days_ago)
+        return NewsPost.objects.published().filter(publish_date__gte=x_days_ago)
 
 
 def feeds_list_page(request):
