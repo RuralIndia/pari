@@ -7,3 +7,4 @@ factory_boy==2.0.2
 selenium==2.40.0
 pytest==2.5.2
 mock==1.0.1
+whoosh==2.6.0

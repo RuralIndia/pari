@@ -9,7 +9,10 @@ register = template.Library()
 
 @register.simple_tag(takes_context=True)
 def display_search_result(context):
-    atom_name = searcher.get_atom_name(context['result'])
+    if not context['result']:
+        atom_name = 'default'
+    else:
+        atom_name = searcher.get_atom_name(context['result'])
     return render_to_string(["article/includes/%s_atom.html" % atom_name,
                              "article/includes/default_atom.html"],
                             {'result': context['result'], 'request': context['request']})

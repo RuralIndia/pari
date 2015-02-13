@@ -38,7 +38,6 @@ CACHES = {
 
 INSTALLED_APPS += (
     "djrill",
-    "haystack",
 )
 
 HAYSTACK_CONNECTIONS = {

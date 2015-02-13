@@ -28,3 +28,11 @@ SOUND_CLOUD_CLIENT_SECRET = '4413528c126613cd9535b318241ed24d'
 SOUND_CLOUD_CLIENT_ID = 'f63f72df4a0eb0606e3c7aaf12d8241b'
 SOUND_CLOUD_USERNAME = 'arvindram03@gmail.com'
 SOUND_CLOUD_PASSWORD = 'getonwithit'
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

@@ -24,7 +24,6 @@ INSTALLED_APPS += (
     "django_nose",
     "debug_toolbar",
     "django_extensions",
-    "haystack",
 )
 
 MIDDLEWARE_CLASSES += (

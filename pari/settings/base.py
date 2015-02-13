@@ -320,6 +320,7 @@ INSTALLED_APPS = (
     'dajaxice',
     'dajax',
     "captcha",
+    "haystack",
     # Custom
     "pari.article",
     "pari.map",
@@ -378,6 +379,12 @@ MIDDLEWARE_CLASSES = (
 # at the moment we are using custom forks of them.
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
 
 # SoundCloud credentials
 SOUND_CLOUD_CLIENT_SECRET = os.environ.get('SOUND_CLOUD_CLIENT_SECRET', 'true')
