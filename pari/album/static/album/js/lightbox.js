@@ -77,7 +77,31 @@ var Album = {
                 close: $.proxy(function () {
                     this._stopWidget();
                     this._popup.removeData('slideshow');
-                }, this)
+                }, this),
+		open: function() {
+		    var mfp = $.magnificPopup.instance;
+		    var proto = $.magnificPopup.proto;
+
+		    // extend function that moves to next item
+		    mfp.next = function() {
+
+			// if index is not last, call parent method
+			if(mfp.index < mfp.items.length - 1) {
+			    proto.next.call(mfp);
+			} else {
+			    // otherwise do whatever you want, e.g. hide "next" arrow
+			    proto.close();
+			}
+		    };
+
+		    // same with prev method
+		    mfp.prev = function() {
+			if(mfp.index > 0) {
+			    proto.prev.call(mfp);
+			}
+		    };
+
+		}
             }
         });
     },
