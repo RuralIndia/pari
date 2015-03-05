@@ -7,6 +7,10 @@ from mezzanine.core.fields import FileField
 
 
 class Author(Displayable):
+    email = models.EmailField(null=True, blank=True)
+    twitter_username = models.CharField(max_length=50, null=True, blank=True)
+    facebook_username = models.CharField(max_length=50, null=True, blank=True)
+    website = models.URLField(null=True, blank=True)
     image = FileField(verbose_name=_("Author's Image"), format="Image", max_length=255, null=True, blank=True)
     objects = DisplayableManager()
 
