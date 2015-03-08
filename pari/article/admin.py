@@ -82,7 +82,11 @@ class CategoryAdmin(DisplayableAdmin):
 class AuthorAdmin(DisplayableAdmin):
     form = AuthorForm
     fieldsets = (None, {
-        "fields": ["title", "image", "description"],
+        "fields": [
+            "title", "image", "description",
+            "email", "twitter_username",
+            "facebook_username", "website"
+        ],
     }),
 
 admin.site.register(Type, TypeAdmin)
