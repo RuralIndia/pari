@@ -11,7 +11,7 @@
             {% if page.link.html_class %}
                 <span class="{{ page.link.html_class }}"></span>
             {% endif %}
-            {{ page.title }}
+            {{ page.title|safe }}
             {% if page.has_children_in_menu %}<span class="caret"></span>{% endif %}
         </a>
         {% if page.has_children_in_menu %}{% page_menu page %}{% endif %}
@@ -30,7 +30,7 @@
             {% if page.link.html_class %}
                 <span class="{{ page.link.html_class }}"></span>
             {% endif %}
-            {{ page.title }}
+            {{ page.title|safe }}
         </a>
     </li>
     {% endif %}
