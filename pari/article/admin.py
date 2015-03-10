@@ -83,8 +83,8 @@ class AuthorAdmin(DisplayableAdmin):
     form = AuthorForm
     fieldsets = (None, {
         "fields": [
-            "title", "image", "description",
-            "email", "twitter_username",
+            "title", "image", "gen_description",
+            "description", "email", "twitter_username",
             "facebook_username", "website"
         ],
     }),
