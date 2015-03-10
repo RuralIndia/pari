@@ -1,11 +1,5 @@
 {% load i18n verbatim_tag static mezzanine_tags article_tags article_filters keyword_tags %}
   <div id="homeCarousel" class="carousel slide carousel-thin-controls carousel-bottom-caption" data-interval="8000" data-ride="carousel">
-    <ol class="carousel-indicators">
-      {% for count in images.all|length|get_range %}
-        <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
-      {% endfor %}
-    </ol>
-
     <div class="carousel-inner">
       {% for image in images.all %}
         <div class="{% if forloop.first %}active{% endif %} item">
@@ -19,4 +13,9 @@
     </div>
     <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
     <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+    <ol class="carousel-indicators">
+      {% for count in images.all|length|get_range %}
+        <li data-target="#homeCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+      {% endfor %}
+    </ol>
   </div>
