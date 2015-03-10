@@ -10,12 +10,10 @@
       {% for image in images.all %}
         <div class="{% if forloop.first %}active{% endif %} item">
           <img src="{% get_media_prefix %}{% thumbnail_no_fit image.file 1053 648%}" alt="">
-          <a href="{{ image.get_absolute_url }}">
-            <div class="carousel-caption">
+            <div class="custom-carousel-caption">
               <h4>{{image.title }}</h4>
               <p>{{ image.description|truncatewords:20 }}</p>
             </div>
-          </a>
         </div>
       {% endfor%}
     </div>
