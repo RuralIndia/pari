@@ -8,11 +8,13 @@
         
         <a target="_blank" href="https://plus.google.com/share?url={{ url }}"><div class="badge google-plus"><i class="fa fa-google-plus-square"></i></div></a>
 
+	{% comment %}
         {% if settings.COMMENTS_DISQUS_SHORTNAME %}
             <div class="badge comments">
                 <i class="fa fa-comments-o comments-icon"></i>
                 <a href="{{ url }}#disqus_thread" data-disqus-identifier="{% disqus_id_for item %}" class="count"></a>
             </div>
         {% endif %}
+	{% endcomment %}
     </div>
 {% endwith %}
