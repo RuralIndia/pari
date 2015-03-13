@@ -62,10 +62,12 @@
             {% endeditable %}
         </div>
         <p class="article-meta">
-            {% with blog_post.author as author %}
-                <a href="{% url "author-detail" author.slug %}"><i class="fa fa-user"></i>  {{author.title}}</a>
-            {% endwith %}
-            | <a href="{{ blog_post.publish_date|archive_url }}"><i class="fa fa-calendar"></i> {{ blog_post.publish_date|date }}</a>
+	  <a href="{{ blog_post.publish_date|archive_url }}"><i class="fa fa-calendar"></i> {{ blog_post.publish_date|date }}</a>
+	  {% with blog_post.author as author %}
+          | <a href="{% url "author-detail" author.slug %}"><i class="fa fa-user"></i>  {{author.title}}</a>
+	  {% if author.twitter_username %}<a href="https://twitter.com/{{ author.twitter_username }}" class="twitter-follow-button" data-width="145px" data-show-count="false">Follow {{ author.twitter_username }}</a>{% endif %}
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          {% endwith %}
         </p>
         {% include "article/includes/social.html" with item=blog_post %}
     {% endblock %}
@@ -104,6 +106,8 @@
 {{ blog_post.content|richtext_filters|safe }}
 </div>
 {% endeditable %}
+{% if blog_post.author.twitter_username %}<p>You may follow {{ blog_post.author.title }} at <a href="https://twitter.com/{{ blog_post.author.twitter_username }}" class="twitter-follow-button" data-width="145px" data-show-count="false">Follow {{ blog_post.author.twitter_username }}</a></p>{% endif %}
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 {% endblock %}
 
 {% endblock %}
