@@ -6,7 +6,7 @@
           <img src="{% get_media_prefix %}{% thumbnail_no_fit image.file 1053 648%}" alt="">
             <div class="custom-carousel-caption">
               <h4>{{image.title }}</h4>
-              <p>{{ image.description|truncatewords:20 }}</p>
+              <p>{{ image.description }}</p>
             </div>
         </div>
       {% endfor%}
