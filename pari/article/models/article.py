@@ -1,3 +1,5 @@
+import os
+
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.template.defaultfilters import truncatewords
@@ -7,6 +9,10 @@ from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable, Ownable, RichText, Orderable
 from mezzanine.generic.fields import CommentsField
 from mezzanine.utils.models import upload_to
+from mezzanine.conf import settings
+
+from filebrowser_safe.views import filebrowser_post_upload
+from PIL import Image
 
 from pari.article.managers import ArticleManager, TopicManager
 from pari.article.mixins import AdminThumbMixin
@@ -151,3 +157,26 @@ def get_author_articles(author):
 
 def get_archive_articles(month, year):
     return Article.articles.filter(publish_date__year=year, publish_date__month=month)
+
+
+def thumbnail_generator(sender, **kwargs):
+    path = kwargs["path"]
+    file_obj = kwargs["file"]
+    try:
+        file_path = os.path.join(settings.MEDIA_ROOT, file_obj.name)
+        im = Image.open(open(file_path, "r"))
+    except IOError as e:
+        return None
+    for (width, height) in settings.FILEBROWSER_RESCALE_DIMENSIONS:
+        resized_im = im.copy()
+        resized_im.thumbnail((width, height))
+        resized_image_dir = os.path.join(os.path.dirname(file_path),
+                                         "rescaled", str(width))
+        if not os.path.exists(resized_image_dir):
+            os.makedirs(resized_image_dir)
+        resized_image_path = os.path.join(resized_image_dir,
+                                          os.path.basename(file_obj.name))
+        resized_im.save(open(resized_image_path, "w"))
+        resized_im.close()
+        im.close()
+filebrowser_post_upload.connect(thumbnail_generator)

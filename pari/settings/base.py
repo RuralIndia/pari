@@ -426,6 +426,12 @@ NEVERCACHE_KEY = ""
 
 TESTING = True
 
+# Filebrowser Rescale dimensions
+# Not a inbuilt filebrowser setting
+FILEBROWSER_RESCALE_DIMENSIONS = (
+    (1024,768),
+)
+
 ###################
 # DEPLOY SETTINGS #
 ###################
