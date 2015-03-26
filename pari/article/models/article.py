@@ -160,12 +160,11 @@ def get_archive_articles(month, year):
 
 
 def thumbnail_generator(sender, **kwargs):
-    path = kwargs["path"]
     file_obj = kwargs["file"]
     try:
         file_path = os.path.join(settings.MEDIA_ROOT, file_obj.name)
         im = Image.open(open(file_path, "r"))
-    except IOError as e:
+    except IOError:
         return None
     for (width, height) in settings.FILEBROWSER_RESCALE_DIMENSIONS:
         resized_im = im.copy()
