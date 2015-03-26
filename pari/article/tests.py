@@ -11,6 +11,7 @@ import factory
 from mock import patch
 from geoposition import Geoposition
 import datetime
+import json
 
 from .admin import ArticleAdmin
 from .models import Article, Location, Type, Category, Author, get_locations_with_published_articles
@@ -132,6 +133,25 @@ class ArticleTests(TestCase):
 
     def test_contains_multiple_locations(self):
         self.assertTrue(2, self.video_article.locations.count())
+
+    def test_article_has_featured_video(self):
+        article = ArticleFactory(
+            featured_video="https://youtube.com/watch?v=qjKhmdvx_Tk"
+        )
+        oe = json.loads(article.oembed_data)
+        self.assertEqual(oe["provider_name"].lower(), "youtube")
+        article = ArticleFactory(
+            featured_video="https://vimeo.com/channels/thesourceproject/43170012"
+        )
+        oe = json.loads(article.oembed_data)
+        self.assertEqual(oe["provider_name"].lower(), "vimeo")
+
+    def test_article_has_featured_audio(self):
+        article = ArticleFactory(
+            featured_audio="https://soundcloud.com/ruralindia/albums-test-m4a"
+        )
+        oe = json.loads(article.oembed_data)
+        self.assertEqual(oe["provider_name"].lower(), "soundcloud")
 
 
 class LocationTests(TestCase):
@@ -280,6 +300,20 @@ class ArticleViewsTests(TestCase):
 
         response = self.client.get(reverse("home"))
         self.assertEqual(list(response.context['article_list']), [article1, article2, article3])
+
+    def test_article_featured_video(self):
+        article = ArticleFactory(
+            featured_video="https://youtube.com/watch?v=qjKhmdvx_Tk"
+        )
+        response = self.client.get(article.get_absolute_url())
+        self.assertEqual(response.status_code, 200)
+        obj = response.context['object']
+        self.assertEqual(article, obj)
+        embed_str = ('<iframe width="480" allowfullscreen src="http://www.'
+                     'youtube.com/embed/qjKhmdvx_Tk?showinfo=0&modestbranding'
+                     '=1&feature=oembed&controls=1&cc_load_policy=1&autohide=1'
+                     '&rel=0" frameborder="0" height="270"></iframe>')
+        self.assertEqual(obj.oembed_data['html'], embed_str)
 
 
 class CommonTests(TestCase):

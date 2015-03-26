@@ -1,3 +1,5 @@
+import json
+
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.utils import translation
@@ -37,6 +39,10 @@ class ArticleDetail(DetailView):
             self.request.session[LANGUAGE_SESSION_KEY] = language
         context['translations'] = translations
         context['related_articles'] = article.related_posts.filter(status=CONTENT_STATUS_PUBLISHED)[:5]
+        if article.featured_video or article.featured_audio:
+            obj = context['object']
+            obj.oembed_data = json.loads(obj.oembed_data)
+            context['object'] = obj
         return context
 
 

@@ -1,4 +1,5 @@
 import os
+import json
 
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
@@ -19,6 +20,7 @@ except ImportError:
 
 from pari.article.managers import ArticleManager, TopicManager
 from pari.article.mixins import AdminThumbMixin
+from pari.article.utils import oembed_discover
 
 from .category import Category
 from .location import Location
@@ -50,15 +52,17 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
 
     capsule_video = models.CharField(max_length=100, null=True, blank=True)
 
-    featured_video = models.CharField(max_length=100, null=True, blank=True)
+    featured_video = models.URLField(null=True, blank=True)
 
-    featured_audio = models.CharField(max_length=100, null=True, blank=True)
+    featured_audio = models.URLField(null=True, blank=True)
 
     date_of_publication = models.DateField(verbose_name=_("Original date of publication"), null=True, blank=True)
 
     related_posts = models.ManyToManyField("self",
                                            verbose_name=_("Related Articles"), blank=True)
     types = models.ManyToManyField(Type, related_name="articles", verbose_name="Article Type")
+
+    oembed_data = models.TextField(null=True, blank=True, default="{}")
 
     admin_thumb_field = "featured_image"
 
@@ -106,6 +110,10 @@ class Article(Displayable, Ownable, RichText, AdminThumbMixin):
 
     def save(self, *args, **kwargs):
         self.gen_description = False
+        if self.featured_video or self.featured_audio:
+            oe, err = oembed_discover(self.featured_video or self.featured_audio)
+            if not err:
+                self.oembed_data = json.dumps(oe)
         super(Article, self).save(*args, **kwargs)
 
 
