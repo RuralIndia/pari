@@ -16,7 +16,7 @@ except ImportError:
     import ImageFont
 
 
-class ParallelS3Storage(FileSystemStorageMixin, FileSystemStorage):
+class ParallelS3Storage(FileSystemStorage, FileSystemStorageMixin):
     def _save(self, name, content):
         if is_s3_storage():
             upload_to_s3(name, in_memory_file=content)

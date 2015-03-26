@@ -12,7 +12,10 @@ from mezzanine.utils.models import upload_to
 from mezzanine.conf import settings
 
 from filebrowser_safe.views import filebrowser_post_upload
-from PIL import Image
+try:
+    from PIL import Image
+except ImportError:
+    import Image
 
 from pari.article.managers import ArticleManager, TopicManager
 from pari.article.mixins import AdminThumbMixin
