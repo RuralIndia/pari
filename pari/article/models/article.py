@@ -178,5 +178,5 @@ def thumbnail_generator(sender, **kwargs):
                                           os.path.basename(file_obj.name))
         resized_im.save(open(resized_image_path, "w"))
         resized_im.close()
-        im.close()
+    im.close()
 filebrowser_post_upload.connect(thumbnail_generator)
