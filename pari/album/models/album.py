@@ -11,6 +11,7 @@ from filebrowser_safe.functions import convert_filename
 from mezzanine.core.fields import FileField
 from mezzanine.core.models import Displayable, Orderable
 from mezzanine.utils.models import upload_to
+from mezzanine.core.managers import DisplayableManager
 
 from pari.article.models import Article, Location
 from pari.album.models import ImageCollection, ImageCollectionImage
@@ -46,6 +47,8 @@ class Album(Displayable):
                                         default=TONE_DEFAULT)
 
     type_filter_order = 3
+
+    objects = DisplayableManager()
 
     class Meta:
         verbose_name = _("Album")
@@ -187,13 +190,13 @@ class AlbumImage(Orderable, Displayable):
 
 
 def get_all_albums():
-    return Album.objects.all()
+    return Album.objects.published().all()
 
 
 def get_talking_albums():
     album_images = AlbumImage.objects.exclude(audio__isnull=True).exclude(audio__exact='')
-    return Album.objects.filter(images__in=album_images).distinct()
+    return Album.objects.published().filter(images__in=album_images).distinct()
 
 
 def get_other_albums():
-    return Album.objects.filter(~models.Q(pk__in=get_talking_albums()))
+    return Album.objects.published().filter(~models.Q(pk__in=get_talking_albums()))
