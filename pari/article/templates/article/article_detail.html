@@ -61,8 +61,22 @@
                 <div class="article-strap">{% if blog_post.strap %} {{ blog_post.strap }} {% endif %}</div>
             {% endeditable %}
         </div>
-        <p class="article-meta">
-	  <a href="{{ blog_post.publish_date|archive_url }}"><i class="fa fa-calendar"></i> {{ blog_post.publish_date|date }}</a>
+        <div class="article-meta">
+          {% if translations %}
+	  <span class="dropdown translations">
+	    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+	      View article in
+	      <span class="caret"></span>
+	    </button>
+	    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	      <li role="presentation"><a role="menuitem" tabindex="-1" href="?hl=en">English</a></li>
+	      {% for lang in translations %}
+	      <li role="presentation"><a role="menuitem" tabindex="{{ forloop.counter0 }}" href="?hl={{ lang.0 }}">{{ lang.1 }}</a></li>
+	      {% endfor %}
+	    </ul>
+	  </span>
+	  {% endif %}
+	  | <a href="{{ blog_post.publish_date|archive_url }}"><i class="fa fa-calendar"></i> {{ blog_post.publish_date|date }}</a>
 	  {% with blog_post.author as author %}
           | <a href="{% url "author-detail" author.slug %}"><i class="fa fa-user"></i>  {{author.title}}</a>
 	  <div>
@@ -71,7 +85,7 @@
 	  {% include "article/includes/author_social.html" with author=author %}
           {% endwith %}
 	  </div>
-        </p>
+        </div>
         {% include "article/includes/social.html" with item=blog_post %}
     {% endblock %}
 
@@ -88,22 +102,6 @@
 {% endif %}
 
 {% block blog_post_detail_content %}
-<div class="col-md-12 pull-right">
-  {% if translations %}
-  <div class="dropdown translations">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-      View article in
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="?hl=en">English</a></li>
-      {% for lang in translations %}
-      <li role="presentation"><a role="menuitem" tabindex="{{ forloop.counter0 }}" href="?hl={{ lang.0 }}">{{ lang.1 }}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
-</div>
 {% editable blog_post.content %}
 <div class="article-content">
 {{ blog_post.content|richtext_filters|safe }}
