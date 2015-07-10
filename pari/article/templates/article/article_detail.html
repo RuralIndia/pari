@@ -10,17 +10,17 @@
 
 {% block opengraph_block %}
 <meta property="og:title" content="{{ blog_post.title }}">
-<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ blog_post.get_absolute_url }}">
+<meta property="og:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ blog_post.get_absolute_url }}{% if request.session.language and request.session.language != 'en' %}?hl={{ request.session.language }}{% endif %}">
 <meta property="og:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ MEDIA_URL }}{{ blog_post.featured_image|urlencode }}">
 <meta property="og:type" content="article">
 <meta property="og:published_time" content="{{ blog_post.publish_date|date:"c" }}">
 
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@{{ "SOCIAL_TWITTER"|get_setting }}">
 <meta name="twitter:title" content="{{ blog_post.title }}" >
 <meta name="twitter:description" content="Read the article on People's archive of Rural India" >
 <meta name="twitter:image" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ MEDIA_URL }}{{ blog_post.featured_image|urlencode }}" >
-<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ blog_post.get_absolute_url }}" >
+<meta name="twitter:url" content="http{% if request.is_secure %}s{% endif %}://{{ site.domain }}{{ blog_post.get_absolute_url }}{% if request.session.language and request.session.language != 'en' %}?hl={{ request.session.language }}{% endif %}" >
 {% endblock %}
 
 {% block meta_description %}{% metablock %}
@@ -102,6 +102,22 @@
 {% endif %}
 
 {% block blog_post_detail_content %}
+<div class="col-md-12 pull-right">
+  {% if translations %}
+  <div class="dropdown translations">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+      Choose language
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="?hl=en">English</a></li>
+      {% for lang in translations %}
+      <li role="presentation"><a role="menuitem" tabindex="{{ forloop.counter0 }}" href="?hl={{ lang.0 }}">{{ lang.1 }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
 {% editable blog_post.content %}
 <div class="article-content">
 {{ blog_post.content|richtext_filters|safe }}
