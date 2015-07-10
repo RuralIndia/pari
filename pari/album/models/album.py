@@ -83,6 +83,7 @@ class Album(Displayable):
         them to the gallery, before removing the zip file.
         """
 
+        self.gen_description = False
         if not hasattr(self, 'image_collection'):
             new_image_collection = ImageCollection(title=self.title)
             new_image_collection.save()
