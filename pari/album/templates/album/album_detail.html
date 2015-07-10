@@ -72,7 +72,7 @@
                     <div class="grid-column">
                         <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail image|get_file_path 370 300 %}"/>
                         <div class="caption">
-                            <p>{{ image.description|truncatechars:50 }}</p>
+                            <p>{{ image.description|safe|truncatechars:50 }}</p>
                             {% if image.audio %}
                                 <div class="audio-icon"><i class="fa fa-microphone"></i></div>
                             {% endif %}
