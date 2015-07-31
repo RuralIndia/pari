@@ -4,6 +4,8 @@ People's Archive Of Rural India
 
 [![Build Status](https://travis-ci.org/RuralIndia/pari.png)](https://travis-ci.org/RuralIndia/pari)
 
+## This repo has been deprecated in favour of the new one at https://github.com/PARINetwork/pari
+
 
 ## Dev Setup
 
